@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Theme", "Sightful.Theme\Sightful.Theme.csproj", "{3CF80FCB-C3AA-4A62-A403-377EFF60F634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Themes.Sightful", "Avalonia.Themes.Sightful\Avalonia.Themes.Sightful.csproj", "{3CF80FCB-C3AA-4A62-A403-377EFF60F634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Theme.Demo", "Sightful.Theme.Demo\Sightful.Theme.Demo.csproj", "{39E446AC-AD5A-4439-A0B4-F220DA2BDC0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Themes.Sightful.Demo", "Avalonia.Themes.Sightful.Demo\Avalonia.Themes.Sightful.Demo.csproj", "{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39E446AC-AD5A-4439-A0B4-F220DA2BDC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39E446AC-AD5A-4439-A0B4-F220DA2BDC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39E446AC-AD5A-4439-A0B4-F220DA2BDC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39E446AC-AD5A-4439-A0B4-F220DA2BDC0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 ﻿using Avalonia.Markup.Xaml;
 using Avalonia.Styling;
 
-namespace Sightful.Theme;
+namespace Avalonia.Themes.Sightful;
 
 public sealed class DefaultTheme : Styles
 {

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Theme.Assists">
+                    xmlns:assists="clr-namespace:Avalonia.Themes.Sightful.Assists">
 	<SolidColorBrush x:Key="Background" Color="{DynamicResource OuterBackgroundColor}"/>
 	<SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ControlBackgroundColor}"/>
 	<SolidColorBrush x:Key="ButtonForegroundBrush" Color="{DynamicResource PrimaryTextColor}"/>

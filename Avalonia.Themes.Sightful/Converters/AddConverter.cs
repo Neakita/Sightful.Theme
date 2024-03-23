@@ -1,15 +1,17 @@
 ﻿using System.Globalization;
-using Avalonia;
 using Avalonia.Data.Converters;
 
-namespace Sightful.Theme;
+namespace Avalonia.Themes.Sightful.Converters;
 
-internal sealed class RectToHeightConverter : IValueConverter
+internal sealed class AddConverter : IValueConverter
 {
 	public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
-		Rect rect = (Rect)value;
-		return rect.Height;
+		return value switch
+		{
+			int i => i + (int)parameter,
+			double d => d + double.Parse((string)parameter)
+		};
 	}
 
 	public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

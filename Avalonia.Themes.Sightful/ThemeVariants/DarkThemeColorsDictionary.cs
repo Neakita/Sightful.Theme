@@ -1,6 +1,6 @@
 ﻿using Avalonia.Media;
 
-namespace Sightful.Theme.ThemeVariants;
+namespace Avalonia.Themes.Sightful.ThemeVariants;
 
 internal sealed class DarkThemeColorsDictionary : ThemeColorsDictionary
 {

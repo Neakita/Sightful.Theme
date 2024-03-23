@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Avalonia.Themes.Sightful.Demo.ViewModels;
 
-namespace Sightful.Theme.Demo;
+namespace Avalonia.Themes.Sightful.Demo;
 
 public class ViewLocator : IDataTemplate
 {
