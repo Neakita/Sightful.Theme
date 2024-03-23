@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+                    xmlns:assists="clr-namespace:Sightful.Theme.Assists"
+                    xmlns:converters="clr-namespace:Sightful.Theme.Converters">
+	<converters:AddConverter x:Key="AddConverter"/>
+	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource AccentColor}" Opacity="0"/>
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource Background}">
+			<StackPanel>
+				<TextBox Watermark="Enter variables"/>
+				<TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
+				         Watermark="Email"/>
+				<TextBox InnerLeftContent="{icons:MaterialIconExt Password}"
+				         Watermark="Password"/>
+				<TextBox InnerLeftContent="{icons:MaterialIconExt Square}"
+				         InnerRightContent="{icons:MaterialIconExt Square}"
+				         Text="|Squares|"
+				         HorizontalAlignment="Left"/>
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+	
+	<ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
+		<Setter Property="Padding" Value="6"/>
+		<Setter Property="BorderThickness" Value="4"/>
+		<Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Background" Value="{DynamicResource ControlBackgroundColor}"/>
+		<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkSecondaryColor}"/>
+		<Setter Property="assists:TextBoxAssist.LeftInnerContentMargin" Value="0 0 4 0"/>
+		<Setter Property="assists:TextBoxAssist.RightInnerContentMargin" Value="4 0 0 0"/>
+		<Setter Property="VerticalAlignment" Value="Top"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="Margin" Value="4"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border BorderThickness="{TemplateBinding BorderThickness}"
+				        BorderBrush="{TemplateBinding BorderBrush}"
+				        CornerRadius="{TemplateBinding CornerRadius}"
+				        Padding="{TemplateBinding Padding}"
+				        Background="{TemplateBinding Background}"
+				        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+				        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+					<Border.Transitions>
+						<Transitions>
+							<BrushTransition Property="BorderBrush" Duration="0:0:0.1"/>
+						</Transitions>
+					</Border.Transitions>
+					<Grid ColumnDefinitions="Auto * Auto">
+						<ContentPresenter Grid.Column="0"
+						                  Content="{TemplateBinding InnerLeftContent}"
+						                  Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
+						                  IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
+						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}"/>
+						<TextBlock Grid.Column="1" Text="{TemplateBinding Watermark}"
+						           Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
+						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
+						<TextPresenter Name="PART_TextPresenter"
+						               Grid.Column="1"
+						               Text="{TemplateBinding Text}"
+						               CaretBrush="{TemplateBinding Foreground}"/>
+						<ContentPresenter Grid.Column="2"
+						                  Content="{TemplateBinding InnerRightContent}"
+						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
+						                  IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}"
+						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}"/>
+					</Grid>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:focus">
+			<Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+			<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimaryColor}"/>
+		</Style>
+	</ControlTheme>
+	
+</ResourceDictionary>

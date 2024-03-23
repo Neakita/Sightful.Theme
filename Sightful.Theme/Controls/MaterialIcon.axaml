@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource Background}">
+			<Panel Height="100">
+				<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
+				         Watermark="Circle"
+				         FontSize="25"/>
+			</Panel>
+		</Border>
+	</Design.PreviewWith>
+	<icons:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />
+	<ControlTheme x:Key="{x:Type icons:MaterialIcon}"
+	              TargetType="icons:MaterialIcon">
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border Background="{TemplateBinding Background}"
+					        BorderBrush="{TemplateBinding BorderBrush}"
+					        BorderThickness="{TemplateBinding BorderThickness}">
+						<Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
+						      Fill="{TemplateBinding Foreground}"
+						      Stretch="Uniform"/>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

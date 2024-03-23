@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Background="{DynamicResource Background}">
+			<StackPanel>
+				<TextBlock Classes="caption" Text="Sign in with"/>
+				<TextBlock Classes="caption" Text="Or use a password"/>
+				<Button Classes="high-accent">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="Sign in"/>
+						<icons:MaterialIcon Kind="ArrowRight"/>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+	
+	<ControlTheme x:Key="{x:Type TextBlock}" TargetType="TextBlock">
+		<Style Selector="^:not(Button TextBlock)">
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+		</Style>
+		<Style Selector="^.caption">
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontStretch" Value="UltraExpanded"/>
+		</Style>
+	</ControlTheme>
+	
+</ResourceDictionary>

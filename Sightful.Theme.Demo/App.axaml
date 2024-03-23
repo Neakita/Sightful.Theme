@@ -1,0 +1,16 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Sightful.Theme.Demo.App"
+             xmlns:local="using:Sightful.Theme.Demo"
+             xmlns:theme="clr-namespace:Sightful.Theme;assembly=Sightful.Theme"
+             RequestedThemeVariant="Dark">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <theme:DefaultTheme/>
+    </Application.Styles>
+</Application>
