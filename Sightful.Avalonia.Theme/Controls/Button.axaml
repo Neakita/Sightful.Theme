@@ -15,6 +15,11 @@
         <Border Padding="40" Background="{StaticResource Background}">
 	        <StackPanel>
 	            <Button HorizontalAlignment="Left" Content="Click Me!"/>
+	            <Button HorizontalAlignment="Left">
+		            <Button.Content>
+			            <TextBlock Text="{Binding $self.Bounds.Height, StringFormat=Text Height: {0}}"/>
+		            </Button.Content>
+	            </Button>
 		        <Button>
 			        <StackPanel Orientation="Horizontal">
 			            <icons:MaterialIcon Kind="ExitToApp"/>
@@ -23,12 +28,17 @@
 	            </Button>
 	            <Button Content="{icons:MaterialIconExt Play}" Classes="square" ToolTip.Tip="I'm square!"/>
 	            <Button Content="Flat" Classes="flat" HorizontalAlignment="Left"/>
-	            <Button Content="{icons:MaterialIconExt CogOutline}"
-	                    Classes="wide square low-accent"
-	                    HorizontalAlignment="Left"/>
-	            <Button Content="Sign in"
-	                    Classes="wide high-accent"
-	                    HorizontalAlignment="Left"/>
+	            <StackPanel Orientation="Horizontal">
+		            <Button Content="{icons:MaterialIconExt Puzzle}"
+		                    Classes="wide square flat"
+		                    HorizontalAlignment="Left"/>
+		            <Button Content="{icons:MaterialIconExt CogOutline}"
+		                    Classes="wide square low-accent"
+		                    HorizontalAlignment="Left"/>
+		            <Button Content="Sign in"
+		                    Classes="wide high-accent"
+		                    HorizontalAlignment="Left"/>
+	            </StackPanel>
 	            <Button Classes="high-accent">
 		            <StackPanel Orientation="Horizontal">
 			            <TextBlock Text="Sign in"/>
@@ -47,13 +57,15 @@
         <Setter Property="Height" Value="40"/>
         <Setter Property="CornerRadius" Value="12"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="17 8"/>
+        <Setter Property="Padding" Value="17 7"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="ToolTip.Placement" Value="Top"/>
         <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="assists:ButtonAssist.BoxShadow" Value="0 5 5 0 #20000000"/>
 	    <Setter Property="Margin" Value="6"/>
+	    <Setter Property="BorderThickness" Value="1"/>
+	    <Setter Property="BorderBrush" Value="{StaticResource ButtonBackgroundBrush}"/>
         <Setter Property="Transitions">
 	        <Transitions>
 		        <BrushTransition Property="Background" Duration="0:0:0.1"/>
@@ -63,10 +75,10 @@
             <ControlTemplate>
 	            <Border BoxShadow="{TemplateBinding assists:ButtonAssist.BoxShadow}"
 	                    CornerRadius="{TemplateBinding CornerRadius}"
+	                    BorderBrush="{TemplateBinding BorderBrush}"
 	                    BorderThickness="{TemplateBinding BorderThickness}">
 		            <ContentPresenter Foreground="{TemplateBinding Foreground}"
 		                              Background="{TemplateBinding Background}"
-		                              BorderBrush="{TemplateBinding BorderBrush}"
 		                              CornerRadius="{TemplateBinding CornerRadius}"
 		                              Content="{TemplateBinding Content}"
 		                              ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -80,6 +92,7 @@
         
         <Style Selector="^.flat">
 	        <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
+	        <Setter Property="BorderBrush" Value="Transparent"/>
 	        <Style Selector="^:not(:pointerover)">
 		        <Setter Property="assists:ButtonAssist.BoxShadow" Value="0 5 5 0 #00000000"/>
 	        </Style>
@@ -96,10 +109,12 @@
         
 	    <Style Selector="^:pointerover">
 		    <Setter Property="Background" Value="{StaticResource ButtonHoverBackgroundBrush}"/>
+		    <Setter Property="BorderBrush" Value="{StaticResource ButtonHoverBackgroundBrush}"/>
 	    </Style>
         
 	    <Style Selector="^:pressed">
 		    <Setter Property="Background" Value="{StaticResource PressedButtonBackgroundBrush}"/>
+		    <Setter Property="BorderBrush" Value="Transparent"/>
 	    </Style>
         
 	    <Style Selector="^.low-accent">
