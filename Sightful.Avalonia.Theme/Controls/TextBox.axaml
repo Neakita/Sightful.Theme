@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Avalonia.Themes.Sightful.Assists"
-                    xmlns:converters="clr-namespace:Avalonia.Themes.Sightful.Converters">
+                    xmlns:converters="clr-namespace:Sightful.Avalonia.Theme.Converters"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
 	<converters:AddConverter x:Key="AddConverter"/>
 	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource AccentColor}" Opacity="0"/>
 	<Design.PreviewWith>

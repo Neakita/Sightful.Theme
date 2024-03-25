@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using CommunityToolkit.Diagnostics;
 
-namespace Avalonia.Themes.Sightful.ThemeVariants;
+namespace Sightful.Avalonia.Theme.ThemeVariants;
 
 internal abstract class ThemeColorsDictionary : ResourceDictionary
 {

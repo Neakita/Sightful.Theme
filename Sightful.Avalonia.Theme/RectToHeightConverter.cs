@@ -2,7 +2,7 @@
 using Avalonia;
 using Avalonia.Data.Converters;
 
-namespace Avalonia.Themes.Sightful;
+namespace Sightful.Avalonia.Theme;
 
 internal sealed class RectToHeightConverter : IValueConverter
 {

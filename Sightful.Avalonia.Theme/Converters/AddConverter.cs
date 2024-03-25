@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace Avalonia.Themes.Sightful.Converters;
+namespace Sightful.Avalonia.Theme.Converters;
 
 internal sealed class AddConverter : IValueConverter
 {

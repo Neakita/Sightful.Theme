@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:themeVariants="clr-namespace:Avalonia.Themes.Sightful.ThemeVariants">
+                    xmlns:themeVariants="clr-namespace:Sightful.Avalonia.Theme.ThemeVariants">
 	<ResourceDictionary.ThemeDictionaries>
 		<themeVariants:DarkThemeColorsDictionary x:Key="Dark"/>
 	</ResourceDictionary.ThemeDictionaries>

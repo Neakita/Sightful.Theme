@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace Avalonia.Themes.Sightful.Assists;
+namespace Sightful.Avalonia.Theme.Assists;
 
 public static class TextBoxAssist
 {

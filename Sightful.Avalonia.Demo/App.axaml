@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Sightful.Avalonia.Demo.App"
              xmlns:local="using:Sightful.Avalonia.Demo"
-             xmlns:sightful="clr-namespace:Avalonia.Themes.Sightful;assembly=Sightful.Avalonia.Theme"
+             xmlns:theme="clr-namespace:Sightful.Avalonia.Theme;assembly=Sightful.Avalonia.Theme"
              RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -11,6 +11,6 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-        <sightful:DefaultTheme/>
+        <theme:DefaultTheme/>
     </Application.Styles>
 </Application>
