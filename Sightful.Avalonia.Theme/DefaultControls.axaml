@@ -9,6 +9,7 @@
 				<MergeResourceInclude Source="Controls/TextBox.axaml"/>
 				<MergeResourceInclude Source="Controls/ToolTip.axaml"/>
 				<MergeResourceInclude Source="Controls/Window.axaml"/>
+				<MergeResourceInclude Source="Controls/PopupRoot.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
