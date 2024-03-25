@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Avalonia.Themes.Sightful.Demo.ViewModels;
-using Avalonia.Themes.Sightful.Demo.Views;
+using Sightful.Avalonia.Demo.ViewModels;
+using Sightful.Avalonia.Demo.Views;
 
-namespace Avalonia.Themes.Sightful.Demo;
+namespace Sightful.Avalonia.Demo;
 
 public partial class App : Application
 {

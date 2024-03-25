@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Themes.Sightful", "Avalonia.Themes.Sightful\Avalonia.Themes.Sightful.csproj", "{3CF80FCB-C3AA-4A62-A403-377EFF60F634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Avalonia.Theme", "Sightful.Avalonia.Theme\Sightful.Avalonia.Theme.csproj", "{A7EB3C10-E78D-4B2E-96B5-567F4FD0F3E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.Themes.Sightful.Demo", "Avalonia.Themes.Sightful.Demo\Avalonia.Themes.Sightful.Demo.csproj", "{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Avalonia.Demo", "Sightful.Avalonia.Demo\Sightful.Avalonia.Demo.csproj", "{594F14D9-8672-497F-B777-A8128B4BFF7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,13 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CF80FCB-C3AA-4A62-A403-377EFF60F634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79DF1C86-F0D0-46F4-921D-EDCB625B74EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EB3C10-E78D-4B2E-96B5-567F4FD0F3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EB3C10-E78D-4B2E-96B5-567F4FD0F3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EB3C10-E78D-4B2E-96B5-567F4FD0F3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EB3C10-E78D-4B2E-96B5-567F4FD0F3E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594F14D9-8672-497F-B777-A8128B4BFF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594F14D9-8672-497F-B777-A8128B4BFF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594F14D9-8672-497F-B777-A8128B4BFF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594F14D9-8672-497F-B777-A8128B4BFF7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

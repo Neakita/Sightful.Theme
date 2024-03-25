@@ -26,6 +26,6 @@
 
 
     <ItemGroup>
-      <ProjectReference Include="..\Avalonia.Themes.Sightful\Avalonia.Themes.Sightful.csproj" />
+      <ProjectReference Include="..\Sightful.Avalonia.Theme\Sightful.Avalonia.Theme.csproj" />
     </ItemGroup>
 </Project>
