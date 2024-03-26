@@ -114,7 +114,6 @@
         
         <Style Selector="^.flat">
 	        <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
-	        <Setter Property="BorderBrush" Value="Transparent"/>
 	        <Style Selector="^:not(:pointerover)">
 		        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #90000000"/>
 	        </Style>
@@ -131,12 +130,10 @@
         
 	    <Style Selector="^:pointerover">
 		    <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
-		    <Setter Property="BorderBrush" Value="{DynamicResource ButtonHoverBackground}"/>
 	    </Style>
         
 	    <Style Selector="^:pressed">
 		    <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
-		    <Setter Property="BorderBrush" Value="Transparent"/>
 		    <Setter Property="assists:InternalButtonAssist.ShrinkingThickness" Value="2"/>
 	    </Style>
         
