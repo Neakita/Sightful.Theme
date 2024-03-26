@@ -5,9 +5,16 @@
 	<SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="{DynamicResource ControlBackgroundColor}"/>
 	<SolidColorBrush x:Key="ToolTipForegroundBrush" Color="{DynamicResource ToolTipTextColor}"/>
 	<Design.PreviewWith>
-		<Border Padding="80" Background="{DynamicResource Background}">
+		<Border Padding="80" Background="{DynamicResource OuterBackgroundColor}">
 			<StackPanel Spacing="20">
-				<Button Content="dfd"/>
+				<ToolTip Opacity="1">Text Content</ToolTip>
+				<ToolTip Opacity="1">Very long text content which should exceed the maximum with of the tooltip and wrap.</ToolTip>
+				<ToolTip Opacity="1">
+					<StackPanel>
+						<TextBlock>Multi-line</TextBlock>
+						<TextBlock>Control Content</TextBlock>
+					</StackPanel>
+				</ToolTip>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
@@ -18,6 +25,7 @@
 		<Setter Property="Padding" Value="10 4"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="MaxWidth" Value="320"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<StackPanel>

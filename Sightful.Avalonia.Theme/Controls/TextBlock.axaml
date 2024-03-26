@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Background="{DynamicResource Background}">
+		<Border Background="{DynamicResource OuterBackground}">
 			<StackPanel>
 				<TextBlock Classes="caption" Text="Sign in with"/>
 				<TextBlock Classes="caption" Text="Or use a password"/>
@@ -18,7 +18,7 @@
 	
 	<ControlTheme x:Key="{x:Type TextBlock}" TargetType="TextBlock">
 		<Style Selector="^:not(Button TextBlock)">
-			<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
 		</Style>
 		<Style Selector="^.caption">
 			<Setter Property="FontSize" Value="22"/>

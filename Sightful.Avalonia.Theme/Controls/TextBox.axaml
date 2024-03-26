@@ -4,9 +4,9 @@
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme.Converters"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
 	<converters:AddConverter x:Key="AddConverter"/>
-	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource AccentColor}" Opacity="0"/>
+	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource Background}">
+		<Border Padding="40" Background="{DynamicResource OuterBackground}">
 			<StackPanel>
 				<TextBox Watermark="Enter variables"/>
 				<TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
@@ -25,11 +25,11 @@
 		<Setter Property="Padding" Value="6"/>
 		<Setter Property="BorderThickness" Value="4"/>
 		<Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
-		<Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
 		<Setter Property="FontSize" Value="16"/>
 		<Setter Property="FontWeight" Value="Medium"/>
-		<Setter Property="Background" Value="{DynamicResource ControlBackgroundColor}"/>
-		<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkSecondaryColor}"/>
+		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkSecondary}"/>
 		<Setter Property="assists:TextBoxAssist.LeftInnerContentMargin" Value="0 0 4 0"/>
 		<Setter Property="assists:TextBoxAssist.RightInnerContentMargin" Value="4 0 0 0"/>
 		<Setter Property="VerticalAlignment" Value="Top"/>
@@ -73,7 +73,7 @@
 		</Setter>
 		<Style Selector="^:focus">
 			<Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
-			<Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
 			<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimaryColor}"/>
 		</Style>
 	</ControlTheme>
