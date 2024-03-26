@@ -1,9 +1,5 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
-	
-	<SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="{DynamicResource ControlBackgroundColor}"/>
-	<SolidColorBrush x:Key="ToolTipForegroundBrush" Color="{DynamicResource ToolTipTextColor}"/>
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Padding="80" Background="{DynamicResource OuterBackground}">
 			<StackPanel Spacing="20">
@@ -19,9 +15,10 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type ToolTip}" TargetType="ToolTip">
-		<Setter Property="Background" Value="{StaticResource ToolTipBackgroundBrush}"/>
-		<Setter Property="Foreground" Value="{StaticResource ToolTipForegroundBrush}"/>
+		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
 		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="FontSize" Value="14"/>
 		<Setter Property="Padding" Value="10 4"/>
 		<Setter Property="CornerRadius" Value="8"/>
 		<Setter Property="ClipToBounds" Value="False"/>
@@ -30,14 +27,18 @@
 			<ControlTemplate>
 				<StackPanel>
 					<ContentPresenter BorderThickness="{TemplateBinding BorderThickness}"
+					                  Foreground="{TemplateBinding Foreground}"
+					                  FontWeight="{TemplateBinding FontWeight}"
+					                  FontSize="{TemplateBinding FontSize}"
 					                  Background="{TemplateBinding Background}"
 					                  BorderBrush="{TemplateBinding BorderBrush}"
 					                  Padding="{TemplateBinding Padding}"
 					                  CornerRadius="{TemplateBinding CornerRadius}"
 					                  MaxWidth="{TemplateBinding MaxWidth}"
 					                  Content="{TemplateBinding Content}"
-					                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
-					<!--Doesn't displaying in Avalonia 11.0.6 https://github.com/AvaloniaUI/Avalonia/pull/12651-->
+					                  ContentTemplate="{TemplateBinding ContentTemplate}"
+					                  TextWrapping="Wrap"/>
+					<!--Doesn't displaying in Avalonia 11.0.x https://github.com/AvaloniaUI/Avalonia/pull/12651-->
 					<Polygon Fill="{TemplateBinding Background}" Points="0,0 10,0 5,5" Width="10" Height="5"/>
 				</StackPanel>
 			</ControlTemplate>
