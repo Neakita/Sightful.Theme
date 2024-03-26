@@ -1,7 +1,9 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
+                    xmlns:converters="clr-namespace:Sightful.Avalonia.Theme"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 	<SolidColorBrush x:Key="FlatButtonHoverBackgroundBrush" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 	<Design.PreviewWith>
         <Border Padding="40" Background="{DynamicResource OuterBackground}" Width="300">
@@ -42,6 +44,12 @@
     </Design.PreviewWith>
 	
     <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
+	    <ControlTheme.Resources>
+		    <ResourceDictionary>
+			    <system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
+			    <ElasticEaseOut x:Key="ShrinkingEasing"/>
+		    </ResourceDictionary>
+	    </ControlTheme.Resources>
 	    <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
         <Setter Property="FontSize" Value="18"/>
@@ -64,24 +72,43 @@
         </Setter>
         <Setter Property="Template">
             <ControlTemplate>
-	            <ContentPresenter Foreground="{TemplateBinding Foreground}"
-	                              Background="{TemplateBinding Background}"
-	                              CornerRadius="{TemplateBinding CornerRadius}"
-	                              Content="{TemplateBinding Content}"
-	                              ContentTemplate="{TemplateBinding ContentTemplate}"
-	                              Padding="{TemplateBinding Padding}"
-	                              RecognizesAccessKey="True"
-	                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-	                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-	                              BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
-	                              BorderBrush="{TemplateBinding BorderBrush}"
-	                              BorderThickness="{TemplateBinding BorderThickness}">
-		            <ContentPresenter.Transitions>
+	            <Border BorderThickness="{TemplateBinding assists:InternalButtonAssist.ShrinkingThickness}">
+		            <Border.Transitions>
 			            <Transitions>
-				            <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.1"/>
+				            <ThicknessTransition Property="BorderThickness"
+				                                 Duration="{StaticResource ShrinkingDuration}"
+				                                 Easing="{StaticResource ShrinkingEasing}"/>
 			            </Transitions>
-		            </ContentPresenter.Transitions>
-	            </ContentPresenter>
+		            </Border.Transitions>
+		            <ContentPresenter Foreground="{TemplateBinding Foreground}"
+		                              Background="{TemplateBinding Background}"
+		                              CornerRadius="{TemplateBinding CornerRadius}"
+		                              Content="{TemplateBinding Content}"
+		                              ContentTemplate="{TemplateBinding ContentTemplate}"
+		                              RecognizesAccessKey="True"
+		                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+		                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+		                              BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+		                              BorderBrush="{TemplateBinding BorderBrush}"
+		                              BorderThickness="{TemplateBinding BorderThickness}">
+			            <ContentPresenter.Padding>
+				            <MultiBinding Converter="{x:Static converters:Converters.ThicknessSubtractConverter}">
+					            <TemplateBinding Property="Padding"/>
+					            <TemplateBinding Property="assists:InternalButtonAssist.ShrinkingThickness"/>
+				            </MultiBinding>
+			            </ContentPresenter.Padding>
+			            <ContentPresenter.Transitions>
+				            <Transitions>
+					            <BoxShadowsTransition Property="BoxShadow"
+					                                  Duration="0:0:0.1"/>
+					            <ThicknessTransition Property="Padding"
+					                                 Duration="{StaticResource ShrinkingDuration}"
+					                                 Easing="{StaticResource ShrinkingEasing}">
+					            </ThicknessTransition>
+				            </Transitions>
+			            </ContentPresenter.Transitions>
+		            </ContentPresenter>
+	            </Border>
             </ControlTemplate>
         </Setter>
         
@@ -110,6 +137,7 @@
 	    <Style Selector="^:pressed">
 		    <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
 		    <Setter Property="BorderBrush" Value="Transparent"/>
+		    <Setter Property="assists:InternalButtonAssist.ShrinkingThickness" Value="2"/>
 	    </Style>
         
 	    <Style Selector="^.low-accent">
