@@ -23,6 +23,7 @@ internal abstract class ThemeColorsDictionary : ResourceDictionary
 	protected abstract Color HighAccentButtonBackground { get; }
 	protected abstract Color HighAccentHoveredButtonBackground { get; }
 	protected abstract Color HighAccentButtonForeground { get; }
+	protected abstract Color HighAccentPressedButtonBackground { get; }
 
 	protected ThemeColorsDictionary()
 	{
@@ -31,31 +32,27 @@ internal abstract class ThemeColorsDictionary : ResourceDictionary
 
 	private void AddResources()
 	{
-		AddColorAndBrush(InnerBackground);
-		AddColorAndBrush(OuterBackground);
-		AddColorAndBrush(ControlBackground);
-		AddColorAndBrush(PrimaryForeground);
-		AddColorAndBrush(SecondaryForeground);
-		AddColorAndBrush(WatermarkPrimary);
-		AddColorAndBrush(WatermarkSecondary);
-		AddColorAndBrush(ButtonHoverBackground);
-		AddColorAndBrush(PressedButtonBackground);
-		AddColorAndBrush(ToolTipForeground);
-		AddColorAndBrush(LowAccentButtonBackground);
-		AddColorAndBrush(LowAccentHoveredButtonBackground);
-		AddColorAndBrush(LowAccentPressedButtonBackground);
-		AddColorAndBrush(Accent);
-		AddColorAndBrush(HighAccentButtonBackground);
-		AddColorAndBrush(HighAccentHoveredButtonBackground);
-		AddColorAndBrush(HighAccentButtonForeground);
+		AddColor(InnerBackground);
+		AddColor(OuterBackground);
+		AddColor(ControlBackground);
+		AddColor(PrimaryForeground);
+		AddColor(SecondaryForeground);
+		AddColor(WatermarkPrimary);
+		AddColor(WatermarkSecondary);
+		AddColor(ButtonHoverBackground);
+		AddColor(PressedButtonBackground);
+		AddColor(ToolTipForeground);
+		AddColor(LowAccentButtonBackground);
+		AddColor(LowAccentHoveredButtonBackground);
+		AddColor(LowAccentPressedButtonBackground);
+		AddColor(Accent);
+		AddColor(HighAccentButtonBackground);
+		AddColor(HighAccentHoveredButtonBackground);
+		AddColor(HighAccentButtonForeground);
+		AddColor(HighAccentPressedButtonBackground);
 	}
 
-	private void AddColorAndBrush(Color color, [CallerArgumentExpression(nameof(color))] string key = "")
-	{
-		AddColor(color, key);
-	}
-	
-	private void AddColor(Color color, string key)
+	private void AddColor(Color color, [CallerArgumentExpression(nameof(color))] string key = "")
 	{
 		Add(key, color);
 	}

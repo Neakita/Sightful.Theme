@@ -64,25 +64,24 @@
         </Setter>
         <Setter Property="Template">
             <ControlTemplate>
-	            <Border BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
-	                    CornerRadius="{TemplateBinding CornerRadius}"
-	                    BorderBrush="{TemplateBinding BorderBrush}"
-	                    BorderThickness="{TemplateBinding BorderThickness}">
-		            <Border.Transitions>
+	            <ContentPresenter Foreground="{TemplateBinding Foreground}"
+	                              Background="{TemplateBinding Background}"
+	                              CornerRadius="{TemplateBinding CornerRadius}"
+	                              Content="{TemplateBinding Content}"
+	                              ContentTemplate="{TemplateBinding ContentTemplate}"
+	                              Padding="{TemplateBinding Padding}"
+	                              RecognizesAccessKey="True"
+	                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+	                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+	                              BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+	                              BorderBrush="{TemplateBinding BorderBrush}"
+	                              BorderThickness="{TemplateBinding BorderThickness}">
+		            <ContentPresenter.Transitions>
 			            <Transitions>
 				            <BoxShadowsTransition Property="BoxShadow" Duration="0:0:0.1"/>
 			            </Transitions>
-		            </Border.Transitions>
-		            <ContentPresenter Foreground="{TemplateBinding Foreground}"
-		                              Background="{TemplateBinding Background}"
-		                              CornerRadius="{TemplateBinding CornerRadius}"
-		                              Content="{TemplateBinding Content}"
-		                              ContentTemplate="{TemplateBinding ContentTemplate}"
-		                              Padding="{TemplateBinding Padding}"
-		                              RecognizesAccessKey="True"
-		                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-		                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-	            </Border>
+		            </ContentPresenter.Transitions>
+	            </ContentPresenter>
             </ControlTemplate>
         </Setter>
         
@@ -131,6 +130,10 @@
         
 		    <Style Selector="^:pointerover">
 			    <Setter Property="Background" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+		    </Style>
+        
+		    <Style Selector="^:pressed">
+			    <Setter Property="Background" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
 		    </Style>
 	    </Style>
         

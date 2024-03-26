@@ -20,5 +20,6 @@ internal sealed class DarkThemeColorsDictionary : ThemeColorsDictionary
 	protected override Color Accent => Color.FromRgb(0x1E, 0xA4, 0x58);
 	protected override Color HighAccentButtonBackground => Color.FromRgb(0x1B, 0xD9, 0x6A);
 	protected override Color HighAccentHoveredButtonBackground => Color.FromRgb(0x17, 0xB8, 0x5A);
+	protected override Color HighAccentPressedButtonBackground => Color.FromRgb(0x16, 0xAE, 0x55);
 	protected override Color HighAccentButtonForeground => Colors.Black;
 }
