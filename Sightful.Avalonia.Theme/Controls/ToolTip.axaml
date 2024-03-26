@@ -5,7 +5,7 @@
 	<SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="{DynamicResource ControlBackgroundColor}"/>
 	<SolidColorBrush x:Key="ToolTipForegroundBrush" Color="{DynamicResource ToolTipTextColor}"/>
 	<Design.PreviewWith>
-		<Border Padding="80" Background="{DynamicResource OuterBackgroundColor}">
+		<Border Padding="80" Background="{DynamicResource OuterBackground}">
 			<StackPanel Spacing="20">
 				<ToolTip Opacity="1">Text Content</ToolTip>
 				<ToolTip Opacity="1">Very long text content which should exceed the maximum with of the tooltip and wrap.</ToolTip>
