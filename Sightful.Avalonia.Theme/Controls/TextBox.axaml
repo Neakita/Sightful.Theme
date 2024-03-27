@@ -54,7 +54,13 @@
 						                  Content="{TemplateBinding InnerLeftContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
 						                  IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}"/>
+						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}">
+							<ContentPresenter.Transitions>
+								<Transitions>
+									<BrushTransition Property="Foreground" Duration="0:0:0.1"/>
+								</Transitions>
+							</ContentPresenter.Transitions>
+						</ContentPresenter>
 						<TextBlock Grid.Column="1" Text="{TemplateBinding Watermark}"
 						           Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
 						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
