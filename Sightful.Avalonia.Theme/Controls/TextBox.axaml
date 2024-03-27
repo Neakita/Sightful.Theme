@@ -80,7 +80,7 @@
 		<Style Selector="^:focus">
 			<Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
 			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
-			<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimaryColor}"/>
+			<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimary}"/>
 		</Style>
 	</ControlTheme>
 	
