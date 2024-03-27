@@ -39,7 +39,7 @@
 			            <icons:MaterialIcon Kind="ArrowRight"/>
 		            </StackPanel>
 	            </Button>
-	            <StackPanel Orientation="Horizontal">
+	            <StackPanel Orientation="Horizontal" Height="50">
 		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMinimize}"/>
 		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMaximize}"/>
 		            <Button Classes="title-bar close-window" Content="{icons:MaterialIconExt WindowClose}"/>
@@ -136,16 +136,14 @@
         </Style>
 	    
 	    <Style Selector="^.title-bar">
-		    <Setter Property="Width" Value="30"/>
+		    <Setter Property="Width" Value="36"/>
 		    <Setter Property="Margin" Value="0"/>
 		    <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #00000000"/>
 		    <Setter Property="CornerRadius" Value="0"/>
 		    <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
 		    <Setter Property="Padding" Value="8"/>
-		    <Style Selector="^/template/ContentPresenter">
-		    </Style>
-		    <Style Selector="^/template/Border">
-		    </Style>
+		    <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		    <Setter Property="Height" Value="NaN"/>
 	    </Style>
 	    
 	    <Style Selector="^:pointerover.title-bar.close-window">
