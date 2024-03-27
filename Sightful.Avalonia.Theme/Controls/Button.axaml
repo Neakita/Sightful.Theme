@@ -47,6 +47,7 @@
 	    <ControlTheme.Resources>
 		    <ResourceDictionary>
 			    <system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
+			    <system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
 			    <ElasticEaseOut x:Key="ShrinkingEasing"/>
 		    </ResourceDictionary>
 	    </ControlTheme.Resources>
@@ -67,11 +68,6 @@
 	    <Setter Property="HorizontalAlignment" Value="Left"/>
 	    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
 	    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
-        <Setter Property="Transitions">
-	        <Transitions>
-		        <BrushTransition Property="Background" Duration="0:0:0.1"/>
-	        </Transitions>
-        </Setter>
         <Setter Property="Template">
             <ControlTemplate>
 	            <Border BorderThickness="{TemplateBinding assists:InternalButtonAssist.ShrinkingThickness}">
@@ -101,8 +97,10 @@
 			            </ContentPresenter.Padding>
 			            <ContentPresenter.Transitions>
 				            <Transitions>
+					            <BrushTransition Property="Background"
+					                             Duration="{StaticResource BackgroundTransitionDuration}"/>
 					            <BoxShadowsTransition Property="BoxShadow"
-					                                  Duration="0:0:0.1"/>
+					                                  Duration="{StaticResource BackgroundTransitionDuration}"/>
 					            <ThicknessTransition Property="Padding"
 					                                 Duration="{StaticResource ShrinkingDuration}"
 					                                 Easing="{StaticResource ShrinkingEasing}">
