@@ -1,12 +1,20 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
+                    xmlns:theme="clr-namespace:Sightful.Avalonia.Theme"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<ControlTheme x:Key="{x:Type Window}" TargetType="Window">
-		<Setter Property="Background" Value="{DynamicResource OuterBackgroundColor}"/>
-		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackgroundColor}" />
-		<Setter Property="TopLevel.SystemBarColor" Value="{DynamicResource OuterBackgroundColor}"/>
-		<!--<Setter Property="Foreground" Value="{DynamicResource WindowForegroundBrush}"/>-->
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<theme:WindowInnerContentCornerRadiusConverter x:Key="InnerContentCornerRadiusConverter"/>
+				<CornerRadius x:Key="InnerContentCornerRadius">25 0 0 0</CornerRadius>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
+		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}" />
+		<Setter Property="TopLevel.SystemBarColor" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="FontSize" Value="10"/>
-		<!--<Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />-->
+		<Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Panel>
@@ -15,14 +23,45 @@
 					<Panel Background="Transparent" Margin="{TemplateBinding WindowDecorationMargin}" />
 					<VisualLayerManager>
 						<VisualLayerManager.ChromeOverlayLayer>
-							<TitleBar />
+							<TitleBar/>
 						</VisualLayerManager.ChromeOverlayLayer>
-						<ContentPresenter Name="PART_ContentPresenter"
-						                  ContentTemplate="{TemplateBinding ContentTemplate}"
-						                  Content="{TemplateBinding Content}"
-						                  Margin="{TemplateBinding Padding}"
-						                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-						                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						<DockPanel>
+							<ContentPresenter DockPanel.Dock="Left"
+							                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"/>
+							<DockPanel DockPanel.Dock="Top"
+							           HorizontalAlignment="Stretch">
+								<StackPanel Orientation="Horizontal"
+								            DockPanel.Dock="Right">
+									<Button Classes="title-bar"
+									        Content="{icons:MaterialIconExt WindowMinimize}"
+									        Command="{x:Static assists:WindowAssist.MinimizeWindowCommand}"
+									        CommandParameter="{Binding $self}"/>
+									<Button Classes="title-bar"
+									        Content="{icons:MaterialIconExt WindowMaximize}"
+									        Command="{x:Static assists:WindowAssist.MaximizeWindowCommand}"
+									        CommandParameter="{Binding $self}"/>
+									<Button Classes="title-bar close-window"
+									        Content="{icons:MaterialIconExt WindowClose}"
+									        Command="{x:Static assists:WindowAssist.CloseWindowCommand}"
+									        CommandParameter="{Binding $self}"/>
+								</StackPanel>
+								<ContentPresenter/>
+							</DockPanel>
+							<ContentPresenter Name="PART_ContentPresenter"
+							                  ContentTemplate="{TemplateBinding ContentTemplate}"
+							                  Content="{TemplateBinding Content}"
+							                  Margin="{TemplateBinding Padding}"
+							                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+							                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+							                  Background="{DynamicResource InnerBackground}">
+								<ContentPresenter.CornerRadius>
+									<MultiBinding Converter="{StaticResource InnerContentCornerRadiusConverter}"
+									              ConverterParameter="{StaticResource InnerContentCornerRadius}">
+										<TemplateBinding Property="assists:WindowAssist.LeftContent"/>
+									</MultiBinding>
+								</ContentPresenter.CornerRadius>
+							</ContentPresenter>
+						</DockPanel>
 					</VisualLayerManager>
 				</Panel>
 			</ControlTemplate>
