@@ -8,4 +8,14 @@ public static class ShadowAssist
 {
 	public static readonly AvaloniaProperty<BoxShadows> BoxShadowProperty =
 		AvaloniaProperty.RegisterAttached<Button, BoxShadows>("BoxShadow", typeof(ShadowAssist));
+	
+	public static BoxShadows GetBoxShadow(AvaloniaObject element)
+	{
+		return element.GetValue<BoxShadows>(BoxShadowProperty);
+	}
+
+	public static void SetBoxShadow(AvaloniaObject element, BoxShadows value)
+	{
+		element.SetValue(BoxShadowProperty, value);
+	}
 }
