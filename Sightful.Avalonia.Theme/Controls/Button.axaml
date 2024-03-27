@@ -65,8 +65,8 @@
         <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
 	    <Setter Property="Margin" Value="6"/>
 	    <Setter Property="HorizontalAlignment" Value="Left"/>
-	    <Setter Property="assists:InternalButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
-	    <Setter Property="assists:InternalButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+	    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+	    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
         <Setter Property="Transitions">
 	        <Transitions>
 		        <BrushTransition Property="Background" Duration="0:0:0.1"/>
@@ -132,23 +132,23 @@
         
 	    <Style Selector="^.low-accent">
 		    <Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
-		    <Setter Property="assists:InternalButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
-		    <Setter Property="assists:InternalButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
+		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
+		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
 	    </Style>
 	    
 	    <Style Selector="^.high-accent">
 		    <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
 		    <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
-		    <Setter Property="assists:InternalButtonAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
-		    <Setter Property="assists:InternalButtonAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
 	    </Style>
         
 	    <Style Selector="^:pointerover">
-		    <Setter Property="Background" Value="{Binding $self.(assists:InternalButtonAssist.HoveredBackground)}"/>
+		    <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
 	    </Style>
         
 	    <Style Selector="^:pressed">
-		    <Setter Property="Background" Value="{Binding $self.(assists:InternalButtonAssist.PressedBackground)}"/>
+		    <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
 		    <Setter Property="assists:InternalButtonAssist.ShrinkingThickness" Value="2"/>
 	    </Style>
         
