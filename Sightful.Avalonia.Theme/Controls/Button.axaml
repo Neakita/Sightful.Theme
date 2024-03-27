@@ -39,6 +39,11 @@
 			            <icons:MaterialIcon Kind="ArrowRight"/>
 		            </StackPanel>
 	            </Button>
+	            <StackPanel Orientation="Horizontal">
+		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMinimize}"/>
+		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMaximize}"/>
+		            <Button Classes="title-bar close-window" Content="{icons:MaterialIconExt WindowClose}"/>
+	            </StackPanel>
 	        </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -99,6 +104,8 @@
 				            <Transitions>
 					            <BrushTransition Property="Background"
 					                             Duration="{StaticResource BackgroundTransitionDuration}"/>
+					            <BrushTransition Property="Foreground"
+					                             Duration="{StaticResource BackgroundTransitionDuration}"/>
 					            <BoxShadowsTransition Property="BoxShadow"
 					                                  Duration="{StaticResource BackgroundTransitionDuration}"/>
 					            <ThicknessTransition Property="Padding"
@@ -127,7 +134,29 @@
         <Style Selector="^.wide">
 	        <Setter Property="Height" Value="48"/>
         </Style>
-        
+	    
+	    <Style Selector="^.title-bar">
+		    <Setter Property="Width" Value="30"/>
+		    <Setter Property="Margin" Value="0"/>
+		    <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #00000000"/>
+		    <Setter Property="CornerRadius" Value="0"/>
+		    <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
+		    <Setter Property="Padding" Value="8"/>
+		    <Style Selector="^/template/ContentPresenter">
+		    </Style>
+		    <Style Selector="^/template/Border">
+		    </Style>
+	    </Style>
+	    
+	    <Style Selector="^:pointerover.title-bar.close-window">
+		    <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+	    </Style>
+	    
+	    <Style Selector="^.close-window">
+		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource CloseWindowHoveredButtonBackground}"/>
+		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource CloseWindowPressedButtonBackground}"/>
+	    </Style>
+
 	    <Style Selector="^.low-accent">
 		    <Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
 		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
