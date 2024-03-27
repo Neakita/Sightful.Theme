@@ -14,7 +14,6 @@
 		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}" />
 		<Setter Property="TopLevel.SystemBarColor" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="FontSize" Value="10"/>
-		<Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Panel>
@@ -31,7 +30,8 @@
 							<DockPanel DockPanel.Dock="Top"
 							           HorizontalAlignment="Stretch">
 								<StackPanel Orientation="Horizontal"
-								            DockPanel.Dock="Right">
+								            DockPanel.Dock="Right"
+								            IsVisible="{TemplateBinding ExtendClientAreaToDecorationsHint}">
 									<Button Classes="title-bar"
 									        Content="{icons:MaterialIconExt WindowMinimize}"
 									        Command="{x:Static assists:WindowAssist.MinimizeWindowCommand}"
