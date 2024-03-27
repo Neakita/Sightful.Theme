@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
-                    xmlns:theme="clr-namespace:Sightful.Avalonia.Theme">
+                    xmlns:theme="clr-namespace:Sightful.Avalonia.Theme"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 	<theme:AddConverter x:Key="AddConverter"/>
 	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
 	<Design.PreviewWith>
@@ -22,6 +23,11 @@
 	</Design.PreviewWith>
 	
 	<ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<system:TimeSpan x:Key="ForegroundTransitionDuration">0:0:0.1</system:TimeSpan>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
 		<Setter Property="Padding" Value="6"/>
 		<Setter Property="BorderThickness" Value="4"/>
 		<Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
@@ -35,6 +41,11 @@
 		<Setter Property="VerticalAlignment" Value="Top"/>
 		<Setter Property="CornerRadius" Value="12"/>
 		<Setter Property="Margin" Value="4"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+			</Transitions>
+		</Setter>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Border BorderThickness="{TemplateBinding BorderThickness}"
@@ -46,7 +57,7 @@
 				        VerticalAlignment="{TemplateBinding VerticalAlignment}">
 					<Border.Transitions>
 						<Transitions>
-							<BrushTransition Property="BorderBrush" Duration="0:0:0.1"/>
+							<BrushTransition Property="BorderBrush" Duration="{StaticResource ForegroundTransitionDuration}"/>
 						</Transitions>
 					</Border.Transitions>
 					<Grid ColumnDefinitions="Auto * Auto">
@@ -57,13 +68,19 @@
 						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}">
 							<ContentPresenter.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="0:0:0.1"/>
+									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>
 						<TextBlock Grid.Column="1" Text="{TemplateBinding Watermark}"
 						           Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
-						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
+						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
+							<TextBlock.Transitions>
+								<Transitions>
+									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+								</Transitions>
+							</TextBlock.Transitions>
+						</TextBlock>
 						<TextPresenter Name="PART_TextPresenter"
 						               Grid.Column="1"
 						               Text="{TemplateBinding Text}"
@@ -72,7 +89,13 @@
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
 						                  IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}"/>
+						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}">
+							<ContentPresenter.Transitions>
+								<Transitions>
+									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+								</Transitions>
+							</ContentPresenter.Transitions>
+						</ContentPresenter>
 					</Grid>
 				</Border>
 			</ControlTemplate>
