@@ -8,6 +8,7 @@
         <Version>0.2.0</Version>
         <Authors>Katter</Authors>
         <RepositoryUrl>https://github.com/KatterMaw/Sightful.Theme</RepositoryUrl>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
