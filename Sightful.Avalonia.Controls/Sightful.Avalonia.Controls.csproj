@@ -5,6 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.1</Version>
+        <Authors>Katter</Authors>
+        <RepositoryUrl>https://github.com/KatterMaw/Sightful.Theme</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
