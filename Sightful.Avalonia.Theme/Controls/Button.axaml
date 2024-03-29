@@ -6,7 +6,7 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 	<SolidColorBrush x:Key="FlatButtonHoverBackgroundBrush" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 	<Design.PreviewWith>
-        <Border Padding="40" Background="{DynamicResource OuterBackground}" Width="300">
+        <Border Padding="40" Background="{DynamicResource OuterBackground}">
 	        <StackPanel>
 	            <Button Content="Click Me!"/>
 	            <Button>
