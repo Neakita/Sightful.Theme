@@ -4,7 +4,6 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-	<SolidColorBrush x:Key="FlatButtonHoverBackgroundBrush" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 	<Design.PreviewWith>
         <Border Padding="40" Background="{DynamicResource OuterBackground}">
 	        <StackPanel>
@@ -51,6 +50,7 @@
     <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
 	    <ControlTheme.Resources>
 		    <ResourceDictionary>
+			    <SolidColorBrush x:Key="FlatButtonBackground" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 			    <system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
 			    <system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
 			    <ElasticEaseOut x:Key="ShrinkingEasing"/>
@@ -120,7 +120,7 @@
         </Setter>
         
         <Style Selector="^.flat">
-	        <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
+	        <Setter Property="Background" Value="{StaticResource FlatButtonBackground}"/>
 	        <Style Selector="^:not(:pointerover)">
 		        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #90000000"/>
 	        </Style>
@@ -140,7 +140,7 @@
 		    <Setter Property="Margin" Value="0"/>
 		    <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #00000000"/>
 		    <Setter Property="CornerRadius" Value="0"/>
-		    <Setter Property="Background" Value="{StaticResource FlatButtonHoverBackgroundBrush}"/>
+		    <Setter Property="Background" Value="{StaticResource FlatButtonBackground}"/>
 		    <Setter Property="Padding" Value="8"/>
 		    <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
 		    <Setter Property="Height" Value="NaN"/>
