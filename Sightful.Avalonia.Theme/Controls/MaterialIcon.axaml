@@ -3,11 +3,9 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Panel Height="100">
-				<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
-				         Watermark="Circle"
-				         FontSize="25"/>
-			</Panel>
+			<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
+			         Watermark="Circle"
+			         FontSize="25"/>
 		</Border>
 	</Design.PreviewWith>
 	<icons:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />
