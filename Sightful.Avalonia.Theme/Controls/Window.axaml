@@ -14,6 +14,7 @@
 		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}" />
 		<Setter Property="TopLevel.SystemBarColor" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="FontSize" Value="10"/>
+		<Setter Property="ExtendClientAreaTitleBarHeightHint" Value="{Binding $self.(assists:InternalWindowAssist.TitleBarHeight), Mode=OneWay}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Panel>
@@ -28,7 +29,9 @@
 							<ContentPresenter DockPanel.Dock="Left"
 							                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"/>
 							<DockPanel DockPanel.Dock="Top"
-							           HorizontalAlignment="Stretch">
+							           HorizontalAlignment="Stretch"
+							           Name="TitleBarPanel"
+							           Bounds="{Binding (assists:InternalWindowAssist.TitleBarHeight), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.HeightRectConverter}, Mode=OneWayToSource}">
 								<StackPanel Orientation="Horizontal"
 								            DockPanel.Dock="Right"
 								            IsVisible="{TemplateBinding ExtendClientAreaToDecorationsHint}">
