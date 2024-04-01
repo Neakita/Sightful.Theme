@@ -58,4 +58,21 @@ public static class WindowAssist
 	}
 
 	#endregion
+
+	#region TopContent
+
+	public static readonly AvaloniaProperty<object?> TopContentProperty =
+		AvaloniaProperty.RegisterAttached<Window, object?>("TopContent", typeof(WindowAssist));
+
+	public static object? GetTopContent(AvaloniaObject element)
+	{
+		return element.GetValue(TopContentProperty);
+	}
+
+	public static void SetTopContent(AvaloniaObject element, object? value)
+	{
+		element.SetValue(TopContentProperty, value);
+	}
+
+	#endregion
 }

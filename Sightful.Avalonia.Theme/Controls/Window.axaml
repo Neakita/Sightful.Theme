@@ -45,7 +45,8 @@
 									        Command="{x:Static assists:WindowAssist.CloseWindowCommand}"
 									        CommandParameter="{Binding $self}"/>
 								</StackPanel>
-								<ContentPresenter/>
+								<ContentPresenter
+									Content="{TemplateBinding assists:WindowAssist.TopContent}"/>
 							</DockPanel>
 							<ContentPresenter Name="PART_ContentPresenter"
 							                  ContentTemplate="{TemplateBinding ContentTemplate}"
