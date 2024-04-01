@@ -9,7 +9,7 @@ public sealed class ButtonAssist
 	#region HoveredBackground
 
 	public static readonly AvaloniaProperty<IBrush?> HoveredBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<Button, IBrush?>("HoveredBackground", typeof(InternalButtonAssist));
+		AvaloniaProperty.RegisterAttached<ButtonAssist, Button, IBrush?>("HoveredBackground");
 
 	public static IBrush? GetHoveredBackground(AvaloniaObject element)
 	{
@@ -26,7 +26,7 @@ public sealed class ButtonAssist
 	#region PressedBackground
 	
 	public static readonly AvaloniaProperty<IBrush?> PressedBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<Button, IBrush?>("PressedBackground", typeof(InternalButtonAssist));
+		AvaloniaProperty.RegisterAttached<ButtonAssist, Button, IBrush?>("PressedBackground");
 	
 	public static IBrush? GetPressedBackground(AvaloniaObject element)
 	{

@@ -7,7 +7,7 @@ namespace Sightful.Avalonia.Theme.Assists;
 public static class ShadowAssist
 {
 	public static readonly AvaloniaProperty<BoxShadows> BoxShadowProperty =
-		AvaloniaProperty.RegisterAttached<Button, BoxShadows>("BoxShadow", typeof(ShadowAssist));
+		AvaloniaProperty.RegisterAttached<Control, BoxShadows>("BoxShadow", typeof(ShadowAssist));
 	
 	public static BoxShadows GetBoxShadow(AvaloniaObject element)
 	{
