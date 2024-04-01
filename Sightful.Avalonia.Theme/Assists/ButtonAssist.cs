@@ -4,12 +4,12 @@ using Avalonia.Media;
 
 namespace Sightful.Avalonia.Theme.Assists;
 
-public sealed class ButtonAssist
+public static class ButtonAssist
 {
 	#region HoveredBackground
 
 	public static readonly AvaloniaProperty<IBrush?> HoveredBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<ButtonAssist, Button, IBrush?>("HoveredBackground");
+		AvaloniaProperty.RegisterAttached<Button, IBrush?>("HoveredBackground", typeof(ButtonAssist));
 
 	public static IBrush? GetHoveredBackground(AvaloniaObject element)
 	{
@@ -26,7 +26,7 @@ public sealed class ButtonAssist
 	#region PressedBackground
 	
 	public static readonly AvaloniaProperty<IBrush?> PressedBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<ButtonAssist, Button, IBrush?>("PressedBackground");
+		AvaloniaProperty.RegisterAttached<Button, IBrush?>("PressedBackground", typeof(ButtonAssist));
 	
 	public static IBrush? GetPressedBackground(AvaloniaObject element)
 	{
