@@ -122,7 +122,7 @@
         <Style Selector="^.flat">
 	        <Setter Property="Background" Value="{StaticResource FlatButtonBackground}"/>
 	        <Style Selector="^:not(:pointerover)">
-		        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #90000000"/>
+		        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #60000000"/>
 	        </Style>
         </Style>
         
