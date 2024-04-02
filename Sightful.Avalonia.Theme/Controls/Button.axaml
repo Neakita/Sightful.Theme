@@ -75,7 +75,7 @@
 	    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
         <Setter Property="Template">
             <ControlTemplate>
-	            <Border BorderThickness="{TemplateBinding assists:InternalButtonAssist.ShrinkingThickness}">
+	            <Border BorderThickness="{TemplateBinding assists:InternalShrinkingAssist.ShrinkingThickness}">
 		            <Border.Transitions>
 			            <Transitions>
 				            <ThicknessTransition Property="BorderThickness"
@@ -97,7 +97,7 @@
 			            <ContentPresenter.Padding>
 				            <MultiBinding Converter="{x:Static converters:Converters.ThicknessSubtractConverter}">
 					            <TemplateBinding Property="Padding"/>
-					            <TemplateBinding Property="assists:InternalButtonAssist.ShrinkingThickness"/>
+					            <TemplateBinding Property="assists:InternalShrinkingAssist.ShrinkingThickness"/>
 				            </MultiBinding>
 			            </ContentPresenter.Padding>
 			            <ContentPresenter.Transitions>
@@ -174,7 +174,7 @@
         
 	    <Style Selector="^:pressed">
 		    <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
-		    <Setter Property="assists:InternalButtonAssist.ShrinkingThickness" Value="2"/>
+		    <Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="2"/>
 	    </Style>
         
     </ControlTheme>

@@ -3,12 +3,12 @@ using Avalonia.Controls;
 
 namespace Sightful.Avalonia.Theme.Assists;
 
-internal static class InternalButtonAssist
+internal static class InternalShrinkingAssist
 {
 	#region ShrinkingThickness
 
 	public static readonly AvaloniaProperty<Thickness> ShrinkingThicknessProperty =
-		AvaloniaProperty.RegisterAttached<Button, Thickness>("ShrinkingThickness", typeof(InternalButtonAssist));
+		AvaloniaProperty.RegisterAttached<Control, Thickness>("ShrinkingThickness", typeof(InternalShrinkingAssist));
 
 	public static Thickness GetShrinkingThickness(AvaloniaObject element)
 	{
