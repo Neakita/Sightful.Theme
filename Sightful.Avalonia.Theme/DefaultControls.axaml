@@ -12,6 +12,8 @@
 				<MergeResourceInclude Source="Controls/TabControl.axaml"/>
 				<MergeResourceInclude Source="Controls/TabItem.axaml"/>
 				<MergeResourceInclude Source="Controls/PopupRoot.axaml"/>
+				<MergeResourceInclude Source="Controls/TabStrip.axaml"/>
+				<MergeResourceInclude Source="Controls/TabStripItem.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
