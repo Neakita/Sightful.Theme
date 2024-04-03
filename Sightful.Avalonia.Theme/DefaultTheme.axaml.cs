@@ -9,6 +9,8 @@ public sealed class DefaultTheme : Styles, IResourceNode
 {
 	public static readonly DirectProperty<DefaultTheme, ThemeAppearance> AppearanceProperty = AvaloniaProperty.RegisterDirect<DefaultTheme, ThemeAppearance>(
 		nameof(Appearance), o => o.Appearance, (o, v) => o.Appearance = v);
+	public static readonly DirectProperty<DefaultTheme, SpatialTheme> SpatialThemeProperty = AvaloniaProperty.RegisterDirect<DefaultTheme, SpatialTheme>(
+		nameof(SpatialTheme), o => o.SpatialTheme, (o, v) => o.SpatialTheme = v);
 
 	public ThemeAppearance Appearance
 	{
@@ -20,10 +22,22 @@ public sealed class DefaultTheme : Styles, IResourceNode
 		}
 	}
 
+	public SpatialTheme SpatialTheme
+	{
+		get => _spatialTheme;
+		set
+		{
+			if (SetAndRaise(SpatialThemeProperty, ref _spatialTheme, value))
+				value.Initialize();
+		}
+	}
+
 	public DefaultTheme(IServiceProvider? serviceProvider = null)
 	{
 		_appearance = new ThemeAppearance();
 		_appearance.Initialize();
+		_spatialTheme = new SpatialTheme();
+		_spatialTheme.Initialize();
 		AvaloniaXamlLoader.Load(serviceProvider, this);
 	}
 
@@ -36,8 +50,9 @@ public sealed class DefaultTheme : Styles, IResourceNode
 
 	bool IResourceNode.TryGetResource(object key, ThemeVariant? theme, out object? value)
 	{
-		return _appearance.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
+		return _appearance.TryGetResource(key, theme, out value) || SpatialTheme.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
 	}
 
 	private ThemeAppearance _appearance;
+	private SpatialTheme _spatialTheme;
 }
