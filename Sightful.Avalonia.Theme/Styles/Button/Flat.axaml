@@ -3,7 +3,7 @@
         xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
 	<Design.PreviewWith>
 		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Button Content="Flat" Classes="flat" HorizontalAlignment="Left"/>
+			<Button Content="Flat" Classes="flat"/>
 		</Border>
 	</Design.PreviewWith>
         
