@@ -39,6 +39,8 @@
 		<Setter Property="VerticalAlignment" Value="Top"/>
 		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
 		<Setter Property="Margin" Value="4"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
+		<Setter Property="ClipToBounds" Value="False"/>
 		<Setter Property="Transitions">
 			<Transitions>
 				<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
@@ -52,7 +54,8 @@
 				        Padding="{TemplateBinding Padding}"
 				        Background="{TemplateBinding Background}"
 				        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-				        VerticalAlignment="{TemplateBinding VerticalAlignment}">
+				        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+				        BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
 					<Border.Transitions>
 						<Transitions>
 							<BrushTransition Property="BorderBrush" Duration="{DynamicResource BrushTransitionDuration}"/>
