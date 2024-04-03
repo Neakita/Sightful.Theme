@@ -6,13 +6,14 @@
 	<ControlTheme x:Key="{x:Type Window}" TargetType="Window">
 		<ControlTheme.Resources>
 			<ResourceDictionary>
+				<SolidColorBrush x:Key="SystemBarBrush" Color="{DynamicResource OuterBackground}"/>
 				<theme:WindowInnerContentCornerRadiusConverter x:Key="InnerContentCornerRadiusConverter"/>
 				<CornerRadius x:Key="InnerContentCornerRadius">25 0 0 0</CornerRadius>
 			</ResourceDictionary>
 		</ControlTheme.Resources>
 		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}" />
-		<Setter Property="TopLevel.SystemBarColor" Value="{DynamicResource OuterBackground}"/>
+		<Setter Property="TopLevel.SystemBarColor" Value="{StaticResource SystemBarBrush}"/>
 		<Setter Property="FontSize" Value="10"/>
 		<Setter Property="ExtendClientAreaTitleBarHeightHint" Value="{Binding $self.(assists:InternalWindowAssist.TitleBarHeight), Mode=OneWay}"/>
 		<Setter Property="Template">
