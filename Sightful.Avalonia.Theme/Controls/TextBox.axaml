@@ -32,7 +32,7 @@
 		<Setter Property="BorderThickness" Value="4"/>
 		<Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
 		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
-		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontSize" Value="18"/>
 		<Setter Property="FontWeight" Value="Medium"/>
 		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
 		<Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkSecondary}"/>
