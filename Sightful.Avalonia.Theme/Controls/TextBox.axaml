@@ -37,7 +37,7 @@
 		<Setter Property="assists:TextBoxAssist.RightInnerContentMargin" Value="4 0 0 0"/>
 		<Setter Property="VerticalAlignment" Value="Top"/>
 		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-		<Setter Property="Margin" Value="4"/>
+		<Setter Property="Margin" Value="{DynamicResource ControlsMargin}"/>
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
 		<Setter Property="Transitions">
