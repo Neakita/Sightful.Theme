@@ -50,7 +50,7 @@ public sealed class DefaultTheme : Styles, IResourceNode
 
 	bool IResourceNode.TryGetResource(object key, ThemeVariant? theme, out object? value)
 	{
-		return _appearance.TryGetResource(key, theme, out value) || SpatialTheme.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
+		return Appearance.TryGetResource(key, theme, out value) || SpatialTheme.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
 	}
 
 	private ThemeAppearance _appearance;
