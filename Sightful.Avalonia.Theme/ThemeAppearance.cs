@@ -8,6 +8,8 @@ namespace Sightful.Avalonia.Theme;
 
 public class ThemeAppearance : ResourceDictionary
 {
+	private static Color BoxShadowColor => new(0x60, 0, 0, 0);
+	
 	public bool IsInitialized { get; private set; }
 	public virtual CornerRadius ControlCornerRadius => new(12);
 	public virtual TimeSpan ShrinkingDuration => TimeSpan.FromMilliseconds(500);
@@ -17,12 +19,12 @@ public class ThemeAppearance : ResourceDictionary
 	{
 		OffsetY = 5,
 		Blur = 5,
-		Color = new Color(0x60, 0, 0, 0),
+		Color = BoxShadowColor,
 	});
 	public virtual BoxShadows HiddenBoxShadow => new(new BoxShadow
 	{
 		Spread = -1, // the thin border will still be visible if it is set to 0
-		Color = new Color(0x60, 0, 0, 0),
+		Color = BoxShadowColor,
 	});
 
 	public void Initialize()
