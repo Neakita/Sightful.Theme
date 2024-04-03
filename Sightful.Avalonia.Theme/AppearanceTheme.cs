@@ -26,6 +26,7 @@ public class AppearanceTheme : ResourceDictionary
 		Spread = -1, // the thin border will still be visible if it is set to 0
 		Color = BoxShadowColor,
 	});
+	public virtual PlacementMode ToolTipPlacement => PlacementMode.Top;
 
 	public void Initialize()
 	{
@@ -43,6 +44,7 @@ public class AppearanceTheme : ResourceDictionary
 		AddResource(ShrinkingEasing);
 		AddResource(BoxShadow);
 		AddResource(HiddenBoxShadow);
+		AddResource(ToolTipPlacement);
 	}
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
