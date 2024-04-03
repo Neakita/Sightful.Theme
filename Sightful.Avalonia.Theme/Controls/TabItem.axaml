@@ -30,7 +30,7 @@
 		<Setter Property="ToolTip.Placement" Value="Top"/>
 		<Setter Property="ToolTip.VerticalOffset" Value="0"/>
 		<Setter Property="ClipToBounds" Value="False"/>
-		<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #20000000"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="BorderBrush" Value="Transparent"/>
 		<Setter Property="Template">
@@ -47,10 +47,12 @@
 					Padding="{TemplateBinding Padding}"
 					ToolTip.Tip="{TemplateBinding Header}"
 					Width="{TemplateBinding Width}"
-					Height="{TemplateBinding Height}">
+					Height="{TemplateBinding Height}"
+					BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
 					<ContentPresenter.Transitions>
 						<Transitions>
 							<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BoxShadowsTransition Property="BoxShadow" Duration="{DynamicResource BrushTransitionDuration}"/>
 						</Transitions>
 					</ContentPresenter.Transitions>
 				</ContentPresenter>
@@ -60,6 +62,7 @@
 		<Style Selector="^:pointerover">
 			<Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
 			<Setter Property="BorderBrush" Value="{DynamicResource ButtonHoverBackground}"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		</Style>
 		
 		<Style Selector="^:pressed">
@@ -69,6 +72,7 @@
 		
 		<Style Selector="^:selected">
 			<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		</Style>
 		
 	</ControlTheme>

@@ -35,7 +35,7 @@
         <Setter Property="ToolTip.Placement" Value="Top"/>
         <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="ClipToBounds" Value="False"/>
-        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
+        <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 	    <Setter Property="Margin" Value="6"/>
 	    <Setter Property="HorizontalAlignment" Value="Left"/>
 	    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>

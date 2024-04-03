@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
+using Avalonia.Media;
 
 namespace Sightful.Avalonia.Theme;
 
@@ -12,6 +13,17 @@ public class ThemeAppearance : ResourceDictionary
 	public virtual TimeSpan ShrinkingDuration => TimeSpan.FromMilliseconds(500);
 	public virtual TimeSpan BrushTransitionDuration => TimeSpan.FromMilliseconds(100);
 	public virtual Easing ShrinkingEasing { get; } = new ElasticEaseOut();
+	public virtual BoxShadows BoxShadow => new(new BoxShadow
+	{
+		OffsetY = 5,
+		Blur = 5,
+		Color = new Color(0x60, 0, 0, 0),
+	});
+	public virtual BoxShadows HiddenBoxShadow => new(new BoxShadow
+	{
+		Spread = -1, // the thin border will still be visible if it is set to 0
+		Color = new Color(0x60, 0, 0, 0),
+	});
 
 	public void Initialize()
 	{
@@ -27,6 +39,8 @@ public class ThemeAppearance : ResourceDictionary
 		AddResource(ShrinkingDuration);
 		AddResource(BrushTransitionDuration);
 		AddResource(ShrinkingEasing);
+		AddResource(BoxShadow);
+		AddResource(HiddenBoxShadow);
 	}
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
