@@ -10,6 +10,7 @@ public class SpatialTheme : ResourceDictionary
 	public virtual double ControlsHeight => 40;
 	public virtual double WideControlsHeight => 48;
 	public virtual Thickness ButtonPadding => new(16, 8);
+	public virtual Thickness ControlsMargin => new(6);
 
 	public void Initialize()
 	{
@@ -24,6 +25,7 @@ public class SpatialTheme : ResourceDictionary
 		AddResource(ControlsHeight);
 		AddResource(WideControlsHeight);
 		AddResource(ButtonPadding);
+		AddResource(ControlsMargin);
 	}
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
