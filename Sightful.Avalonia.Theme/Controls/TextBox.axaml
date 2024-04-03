@@ -13,8 +13,7 @@
 				         Watermark="Password"/>
 				<TextBox InnerLeftContent="{icons:MaterialIconExt Square}"
 				         InnerRightContent="{icons:MaterialIconExt Square}"
-				         Text="|Squares|"
-				         HorizontalAlignment="Left"/>
+				         Text="|Squares|"/>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
