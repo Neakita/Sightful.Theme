@@ -14,7 +14,10 @@
 	</Design.PreviewWith>
 
 	<ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
-		<Setter Property="Background" Value="{DynamicResource FlatButtonHoverBackground}"/>
+		<ControlTheme.Resources>
+			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
+		</ControlTheme.Resources>
+		<Setter Property="Background" Value="{StaticResource Background}"/>
 		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
 		<Setter Property="FontSize" Value="18"/>
 		<Setter Property="FontWeight" Value="Medium"/>
