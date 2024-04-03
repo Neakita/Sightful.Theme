@@ -55,6 +55,16 @@
 				        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
 				        VerticalAlignment="{TemplateBinding VerticalAlignment}"
 				        BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
+					<Border.Margin> <!--Compensate BorderThickness-->
+						<MultiBinding Converter="{x:Static theme:Converters.ThicknessMultiplicationConverter}">
+							<TemplateBinding Property="BorderThickness"/>
+							<Binding x:DataType="Thickness">
+								<Binding.Source>
+									<Thickness>-0.5</Thickness>
+								</Binding.Source>
+							</Binding>
+						</MultiBinding>
+					</Border.Margin>
 					<Border.Transitions>
 						<Transitions>
 							<BrushTransition Property="BorderBrush" Duration="{DynamicResource BrushTransitionDuration}"/>
