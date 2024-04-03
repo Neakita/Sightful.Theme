@@ -22,7 +22,7 @@
 		<Setter Property="FontSize" Value="18"/>
 		<Setter Property="FontWeight" Value="Medium"/>
 		<Setter Property="Height" Value="48"/>
-		<Setter Property="Width" Value="48"></Setter>
+		<Setter Property="Width" Value="48"/>
 		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Padding" Value="10"/>
@@ -35,28 +35,23 @@
 		<Setter Property="BorderBrush" Value="Transparent"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border
-					Name="PART_LayoutRoot"
+				<ContentPresenter
+					HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+					VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+					Content="{TemplateBinding Header}"
+					ContentTemplate="{TemplateBinding HeaderTemplate}"
 					Background="{TemplateBinding Background}"
 					BorderBrush="{TemplateBinding BorderBrush}"
 					BorderThickness="{TemplateBinding BorderThickness}"
 					CornerRadius="{TemplateBinding CornerRadius}"
 					Padding="{TemplateBinding Padding}"
 					ToolTip.Tip="{TemplateBinding Header}">
-					<Border.Transitions>
+					<ContentPresenter.Transitions>
 						<Transitions>
 							<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
 						</Transitions>
-					</Border.Transitions>
-					<Panel>
-						<ContentPresenter
-							Name="PART_ContentPresenter"
-							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-							Content="{TemplateBinding Header}"
-							ContentTemplate="{TemplateBinding HeaderTemplate}"/>
-					</Panel>
-				</Border>
+					</ContentPresenter.Transitions>
+				</ContentPresenter>
 			</ControlTemplate>
 		</Setter>
 		
