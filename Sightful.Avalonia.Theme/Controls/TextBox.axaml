@@ -4,8 +4,6 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
                     xmlns:theme="clr-namespace:Sightful.Avalonia.Theme"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-	<theme:AddConverter x:Key="AddConverter"/>
-	<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
 	<Design.PreviewWith>
 		<Border Padding="40" Background="{DynamicResource OuterBackground}">
 			<StackPanel>
@@ -25,6 +23,8 @@
 	<ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
 		<ControlTheme.Resources>
 			<ResourceDictionary>
+				<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
+				<theme:AddConverter x:Key="AddConverter"/>
 				<system:TimeSpan x:Key="ForegroundTransitionDuration">0:0:0.1</system:TimeSpan>
 			</ResourceDictionary>
 		</ControlTheme.Resources>
