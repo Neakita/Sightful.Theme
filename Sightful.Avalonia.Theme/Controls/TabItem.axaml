@@ -45,7 +45,7 @@
 					ToolTip.Tip="{TemplateBinding Header}">
 					<Border.Transitions>
 						<Transitions>
-							<BrushTransition Property="Background" Duration="0:0:0.1"/>
+							<BrushTransition Property="Background" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 						</Transitions>
 					</Border.Transitions>
 					<Panel>
