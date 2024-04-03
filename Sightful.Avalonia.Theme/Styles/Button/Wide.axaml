@@ -9,6 +9,6 @@
 	</Design.PreviewWith>
         
 	<Style Selector="Button.wide">
-		<Setter Property="Height" Value="48"/>
+		<Setter Property="Height" Value="{DynamicResource WideControlsHeight}"/>
 	</Style>
 </Styles>

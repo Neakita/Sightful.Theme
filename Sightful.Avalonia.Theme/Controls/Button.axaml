@@ -27,7 +27,7 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="Height" Value="40"/>
+        <Setter Property="Height" Value="{DynamicResource ControlsHeight}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="17 8"/>
