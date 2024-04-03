@@ -42,7 +42,7 @@
 		<Setter Property="Margin" Value="4"/>
 		<Setter Property="Transitions">
 			<Transitions>
-				<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
+				<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 			</Transitions>
 		</Setter>
 		<Setter Property="Template">
@@ -56,7 +56,7 @@
 				        VerticalAlignment="{TemplateBinding VerticalAlignment}">
 					<Border.Transitions>
 						<Transitions>
-							<BrushTransition Property="BorderBrush" Duration="{DynamicResource BackgroundTransitionDuration}"/>
+							<BrushTransition Property="BorderBrush" Duration="{DynamicResource BrushTransitionDuration}"/>
 						</Transitions>
 					</Border.Transitions>
 					<Grid ColumnDefinitions="Auto * Auto">
@@ -67,7 +67,7 @@
 						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>
@@ -76,7 +76,7 @@
 						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
 							<TextBlock.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 								</Transitions>
 							</TextBlock.Transitions>
 						</TextBlock>
@@ -91,7 +91,7 @@
 						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>

@@ -70,11 +70,11 @@
 			            <ContentPresenter.Transitions>
 				            <Transitions>
 					            <BrushTransition Property="Background"
-					                             Duration="{DynamicResource BackgroundTransitionDuration}"/>
+					                             Duration="{DynamicResource BrushTransitionDuration}"/>
 					            <BrushTransition Property="Foreground"
-					                             Duration="{DynamicResource BackgroundTransitionDuration}"/>
+					                             Duration="{DynamicResource BrushTransitionDuration}"/>
 					            <BoxShadowsTransition Property="BoxShadow"
-					                                  Duration="{DynamicResource BackgroundTransitionDuration}"/>
+					                                  Duration="{DynamicResource BrushTransitionDuration}"/>
 					            <ThicknessTransition Property="Padding"
 					                                 Duration="{DynamicResource ShrinkingDuration}"
 					                                 Easing="{DynamicResource ShrinkingEasing}">
