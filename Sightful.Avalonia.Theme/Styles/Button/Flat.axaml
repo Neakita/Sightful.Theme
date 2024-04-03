@@ -1,0 +1,19 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource OuterBackground}">
+			<Button Content="Flat" Classes="flat" HorizontalAlignment="Left"/>
+		</Border>
+	</Design.PreviewWith>
+        
+	<Style Selector="Button.flat">
+		<Style.Resources>
+			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
+		</Style.Resources>
+		<Setter Property="Background" Value="{StaticResource Background}"/>
+		<Style Selector="^:not(:pointerover)">
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #60000000"/>
+		</Style>
+	</Style>
+</Styles>

@@ -1,0 +1,22 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource OuterBackground}">
+			<Button Classes="high-accent">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="Sign in"/>
+					<icons:MaterialIcon Kind="ArrowRight"/>
+				</StackPanel>
+			</Button>
+		</Border>
+	</Design.PreviewWith>
+	    
+	<Style Selector="Button.high-accent">
+		<Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+	</Style>
+</Styles>

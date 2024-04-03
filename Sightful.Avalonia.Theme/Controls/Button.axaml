@@ -19,30 +19,6 @@
 			            <TextBlock Name="TextBlock" Text="Sign out"/>
 		            </StackPanel>
 	            </Button>
-	            <Button Content="{icons:MaterialIconExt Play}" Classes="square" ToolTip.Tip="I'm square!"/>
-	            <Button Content="Flat" Classes="flat" HorizontalAlignment="Left"/>
-	            <StackPanel Orientation="Horizontal">
-		            <Button Content="{icons:MaterialIconExt Puzzle}"
-		                    Classes="wide square flat"
-		                    HorizontalAlignment="Left"/>
-		            <Button Content="{icons:MaterialIconExt CogOutline}"
-		                    Classes="wide square low-accent"
-		                    HorizontalAlignment="Left"/>
-		            <Button Content="Sign in"
-		                    Classes="wide high-accent"
-		                    HorizontalAlignment="Left"/>
-	            </StackPanel>
-	            <Button Classes="high-accent">
-		            <StackPanel Orientation="Horizontal">
-			            <TextBlock Text="Sign in"/>
-			            <icons:MaterialIcon Kind="ArrowRight"/>
-		            </StackPanel>
-	            </Button>
-	            <StackPanel Orientation="Horizontal" Height="50">
-		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMinimize}"/>
-		            <Button Classes="title-bar" Content="{icons:MaterialIconExt WindowMaximize}"/>
-		            <Button Classes="title-bar close-window" Content="{icons:MaterialIconExt WindowClose}"/>
-	            </StackPanel>
 	        </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -50,7 +26,6 @@
     <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
 	    <ControlTheme.Resources>
 		    <ResourceDictionary>
-			    <SolidColorBrush x:Key="FlatButtonBackground" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 			    <system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
 			    <system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
 			    <ElasticEaseOut x:Key="ShrinkingEasing"/>
@@ -118,65 +93,15 @@
 	            </Border>
             </ControlTemplate>
         </Setter>
-        
-        <Style Selector="^.flat">
-	        <Setter Property="Background" Value="{StaticResource FlatButtonBackground}"/>
-	        <Style Selector="^:not(:pointerover)">
-		        <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #60000000"/>
-	        </Style>
-        </Style>
-        
-        <Style Selector="^.square">
-	        <Setter Property="Width" Value="{Binding $self.Bounds.Height}"/>
-	        <Setter Property="Padding" Value="10"/>
-        </Style>
-        
-        <Style Selector="^.wide">
-	        <Setter Property="Height" Value="48"/>
-        </Style>
 	    
-	    <Style Selector="^.title-bar">
-		    <Setter Property="Width" Value="36"/>
-		    <Setter Property="Margin" Value="0"/>
-		    <Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #00000000"/>
-		    <Setter Property="CornerRadius" Value="0"/>
-		    <Setter Property="Background" Value="{StaticResource FlatButtonBackground}"/>
-		    <Setter Property="Padding" Value="8"/>
-		    <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
-		    <Setter Property="Height" Value="NaN"/>
-	    </Style>
+	    <StyleInclude Source="../Styles/Button/Flat.axaml"/>
+	    <StyleInclude Source="../Styles/Button/Square.axaml"/>
+	    <StyleInclude Source="../Styles/Button/TitleBar.axaml"/>
+	    <StyleInclude Source="../Styles/Button/Wide.axaml"/>
+	    <StyleInclude Source="../Styles/Button/LowAccent.axaml"/>
+	    <StyleInclude Source="../Styles/Button/HighAccent.axaml"/>
+        <StyleInclude Source="../Styles/Button/Interactions.axaml"/>
 	    
-	    <Style Selector="^:pointerover.title-bar.close-window">
-		    <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
-	    </Style>
-	    
-	    <Style Selector="^.close-window">
-		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource CloseWindowHoveredButtonBackground}"/>
-		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource CloseWindowPressedButtonBackground}"/>
-	    </Style>
-
-	    <Style Selector="^.low-accent">
-		    <Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
-		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
-		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
-	    </Style>
-	    
-	    <Style Selector="^.high-accent">
-		    <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
-		    <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
-		    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
-		    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
-	    </Style>
-        
-	    <Style Selector="^:pointerover">
-		    <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
-	    </Style>
-        
-	    <Style Selector="^:pressed">
-		    <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
-		    <Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="2"/>
-	    </Style>
-        
     </ControlTheme>
     
 </ResourceDictionary>
