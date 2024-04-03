@@ -33,11 +33,6 @@
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #20000000"/>
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="BorderBrush" Value="Transparent"/>
-		<Setter Property="Transitions">
-			<Transitions>
-				<BrushTransition Property="Background" Duration="0:0:0.1"/>
-			</Transitions>
-		</Setter>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Border
@@ -48,6 +43,11 @@
 					CornerRadius="{TemplateBinding CornerRadius}"
 					Padding="{TemplateBinding Padding}"
 					ToolTip.Tip="{TemplateBinding Header}">
+					<Border.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background" Duration="0:0:0.1"/>
+						</Transitions>
+					</Border.Transitions>
 					<Panel>
 						<ContentPresenter
 							Name="PART_ContentPresenter"
