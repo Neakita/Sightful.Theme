@@ -29,7 +29,7 @@
 		<Setter Property="ToolTip.VerticalOffset" Value="0"/>
 		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
-		<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #60000000"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
@@ -80,17 +80,16 @@
 		<Style Selector="^:selected">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.SelectedBackground)}"/>
 			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		</Style>
 		
 		<Style Selector="^:pointerover">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.HoveredBackground)}"/>
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		</Style>
 		
 		<Style Selector="^:pressed">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.PressedBackground)}"/>
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 5 5 0 #60000000"/>
 			<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="2"/>
 		</Style>
 	</ControlTheme>
