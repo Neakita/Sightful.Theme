@@ -25,7 +25,6 @@
 			<ResourceDictionary>
 				<SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
 				<theme:AddConverter x:Key="AddConverter"/>
-				<system:TimeSpan x:Key="ForegroundTransitionDuration">0:0:0.1</system:TimeSpan>
 			</ResourceDictionary>
 		</ControlTheme.Resources>
 		<Setter Property="Padding" Value="6"/>
@@ -43,7 +42,7 @@
 		<Setter Property="Margin" Value="4"/>
 		<Setter Property="Transitions">
 			<Transitions>
-				<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+				<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 			</Transitions>
 		</Setter>
 		<Setter Property="Template">
@@ -57,7 +56,7 @@
 				        VerticalAlignment="{TemplateBinding VerticalAlignment}">
 					<Border.Transitions>
 						<Transitions>
-							<BrushTransition Property="BorderBrush" Duration="{StaticResource ForegroundTransitionDuration}"/>
+							<BrushTransition Property="BorderBrush" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 						</Transitions>
 					</Border.Transitions>
 					<Grid ColumnDefinitions="Auto * Auto">
@@ -68,7 +67,7 @@
 						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>
@@ -77,7 +76,7 @@
 						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
 							<TextBlock.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 								</Transitions>
 							</TextBlock.Transitions>
 						</TextBlock>
@@ -92,7 +91,7 @@
 						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
-									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
+									<BrushTransition Property="Foreground" Duration="{DynamicResource BackgroundTransitionDuration}"/>
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>
