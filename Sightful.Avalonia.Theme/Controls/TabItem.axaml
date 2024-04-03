@@ -45,7 +45,9 @@
 					BorderThickness="{TemplateBinding BorderThickness}"
 					CornerRadius="{TemplateBinding CornerRadius}"
 					Padding="{TemplateBinding Padding}"
-					ToolTip.Tip="{TemplateBinding Header}">
+					ToolTip.Tip="{TemplateBinding Header}"
+					Width="{TemplateBinding Width}"
+					Height="{TemplateBinding Height}">
 					<ContentPresenter.Transitions>
 						<Transitions>
 							<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
