@@ -65,7 +65,7 @@
 						                  Content="{TemplateBinding InnerLeftContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
 						                  IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}">
+						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
 									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
@@ -89,7 +89,7 @@
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
 						                  IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-						                  MaxHeight="{CompiledBinding #PART_TextPresenter.Bounds.Height, Converter={StaticResource AddConverter}, ConverterParameter=-6}">
+						                  MaxHeight="{TemplateBinding FontSize}">
 							<ContentPresenter.Transitions>
 								<Transitions>
 									<BrushTransition Property="Foreground" Duration="{StaticResource ForegroundTransitionDuration}"/>
