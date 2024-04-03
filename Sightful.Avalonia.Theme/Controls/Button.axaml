@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
-                    xmlns:converters="clr-namespace:Sightful.Avalonia.Theme"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+                    xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
         <Border Padding="40" Background="{DynamicResource OuterBackground}">
 	        <StackPanel>
@@ -24,13 +23,6 @@
     </Design.PreviewWith>
 	
     <ControlTheme x:Key="{x:Type Button}" TargetType="Button">
-	    <ControlTheme.Resources>
-		    <ResourceDictionary>
-			    <system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
-			    <system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
-			    <ElasticEaseOut x:Key="ShrinkingEasing"/>
-		    </ResourceDictionary>
-	    </ControlTheme.Resources>
 	    <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
         <Setter Property="FontSize" Value="18"/>
@@ -54,8 +46,8 @@
 		            <Border.Transitions>
 			            <Transitions>
 				            <ThicknessTransition Property="BorderThickness"
-				                                 Duration="{StaticResource ShrinkingDuration}"
-				                                 Easing="{StaticResource ShrinkingEasing}"/>
+				                                 Duration="{DynamicResource ShrinkingDuration}"
+				                                 Easing="{DynamicResource ShrinkingEasing}"/>
 			            </Transitions>
 		            </Border.Transitions>
 		            <ContentPresenter Foreground="{TemplateBinding Foreground}"
@@ -78,14 +70,14 @@
 			            <ContentPresenter.Transitions>
 				            <Transitions>
 					            <BrushTransition Property="Background"
-					                             Duration="{StaticResource BackgroundTransitionDuration}"/>
+					                             Duration="{DynamicResource BackgroundTransitionDuration}"/>
 					            <BrushTransition Property="Foreground"
-					                             Duration="{StaticResource BackgroundTransitionDuration}"/>
+					                             Duration="{DynamicResource BackgroundTransitionDuration}"/>
 					            <BoxShadowsTransition Property="BoxShadow"
-					                                  Duration="{StaticResource BackgroundTransitionDuration}"/>
+					                                  Duration="{DynamicResource BackgroundTransitionDuration}"/>
 					            <ThicknessTransition Property="Padding"
-					                                 Duration="{StaticResource ShrinkingDuration}"
-					                                 Easing="{StaticResource ShrinkingEasing}">
+					                                 Duration="{DynamicResource ShrinkingDuration}"
+					                                 Easing="{DynamicResource ShrinkingEasing}">
 					            </ThicknessTransition>
 				            </Transitions>
 			            </ContentPresenter.Transitions>
