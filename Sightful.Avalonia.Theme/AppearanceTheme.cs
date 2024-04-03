@@ -6,7 +6,7 @@ using Avalonia.Media;
 
 namespace Sightful.Avalonia.Theme;
 
-public class ThemeAppearance : ResourceDictionary
+public class AppearanceTheme : ResourceDictionary
 {
 	private static Color BoxShadowColor => new(0x60, 0, 0, 0);
 	

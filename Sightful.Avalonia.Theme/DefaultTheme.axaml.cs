@@ -7,17 +7,17 @@ namespace Sightful.Avalonia.Theme;
 
 public sealed class DefaultTheme : Styles, IResourceNode
 {
-	public static readonly DirectProperty<DefaultTheme, ThemeAppearance> AppearanceProperty = AvaloniaProperty.RegisterDirect<DefaultTheme, ThemeAppearance>(
-		nameof(Appearance), o => o.Appearance, (o, v) => o.Appearance = v);
+	public static readonly DirectProperty<DefaultTheme, AppearanceTheme> AppearanceThemeProperty = AvaloniaProperty.RegisterDirect<DefaultTheme, AppearanceTheme>(
+		nameof(AppearanceTheme), o => o.AppearanceTheme, (o, v) => o.AppearanceTheme = v);
 	public static readonly DirectProperty<DefaultTheme, SpatialTheme> SpatialThemeProperty = AvaloniaProperty.RegisterDirect<DefaultTheme, SpatialTheme>(
 		nameof(SpatialTheme), o => o.SpatialTheme, (o, v) => o.SpatialTheme = v);
 
-	public ThemeAppearance Appearance
+	public AppearanceTheme AppearanceTheme
 	{
-		get => _appearance;
+		get => _appearanceThemeTheme;
 		set
 		{
-			if (SetAndRaise(AppearanceProperty, ref _appearance, value))
+			if (SetAndRaise(AppearanceThemeProperty, ref _appearanceThemeTheme, value))
 				value.Initialize();
 		}
 	}
@@ -34,8 +34,8 @@ public sealed class DefaultTheme : Styles, IResourceNode
 
 	public DefaultTheme(IServiceProvider? serviceProvider = null)
 	{
-		_appearance = new ThemeAppearance();
-		_appearance.Initialize();
+		_appearanceThemeTheme = new AppearanceTheme();
+		_appearanceThemeTheme.Initialize();
 		_spatialTheme = new SpatialTheme();
 		_spatialTheme.Initialize();
 		AvaloniaXamlLoader.Load(serviceProvider, this);
@@ -44,15 +44,15 @@ public sealed class DefaultTheme : Styles, IResourceNode
 	protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
 	{
 		base.OnPropertyChanged(change);
-		if (change.Property == AppearanceProperty)
+		if (change.Property == AppearanceThemeProperty)
 			Owner?.NotifyHostedResourcesChanged(ResourcesChangedEventArgs.Empty);
 	}
 
 	bool IResourceNode.TryGetResource(object key, ThemeVariant? theme, out object? value)
 	{
-		return Appearance.TryGetResource(key, theme, out value) || SpatialTheme.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
+		return AppearanceTheme.TryGetResource(key, theme, out value) || SpatialTheme.TryGetResource(key, theme, out value) || base.TryGetResource(key, theme, out value);
 	}
 
-	private ThemeAppearance _appearance;
+	private AppearanceTheme _appearanceThemeTheme;
 	private SpatialTheme _spatialTheme;
 }
