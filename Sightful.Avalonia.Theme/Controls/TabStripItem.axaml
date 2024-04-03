@@ -15,12 +15,10 @@
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type TabStripItem}" TargetType="TabStripItem">
 		<ControlTheme.Resources>
-			<ResourceDictionary>
-				<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
-				<system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
-				<system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
-				<ElasticEaseOut x:Key="ShrinkingEasing"/>
-			</ResourceDictionary>
+			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
+			<system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
+			<system:TimeSpan x:Key="BackgroundTransitionDuration">0:0:0.1</system:TimeSpan>
+			<ElasticEaseOut x:Key="ShrinkingEasing"/>
 		</ControlTheme.Resources>
 		<Setter Property="Width" Value="48"/>
 		<Setter Property="Height" Value="48"/>
