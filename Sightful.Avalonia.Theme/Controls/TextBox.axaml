@@ -40,6 +40,7 @@
 		<Setter Property="Margin" Value="{DynamicResource ControlsMargin}"/>
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="SelectionBrush" Value="{DynamicResource TextSelection}"/>
 		<Setter Property="Transitions">
 			<Transitions>
 				<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
@@ -94,7 +95,10 @@
 						<TextPresenter Name="PART_TextPresenter"
 						               Grid.Column="1"
 						               Text="{TemplateBinding Text}"
-						               CaretBrush="{TemplateBinding Foreground}"/>
+						               CaretBrush="{TemplateBinding Foreground}"
+						               SelectionBrush="{TemplateBinding SelectionBrush}"
+						               SelectionStart="{TemplateBinding SelectionStart}"
+						               SelectionEnd="{TemplateBinding SelectionEnd}"/>
 						<ContentPresenter Grid.Column="2"
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"

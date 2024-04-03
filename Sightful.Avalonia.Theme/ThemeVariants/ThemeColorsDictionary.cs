@@ -26,6 +26,7 @@ internal abstract class ThemeColorsDictionary : ResourceDictionary
 	protected abstract Color HighAccentPressedButtonBackground { get; }
 	protected abstract Color CloseWindowHoveredButtonBackground { get; }
 	protected abstract Color CloseWindowPressedButtonBackground { get; }
+	protected abstract Color TextSelection { get; }
 
 	protected ThemeColorsDictionary()
 	{
@@ -54,6 +55,7 @@ internal abstract class ThemeColorsDictionary : ResourceDictionary
 		AddColor(HighAccentPressedButtonBackground);
 		AddColor(CloseWindowHoveredButtonBackground);
 		AddColor(CloseWindowPressedButtonBackground);
+		AddColor(TextSelection);
 	}
 
 	private void AddColor(Color color, [CallerArgumentExpression(nameof(color))] string key = "")
