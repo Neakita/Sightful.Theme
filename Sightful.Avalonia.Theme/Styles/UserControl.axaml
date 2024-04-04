@@ -1,0 +1,22 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Styles.Resources>
+		<ControlTheme x:Key="UserControlTheme" TargetType="UserControl">
+			<Setter Property="Template">
+				<ControlTemplate>
+					<ContentPresenter Background="{TemplateBinding Background}"
+					                  BorderBrush="{TemplateBinding BorderBrush}"
+					                  BorderThickness="{TemplateBinding BorderThickness}"
+					                  ContentTemplate="{TemplateBinding ContentTemplate}"
+					                  Content="{TemplateBinding Content}"
+					                  Padding="{TemplateBinding Padding}"
+					                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+					                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+				</ControlTemplate>
+			</Setter>
+		</ControlTheme>
+	</Styles.Resources>
+	<Style Selector=":is(UserControl)">
+		<Setter Property="Theme" Value="{StaticResource UserControlTheme}"/>
+	</Style>
+</Styles>
