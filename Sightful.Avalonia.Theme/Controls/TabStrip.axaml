@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Padding="20" Background="{DynamicResource OuterBackground}">
+		<Border Background="{DynamicResource OuterBackground}">
 			<TabStrip>
 				<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>
 				<TabStripItem Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
@@ -12,6 +12,7 @@
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type TabStrip}" TargetType="TabStrip">
 		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="Margin" Value="12"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
 				<StackPanel Orientation="Vertical" Spacing="8"/>
