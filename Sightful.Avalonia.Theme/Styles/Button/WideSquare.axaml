@@ -1,0 +1,12 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource OuterBackground}">
+			<Button Content="{icons:MaterialIconExt Search}" Classes="wide square" ToolTip.Tip="I'm square!"/>
+		</Border>
+	</Design.PreviewWith>
+	<Style Selector="Button.wide.square">
+		<Setter Property="Padding" Value="12"/>
+	</Style>
+</Styles>
