@@ -7,6 +7,6 @@
 		</Border>
 	</Design.PreviewWith>
 	<Style Selector="Button.wide.square">
-		<Setter Property="Padding" Value="12"/>
+		<Setter Property="Padding" Value="{DynamicResource WideSquareButtonPadding}"/>
 	</Style>
 </Styles>
