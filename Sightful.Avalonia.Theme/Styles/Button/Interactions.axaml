@@ -7,11 +7,11 @@
 		</Border>
 	</Design.PreviewWith>
         
-	<Style Selector="Button:pointerover">
+	<Style Selector=":is(Button):pointerover">
 		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
 	</Style>
         
-	<Style Selector="Button:pressed">
+	<Style Selector=":is(Button):pressed">
 		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
 		<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="2"/>
 	</Style>

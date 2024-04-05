@@ -7,7 +7,7 @@
 		</Border>
 	</Design.PreviewWith>
         
-	<Style Selector="Button.flat">
+	<Style Selector=":is(Button).flat">
 		<Style.Resources>
 			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 		</Style.Resources>

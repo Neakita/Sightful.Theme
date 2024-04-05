@@ -7,7 +7,7 @@
 		</Border>
 	</Design.PreviewWith>
         
-	<Style Selector="Button.square">
+	<Style Selector=":is(Button).square">
 		<Setter Property="Width" Value="{Binding $self.Bounds.Height}"/>
 		<Setter Property="Padding" Value="{DynamicResource SquareButtonPadding}"/>
 	</Style>

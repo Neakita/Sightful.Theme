@@ -10,7 +10,7 @@
 		</Border>
 	</Design.PreviewWith>
 
-	<Style Selector="Button.low-accent">
+	<Style Selector=":is(Button).low-accent">
 		<Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
 		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
 		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>

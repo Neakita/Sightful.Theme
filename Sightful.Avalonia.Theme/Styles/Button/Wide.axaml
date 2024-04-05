@@ -8,7 +8,7 @@
 		</Border>
 	</Design.PreviewWith>
         
-	<Style Selector="Button.wide">
+	<Style Selector=":is(Button).wide">
 		<Setter Property="Height" Value="{DynamicResource WideControlsHeight}"/>
 	</Style>
 </Styles>

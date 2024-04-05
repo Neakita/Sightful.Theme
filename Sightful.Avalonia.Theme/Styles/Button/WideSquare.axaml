@@ -6,7 +6,7 @@
 			<Button Content="{icons:MaterialIconExt Search}" Classes="wide square" ToolTip.Tip="I'm square!"/>
 		</Border>
 	</Design.PreviewWith>
-	<Style Selector="Button.wide.square">
+	<Style Selector=":is(Button).wide.square">
 		<Setter Property="Padding" Value="{DynamicResource WideSquareButtonPadding}"/>
 	</Style>
 </Styles>
