@@ -16,6 +16,7 @@
 				<MergeResourceInclude Source="Controls/TabStripItem.axaml"/>
 				<MergeResourceInclude Source="Controls/ContentControl.axaml"/>
 				<MergeResourceInclude Source="Controls/RepeatButton.axaml"/>
+				<MergeResourceInclude Source="Controls/ScrollBar.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
