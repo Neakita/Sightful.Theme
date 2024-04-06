@@ -17,6 +17,7 @@
 				<MergeResourceInclude Source="Controls/ContentControl.axaml"/>
 				<MergeResourceInclude Source="Controls/RepeatButton.axaml"/>
 				<MergeResourceInclude Source="Controls/ScrollBar.axaml"/>
+				<MergeResourceInclude Source="Controls/ScrollViewer.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
