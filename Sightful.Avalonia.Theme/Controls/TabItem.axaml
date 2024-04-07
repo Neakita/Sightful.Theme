@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
-	<!--<SolidColorBrush x:Key="FlatButtonHoverBackgroundBrush" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>-->
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
+                    xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
 		<Border Padding="20" Background="{DynamicResource OuterBackground}">
 			<StackPanel Spacing="8">
 				<TabItem Header="{icons:MaterialIconExt HomeOutline}"/>
-				<TabItem Header="{icons:MaterialIconExt Search}"/>
+				<TabItem Header="{icons:MaterialIconExt Search}" IsSelected="True"/>
 				<TabItem Header="{icons:MaterialIconExt Bookshelf}"/>
 			</StackPanel>
 		</Border>
@@ -17,63 +17,80 @@
 		<ControlTheme.Resources>
 			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 		</ControlTheme.Resources>
-		<Setter Property="Background" Value="{StaticResource Background}"/>
-		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
-		<Setter Property="FontSize" Value="18"/>
-		<Setter Property="FontWeight" Value="Medium"/>
-		<Setter Property="Height" Value="{DynamicResource WideControlsHeight}"/>
 		<Setter Property="Width" Value="{DynamicResource WideControlsHeight}"/>
-		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-		<Setter Property="VerticalContentAlignment" Value="Center"/>
-		<Setter Property="Padding" Value="10"/>
-		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="Height" Value="{DynamicResource WideControlsHeight}"/>
+		<Setter Property="Background" Value="{StaticResource Background}"/>
+		<Setter Property="assists:TabStripItemAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Setter Property="assists:TabStripItemAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		<Setter Property="assists:TabStripItemAssist.SelectedBackground" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="Padding" Value="13"/>
 		<Setter Property="ToolTip.Placement" Value="Top"/>
 		<Setter Property="ToolTip.VerticalOffset" Value="0"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<ContentPresenter
-					HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-					VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-					Content="{TemplateBinding Header}"
-					ContentTemplate="{TemplateBinding HeaderTemplate}"
-					Background="{TemplateBinding Background}"
-					BorderBrush="{TemplateBinding BorderBrush}"
-					BorderThickness="{TemplateBinding BorderThickness}"
-					CornerRadius="{TemplateBinding CornerRadius}"
-					Padding="{TemplateBinding Padding}"
-					ToolTip.Tip="{TemplateBinding Header}"
-					Width="{TemplateBinding Width}"
-					Height="{TemplateBinding Height}"
-					BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
-					<ContentPresenter.Transitions>
+				<Border BorderThickness="{TemplateBinding assists:InternalShrinkingAssist.ShrinkingThickness}">
+					<Border.Transitions>
 						<Transitions>
-							<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
-							<BoxShadowsTransition Property="BoxShadow" Duration="{DynamicResource BrushTransitionDuration}"/>
+							<ThicknessTransition Property="BorderThickness"
+							                     Duration="{DynamicResource ShrinkingDuration}"
+							                     Easing="{DynamicResource ShrinkingEasing}"/>
 						</Transitions>
-					</ContentPresenter.Transitions>
-				</ContentPresenter>
+					</Border.Transitions>
+					<ContentPresenter
+						Content="{TemplateBinding Header}"
+						ContentTemplate="{TemplateBinding HeaderTemplate}"
+						BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						CornerRadius="{TemplateBinding CornerRadius}"
+						HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+						VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+						<ContentPresenter.Padding>
+							<MultiBinding Converter="{x:Static converters:Converters.ThicknessSubtractConverter}">
+								<TemplateBinding Property="Padding"/>
+								<TemplateBinding Property="assists:InternalShrinkingAssist.ShrinkingThickness"/>
+							</MultiBinding>
+						</ContentPresenter.Padding>
+						<ContentPresenter.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background"
+								                 Duration="{DynamicResource BrushTransitionDuration}"/>
+								<BrushTransition Property="Foreground"
+								                 Duration="{DynamicResource BrushTransitionDuration}"/>
+								<BoxShadowsTransition Property="BoxShadow"
+								                      Duration="{DynamicResource BrushTransitionDuration}"/>
+								<ThicknessTransition Property="Padding"
+								                     Duration="{DynamicResource ShrinkingDuration}"
+								                     Easing="{DynamicResource ShrinkingEasing}"/>
+							</Transitions>
+						</ContentPresenter.Transitions>
+					</ContentPresenter>
+				</Border>
+				
 			</ControlTemplate>
 		</Setter>
 		
+		<Style Selector="^:selected">
+			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.SelectedBackground)}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+		</Style>
+		
 		<Style Selector="^:pointerover">
-			<Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
-			<Setter Property="BorderBrush" Value="{DynamicResource ButtonHoverBackground}"/>
+			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.HoveredBackground)}"/>
 			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
 		</Style>
 		
 		<Style Selector="^:pressed">
-			<Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
-			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.PressedBackground)}"/>
+			<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="{DynamicResource ShrinkingThickness}"/>
 		</Style>
-		
-		<Style Selector="^:selected">
-			<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
-		</Style>
-		
 	</ControlTheme>
 </ResourceDictionary>
