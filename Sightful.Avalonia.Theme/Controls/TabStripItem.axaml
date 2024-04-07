@@ -4,15 +4,28 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<StackPanel Spacing="20">
-				<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>
-				<TabStripItem Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
-				<TabStripItem Content="{icons:MaterialIconExt Cog}"/>
-			</StackPanel>
-		</Border>
+		<StackPanel Spacing="20">
+			<Border Padding="20"
+			        Background="{DynamicResource OuterBackground}"
+			        CornerRadius="16">
+				<StackPanel Spacing="8">
+					<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>
+					<TabStripItem Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
+					<TabStripItem Content="{icons:MaterialIconExt Cog}"/>
+				</StackPanel>
+			</Border>
+			<Border Padding="20"
+			        Background="{DynamicResource OuterBackground}"
+			        CornerRadius="16">
+				<StackPanel Spacing="16" Orientation="Horizontal">
+					<TabStripItem Theme="{StaticResource TabStripItemTheme}" Content="Home"/>
+					<TabStripItem Theme="{StaticResource TabStripItemTheme}" Content="Search" IsSelected="True"/>
+					<TabStripItem Theme="{StaticResource TabStripItemTheme}" Content="Library"/>
+				</StackPanel>
+			</Border>
+		</StackPanel>
 	</Design.PreviewWith>
-	<ControlTheme x:Key="{x:Type TabStripItem}" TargetType="TabStripItem">
+	<ControlTheme x:Key="ButtonTabStripTheme" TargetType="TabStripItem">
 		<ControlTheme.Resources>
 			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 		</ControlTheme.Resources>
@@ -92,4 +105,20 @@
 			<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="{DynamicResource ShrinkingThickness}"/>
 		</Style>
 	</ControlTheme>
+	
+	<ControlTheme x:Key="TabStripItemTheme" TargetType="TabStripItem">
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="700"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Foreground="{TemplateBinding Foreground}"
+				                  Content="{TemplateBinding Content}"
+				                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+	
+	<ControlTheme x:Key="{x:Type TabStripItem}" TargetType="TabStripItem" BasedOn="{StaticResource ButtonTabStripTheme}"/>
+	
 </ResourceDictionary>
