@@ -5,6 +5,8 @@ namespace Sightful.Avalonia.Theme;
 
 internal static class Converters
 {
+	public static ItemToWidthConverter ItemToWidthConverter { get; } = new();
+	public static ItemToPositionConverter ItemToPositionConverter { get; } = new();
 	public static FuncMultiValueConverter<Thickness, Thickness> ThicknessSubtractConverter { get; } =
 		new(thicknesses => thicknesses.Aggregate((x, y) => x - y));
 	public static TwoWayFuncValueConverter<double, Rect> HeightRectConverter { get; } =
