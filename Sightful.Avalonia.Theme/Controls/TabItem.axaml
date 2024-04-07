@@ -4,16 +4,29 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
-		<Border Padding="20" Background="{DynamicResource OuterBackground}">
-			<StackPanel Spacing="8">
-				<TabItem Header="{icons:MaterialIconExt HomeOutline}"/>
-				<TabItem Header="{icons:MaterialIconExt Search}" IsSelected="True"/>
-				<TabItem Header="{icons:MaterialIconExt Bookshelf}"/>
-			</StackPanel>
-		</Border>
+		<StackPanel Spacing="20">
+			<Border Padding="20"
+			        Background="{DynamicResource OuterBackground}"
+			        CornerRadius="16">
+				<StackPanel Spacing="8">
+					<TabItem Header="{icons:MaterialIconExt HomeOutline}"/>
+					<TabItem Header="{icons:MaterialIconExt Search}" IsSelected="True"/>
+					<TabItem Header="{icons:MaterialIconExt Bookshelf}"/>
+				</StackPanel>
+			</Border>
+			<Border Padding="20"
+			        Background="{DynamicResource OuterBackground}"
+			        CornerRadius="16">
+				<StackPanel Spacing="16" Orientation="Horizontal">
+					<TabItem Theme="{StaticResource TabItemTheme}" Header="Home"/>
+					<TabItem Theme="{StaticResource TabItemTheme}" Header="Search" IsSelected="True"/>
+					<TabItem Theme="{StaticResource TabItemTheme}" Header="Library"/>
+				</StackPanel>
+			</Border>
+		</StackPanel>
 	</Design.PreviewWith>
 
-	<ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
+	<ControlTheme x:Key="ButtonTabItemTheme" TargetType="TabItem">
 		<ControlTheme.Resources>
 			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
 		</ControlTheme.Resources>
@@ -93,4 +106,20 @@
 			<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="{DynamicResource ShrinkingThickness}"/>
 		</Style>
 	</ControlTheme>
+	
+	<ControlTheme x:Key="TabItemTheme" TargetType="TabItem">
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontWeight" Value="700"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Foreground="{TemplateBinding Foreground}"
+				                  Content="{TemplateBinding Header}"
+				                  ContentTemplate="{TemplateBinding HeaderTemplate}"/>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+	
+	<ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem" BasedOn="{StaticResource ButtonTabItemTheme}"/>
+	
 </ResourceDictionary>
