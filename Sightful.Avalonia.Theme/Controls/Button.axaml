@@ -4,7 +4,7 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
-        <Border Padding="40" Background="{DynamicResource OuterBackground}">
+        <Border Classes="outer wide-padding">
 	        <StackPanel>
 	            <Button Content="Click Me!"/>
 	            <Button>

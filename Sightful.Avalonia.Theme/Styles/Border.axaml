@@ -1,0 +1,27 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<!-- Add Controls for Previewer Here -->
+		</Border>
+	</Design.PreviewWith>
+
+	<Style Selector="Border.outer">
+		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+	</Style>
+		
+	<Style Selector="Border.inner">
+		<Setter Property="Background" Value="{DynamicResource InnerBackground}"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+	</Style>
+
+	<Style Selector="Border.wide-padding">
+		<Setter Property="Padding" Value="24"/>
+	</Style>
+
+	<Style Selector="Border.regular-padding">
+		<Setter Property="Padding" Value="16"/>
+	</Style>
+	
+</Styles>

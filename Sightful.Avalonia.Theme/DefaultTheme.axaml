@@ -11,4 +11,5 @@
 	<StyleInclude Source="DefaultControls.axaml"/>
 	<StyleInclude Source="Styles/StackPanel.axaml"/>
 	<StyleInclude Source="Styles/UserControl.axaml"/>
+	<StyleInclude Source="Styles/Border.axaml"/>
 </Styles>

@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource InnerBackground}" Width="300">
+		<Border Width="300">
 			<ScrollViewer Height="200">
 				<StackPanel Spacing="200">
 					<TextBlock Text="#0"/>

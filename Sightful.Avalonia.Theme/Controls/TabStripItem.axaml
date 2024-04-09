@@ -5,18 +5,14 @@
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
 		<StackPanel Spacing="20">
-			<Border Padding="20"
-			        Background="{DynamicResource OuterBackground}"
-			        CornerRadius="16">
+			<Border Classes="outer wide-padding">
 				<StackPanel Spacing="8">
 					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Puzzle}"/>
 					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
 					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Cog}"/>
 				</StackPanel>
 			</Border>
-			<Border Padding="20"
-			        Background="{DynamicResource OuterBackground}"
-			        CornerRadius="16">
+			<Border Classes="outer wide-padding">
 				<StackPanel Spacing="16" Orientation="Horizontal">
 					<TabStripItem Content="Home"/>
 					<TabStripItem Content="Search" IsSelected="True"/>

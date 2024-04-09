@@ -4,14 +4,14 @@
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
 		<StackPanel Spacing="20">
-			<Border Background="{DynamicResource OuterBackground}">
+			<Border Classes="outer wide-padding">
 				<TabStrip Theme="{DynamicResource VerticalButtonsTabStripTheme}">
 					<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>
 					<TabStripItem Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
 					<TabStripItem Content="{icons:MaterialIconExt Cog}"/>
 				</TabStrip>
 			</Border>
-			<Border Background="{DynamicResource OuterBackground}">
+			<Border Classes="outer wide-padding">
 				<TabStrip>
 					<TabStripItem Content="Extensions"/>
 					<TabStripItem Content="Home" IsSelected="True"/>
