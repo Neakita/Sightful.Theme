@@ -21,7 +21,14 @@
 		</StackPanel>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="VerticalButtonsTabStripTheme" TargetType="TabStrip">
-		<Setter Property="ItemContainerTheme" Value="{DynamicResource ButtonTabStripTheme}"/>
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<ResourceDictionary.MergedDictionaries>
+					<ResourceInclude Source="TabStripItem.axaml"/>
+				</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
+		<Setter Property="ItemContainerTheme" Value="{StaticResource ButtonTabStripItemTheme}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
 		<Setter Property="Margin" Value="12"/>
 		<Setter Property="ItemsPanel">
