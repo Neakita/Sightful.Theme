@@ -50,7 +50,7 @@
 		</Setter>
 	</ControlTheme>
 	
-	<ControlTheme x:Key="TabStripTheme" TargetType="TabStrip" BasedOn="{StaticResource ButtonsTabStripTheme}">
+	<ControlTheme x:Key="TabStripTheme" TargetType="TabStrip" BasedOn="{StaticResource VerticalButtonsTabStripTheme}">
 		<Setter Property="ItemContainerTheme" Value="{DynamicResource TabStripItemTheme}"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
