@@ -12,6 +12,7 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
+		<Setter Property="Padding" Value="16"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">

@@ -28,7 +28,9 @@
 						</VisualLayerManager.ChromeOverlayLayer>
 						<DockPanel>
 							<ContentPresenter DockPanel.Dock="Left"
-							                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"/>
+							                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"
+							                  Padding="12"
+							                  IsVisible="{TemplateBinding assists:WindowAssist.LeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"/>
 							<DockPanel DockPanel.Dock="Top"
 							           HorizontalAlignment="Stretch"
 							           Name="TitleBarPanel"

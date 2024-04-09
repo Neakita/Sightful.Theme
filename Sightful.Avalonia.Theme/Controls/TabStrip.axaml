@@ -30,7 +30,6 @@
 		</ControlTheme.Resources>
 		<Setter Property="ItemContainerTheme" Value="{StaticResource ButtonTabStripItemTheme}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
-		<Setter Property="Margin" Value="12"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
 				<StackPanel Orientation="Vertical" Spacing="8"/>
@@ -54,7 +53,7 @@
 		<Setter Property="ItemContainerTheme" Value="{DynamicResource TabStripItemTheme}"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
-				<StackPanel Orientation="Horizontal" Spacing="8"/>
+				<StackPanel Orientation="Horizontal" Spacing="16"/>
 			</ItemsPanelTemplate>
 		</Setter>
 		<Setter Property="Template">
