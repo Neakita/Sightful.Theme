@@ -27,11 +27,4 @@
       <AdditionalFiles Include="Styles\StackPanel.axaml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Update="DefaultTheme.axaml.cs">
-        <DependentUpon>DefaultTheme.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
-
 </Project>
