@@ -19,6 +19,7 @@
 				<MergeResourceInclude Source="Controls/ScrollBar.axaml"/>
 				<MergeResourceInclude Source="Controls/ScrollViewer.axaml"/>
 				<MergeResourceInclude Source="Controls/ItemsControl.axaml"/>
+				<MergeResourceInclude Source="Controls/CheckBox.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>

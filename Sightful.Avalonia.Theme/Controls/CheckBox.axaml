@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding">
+			<StackPanel Spacing="20">
+				<CheckBox>Unchecked</CheckBox>
+				<CheckBox IsChecked="True">Checked</CheckBox>
+				<CheckBox IsThreeState="True" IsChecked="{x:Null}">Indeterminate</CheckBox>
+				<CheckBox Width="120">Checkbox should wrap its text</CheckBox>
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+		<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
+		        Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="assists:InternalCheckBoxAssist.GlyphForeground"
+		        Value="{DynamicResource HighAccentButtonForeground}"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Grid ColumnDefinitions="Auto *">
+					<ContentPresenter Grid.Column="0"
+					                  Width="16"
+					                  Height="16"
+					                  Content="{TemplateBinding assists:InternalCheckBoxAssist.Glyph}"
+					                  Background="{TemplateBinding assists:InternalCheckBoxAssist.GlyphBackground}"
+					                  CornerRadius="4"
+					                  Foreground="{TemplateBinding assists:InternalCheckBoxAssist.GlyphForeground}"
+					                  Padding="2">
+						<ContentPresenter.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
+							</Transitions>
+						</ContentPresenter.Transitions>
+					</ContentPresenter>
+					<ContentPresenter Grid.Column="1"
+					                  Content="{TemplateBinding Content}"
+					                  ContentTemplate="{TemplateBinding Template}"
+					                  Margin="{TemplateBinding Padding}"
+					                  RecognizesAccessKey="True"
+					                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+					                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+					                  TextWrapping="Wrap"/>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:pointerover">
+			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		</Style>
+		<Style Selector="^:pressed">
+			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		</Style>
+		<Style Selector="^:checked">
+			<Setter Property="assists:InternalCheckBoxAssist.Glyph">
+				<Template>
+					<icons:MaterialIcon Kind="Check"/>
+				</Template>
+			</Setter>
+			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
+			        Value="{DynamicResource HighAccentButtonBackground}"/>
+			<Style Selector="^:pointerover">
+				<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+			</Style>
+			<Style Selector="^:pressed">
+				<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+			</Style>
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>
