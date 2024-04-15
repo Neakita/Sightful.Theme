@@ -17,14 +17,4 @@
         <PackageReference Include="Material.Icons.Avalonia" Version="2.1.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <AdditionalFiles Include="Controls\Button.axaml" />
-      <AdditionalFiles Include="Controls\MaterialIcon.axaml" />
-      <AdditionalFiles Include="Controls\TextBlock.axaml" />
-      <AdditionalFiles Include="Controls\TextBox.axaml" />
-      <AdditionalFiles Include="Controls\ToolTip.axaml" />
-      <AdditionalFiles Include="Controls\Window.axaml" />
-      <AdditionalFiles Include="Styles\StackPanel.axaml" />
-    </ItemGroup>
-
 </Project>
