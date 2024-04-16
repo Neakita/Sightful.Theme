@@ -27,5 +27,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Sightful.Avalonia.Theme\Sightful.Avalonia.Theme.csproj" />
+      <ProjectReference Include="..\Sightful.Avalonia.TreeDataGrid.Theme\Sightful.Avalonia.TreeDataGrid.Theme.csproj" />
     </ItemGroup>
 </Project>

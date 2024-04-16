@@ -1,0 +1,24 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTheme x:Key="{x:Type TreeDataGridTextCell}" TargetType="TreeDataGridTextCell">
+		<Setter Property="Padding" Value="16"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="FontWeight" Value="400"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}"
+				        BorderBrush="{TemplateBinding BorderBrush}"
+				        BorderThickness="{TemplateBinding BorderThickness}"
+				        CornerRadius="{TemplateBinding CornerRadius}"
+				        Padding="{TemplateBinding Padding}">
+					<TextBlock Text="{TemplateBinding Value}"
+					           TextTrimming="{TemplateBinding TextTrimming}"
+					           TextWrapping="{TemplateBinding TextWrapping}"
+					           TextAlignment="{TemplateBinding TextAlignment}"
+					           VerticalAlignment="Center"/>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

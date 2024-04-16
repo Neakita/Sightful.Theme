@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ControlTheme x:Key="{x:Type TreeDataGridRow}" TargetType="TreeDataGridRow">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<TreeDataGridCellsPresenter
+					Name="PART_CellsPresenter"
+					ElementFactory="{TemplateBinding ElementFactory}"
+					Items="{TemplateBinding Columns}"
+					Rows="{TemplateBinding Rows}"
+					Background="{TemplateBinding Background}"
+					BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}"
+					CornerRadius="{TemplateBinding CornerRadius}"/>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:nth-child(2n)">
+			<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding">
+			<TreeDataGridCheckBoxCell Value="True"/>
+		</Border>
+	</Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type TreeDataGridCheckBoxCell}" TargetType="TreeDataGridCheckBoxCell">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<CheckBox IsChecked="{TemplateBinding Value}"/>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

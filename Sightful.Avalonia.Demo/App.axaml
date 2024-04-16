@@ -3,6 +3,7 @@
              x:Class="Sightful.Avalonia.Demo.App"
              xmlns:local="using:Sightful.Avalonia.Demo"
              xmlns:theme="clr-namespace:Sightful.Avalonia.Theme;assembly=Sightful.Avalonia.Theme"
+             xmlns:treeDataGridTheme="clr-namespace:Sightful.Avalonia.TreeDataGrid.Theme;assembly=Sightful.Avalonia.TreeDataGrid.Theme"
              RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -11,6 +12,7 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-        <theme:DefaultTheme/>
+	    <theme:DefaultTheme/>
+	    <treeDataGridTheme:SightfulTreeDataGridTheme/>
     </Application.Styles>
 </Application>

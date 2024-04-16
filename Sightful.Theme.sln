@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Avalonia.Demo", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Avalonia.Controls", "Sightful.Avalonia.Controls\Sightful.Avalonia.Controls.csproj", "{1EC39006-CA80-4C73-BD2C-0F5C4FFBDAB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sightful.Avalonia.TreeDataGrid.Theme", "Sightful.Avalonia.TreeDataGrid.Theme\Sightful.Avalonia.TreeDataGrid.Theme.csproj", "{0FCAA36A-0258-4880-9715-3758FF186AF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{1EC39006-CA80-4C73-BD2C-0F5C4FFBDAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC39006-CA80-4C73-BD2C-0F5C4FFBDAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC39006-CA80-4C73-BD2C-0F5C4FFBDAB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FCAA36A-0258-4880-9715-3758FF186AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FCAA36A-0258-4880-9715-3758FF186AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FCAA36A-0258-4880-9715-3758FF186AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FCAA36A-0258-4880-9715-3758FF186AF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

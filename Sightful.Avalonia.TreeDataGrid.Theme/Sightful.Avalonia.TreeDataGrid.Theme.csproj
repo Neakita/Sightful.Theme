@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.0.10" />
+      <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.0.2" />
+      <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Material.Icons">
+        <HintPath>C:\Users\narca\.nuget\packages\material.icons\2.1.9\lib\netstandard2.0\Material.Icons.dll</HintPath>
+      </Reference>
+      <Reference Include="Material.Icons.Avalonia">
+        <HintPath>C:\Users\narca\.nuget\packages\material.icons.avalonia\2.1.9\lib\netstandard2.0\Material.Icons.Avalonia.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

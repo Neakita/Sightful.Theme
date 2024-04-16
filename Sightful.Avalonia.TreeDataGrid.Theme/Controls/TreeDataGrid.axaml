@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Sightful.Avalonia.TreeDataGrid.Theme">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding" DataContext="{DynamicResource DataContext}">
+			<Border.Resources>
+				<local:DesignTreeDataGridViewModel x:Key="DataContext"/>
+			</Border.Resources>
+			<TreeDataGrid Source="{Binding UsersSource}"/>
+		</Border>
+	</Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type TreeDataGrid}" TargetType="TreeDataGrid">
+		<Setter Property="BorderBrush" Value="{DynamicResource InnerBackground}"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="Background" Value="{DynamicResource InnerBackground}"/>
+		<Setter Property="VerticalAlignment" Value="Top"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border BorderBrush="{TemplateBinding BorderBrush}"
+				        BorderThickness="{TemplateBinding BorderThickness}"
+				        CornerRadius="{TemplateBinding CornerRadius}">
+					<!--CornerRadius adjustment for half of the BorderThickness-->
+					<Border CornerRadius="11"
+					        ClipToBounds="True">
+						<DockPanel>
+							<TreeDataGridColumnHeadersPresenter
+								Name="PART_ColumnHeadersPresenter"
+								DockPanel.Dock="Top"
+								ElementFactory="{TemplateBinding ElementFactory}"
+								Items="{TemplateBinding Columns}"
+								Background="{DynamicResource HighAccentButtonForeground}"/>
+							<TreeDataGridRowsPresenter
+								Name="PART_RowsPresenter"
+								Columns="{TemplateBinding Columns}"
+								ElementFactory="{TemplateBinding ElementFactory}"
+								Items="{TemplateBinding Rows}"
+								Background="{TemplateBinding Background}"/>
+						</DockPanel>
+					</Border>
+					
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="Controls/TreeDataGrid.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridCheckBoxCell.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridColumnHeader.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridExpandCollapseChevron.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridExpanderCell.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridRow.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridTemplateCell.axaml"/>
+				<ResourceInclude Source="Controls/TreeDataGridTextCell.axaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Styles.Resources>
+</Styles>
