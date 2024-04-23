@@ -9,7 +9,8 @@
 		</ResourceDictionary>
 	</Styles.Resources>
 	<StyleInclude Source="DefaultControls.axaml"/>
-	<StyleInclude Source="Styles/StackPanel.axaml"/>
 	<StyleInclude Source="Styles/UserControl.axaml"/>
 	<StyleInclude Source="Styles/Border.axaml"/>
+	<StyleInclude Source="Styles/Button/Content.axaml"/>
+	<StyleInclude Source="Styles/ContentPresenter.axaml"/>
 </Styles>
