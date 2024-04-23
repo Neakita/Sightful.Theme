@@ -23,20 +23,22 @@
 					<!--CornerRadius adjustment for half of the BorderThickness-->
 					<Border CornerRadius="11"
 					        ClipToBounds="True">
-						<DockPanel>
+						<Grid RowDefinitions="Auto *">
 							<TreeDataGridColumnHeadersPresenter
 								Name="PART_ColumnHeadersPresenter"
-								DockPanel.Dock="Top"
+								Grid.Row="0"
 								ElementFactory="{TemplateBinding ElementFactory}"
 								Items="{TemplateBinding Columns}"
 								Background="{DynamicResource HighAccentButtonForeground}"/>
-							<TreeDataGridRowsPresenter
-								Name="PART_RowsPresenter"
-								Columns="{TemplateBinding Columns}"
-								ElementFactory="{TemplateBinding ElementFactory}"
-								Items="{TemplateBinding Rows}"
-								Background="{TemplateBinding Background}"/>
-						</DockPanel>
+							<ScrollViewer Grid.Row="1">
+								<TreeDataGridRowsPresenter
+									Name="PART_RowsPresenter"
+									Columns="{TemplateBinding Columns}"
+									ElementFactory="{TemplateBinding ElementFactory}"
+									Items="{TemplateBinding Rows}"
+									Background="{TemplateBinding Background}"/>
+							</ScrollViewer>
+						</Grid>
 					</Border>
 					
 				</Border>
