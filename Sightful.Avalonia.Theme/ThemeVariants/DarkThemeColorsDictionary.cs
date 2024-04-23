@@ -12,6 +12,7 @@ internal sealed class DarkThemeColorsDictionary : ThemeColorsDictionary
 	protected override Color WatermarkPrimary => Color.FromRgb(0x9E, 0xA8, 0xB3);
 	protected override Color WatermarkSecondary => Color.FromRgb(0x85, 0x8D, 0x98);
 	protected override Color ButtonHoverBackground => Color.FromRgb(0x39, 0x3E, 0x49);
+	protected override Color DisabledButtonBackground => Color.FromRgb(0x36, 0x39, 0x3F);
 	protected override Color PressedButtonBackground => Color.FromRgb(0x36, 0x3A, 0x45);
 	protected override Color ToolTipForeground => Color.FromRgb(0xAB, 0xB4, 0xC0);
 	protected override Color LowAccentButtonBackground => Color.FromRgb(0x23, 0x55, 0x3E);
@@ -21,6 +22,7 @@ internal sealed class DarkThemeColorsDictionary : ThemeColorsDictionary
 	protected override Color HighAccentButtonBackground => Color.FromRgb(0x1B, 0xD9, 0x6A);
 	protected override Color HighAccentHoveredButtonBackground => Color.FromRgb(0x17, 0xB8, 0x5A);
 	protected override Color HighAccentPressedButtonBackground => Color.FromRgb(0x16, 0xAE, 0x55);
+	protected override Color HighAccentDisabledButtonBackground => Color.FromRgb(0x44, 0x75, 0x5C);
 	protected override Color CloseWindowHoveredButtonBackground => Color.FromRgb(0xD9, 0x3E, 0x5D);
 	protected override Color CloseWindowPressedButtonBackground => Color.FromRgb(0xCC, 0x3A, 0x58);
 	protected override Color HighAccentButtonForeground => Colors.Black;
