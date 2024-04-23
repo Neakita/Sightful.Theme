@@ -12,7 +12,6 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
-		<Setter Property="Padding" Value="16"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Grid ColumnDefinitions="*,Auto" RowDefinitions="*,Auto">
@@ -55,5 +54,8 @@
 				</Grid>
 			</ControlTemplate>
 		</Setter>
+		<Style Selector="^.regular-padding">
+			<Setter Property="Padding" Value="16"/>
+		</Style>
 	</ControlTheme>
 </ResourceDictionary>
