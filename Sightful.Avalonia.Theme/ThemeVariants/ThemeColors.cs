@@ -4,7 +4,7 @@ using Avalonia.Media;
 
 namespace Sightful.Avalonia.Theme.ThemeVariants;
 
-internal abstract class ThemeColorsDictionary : ResourceDictionary
+internal abstract class ThemeColors : ResourceDictionary
 {
 	protected abstract Color InnerBackground { get; }
 	protected abstract Color OuterBackground { get; }
@@ -30,7 +30,7 @@ internal abstract class ThemeColorsDictionary : ResourceDictionary
 	protected abstract Color DisabledButtonBackground { get; }
 	protected abstract Color HighAccentDisabledButtonBackground { get; }
 
-	protected ThemeColorsDictionary()
+	protected ThemeColors()
 	{
 		AddResources();
 	}

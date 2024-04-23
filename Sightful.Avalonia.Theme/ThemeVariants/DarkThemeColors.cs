@@ -2,7 +2,7 @@
 
 namespace Sightful.Avalonia.Theme.ThemeVariants;
 
-internal sealed class DarkThemeColorsDictionary : ThemeColorsDictionary
+internal sealed class DarkThemeColors : ThemeColors
 {
 	protected override Color InnerBackground => Color.FromRgb(0x16, 0x18, 0x1C);
 	protected override Color OuterBackground => Color.FromRgb(0x26, 0x29, 0x2F);

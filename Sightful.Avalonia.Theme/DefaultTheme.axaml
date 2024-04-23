@@ -5,7 +5,7 @@
 	<Styles.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
-				<themeVariants:DarkThemeColorsDictionary x:Key="Dark"/>
+				<themeVariants:DarkThemeColors x:Key="Dark"/>
 			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
