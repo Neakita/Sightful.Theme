@@ -21,6 +21,7 @@
 				<MergeResourceInclude Source="Controls/ItemsControl.axaml"/>
 				<MergeResourceInclude Source="Controls/CheckBox.axaml"/>
 				<MergeResourceInclude Source="Controls/TransitioningContentControl.axaml"/>
+				<MergeResourceInclude Source="Controls/Carousel.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
