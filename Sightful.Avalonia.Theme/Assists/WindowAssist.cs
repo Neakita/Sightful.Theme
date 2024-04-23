@@ -75,4 +75,21 @@ public static class WindowAssist
 	}
 
 	#endregion
+
+	#region OverlayContent
+
+	public static readonly AvaloniaProperty<object?> OverlayContentProperty =
+		AvaloniaProperty.RegisterAttached<Window, object?>("OverlayContent", typeof(WindowAssist));
+
+	public static object? GetOverlayContent(AvaloniaObject element)
+	{
+		return element.GetValue(OverlayContentProperty);
+	}
+
+	public static void SetOverlayContent(AvaloniaObject element, object? value)
+	{
+		element.SetValue(OverlayContentProperty, value);
+	}
+
+	#endregion
 }
