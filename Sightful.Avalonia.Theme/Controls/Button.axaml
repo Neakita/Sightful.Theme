@@ -5,7 +5,7 @@
                     xmlns:converters="clr-namespace:Sightful.Avalonia.Theme">
 	<Design.PreviewWith>
         <Border Classes="outer wide-padding">
-	        <StackPanel>
+	        <StackPanel Spacing="12">
 	            <Button Content="Click Me!"/>
 	            <Button>
 		            <Button.Content>
@@ -36,7 +36,6 @@
         <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
-	    <Setter Property="Margin" Value="{DynamicResource ControlsMargin}"/>
 	    <Setter Property="HorizontalAlignment" Value="Left"/>
 	    <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
 	    <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
