@@ -15,5 +15,5 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <UserControl/>
+    <Button Content="Test"/>
 </Window>

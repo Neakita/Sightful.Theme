@@ -5,7 +5,7 @@
 			<TabControl>
 				<TabItem Header="Arch">
 					<Border Height="100">
-						<TextBlock Text="Some content" FontSize="20"/>
+						<TextBlock Text="Some content"/>
 					</Border>
 				</TabItem>
 				<TabItem Header="Leaf">

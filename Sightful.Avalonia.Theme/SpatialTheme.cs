@@ -13,6 +13,7 @@ public class SpatialTheme : ResourceDictionary
 	public virtual Thickness SquareButtonPadding => new(10);
 	public virtual Thickness WideSquareButtonPadding => new(12);
 	public virtual Thickness ControlsMargin => new(6);
+	public virtual double FontSize => 18;
 
 	public void Initialize()
 	{
@@ -30,6 +31,7 @@ public class SpatialTheme : ResourceDictionary
 		AddResource(SquareButtonPadding);
 		AddResource(WideSquareButtonPadding);
 		AddResource(ControlsMargin);
+		AddResource(FontSize);
 	}
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")

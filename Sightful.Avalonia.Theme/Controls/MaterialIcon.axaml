@@ -4,8 +4,7 @@
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
 			<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
-			         Watermark="Circle"
-			         FontSize="25"/>
+			         Watermark="Circle"/>
 		</Border>
 	</Design.PreviewWith>
 	<icons:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />

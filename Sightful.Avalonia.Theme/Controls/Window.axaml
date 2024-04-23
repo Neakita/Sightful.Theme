@@ -14,7 +14,7 @@
 		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="TopLevel.SystemBarColor" Value="{StaticResource SystemBarBrush}"/>
-		<Setter Property="FontSize" Value="10"/>
+		<Setter Property="FontSize" Value="{DynamicResource FontSize}"/>
 		<Setter Property="ExtendClientAreaTitleBarHeightHint"
 		        Value="{Binding $self.(assists:InternalWindowAssist.TitleBarHeight), Mode=OneWay}"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>

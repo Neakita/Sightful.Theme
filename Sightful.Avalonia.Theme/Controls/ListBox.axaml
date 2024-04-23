@@ -21,7 +21,6 @@
 				<StackPanel Spacing="12"/>
 			</ItemsPanelTemplate>
 		</Setter>
-		<Setter Property="FontSize" Value="17"/>
 		<Setter Property="FontWeight" Value="500"/>
 		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
 		<Setter Property="Template">
