@@ -1,11 +1,11 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Padding="20">
 			<Button>
 				<StackPanel Orientation="Horizontal">
-					<avalonia:MaterialIcon Kind="ExitToApp"/>
+					<icons:MaterialIcon Kind="ExitToApp"/>
 					<TextBlock Name="TextBlock" Text="Sign out"/>
 				</StackPanel>
 			</Button>
@@ -14,5 +14,9 @@
 
 	<Style Selector="Button > StackPanel">
 		<Setter Property="Spacing" Value="10"/>
+	</Style>
+	
+	<Style Selector="Button icons|MaterialIcon">
+		<Setter Property="Margin" Value="0 4"/>
 	</Style>
 </Styles>
