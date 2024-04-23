@@ -1,11 +1,12 @@
 ﻿<Styles x:Class="Sightful.Avalonia.Theme.DefaultTheme"
         xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:themeVariants="clr-namespace:Sightful.Avalonia.Theme.ThemeVariants">
 	<Styles.Resources>
 		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceInclude Source="DefaultColorPalette.axaml"/>
-			</ResourceDictionary.MergedDictionaries>
+			<ResourceDictionary.ThemeDictionaries>
+				<themeVariants:DarkThemeColorsDictionary x:Key="Dark"/>
+			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
 	<StyleInclude Source="DefaultControls.axaml"/>
