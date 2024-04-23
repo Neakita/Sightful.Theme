@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
+	<Design.PreviewWith>
+		<Border Classes="inner wide-padding">
+			<ListBox>
+				<ListBoxItem>Lightweight and modular API</ListBoxItem>
+				<ListBoxItem>Test</ListBoxItem>
+				<ListBoxItem>Test</ListBoxItem>
+				<ListBoxItem>Test</ListBoxItem>
+			</ListBox>
+		</Border>
+	</Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+		<Setter Property="Padding" Value="16"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="assists:InternalListBoxItemAssist.Fade" Value="#00000000"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel>
+					<ContentPresenter Background="{TemplateBinding Background}"
+					                  BorderBrush="{TemplateBinding BorderBrush}"
+					                  BorderThickness="{TemplateBinding BorderThickness}"
+					                  CornerRadius="{TemplateBinding CornerRadius}"
+					                  ContentTemplate="{TemplateBinding ContentTemplate}"
+					                  Content="{TemplateBinding Content}"
+					                  Padding="{TemplateBinding Padding}"
+					                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+					                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+					<Border CornerRadius="{TemplateBinding CornerRadius}"
+					        Background="{TemplateBinding assists:InternalListBoxItemAssist.Fade}">
+						<Border.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="0:0:0.2"/>
+							</Transitions>
+						</Border.Transitions>
+					</Border>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:pointerover">
+			<Setter Property="assists:InternalListBoxItemAssist.Fade" Value="#28000000"/>
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>
