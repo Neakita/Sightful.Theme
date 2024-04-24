@@ -2,12 +2,20 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Classes="inner wide-padding">
-			<ListBox>
-				<ListBoxItem>Lightweight and modular API</ListBoxItem>
-				<ListBoxItem>Test</ListBoxItem>
-				<ListBoxItem>Test</ListBoxItem>
-				<ListBoxItem>Test</ListBoxItem>
-			</ListBox>
+			<StackPanel Spacing="40">
+				<ListBox>
+					<ListBoxItem>Lightweight and modular API</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+				</ListBox>
+				<ListBox Classes="compact">
+					<ListBoxItem>Lightweight and modular API</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+				</ListBox>
+			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
@@ -15,7 +23,6 @@
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
 		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True"/>
 		<Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True"/>
-		<Setter Property="Background" Value="{DynamicResource InnerBackground}"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
 				<StackPanel Spacing="12"/>
@@ -49,5 +56,15 @@
 				</Border>
 			</ControlTemplate>
 		</Setter>
+		<Style Selector="^.compact">
+			<Setter Property="ItemsPanel">
+				<ItemsPanelTemplate>
+					<StackPanel Spacing="4"/>
+				</ItemsPanelTemplate>
+			</Setter>
+		</Style>
+		<Style Selector="^.fade">
+			<Setter Property="ItemContainerTheme" Value="{DynamicResource FadeListBoxItem}"/>
+		</Style>
 	</ControlTheme>
 </ResourceDictionary>
