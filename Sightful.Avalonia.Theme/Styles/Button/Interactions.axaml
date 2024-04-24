@@ -13,6 +13,6 @@
         
 	<Style Selector=":is(Button):pressed">
 		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
-		<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="{DynamicResource ShrinkingThickness}"/>
+		<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="2"/>
 	</Style>
 </Styles>

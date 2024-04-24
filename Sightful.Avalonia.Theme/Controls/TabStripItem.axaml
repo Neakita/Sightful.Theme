@@ -42,7 +42,7 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border BorderThickness="{TemplateBinding assists:InternalShrinkingAssist.ShrinkingThickness}">
+				<Border BorderThickness="{TemplateBinding assists:InternalShrinkingAssist.Shrinking}">
 					<Border.Transitions>
 						<Transitions>
 							<ThicknessTransition Property="BorderThickness"
@@ -63,7 +63,7 @@
 						<ContentPresenter.Padding>
 							<MultiBinding Converter="{x:Static converters:Converters.ThicknessSubtractConverter}">
 								<TemplateBinding Property="Padding"/>
-								<TemplateBinding Property="assists:InternalShrinkingAssist.ShrinkingThickness"/>
+								<TemplateBinding Property="assists:InternalShrinkingAssist.Shrinking"/>
 							</MultiBinding>
 						</ContentPresenter.Padding>
 						<ContentPresenter.Transitions>
@@ -98,7 +98,7 @@
 		
 		<Style Selector="^:pressed">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.PressedBackground)}"/>
-			<Setter Property="assists:InternalShrinkingAssist.ShrinkingThickness" Value="{DynamicResource ShrinkingThickness}"/>
+			<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="{DynamicResource ShrinkingThickness}"/>
 		</Style>
 	</ControlTheme>
 	
