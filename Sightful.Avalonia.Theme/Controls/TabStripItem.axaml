@@ -42,46 +42,31 @@
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Border BorderThickness="{TemplateBinding assists:InternalShrinkingAssist.Shrinking}">
-					<Border.Transitions>
+				<ContentPresenter
+					Content="{TemplateBinding Content}"
+					ContentTemplate="{TemplateBinding ContentTemplate}"
+					BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+					Background="{TemplateBinding Background}"
+					BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="{TemplateBinding BorderThickness}"
+					CornerRadius="{TemplateBinding CornerRadius}"
+					HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+					VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+					Padding="{TemplateBinding Padding}">
+					<ContentPresenter.Transitions>
 						<Transitions>
-							<ThicknessTransition Property="BorderThickness"
+							<BrushTransition Property="Background"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BrushTransition Property="Foreground"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BoxShadowsTransition Property="BoxShadow"
+							                      Duration="{DynamicResource BrushTransitionDuration}"/>
+							<ThicknessTransition Property="Padding"
 							                     Duration="{DynamicResource ShrinkingDuration}"
 							                     Easing="{DynamicResource ShrinkingEasing}"/>
 						</Transitions>
-					</Border.Transitions>
-					<ContentPresenter
-						Content="{TemplateBinding Content}"
-						ContentTemplate="{TemplateBinding ContentTemplate}"
-						BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
-						Background="{TemplateBinding Background}"
-						BorderBrush="{TemplateBinding BorderBrush}"
-						BorderThickness="{TemplateBinding BorderThickness}"
-						CornerRadius="{TemplateBinding CornerRadius}"
-						HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-						VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
-						<ContentPresenter.Padding>
-							<MultiBinding Converter="{x:Static converters:Converters.ThicknessSubtractConverter}">
-								<TemplateBinding Property="Padding"/>
-								<TemplateBinding Property="assists:InternalShrinkingAssist.Shrinking"/>
-							</MultiBinding>
-						</ContentPresenter.Padding>
-						<ContentPresenter.Transitions>
-							<Transitions>
-								<BrushTransition Property="Background"
-								                 Duration="{DynamicResource BrushTransitionDuration}"/>
-								<BrushTransition Property="Foreground"
-								                 Duration="{DynamicResource BrushTransitionDuration}"/>
-								<BoxShadowsTransition Property="BoxShadow"
-								                      Duration="{DynamicResource BrushTransitionDuration}"/>
-								<ThicknessTransition Property="Padding"
-								                     Duration="{DynamicResource ShrinkingDuration}"
-								                     Easing="{DynamicResource ShrinkingEasing}"/>
-							</Transitions>
-						</ContentPresenter.Transitions>
-					</ContentPresenter>
-				</Border>
-				
+					</ContentPresenter.Transitions>
+				</ContentPresenter>
 			</ControlTemplate>
 		</Setter>
 		
@@ -98,8 +83,10 @@
 		
 		<Style Selector="^:pressed">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.PressedBackground)}"/>
-			<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="{DynamicResource ShrinkingThickness}"/>
 		</Style>
+		
+		<StyleInclude Source="../../Styles/Shrinking.axaml"/>
+		
 	</ControlTheme>
 	
 	<ControlTheme x:Key="TabStripItemTheme" TargetType="TabStripItem">
@@ -113,6 +100,7 @@
 				                  ContentTemplate="{TemplateBinding ContentTemplate}"/>
 			</ControlTemplate>
 		</Setter>
+		<StyleInclude Source="../../Styles/Shrinking.axaml"/>
 	</ControlTheme>
 	
 	<ControlTheme x:Key="{x:Type TabStripItem}" TargetType="TabStripItem" BasedOn="{StaticResource TabStripItemTheme}"/>

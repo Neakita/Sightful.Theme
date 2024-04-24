@@ -15,7 +15,7 @@ public class AppearanceTheme : ResourceDictionary
 	public virtual TimeSpan ShrinkingDuration => TimeSpan.FromMilliseconds(500);
 	public virtual TimeSpan BrushTransitionDuration => TimeSpan.FromMilliseconds(100);
 	public virtual Easing ShrinkingEasing { get; } = new ElasticEaseOut();
-	public virtual Thickness ShrinkingThickness { get; } = new(2);
+	public virtual double Shrinking => 2;
 	public virtual BoxShadows BoxShadow => new(new BoxShadow
 	{
 		OffsetY = 5,
@@ -46,7 +46,7 @@ public class AppearanceTheme : ResourceDictionary
 		AddResource(BoxShadow);
 		AddResource(HiddenBoxShadow);
 		AddResource(ToolTipPlacement);
-		AddResource(ShrinkingThickness);
+		AddResource(Shrinking);
 	}
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")

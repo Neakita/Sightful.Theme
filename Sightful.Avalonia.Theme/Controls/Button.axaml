@@ -37,18 +37,7 @@
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
 		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
-		<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="0"/>
-		<Setter Property="Transitions">
-			<Transitions>
-				<!--Can't use dynamic resource for some reason-->
-				<TransformOperationsTransition Property="RenderTransform"
-				                               Duration="0:0:0.5">
-					<TransformOperationsTransition.Easing>
-						<ElasticEaseOut/>
-					</TransformOperationsTransition.Easing>
-				</TransformOperationsTransition>
-			</Transitions>
-		</Setter>
+		
 		<Setter Property="Template">
 			<ControlTemplate>
 				<ContentPresenter Foreground="{TemplateBinding Foreground}"

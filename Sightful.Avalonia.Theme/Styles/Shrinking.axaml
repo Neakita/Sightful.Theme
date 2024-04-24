@@ -1,0 +1,20 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Theme.Assists">
+	<Style Selector=":is(Control)">
+		<Setter Property="Transitions">
+			<Transitions>
+				<!--Can't use dynamic resource for some reason-->
+				<TransformOperationsTransition Property="RenderTransform"
+				                               Duration="0:0:0.1">
+					<TransformOperationsTransition.Easing>
+						<CircularEaseOut/>
+					</TransformOperationsTransition.Easing>
+				</TransformOperationsTransition>
+			</Transitions>
+		</Setter>
+		<Style Selector="^:pressed">
+			<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
+		</Style>
+	</Style>
+</Styles>
