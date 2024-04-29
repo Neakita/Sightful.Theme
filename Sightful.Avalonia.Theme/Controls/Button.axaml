@@ -65,6 +65,10 @@
 				</ContentPresenter>
 			</ControlTemplate>
 		</Setter>
+		
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
+		</Style>
 
 		<StyleInclude Source="../Styles/Button/Flat.axaml"/>
 		<StyleInclude Source="../Styles/Button/Square.axaml"/>
