@@ -58,8 +58,6 @@
 		</Style>
 	</ControlTheme>
 	<ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource BaseListBoxItem}">
-		<Setter Property="Transitions">
-		</Setter>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<ContentPresenter Background="{TemplateBinding Background}"
