@@ -17,7 +17,9 @@
 				<ControlTemplate>
 					<Border Background="{TemplateBinding Background}"
 					        BorderBrush="{TemplateBinding BorderBrush}"
-					        BorderThickness="{TemplateBinding BorderThickness}">
+					        BorderThickness="{TemplateBinding BorderThickness}"
+					        Padding="{TemplateBinding Padding}"
+					        CornerRadius="{TemplateBinding CornerRadius}">
 						<Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
 						      Fill="{TemplateBinding Foreground}"
 						      Stretch="Uniform"/>
