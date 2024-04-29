@@ -12,7 +12,7 @@ internal sealed class DarkThemeColors : ThemeColors
 	protected override Color WatermarkPrimary => Color.FromRgb(0x9E, 0xA8, 0xB3);
 	protected override Color WatermarkSecondary => Color.FromRgb(0x85, 0x8D, 0x98);
 	protected override Color ButtonHoverBackground => Color.FromRgb(0x39, 0x3E, 0x49);
-	protected override Color DisabledButtonBackground => Color.FromRgb(0x36, 0x39, 0x3F);
+	protected override Color DisabledButtonBackground => Color.FromRgb(0x2E, 0x31, 0x36);
 	protected override Color PressedButtonBackground => Color.FromRgb(0x36, 0x3A, 0x45);
 	protected override Color ToolTipForeground => Color.FromRgb(0xAB, 0xB4, 0xC0);
 	protected override Color LowAccentButtonBackground => Color.FromRgb(0x23, 0x55, 0x3E);
