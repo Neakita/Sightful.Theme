@@ -1,0 +1,18 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+	<Design.PreviewWith>
+		<Border Padding="40" Background="{DynamicResource OuterBackground}">
+			<Button Content="Click Me!"/>
+		</Border>
+	</Design.PreviewWith>
+        
+	<Style Selector=":is(Button):pointerover">
+		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
+	</Style>
+        
+	<Style Selector=":is(Button):pressed">
+		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
+	</Style>
+	<StyleInclude Source="../Shrinking.axaml"/>
+</Styles>

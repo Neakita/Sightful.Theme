@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding">
+			<StackPanel Spacing="12">
+				<Button Content="Click Me!"/>
+				<Button>
+					<Button.Content>
+						<TextBlock Text="{Binding $self.Bounds.Height, StringFormat=Text Height: {0}}"/>
+					</Button.Content>
+				</Button>
+				<Button>
+					<StackPanel Orientation="Horizontal">
+						<icons:MaterialIcon Kind="ExitToApp"/>
+						<TextBlock Name="TextBlock" Text="Sign out"/>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+
+	<ControlTheme x:Key="{x:Type Button}" TargetType="Button">
+		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Height" Value="{DynamicResource ControlsHeight}"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="ToolTip.Placement" Value="{DynamicResource ToolTipPlacement}"/>
+		<Setter Property="ToolTip.VerticalOffset" Value="0"/>
+		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Foreground="{TemplateBinding Foreground}"
+				                  Background="{TemplateBinding Background}"
+				                  CornerRadius="{TemplateBinding CornerRadius}"
+				                  Content="{TemplateBinding Content}"
+				                  ContentTemplate="{TemplateBinding ContentTemplate}"
+				                  RecognizesAccessKey="True"
+				                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+				                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+				                  BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+				                  BorderBrush="{TemplateBinding BorderBrush}"
+				                  BorderThickness="{TemplateBinding BorderThickness}"
+				                  Padding="{TemplateBinding Padding}">
+					<ContentPresenter.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BrushTransition Property="Foreground"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BoxShadowsTransition Property="BoxShadow"
+							                      Duration="{DynamicResource BrushTransitionDuration}"/>
+						</Transitions>
+					</ContentPresenter.Transitions>
+				</ContentPresenter>
+			</ControlTemplate>
+		</Setter>
+		
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
+		</Style>
+
+		<StyleInclude Source="../Styles/Button/Flat.axaml"/>
+		<StyleInclude Source="../Styles/Button/Square.axaml"/>
+		<StyleInclude Source="../Styles/Button/TitleBar.axaml"/>
+		<StyleInclude Source="../Styles/Button/Wide.axaml"/>
+		<StyleInclude Source="../Styles/Button/LowAccent.axaml"/>
+		<StyleInclude Source="../Styles/Button/HighAccent.axaml"/>
+		<StyleInclude Source="../Styles/Button/Interactions.axaml"/>
+
+	</ControlTheme>
+
+</ResourceDictionary>

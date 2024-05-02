@@ -1,0 +1,89 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+	<Design.PreviewWith>
+		<StackPanel>
+			<Border Classes="inner wide-padding">
+				<ListBox Classes="fade">
+					<ListBoxItem>Lightweight and modular API</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+				</ListBox>
+			</Border>
+			<Border Classes="outer wide-padding">
+				<ListBox>
+					<ListBoxItem>Lightweight and modular API</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+					<ListBoxItem>Test</ListBoxItem>
+				</ListBox>
+			</Border>
+		</StackPanel>
+	</Design.PreviewWith>
+	<ControlTheme x:Key="BaseListBoxItem" TargetType="ListBoxItem">
+		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+		<Setter Property="Padding" Value="16"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<StyleInclude Source="../Styles/Shrinking.axaml"/>
+	</ControlTheme>
+	<ControlTheme x:Key="FadeListBoxItem" TargetType="ListBoxItem" BasedOn="{StaticResource BaseListBoxItem}">
+		<Setter Property="assists:InternalListBoxItemAssist.Fade" Value="#00000000"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Panel>
+					<ContentPresenter Background="{TemplateBinding Background}"
+					                  BorderBrush="{TemplateBinding BorderBrush}"
+					                  BorderThickness="{TemplateBinding BorderThickness}"
+					                  CornerRadius="{TemplateBinding CornerRadius}"
+					                  ContentTemplate="{TemplateBinding ContentTemplate}"
+					                  Content="{TemplateBinding Content}"
+					                  Padding="{TemplateBinding Padding}"
+					                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+					                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+					<Border CornerRadius="{TemplateBinding CornerRadius}"
+					        Background="{TemplateBinding assists:InternalListBoxItemAssist.Fade}">
+						<Border.Transitions>
+							<Transitions>
+								<BrushTransition Property="Background" Duration="0:0:0.2"/>
+							</Transitions>
+						</Border.Transitions>
+					</Border>
+				</Panel>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:pointerover">
+			<Setter Property="assists:InternalListBoxItemAssist.Fade" Value="#28000000"/>
+		</Style>
+	</ControlTheme>
+	<ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource BaseListBoxItem}">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ContentPresenter Background="{TemplateBinding Background}"
+				                  BorderBrush="{TemplateBinding BorderBrush}"
+				                  BorderThickness="{TemplateBinding BorderThickness}"
+				                  CornerRadius="{TemplateBinding CornerRadius}"
+				                  ContentTemplate="{TemplateBinding ContentTemplate}"
+				                  Content="{TemplateBinding Content}"
+				                  Padding="{TemplateBinding Padding}"
+				                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+				                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+					<ContentPresenter.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background" Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
+						</Transitions>
+					</ContentPresenter.Transitions>
+				</ContentPresenter>
+			</ControlTemplate>
+		</Setter>
+		<Style Selector="^:selected">
+			<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+			<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+		</Style>
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+		</Style>
+	</ControlTheme>
+</ResourceDictionary>

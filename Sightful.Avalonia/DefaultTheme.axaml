@@ -1,0 +1,18 @@
+﻿<Styles x:Class="Sightful.Avalonia.DefaultTheme"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:themeVariants="clr-namespace:Sightful.Avalonia.ThemeVariants">
+	<Styles.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<themeVariants:DarkThemeColors x:Key="Dark"/>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Styles.Resources>
+	<StyleInclude Source="DefaultControls.axaml"/>
+	<StyleInclude Source="Styles/UserControl.axaml"/>
+	<StyleInclude Source="Styles/Border.axaml"/>
+	<StyleInclude Source="Styles/Button/Content.axaml"/>
+	<StyleInclude Source="Styles/ContentPresenter.axaml"/>
+	<StyleInclude Source="Styles/ListBoxItem.axaml"/>
+</Styles>
