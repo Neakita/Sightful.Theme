@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
 namespace Sightful.Avalonia;
@@ -29,28 +30,33 @@ public class AppearanceTheme : ResourceDictionary
 	});
 	public virtual PlacementMode ToolTipPlacement => PlacementMode.Top;
 
+	public AppearanceTheme()
+	{
+		AvaloniaXamlLoader.Load(this);
+	}
+
 	public void Initialize()
 	{
 		if (IsInitialized)
 			return;
-		AddResources();
+		SetResources();
 		IsInitialized = true;
 	}
 
-	private void AddResources()
+	private void SetResources()
 	{
-		AddResource(ControlCornerRadius);
-		AddResource(ShrinkingDuration);
-		AddResource(BrushTransitionDuration);
-		AddResource(ShrinkingEasing);
-		AddResource(BoxShadow);
-		AddResource(HiddenBoxShadow);
-		AddResource(ToolTipPlacement);
-		AddResource(Shrinking);
+		SetResource(ControlCornerRadius);
+		SetResource(ShrinkingDuration);
+		SetResource(BrushTransitionDuration);
+		SetResource(ShrinkingEasing);
+		SetResource(BoxShadow);
+		SetResource(HiddenBoxShadow);
+		SetResource(ToolTipPlacement);
+		SetResource(Shrinking);
 	}
 
-	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
+	private void SetResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
 	{
-		Add(key, value);
+		this[key] = value;
 	}
 }

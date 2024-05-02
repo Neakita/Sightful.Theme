@@ -22,6 +22,15 @@
 	</Design.PreviewWith>
 
 	<ControlTheme x:Key="{x:Type Button}" TargetType="Button">
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<ResourceDictionary.MergedDictionaries>
+					<ResourceInclude Source="../ThemeVariants/ThemeColors.axaml"/>
+					<ResourceInclude Source="../SpatialTheme.axaml"/>
+					<ResourceInclude Source="../AppearanceTheme.axaml"/>
+				</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
 		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
 		<Setter Property="FontWeight" Value="Medium"/>

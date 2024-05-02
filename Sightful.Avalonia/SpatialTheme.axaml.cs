@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 
 namespace Sightful.Avalonia;
 
@@ -14,6 +15,11 @@ public class SpatialTheme : ResourceDictionary
 	public virtual Thickness WideSquareButtonPadding => new(12);
 	public virtual Thickness ControlsMargin => new(6);
 	public virtual double FontSize => 18;
+
+	public SpatialTheme()
+	{
+		AvaloniaXamlLoader.Load(this);
+	}
 
 	public void Initialize()
 	{
@@ -36,6 +42,6 @@ public class SpatialTheme : ResourceDictionary
 
 	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
 	{
-		Add(key, value);
+		this[key] = value;
 	}
 }
