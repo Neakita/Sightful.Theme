@@ -4,6 +4,7 @@ using Avalonia.Animation.Easings;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia;
 
@@ -57,6 +58,7 @@ public class AppearanceTheme : ResourceDictionary
 
 	private void SetResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
 	{
+		Guard.IsTrue(ContainsKey(key));
 		this[key] = value;
 	}
 }

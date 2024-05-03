@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia;
 
@@ -31,17 +32,18 @@ public class SpatialTheme : ResourceDictionary
 
 	private void AddResources()
 	{
-		AddResource(ControlsHeight);
-		AddResource(WideControlsHeight);
-		AddResource(ButtonPadding);
-		AddResource(SquareButtonPadding);
-		AddResource(WideSquareButtonPadding);
-		AddResource(ControlsMargin);
-		AddResource(FontSize);
+		SetResource(ControlsHeight);
+		SetResource(WideControlsHeight);
+		SetResource(ButtonPadding);
+		SetResource(SquareButtonPadding);
+		SetResource(WideSquareButtonPadding);
+		SetResource(ControlsMargin);
+		SetResource(FontSize);
 	}
 
-	private void AddResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
+	private void SetResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")
 	{
+		Guard.IsTrue(ContainsKey(key));
 		this[key] = value;
 	}
 }

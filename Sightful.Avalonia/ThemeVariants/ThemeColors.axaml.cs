@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia.ThemeVariants;
 
@@ -65,6 +66,7 @@ internal class ThemeColors : ResourceDictionary
 
 	private void SetColor(Color color, [CallerArgumentExpression(nameof(color))] string key = "")
 	{
+		Guard.IsTrue(ContainsKey(key));
 		this[key] = new SolidColorBrush(color);
 	}
 }
