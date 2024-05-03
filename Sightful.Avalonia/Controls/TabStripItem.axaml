@@ -40,6 +40,7 @@
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
 		<Setter Property="HorizontalContentAlignment" Value="Center"/>
 		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Cursor" Value="Hand"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<ContentPresenter
