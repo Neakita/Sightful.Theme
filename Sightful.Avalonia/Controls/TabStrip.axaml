@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:converters="clr-namespace:Sightful.Avalonia">
+                    xmlns:converters="clr-namespace:Sightful.Avalonia"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<StackPanel Spacing="20">
 			<Border Classes="outer wide-padding">
@@ -50,6 +51,7 @@
 	</ControlTheme>
 	
 	<ControlTheme x:Key="TabStripTheme" TargetType="TabStrip" BasedOn="{StaticResource VerticalButtonsTabStripTheme}">
+		<Setter Property="assists:ControlAssists.TrackLoading" Value="True"/>
 		<Setter Property="ItemContainerTheme" Value="{DynamicResource TabStripItemTheme}"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
@@ -76,12 +78,14 @@
 								<MultiBinding Converter="{x:Static converters:Converters.ItemToWidthConverter}">
 									<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=TabStrip}"/>
 									<TemplateBinding Property="SelectedIndex"/>
+									<TemplateBinding Property="assists:ControlAssists.IsLoaded"/>
 								</MultiBinding>
 							</Rectangle.Width>
 							<Canvas.Left>
 								<MultiBinding Converter="{x:Static converters:Converters.ItemToPositionConverter}">
 									<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=TabStrip}"/>
 									<TemplateBinding Property="SelectedIndex"/>
+									<TemplateBinding Property="assists:ControlAssists.IsLoaded"/>
 								</MultiBinding>
 							</Canvas.Left>
 							<Border.Transitions>
