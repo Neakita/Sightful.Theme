@@ -1,9 +1,8 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
-                    xmlns:theme="clr-namespace:Sightful.Avalonia"
-                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
-	<ControlTheme x:Key="{x:Type Window}" TargetType="Window">
+                    xmlns:theme="clr-namespace:Sightful.Avalonia">
+	<ControlTheme x:Key="SightfulWindow" TargetType="Window">
 		<ControlTheme.Resources>
 			<ResourceDictionary>
 				<SolidColorBrush x:Key="SystemBarBrush" Color="{DynamicResource OuterBackground}"/>
@@ -26,7 +25,7 @@
 					<Panel Background="Transparent" Margin="{TemplateBinding WindowDecorationMargin}"/>
 					<VisualLayerManager>
 						<VisualLayerManager.ChromeOverlayLayer>
-							<TitleBar/>
+							<TitleBar VerticalAlignment="Top"/>
 						</VisualLayerManager.ChromeOverlayLayer>
 						<Panel>
 							<DockPanel>
@@ -34,29 +33,10 @@
 								                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"
 								                  Padding="12"
 								                  IsVisible="{TemplateBinding assists:WindowAssist.LeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"/>
-								<DockPanel DockPanel.Dock="Top"
-								           HorizontalAlignment="Stretch"
-								           Name="TitleBarPanel"
-								           Bounds="{Binding (assists:InternalWindowAssist.TitleBarHeight), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.HeightRectConverter}, Mode=OneWayToSource}">
-									<StackPanel Orientation="Horizontal"
-									            DockPanel.Dock="Right"
-									            IsVisible="{TemplateBinding ExtendClientAreaToDecorationsHint}">
-										<Button Classes="title-bar"
-										        Content="{icons:MaterialIconExt WindowMinimize}"
-										        Command="{x:Static assists:WindowAssist.MinimizeWindowCommand}"
-										        CommandParameter="{Binding $self}"/>
-										<Button Classes="title-bar"
-										        Content="{icons:MaterialIconExt WindowMaximize}"
-										        Command="{x:Static assists:WindowAssist.MaximizeWindowCommand}"
-										        CommandParameter="{Binding $self}"/>
-										<Button Classes="title-bar close-window"
-										        Content="{icons:MaterialIconExt WindowClose}"
-										        Command="{x:Static assists:WindowAssist.CloseWindowCommand}"
-										        CommandParameter="{Binding $self}"/>
-									</StackPanel>
-									<ContentPresenter
-										Content="{TemplateBinding assists:WindowAssist.TopContent}"/>
-								</DockPanel>
+								<ContentPresenter DockPanel.Dock="Top"
+								                  Content="{TemplateBinding assists:WindowAssist.TopContent}"
+								                  Bounds="{Binding (assists:InternalWindowAssist.TitleBarHeight), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.HeightRectConverter}, Mode=OneWayToSource}"
+								                  Margin="{Binding (assists:InternalWindowAssist.CaptionButtonsWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.DoubleToRightMarginConverter}}"/>
 								<ContentPresenter Name="PART_ContentPresenter"
 								                  ContentTemplate="{TemplateBinding ContentTemplate}"
 								                  Content="{TemplateBinding Content}"
@@ -79,4 +59,7 @@
 			</ControlTemplate>
 		</Setter>
 	</ControlTheme>
+
+	<ControlTheme x:Key="{x:Type Window}" TargetType="Window" BasedOn="{StaticResource SightfulWindow}"/>
+
 </ResourceDictionary>

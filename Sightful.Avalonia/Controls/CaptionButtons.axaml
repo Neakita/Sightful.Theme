@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
+                    xmlns:theme="clr-namespace:Sightful.Avalonia">
+    <Design.PreviewWith>
+        <Border Classes="outer wide-padding">
+            <CaptionButtons/>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type CaptionButtons}" TargetType="CaptionButtons">
+        <Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+        <Setter Property="Bounds" Value="{Binding (assists:InternalWindowAssist.CaptionButtonsWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.WidthRectConverter}, Mode=OneWayToSource}"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal"
+                            Background="{TemplateBinding Background}">
+                    <Button x:Name="PART_FullScreenButton"
+                            Classes="title-bar"
+                            Content="{icons:MaterialIconExt Fullscreen}"
+                            IsVisible="False"/>
+                    <Button x:Name="PART_MinimizeButton"
+                            Classes="title-bar"
+                            Content="{icons:MaterialIconExt WindowMinimize}"
+                            AutomationProperties.Name="Minimize"/>
+                    <Button x:Name="PART_RestoreButton"
+                            Classes="title-bar"
+                            Content="{icons:MaterialIconExt WindowMaximize}"
+                            AutomationProperties.Name="Maximize"/>
+                    <Button x:Name="PART_CloseButton"
+                            Classes="title-bar close-window"
+                            Content="{icons:MaterialIconExt WindowClose}"
+                            AutomationProperties.Name="Close"/>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:maximized /template/ Button#PART_RestoreButton">
+            <Setter Property="Content">
+                <Template>
+                    <icons:MaterialIcon Kind="WindowRestore"/>
+                </Template>
+            </Setter>
+        </Style>
+        <Style Selector="^:fullscreen /template/ Button#PART_FullScreenButton">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Content">
+                <Template>
+                    <icons:MaterialIcon Kind="FullscreenExit"/>
+                </Template>
+            </Setter>
+        </Style>
+        <Style Selector="^:fullscreen /template/ Button#PART_RestoreButton">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        <Style Selector="^:fullscreen /template/ Button#PART_MinimizeButton">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        <Style Selector="^ /template/ Button#PART_RestoreButton:disabled">
+            <Setter Property="Opacity" Value="0.2"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
