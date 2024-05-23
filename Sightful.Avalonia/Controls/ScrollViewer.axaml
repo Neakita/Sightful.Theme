@@ -54,8 +54,5 @@
 				</Grid>
 			</ControlTemplate>
 		</Setter>
-		<Style Selector="^.regular-padding">
-			<Setter Property="Padding" Value="16"/>
-		</Style>
 	</ControlTheme>
 </ResourceDictionary>

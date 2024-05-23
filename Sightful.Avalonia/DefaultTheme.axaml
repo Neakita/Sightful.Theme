@@ -13,6 +13,6 @@
 	<StyleInclude Source="Styles/UserControl.axaml"/>
 	<StyleInclude Source="Styles/Border.axaml"/>
 	<StyleInclude Source="Styles/Button/Content.axaml"/>
-	<StyleInclude Source="Styles/ContentPresenter.axaml"/>
+	<StyleInclude Source="Styles/Padding.axaml"/>
 	<StyleInclude Source="Styles/ListBoxItem.axaml"/>
 </Styles>

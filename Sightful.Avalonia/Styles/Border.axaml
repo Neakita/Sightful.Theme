@@ -15,13 +15,5 @@
 		<Setter Property="Background" Value="{DynamicResource InnerBackground}"/>
 		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
 	</Style>
-
-	<Style Selector="Border.wide-padding">
-		<Setter Property="Padding" Value="24"/>
-	</Style>
-
-	<Style Selector="Border.regular-padding">
-		<Setter Property="Padding" Value="16"/>
-	</Style>
 	
 </Styles>

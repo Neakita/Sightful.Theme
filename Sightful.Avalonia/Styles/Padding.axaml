@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<Style Selector=":is(Control).regular-padding">
+		<Setter Property="Border.Padding" Value="16"/>
+		<Setter Property="ContentPresenter.Padding" Value="16"/>
+		<Setter Property="ScrollViewer.Padding" Value="16"/>
+	</Style>
+
+	<Style Selector=":is(Control).wide-padding">
+		<Setter Property="Border.Padding" Value="24"/>
+		<Setter Property="ContentPresenter.Padding" Value="24"/>
+		<Setter Property="ScrollViewer.Padding" Value="24"/>
+	</Style>
+
+</ResourceDictionary>
