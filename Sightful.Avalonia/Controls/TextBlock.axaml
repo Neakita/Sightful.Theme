@@ -12,6 +12,9 @@
 						<icons:MaterialIcon Kind="ArrowRight"/>
 					</StackPanel>
 				</Button>
+				<TextBlock Classes="h1" Text="Display H1"/>
+				<TextBlock Classes="h2" Text="Display H2"/>
+				<TextBlock Classes="h3" Text="Loader Display H3"/>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
@@ -21,6 +24,18 @@
 			<Setter Property="FontSize" Value="22"/>
 			<Setter Property="FontWeight" Value="Bold"/>
 			<Setter Property="FontStretch" Value="UltraExpanded"/>
+		</Style>
+		<Style Selector="^.h1">
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="FontWeight" Value="700"/>
+		</Style>
+		<Style Selector="^.h2">
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="FontWeight" Value="700"/>
+		</Style>
+		<Style Selector="^.h3">
+			<Setter Property="FontSize" Value="17"/>
+			<Setter Property="FontWeight" Value="700"/>
 		</Style>
 	</ControlTheme>
 	
