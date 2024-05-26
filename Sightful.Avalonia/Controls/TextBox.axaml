@@ -1,8 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
-                    xmlns:theme="clr-namespace:Sightful.Avalonia">
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
 			<StackPanel>
@@ -45,6 +44,9 @@
 				<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 			</Transitions>
 		</Setter>
+		<Setter Property="FocusAdorner" Value="{x:Null}" />
+		<Setter Property="CaretBrush" Value="{DynamicResource SecondaryForeground}" />
+		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Border BorderThickness="{TemplateBinding BorderThickness}"
@@ -83,11 +85,21 @@
 						</TextBlock>
 						<TextPresenter Name="PART_TextPresenter"
 						               Grid.Column="1"
-						               Text="{TemplateBinding Text}"
-						               CaretBrush="{TemplateBinding Foreground}"
-						               SelectionBrush="{TemplateBinding SelectionBrush}"
+						               Text="{TemplateBinding Text, Mode=TwoWay}"
+						               CaretIndex="{TemplateBinding CaretIndex}"
 						               SelectionStart="{TemplateBinding SelectionStart}"
-						               SelectionEnd="{TemplateBinding SelectionEnd}"/>
+						               SelectionEnd="{TemplateBinding SelectionEnd}"
+						               TextAlignment="{TemplateBinding TextAlignment}"
+						               TextWrapping="{TemplateBinding TextWrapping}"
+						               LineHeight="{TemplateBinding LineHeight}"
+						               LetterSpacing="{TemplateBinding LetterSpacing}"
+						               PasswordChar="{TemplateBinding PasswordChar}"
+						               RevealPassword="{TemplateBinding RevealPassword}"
+						               SelectionBrush="{TemplateBinding SelectionBrush}"
+						               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+						               CaretBrush="{TemplateBinding CaretBrush}"
+						               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+						               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 						<ContentPresenter Grid.Column="2"
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
