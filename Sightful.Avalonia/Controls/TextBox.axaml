@@ -13,6 +13,7 @@
 				<TextBox InnerLeftContent="{icons:MaterialIconExt Square}"
 				         InnerRightContent="{icons:MaterialIconExt Square}"
 				         Text="|Squares|"/>
+				<TextBox Text="Overflow" Width="80"/>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
@@ -99,7 +100,8 @@
 						               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
 						               CaretBrush="{TemplateBinding CaretBrush}"
 						               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-						               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+						               ClipToBounds="True"/>
 						<ContentPresenter Grid.Column="2"
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
