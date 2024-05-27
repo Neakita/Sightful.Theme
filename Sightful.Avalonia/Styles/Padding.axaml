@@ -1,15 +1,26 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Style Selector=":is(Control).regular-padding">
-		<Setter Property="Border.Padding" Value="16"/>
-		<Setter Property="ContentPresenter.Padding" Value="16"/>
-		<Setter Property="ScrollViewer.Padding" Value="16"/>
+
+	<Style Selector="Border.regular-padding">
+		<Setter Property="Padding" Value="16"/>
+	</Style>
+	<Style Selector="ContentPresenter.regular-padding">
+		<Setter Property="Padding" Value="16"/>
+	</Style>
+	<Style Selector="ScrollViewer.regular-padding">
+		<Setter Property="Padding" Value="16"/>
 	</Style>
 
-	<Style Selector=":is(Control).wide-padding">
-		<Setter Property="Border.Padding" Value="24"/>
-		<Setter Property="ContentPresenter.Padding" Value="24"/>
-		<Setter Property="ScrollViewer.Padding" Value="24"/>
+	<Style Selector="Border.wide-padding">
+		<Setter Property="Padding" Value="24"/>
+	</Style>
+
+	<Style Selector="ContentPresenter.wide-padding">
+		<Setter Property="Padding" Value="24"/>
+	</Style>
+
+	<Style Selector="ScrollViewer.wide-padding">
+		<Setter Property="Padding" Value="24"/>
 	</Style>
 
 </Styles>
