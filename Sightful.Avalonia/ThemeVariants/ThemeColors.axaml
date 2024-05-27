@@ -24,4 +24,5 @@
 	<SolidColorBrush x:Key="TextSelection"/>
 	<SolidColorBrush x:Key="DisabledButtonBackground"/>
 	<SolidColorBrush x:Key="HighAccentDisabledButtonBackground"/>
+	<SolidColorBrush x:Key="DisabledTextBoxBackground"/>
 </ResourceDictionary>
