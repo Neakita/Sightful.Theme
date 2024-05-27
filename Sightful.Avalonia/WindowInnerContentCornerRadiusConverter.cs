@@ -1,6 +1,7 @@
 using System.Globalization;
 using Avalonia;
 using Avalonia.Data.Converters;
+using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia;
 
@@ -9,6 +10,7 @@ internal sealed class WindowInnerContentCornerRadiusConverter : IMultiValueConve
 {
 	public object Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
 	{
+        Guard.IsNotNull(parameter);
 		var cornerRadius = (CornerRadius)parameter;
 		var leftContent = values[0];
 		if (leftContent == null)

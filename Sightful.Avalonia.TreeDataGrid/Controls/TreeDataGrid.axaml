@@ -3,6 +3,10 @@
                     xmlns:local="clr-namespace:Sightful.Avalonia.TreeDataGrid">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding" DataContext="{DynamicResource DataContext}">
+			<Border.Styles>
+				<StyleInclude Source="avares://Sightful.Avalonia/Styles/Border.axaml"/>
+				<StyleInclude Source="avares://Sightful.Avalonia/Styles/Padding.axaml"/>
+			</Border.Styles>
 			<Border.Resources>
 				<local:DesignTreeDataGridViewModel x:Key="DataContext"/>
 			</Border.Resources>

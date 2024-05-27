@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
+			<Border.Styles>
+				<StyleInclude Source="avares://Sightful.Avalonia/Styles/Border.axaml"/>
+				<StyleInclude Source="avares://Sightful.Avalonia/Styles/Padding.axaml"/>
+			</Border.Styles>
 			<TreeDataGridCheckBoxCell Value="True"/>
 		</Border>
 	</Design.PreviewWith>

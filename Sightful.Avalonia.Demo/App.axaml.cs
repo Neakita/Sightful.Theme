@@ -6,7 +6,7 @@ using Sightful.Avalonia.Demo.Views;
 
 namespace Sightful.Avalonia.Demo;
 
-public partial class App : Application
+internal sealed class App : Application
 {
 	public override void Initialize()
 	{
