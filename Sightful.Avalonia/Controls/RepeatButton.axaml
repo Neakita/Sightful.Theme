@@ -4,6 +4,10 @@
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
 			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
+			<Border.Styles>
 				<StyleInclude Source="../Styles/Button/Square.axaml"/>
 			</Border.Styles>
 			<RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>

@@ -4,6 +4,9 @@
 	<Design.PreviewWith>
 		<Border Background="{DynamicResource OuterBackground}">
 			<StackPanel>
+				<StackPanel.Styles>
+					<StyleInclude Source="Button.axaml"/>
+				</StackPanel.Styles>
 				<TextBlock Classes="caption" Text="Sign in with"/>
 				<TextBlock Classes="caption" Text="Or use a password"/>
 				<Button Classes="high-accent">

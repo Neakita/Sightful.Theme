@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding" Width="400">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<TabControl>
 				<TabItem Header="Arch">
 					<Border Height="100">

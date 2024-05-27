@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<StackPanel Spacing="20">
 				<ToolTip Opacity="1">Text Content</ToolTip>
 				<ToolTip Opacity="1">Very long text content which should exceed the maximum with of the tooltip and wrap.</ToolTip>

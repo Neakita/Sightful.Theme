@@ -3,8 +3,19 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<StackPanel>
+			<StackPanel.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</StackPanel.Styles>
 			<Border Classes="inner wide-padding">
 				<ListBox Classes="fade">
+					<ListBox.Resources>
+						<ResourceDictionary>
+							<ResourceDictionary.MergedDictionaries>
+								<ResourceInclude Source="ListBox.axaml"/>
+							</ResourceDictionary.MergedDictionaries>
+						</ResourceDictionary>
+					</ListBox.Resources>
 					<ListBoxItem>Lightweight and modular API</ListBoxItem>
 					<ListBoxItem>Test</ListBoxItem>
 					<ListBoxItem>Test</ListBoxItem>

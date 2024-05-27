@@ -4,6 +4,10 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<StackPanel Spacing="12">
 				<Button Content="Click Me!"/>
 				<Button>

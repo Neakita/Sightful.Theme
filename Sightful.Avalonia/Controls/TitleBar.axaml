@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding" Width="300">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<TitleBar />
 		</Border>
 	</Design.PreviewWith>

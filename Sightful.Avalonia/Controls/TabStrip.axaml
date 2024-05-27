@@ -5,6 +5,10 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<StackPanel Spacing="20">
+			<StackPanel.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</StackPanel.Styles>
 			<Border Classes="outer wide-padding">
 				<TabStrip Theme="{DynamicResource VerticalButtonsTabStripTheme}">
 					<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>

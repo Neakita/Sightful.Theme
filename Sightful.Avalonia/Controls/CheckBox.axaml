@@ -4,6 +4,10 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<StackPanel Spacing="20">
 				<CheckBox>Unchecked</CheckBox>
 				<CheckBox IsChecked="True">Checked</CheckBox>
@@ -13,6 +17,14 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<ResourceDictionary.MergedDictionaries>
+					<ResourceInclude Source="../ThemeVariants/ThemeColors.axaml"/>
+					<ResourceInclude Source="../AppearanceTheme.axaml"/>
+				</ResourceDictionary.MergedDictionaries>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
 		<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
 		        Value="{DynamicResource ControlBackground}"/>
 		<Setter Property="assists:InternalCheckBoxAssist.GlyphForeground"

@@ -3,6 +3,10 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
+			<Border.Styles>
+				<StyleInclude Source="../Styles/Border.axaml"/>
+				<StyleInclude Source="../Styles/Padding.axaml"/>
+			</Border.Styles>
 			<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
 			         Watermark="Circle"/>
 		</Border>
