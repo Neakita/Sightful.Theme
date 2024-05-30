@@ -21,6 +21,7 @@
 		    </ResourceDictionary>
 	    </ControlTheme.Resources>
 	    <StyleInclude Source="../Styles/Button/TitleBar.axaml"/>
+	    <StyleInclude Source="../Styles/Button/Interactions.axaml"/>
 	    <Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
         <Setter Property="Bounds" Value="{Binding (assists:InternalWindowAssist.CaptionButtonsWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.WidthRectConverter}, Mode=OneWayToSource}"/>
         <Setter Property="Template">
