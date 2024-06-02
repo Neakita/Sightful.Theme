@@ -9,6 +9,7 @@
         <Authors>Katter</Authors>
         <RepositoryUrl>https://github.com/KatterMaw/Sightful.Theme</RepositoryUrl>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
     <ItemGroup>
