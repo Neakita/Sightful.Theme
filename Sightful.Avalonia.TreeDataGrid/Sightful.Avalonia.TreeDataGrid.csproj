@@ -5,13 +5,14 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.0.10" />
+      <PackageReference Include="Avalonia" Version="11.0.11" />
       <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.0.10" />
       <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-      <PackageReference Include="Material.Icons.Avalonia" Version="2.1.9" />
+      <PackageReference Include="Material.Icons.Avalonia" Version="2.1.10" />
     </ItemGroup>
 
     <ItemGroup>
