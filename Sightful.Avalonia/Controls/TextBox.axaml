@@ -21,7 +21,7 @@
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
-	
+
 	<ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
 		<ControlTheme.Resources>
 			<ResourceDictionary>
@@ -49,9 +49,9 @@
 				<BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
 			</Transitions>
 		</Setter>
-		<Setter Property="FocusAdorner" Value="{x:Null}" />
-		<Setter Property="CaretBrush" Value="{DynamicResource SecondaryForeground}" />
-		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+		<Setter Property="FocusAdorner" Value="{x:Null}"/>
+		<Setter Property="CaretBrush" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Border BorderThickness="{TemplateBinding BorderThickness}"
@@ -88,25 +88,32 @@
 								</Transitions>
 							</TextBlock.Transitions>
 						</TextBlock>
-						<TextPresenter Name="PART_TextPresenter"
-						               Grid.Column="1"
-						               Text="{TemplateBinding Text, Mode=TwoWay}"
-						               CaretIndex="{TemplateBinding CaretIndex}"
-						               SelectionStart="{TemplateBinding SelectionStart}"
-						               SelectionEnd="{TemplateBinding SelectionEnd}"
-						               TextAlignment="{TemplateBinding TextAlignment}"
-						               TextWrapping="{TemplateBinding TextWrapping}"
-						               LineHeight="{TemplateBinding LineHeight}"
-						               LetterSpacing="{TemplateBinding LetterSpacing}"
-						               PasswordChar="{TemplateBinding PasswordChar}"
-						               RevealPassword="{TemplateBinding RevealPassword}"
-						               SelectionBrush="{TemplateBinding SelectionBrush}"
-						               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
-						               CaretBrush="{TemplateBinding CaretBrush}"
-						               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-						               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-						               ClipToBounds="True"
-						               Background="Transparent"/>
+						<ScrollViewer Grid.Column="1"
+						              Name="PART_ScrollViewer"
+						              HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+						              VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+						              IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+						              AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+						              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+							<TextPresenter Name="PART_TextPresenter"
+							               Text="{TemplateBinding Text, Mode=TwoWay}"
+							               CaretIndex="{TemplateBinding CaretIndex}"
+							               SelectionStart="{TemplateBinding SelectionStart}"
+							               SelectionEnd="{TemplateBinding SelectionEnd}"
+							               TextAlignment="{TemplateBinding TextAlignment}"
+							               TextWrapping="{TemplateBinding TextWrapping}"
+							               LineHeight="{TemplateBinding LineHeight}"
+							               LetterSpacing="{TemplateBinding LetterSpacing}"
+							               PasswordChar="{TemplateBinding PasswordChar}"
+							               RevealPassword="{TemplateBinding RevealPassword}"
+							               SelectionBrush="{TemplateBinding SelectionBrush}"
+							               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+							               CaretBrush="{TemplateBinding CaretBrush}"
+							               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+							               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							               ClipToBounds="True"
+							               Background="Transparent"/>
+						</ScrollViewer>
 						<ContentPresenter Grid.Column="2"
 						                  Content="{TemplateBinding InnerRightContent}"
 						                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
@@ -131,5 +138,5 @@
 			<Setter Property="Background" Value="{DynamicResource DisabledTextBoxBackground}"/>
 		</Style>
 	</ControlTheme>
-	
+
 </ResourceDictionary>
