@@ -32,7 +32,8 @@
 								<ContentPresenter DockPanel.Dock="Left"
 								                  Content="{TemplateBinding assists:WindowAssist.LeftContent}"
 								                  Padding="12"
-								                  IsVisible="{TemplateBinding assists:WindowAssist.LeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+								                  IsVisible="{TemplateBinding assists:WindowAssist.LeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
+								                  Bounds="{Binding (assists:WindowAssist.LeftContentWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.WidthRectConverter}, Mode=OneWayToSource}"/>
 								<ContentPresenter DockPanel.Dock="Top"
 								                  Content="{TemplateBinding assists:WindowAssist.TopContent}"
 								                  Bounds="{Binding (assists:InternalWindowAssist.TitleBarHeight), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.HeightRectConverter}, Mode=OneWayToSource}"

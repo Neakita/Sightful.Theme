@@ -22,6 +22,23 @@ public static class WindowAssist
 
 	#endregion
 
+	#region LeftContentWidth
+
+	public static readonly AvaloniaProperty<double> LeftContentWidthProperty =
+		AvaloniaProperty.RegisterAttached<Window, double>("LeftContentWidth", typeof(WindowAssist));
+
+	public static double GetLeftContentWidth(AvaloniaObject element)
+	{
+		return element.GetValue<double>(LeftContentWidthProperty);
+	}
+
+	public static void SetLeftContentWidth(AvaloniaObject element, double value)
+	{
+		element.SetValue(LeftContentWidthProperty, value);
+	}
+
+	#endregion
+
 	#region TopContent
 
 	public static readonly AvaloniaProperty<object?> TopContentProperty =
