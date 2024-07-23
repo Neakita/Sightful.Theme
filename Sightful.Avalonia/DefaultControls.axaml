@@ -27,6 +27,7 @@
 				<MergeResourceInclude Source="Controls/CaptionButtons.axaml"/>
 				<MergeResourceInclude Source="Controls/TitleBar.axaml"/>
 				<MergeResourceInclude Source="Controls/HeaderedContentControl.axaml"/>
+				<MergeResourceInclude Source="Controls/ToggleSwitch.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>

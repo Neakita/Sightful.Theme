@@ -28,6 +28,7 @@ internal sealed class DarkThemeColors : ThemeColors
 	protected override Color HighAccentButtonForeground => Colors.Black;
 	protected override Color TextSelection => Color.FromRgb(0x0D, 0x43, 0xAF);
 	protected override Color DisabledTextBoxBackground => Color.FromRgb(0x37, 0x3C, 0x47);
+	protected override Color ToggleSwitchKnob => Color.FromRgb(0x9F, 0xA4, 0xB3);
 
 	public DarkThemeColors()
 	{

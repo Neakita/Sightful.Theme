@@ -25,4 +25,5 @@
 	<SolidColorBrush x:Key="DisabledButtonBackground"/>
 	<SolidColorBrush x:Key="HighAccentDisabledButtonBackground"/>
 	<SolidColorBrush x:Key="DisabledTextBoxBackground"/>
+	<SolidColorBrush x:Key="ToggleSwitchKnob"/>
 </ResourceDictionary>
