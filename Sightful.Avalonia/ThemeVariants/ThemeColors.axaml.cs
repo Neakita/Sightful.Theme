@@ -33,6 +33,8 @@ internal class ThemeColors : ResourceDictionary
 	protected virtual Color HighAccentDisabledButtonBackground => Colors.Black;
 	protected virtual Color DisabledTextBoxBackground => Colors.Black;
 	protected virtual Color ToggleSwitchKnob => Colors.Black;
+	protected virtual Color HoveredToggleSwitchKnob => Colors.Black;
+	protected virtual Color PressedToggleSwitchKnob => Colors.Black;
 
 	public ThemeColors()
 	{
@@ -66,6 +68,8 @@ internal class ThemeColors : ResourceDictionary
 		SetColor(HighAccentDisabledButtonBackground);
 		SetColor(DisabledTextBoxBackground);
 		SetColor(ToggleSwitchKnob);
+		SetColor(HoveredToggleSwitchKnob);
+		SetColor(PressedToggleSwitchKnob);
 	}
 
 	private void SetColor(Color color, [CallerArgumentExpression(nameof(color))] string key = "")

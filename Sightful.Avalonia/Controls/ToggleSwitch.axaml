@@ -36,6 +36,11 @@
 		</Setter>
 		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
 		<Setter Property="CornerRadius" Value="16"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill" Value="{DynamicResource HoveredToggleSwitchKnob}"/>
+		<Setter Property="assists:ToggleSwitchAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Setter Property="assists:ToggleSwitchAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		<Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource PressedToggleSwitchKnob}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Grid ColumnDefinitions="Auto Auto">
@@ -47,7 +52,8 @@
 					        Width="52"
 					        Height="32"
 					        Background="{TemplateBinding Background}"
-					        CornerRadius="{TemplateBinding CornerRadius}">
+					        CornerRadius="{TemplateBinding CornerRadius}"
+					        assists:InternalShrinkingAssist.Shrinking="{TemplateBinding assists:ToggleSwitchAssist.Shrinking}">
 						<Border.Transitions>
 							<Transitions>
 								<BrushTransition Property="Background"
@@ -79,6 +85,20 @@
 		<Style Selector="^:checked">
 			<Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
 			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
+			<Setter Property="assists:ToggleSwitchAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+			<Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
+			<Setter Property="assists:ToggleSwitchAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+			<Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
+			
+		</Style>
+		<Style Selector="^:pointerover">
+			<Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredBackground)}"/>
+			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredKnobFill)}"/>
+		</Style>
+		<Style Selector="^:pressed">
+			<Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.PressedBackground)}"/>
+			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{Binding $self.(assists:ToggleSwitchAssist.PressedKnobFill)}"/>
+			<Setter Property="assists:ToggleSwitchAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
 		</Style>
 	</ControlTheme>
 </ResourceDictionary>
