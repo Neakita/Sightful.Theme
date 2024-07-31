@@ -143,7 +143,7 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 	{
 		if (propertySymbol.Type.Name == "Boolean")
 		{
-			var displayName = GetAttributeStringValue(propertySymbol, "DisplayNameAttribute") ?? propertySymbol.Name;
+			var displayName = GetAttributeStringValue(propertySymbol, "DisplayNameAttribute") ?? FormatForDisplay(propertySymbol.Name);
 			var description = GetAttributeStringValue(propertySymbol, "DescriptionAttribute") ?? string.Empty;
 			builder.AppendIndent().Append("<ToggleSwitch IsChecked=\"{Binding ").Append(propertySymbol.Name).AppendLine("}\">");
 			builder.IndentLevel++;
@@ -167,5 +167,18 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 	private static string? GetAttributeStringValue(AttributeData? displayNameAttribute)
 	{
 		return (string?)displayNameAttribute?.ConstructorArguments.FirstOrDefault().Value;
+	}
+
+	// Convert "SomeString" to "Some string"
+	private static string FormatForDisplay(string input)
+	{
+		input = SplitCamelCase(input);
+		input = input.Substring(0, 1) + input.Substring(1).ToLower();
+		return input;
+	}
+
+	private static string SplitCamelCase(string input)
+	{
+		return System.Text.RegularExpressions.Regex.Replace(input, "([A-Z])", " $1", System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
 	}
 }
