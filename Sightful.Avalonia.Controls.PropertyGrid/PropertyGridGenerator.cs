@@ -135,16 +135,22 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 
 	private static void GenerateProperties(IndentStringBuilder builder, ViewModelData data)
 	{
-		foreach (var propertySymbol in data.Properties)
+		foreach (var propertySymbol in data.Properties.Where(ShouldGenerate))
 			GenerateProperty(builder, propertySymbol);
+	}
+
+	private static bool ShouldGenerate(IPropertySymbol propertySymbol)
+	{
+		return propertySymbol.GetMethod != null && propertySymbol.SetMethod != null &&
+			GetAttributeValue<bool?>(propertySymbol, "BrowsableAttribute") != false;
 	}
 
 	private static void GenerateProperty(IndentStringBuilder builder, IPropertySymbol propertySymbol)
 	{
 		if (propertySymbol.Type.Name == "Boolean")
 		{
-			var displayName = GetAttributeStringValue(propertySymbol, "DisplayNameAttribute") ?? FormatForDisplay(propertySymbol.Name);
-			var description = GetAttributeStringValue(propertySymbol, "DescriptionAttribute") ?? string.Empty;
+			var displayName = GetAttributeValue<string>(propertySymbol, "DisplayNameAttribute") ?? FormatForDisplay(propertySymbol.Name);
+			var description = GetAttributeValue<string>(propertySymbol, "DescriptionAttribute") ?? string.Empty;
 			builder.AppendIndent().Append("<ToggleSwitch IsChecked=\"{Binding ").Append(propertySymbol.Name).AppendLine("}\">");
 			builder.IndentLevel++;
 			builder.AppendIndent().AppendLine("<ToggleSwitch.Content>");
@@ -157,16 +163,16 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 		}
 	}
 
-	private static string? GetAttributeStringValue(IPropertySymbol propertySymbol, string attributeName)
+	private static T? GetAttributeValue<T>(IPropertySymbol propertySymbol, string attributeName)
 	{
 		var attributes = propertySymbol.GetAttributes();
 		var attribute = attributes.FirstOrDefault(attribute => attribute.AttributeClass?.Name == attributeName);
-		return GetAttributeStringValue(attribute);
+		return GetAttributeValue<T>(attribute);
 	}
 
-	private static string? GetAttributeStringValue(AttributeData? displayNameAttribute)
+	private static T? GetAttributeValue<T>(AttributeData? displayNameAttribute)
 	{
-		return (string?)displayNameAttribute?.ConstructorArguments.FirstOrDefault().Value;
+		return (T?)displayNameAttribute?.ConstructorArguments.FirstOrDefault().Value;
 	}
 
 	// Convert "SomeString" to "Some string"
