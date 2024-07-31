@@ -81,8 +81,6 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 		builder
 			.AppendLine("<UserControl xmlns=\"https://github.com/avaloniaui\"")
 			.AppendLine("             xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"")
-			.AppendLine("             xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"")
-			.AppendLine("             xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"")
 			.AppendLine("             xmlns:propertyGrid=\"clr-namespace:Sightful.Avalonia.Controls.PropertyGrid;assembly=Sightful.Avalonia.Controls.PropertyGrid\"");
 		GenerateNamespaces(builder, namespaces);
 		builder.AppendLine("             x:Class=\"Generated.PropertyGrid\">");
