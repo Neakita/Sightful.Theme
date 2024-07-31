@@ -49,27 +49,29 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 			members);
 	}
 
-	private static void GenerateCode(SourceProductionContext context, (ImmutableArray<ViewModelData> Left, string Right) data)
+	private static void GenerateCode(SourceProductionContext context, (ImmutableArray<ViewModelData> Left, string? Right) data)
 	{
-		context.AddSource("PropertyGrid.axaml.cs",
-			"""
-			using Avalonia.Controls;
+		var csSource = """
+		             using Avalonia.Controls;
 
-			namespace Generated;
+		             namespace Generated;
 
-			public partial class PropertyGrid : UserControl
-			{
-				public PropertyGrid()
-				{
-					InitializeComponent();
-				}
-			}
-			"""
-		);
+		             public partial class PropertyGrid : UserControl
+		             {
+		             	public PropertyGrid()
+		             	{
+		             		InitializeComponent();
+		             	}
+		             }
+		             """;
 		IndentStringBuilder xamlBuilder = new();
 		GenerateXaml(xamlBuilder, data.Left);
+		if (data.Right == null)
+			return;
 #pragma warning disable RS1035
-		File.WriteAllText(Path.Combine(data.Right, "PropertyGrid.axaml"), xamlBuilder.ToString());
+		Directory.CreateDirectory(Path.Combine(data.Right, "Generated"));
+		File.WriteAllText(Path.Combine(data.Right, "Generated", "PropertyGrid.axaml"), xamlBuilder.ToString());
+		File.WriteAllText(Path.Combine(data.Right, "Generated", "PropertyGrid.axaml.cs"), csSource);
 #pragma warning restore RS1035
 	}
 
