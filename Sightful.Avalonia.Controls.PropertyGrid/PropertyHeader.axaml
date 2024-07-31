@@ -1,0 +1,31 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Sightful.Avalonia.Controls.PropertyGrid">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding">
+			<StackPanel>
+				<controls:PropertyHeader PropertyName="Custom decorations"/>
+				<controls:PropertyHeader PropertyName="Custom decorations"
+				                         PropertyDescription="Some boring description"/>
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+
+	<Style Selector="controls|PropertyHeader">
+		<Setter Property="Template">
+			<ControlTemplate>
+				<TextBlock LineSpacing="4" MaxLines="{TemplateBinding PropertyDescription, Converter={x:Static controls:Converters.RestrictMaxLinesToSingleIfEmptyString}}">
+					<Run Text="{TemplateBinding PropertyName}"
+					     Foreground="{DynamicResource PrimaryForeground}"
+					     FontSize="21"
+					     FontWeight="700"/>
+					<LineBreak/>
+					<Run Text="{TemplateBinding PropertyDescription}"
+					     Foreground="{DynamicResource SecondaryForeground}"
+					     FontSize="17"
+					     FontWeight="400"/>
+				</TextBlock>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>
