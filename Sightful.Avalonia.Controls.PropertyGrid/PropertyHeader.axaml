@@ -14,7 +14,8 @@
 	<Style Selector="controls|PropertyHeader">
 		<Setter Property="Template">
 			<ControlTemplate>
-				<TextBlock LineSpacing="4" MaxLines="{TemplateBinding PropertyDescription, Converter={x:Static controls:Converters.RestrictMaxLinesToSingleIfEmptyString}}">
+				<TextBlock LineSpacing="4" MaxLines="{TemplateBinding PropertyDescription, Converter={x:Static controls:Converters.RestrictMaxLinesToSingleIfEmptyString}}"
+				           TextWrapping="Wrap">
 					<Run Text="{TemplateBinding PropertyName}"
 					     Foreground="{DynamicResource PrimaryForeground}"
 					     FontSize="21"
