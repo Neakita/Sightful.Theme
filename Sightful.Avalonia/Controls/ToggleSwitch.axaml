@@ -43,11 +43,14 @@
 		<Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource PressedToggleSwitchKnob}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<Grid ColumnDefinitions="Auto Auto">
+				<Grid ColumnDefinitions="* Auto"
+				      HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+				      VerticalAlignment="{TemplateBinding VerticalAlignment}">
 					<ContentPresenter Grid.Column="0"
 					                  Content="{TemplateBinding Content}"
 					                  Margin="0 0 8 0"
-					                  IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+					                  IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
+					                  Background="Transparent"/>
 					<Border Grid.Column="1"
 					        Width="52"
 					        Height="32"
