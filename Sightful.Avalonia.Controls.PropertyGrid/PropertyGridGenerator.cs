@@ -81,15 +81,21 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 		builder
 			.AppendLine("<UserControl xmlns=\"https://github.com/avaloniaui\"")
 			.AppendLine("             xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"")
-			.AppendLine("             xmlns:propertyGrid=\"clr-namespace:Sightful.Avalonia.Controls.PropertyGrid;assembly=Sightful.Avalonia.Controls.PropertyGrid\"");
+			.AppendLine("             xmlns:propertyGrid=\"clr-namespace:Sightful.Avalonia.Controls.PropertyGrid;assembly=Sightful.Avalonia.Controls.PropertyGrid\"")
+			.AppendLine("             xmlns:componentModel=\"clr-namespace:System.ComponentModel;assembly=System.ObjectModel\"");
 		GenerateNamespaces(builder, namespaces);
-		builder.AppendLine("             x:Class=\"Generated.PropertyGrid\">");
+		builder.AppendLine("             x:Class=\"Generated.PropertyGrid\"");
+		builder.AppendLine("             x:DataType=\"componentModel:INotifyPropertyChanged\">");
 		builder.IndentLevel++;
-		builder.AppendIndent().AppendLine("<UserControl.DataTemplates>");
+		builder.AppendIndent().AppendLine("<ContentControl Content=\"{Binding}\">");
+		builder.IndentLevel++;
+		builder.AppendIndent().AppendLine("<ContentControl.DataTemplates>");
 		builder.IndentLevel++;
 		GenerateDataTemplates(builder, namespaces);
 		builder.IndentLevel--;
-		builder.AppendIndent().AppendLine("</UserControl.DataTemplates>");
+		builder.AppendIndent().AppendLine("</ContentControl.DataTemplates>");
+		builder.IndentLevel--;
+		builder.AppendIndent().AppendLine("</ContentControl>");
 		builder.IndentLevel--;
 		builder.AppendLine("</UserControl>");
 	}
@@ -149,7 +155,7 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 		{
 			var displayName = GetAttributeValue<string>(propertySymbol, "DisplayNameAttribute") ?? FormatForDisplay(propertySymbol.Name);
 			var description = GetAttributeValue<string>(propertySymbol, "DescriptionAttribute") ?? string.Empty;
-			builder.AppendIndent().Append("<ToggleSwitch IsChecked=\"{Binding ").Append(propertySymbol.Name).AppendLine("}\">");
+			builder.AppendIndent().Append("<ToggleSwitch HorizontalAlignment=\"Stretch\" IsChecked=\"{Binding ").Append(propertySymbol.Name).AppendLine("}\">");
 			builder.IndentLevel++;
 			builder.AppendIndent().AppendLine("<ToggleSwitch.Content>");
 			builder.IndentLevel++;
