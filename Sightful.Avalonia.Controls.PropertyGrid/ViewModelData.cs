@@ -9,14 +9,17 @@ internal sealed class ViewModelData
 	public ClassDeclarationSyntax ClassSyntax { get; }
 	public string ContainingNamespace { get; }
 	public ImmutableArray<IPropertySymbol> Properties { get; }
+	public ImmutableArray<IFieldSymbol> Fields { get; }
 
 	public ViewModelData(
 		ClassDeclarationSyntax classSyntax,
 		string containingNamespace,
-		ImmutableArray<IPropertySymbol> properties)
+		ImmutableArray<IPropertySymbol> properties,
+		ImmutableArray<IFieldSymbol> fields)
 	{
 		ClassSyntax = classSyntax;
 		ContainingNamespace = containingNamespace;
 		Properties = properties;
+		Fields = fields;
 	}
 }

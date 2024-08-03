@@ -41,29 +41,34 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 		var declaredSymbol = context.SemanticModel.GetDeclaredSymbol(context.TargetNode);
 		if (declaredSymbol is not INamedTypeSymbol namedTypeSymbol)
 			return null;
+		if (declaredSymbol.GetAttributeValue<bool?>("BrowsableAttribute") != true)
+			return null;
 		var containingNamespace = declaredSymbol.ContainingNamespace.ToDisplayString();
-		var members = namedTypeSymbol.GetMembers().OfType<IPropertySymbol>().ToImmutableArray();
+		var members = namedTypeSymbol.GetMembers();
+		var properties = members.OfType<IPropertySymbol>().ToImmutableArray();
+		var fields = members.OfType<IFieldSymbol>().ToImmutableArray();
 		return new ViewModelData(
 			classSyntax,
 			containingNamespace,
-			members);
+			properties,
+			fields);
 	}
 
 	private static void GenerateCode(SourceProductionContext context, (ImmutableArray<ViewModelData> Left, string? Right) data)
 	{
-		var csSource = """
-		             using Avalonia.Controls;
+		const string csSource = """
+		                        using Avalonia.Controls;
 
-		             namespace Generated;
+		                        namespace Generated;
 
-		             public partial class PropertyGrid : UserControl
-		             {
-		             	public PropertyGrid()
-		             	{
-		             		InitializeComponent();
-		             	}
-		             }
-		             """;
+		                        public partial class PropertyGrid : UserControl
+		                        {
+		                        	public PropertyGrid()
+		                        	{
+		                        		InitializeComponent();
+		                        	}
+		                        }
+		                        """;
 		IndentStringBuilder xamlBuilder = new();
 		GenerateXaml(xamlBuilder, data.Left);
 		if (data.Right == null)
@@ -139,56 +144,38 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 
 	private static void GenerateProperties(IndentStringBuilder builder, ViewModelData data)
 	{
-		foreach (var propertySymbol in data.Properties.Where(ShouldGenerate))
-			GenerateProperty(builder, propertySymbol);
+		var properties = data.Properties.Where(ShouldGenerate).Select(PropertyData.Create);
+		var fieldsAsProperty = data.Fields.Where(ShouldGenerate).Select(PropertyData.Create);
+		foreach (var property in properties)
+			GenerateProperty(builder, property);
+		foreach (var property in fieldsAsProperty)
+			GenerateProperty(builder, property);
 	}
 
-	private static bool ShouldGenerate(IPropertySymbol propertySymbol)
+	private static bool ShouldGenerate(IPropertySymbol symbol)
 	{
-		return propertySymbol.GetMethod != null && propertySymbol.SetMethod != null &&
-			GetAttributeValue<bool?>(propertySymbol, "BrowsableAttribute") != false;
+		return symbol.GetMethod != null && symbol.SetMethod != null &&
+		       symbol.GetAttributeValue<bool?>("BrowsableAttribute") != false;
 	}
 
-	private static void GenerateProperty(IndentStringBuilder builder, IPropertySymbol propertySymbol)
+	private static bool ShouldGenerate(IFieldSymbol symbol)
 	{
-		if (propertySymbol.Type.Name == "Boolean")
+		return symbol.GetAttributes().Any(attribute => attribute.AttributeClass?.Name == "ObservablePropertyAttribute");
+	}
+
+	private static void GenerateProperty(IndentStringBuilder builder, PropertyData data)
+	{
+		if (data.Type == "Boolean")
 		{
-			var displayName = GetAttributeValue<string>(propertySymbol, "DisplayNameAttribute") ?? FormatForDisplay(propertySymbol.Name);
-			var description = GetAttributeValue<string>(propertySymbol, "DescriptionAttribute") ?? string.Empty;
-			builder.AppendIndent().Append("<ToggleSwitch HorizontalAlignment=\"Stretch\" IsChecked=\"{Binding ").Append(propertySymbol.Name).AppendLine("}\">");
+			builder.AppendIndent().Append("<ToggleSwitch HorizontalAlignment=\"Stretch\" IsChecked=\"{Binding ").Append(data.Name).AppendLine("}\">");
 			builder.IndentLevel++;
 			builder.AppendIndent().AppendLine("<ToggleSwitch.Content>");
 			builder.IndentLevel++;
-			builder.AppendIndent().Append("<propertyGrid:PropertyHeader PropertyName=\"").Append(displayName).Append("\" PropertyDescription=\"").Append(description).AppendLine("\"/>");
+			builder.AppendIndent().Append("<propertyGrid:PropertyHeader PropertyName=\"").Append(data.DisplayName).Append("\" PropertyDescription=\"").Append(data.Description).AppendLine("\"/>");
 			builder.IndentLevel--;
 			builder.AppendIndent().AppendLine("</ToggleSwitch.Content>");
 			builder.IndentLevel--;
 			builder.AppendIndent().AppendLine("</ToggleSwitch>");
 		}
-	}
-
-	private static T? GetAttributeValue<T>(IPropertySymbol propertySymbol, string attributeName)
-	{
-		var attributes = propertySymbol.GetAttributes();
-		var attribute = attributes.FirstOrDefault(attribute => attribute.AttributeClass?.Name == attributeName);
-		return GetAttributeValue<T>(attribute);
-	}
-
-	private static T? GetAttributeValue<T>(AttributeData? displayNameAttribute)
-	{
-		return (T?)displayNameAttribute?.ConstructorArguments.FirstOrDefault().Value;
-	}
-
-	// Convert "SomeString" to "Some string"
-	private static string FormatForDisplay(string input)
-	{
-		input = SplitCamelCase(input);
-		input = input.Substring(0, 1) + input.Substring(1).ToLower();
-		return input;
-	}
-
-	private static string SplitCamelCase(string input)
-	{
-		return System.Text.RegularExpressions.Regex.Replace(input, "([A-Z])", " $1", System.Text.RegularExpressions.RegexOptions.Compiled).Trim();
 	}
 }
