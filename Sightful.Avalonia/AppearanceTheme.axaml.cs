@@ -16,22 +16,38 @@ public class AppearanceTheme : ResourceDictionary
 	public virtual TimeSpan BrushTransitionDuration => TimeSpan.FromMilliseconds(100);
 	public virtual Easing ShrinkingEasing { get; } = new ElasticEaseOut();
 	public virtual double Shrinking => 2;
-	public virtual Color ShadowColor => new(0x60, 0, 0, 0);
+	public virtual Color ShadowColor => new(0x20, 0, 0, 0);
+	public virtual Color HeavyShadowColor => new(0x60, 0, 0, 0);
 	public virtual double ShadowOffsetY => 5;
+	public virtual double HeavyShadowOffsetY => 5;
 	public virtual double ShadowBlurRadius => 5;
-		
+	public virtual double HeavyShadowBlurRadius => 10;
+
 	// makes it possible to fully display the shadow even with ClipToBounds="True"
 	public virtual Thickness ShadowContainerMargin => new(
-		5,
+		ShadowBlurRadius,
 		ShadowOffsetY - ShadowBlurRadius,
-		5,
+		ShadowBlurRadius,
 		ShadowOffsetY + ShadowBlurRadius);
+
+	// makes it possible to fully display the shadow even with ClipToBounds="True"
+	public virtual Thickness HeavyShadowContainerMargin => new(
+		HeavyShadowBlurRadius,
+		HeavyShadowOffsetY - HeavyShadowBlurRadius,
+		HeavyShadowBlurRadius,
+		HeavyShadowOffsetY + HeavyShadowBlurRadius);
 
 	public virtual BoxShadows BoxShadow => new(new BoxShadow
 	{
-		OffsetY = 5,
-		Blur = 5,
+		OffsetY = ShadowOffsetY,
+		Blur = ShadowBlurRadius,
 		Color = ShadowColor,
+	});
+	public virtual BoxShadows HeavyBoxShadow => new(new BoxShadow
+	{
+		OffsetY = HeavyShadowOffsetY,
+		Blur = HeavyShadowBlurRadius,
+		Color = HeavyShadowColor,
 	});
 	public virtual BoxShadows HiddenBoxShadow => new(new BoxShadow
 	{
@@ -40,6 +56,7 @@ public class AppearanceTheme : ResourceDictionary
 	});
 	public virtual PlacementMode ToolTipPlacement => PlacementMode.Top;
 	public virtual double ToolTipVerticalOffset => ShadowContainerMargin.Bottom; // compensate shadow margin
+	public virtual double HeavyToolTipVerticalOffset => HeavyShadowContainerMargin.Bottom; // compensate shadow margin
 
 	public AppearanceTheme()
 	{
@@ -69,6 +86,9 @@ public class AppearanceTheme : ResourceDictionary
 		SetResource(ShadowBlurRadius);
 		SetResource(ToolTipVerticalOffset);
 		SetResource(ShadowContainerMargin);
+		SetResource(HeavyShadowContainerMargin);
+		SetResource(HeavyToolTipVerticalOffset);
+		SetResource(HeavyBoxShadow);
 	}
 
 	private void SetResource<T>(T value, [CallerArgumentExpression(nameof(value))] string key = "")

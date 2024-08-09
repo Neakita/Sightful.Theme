@@ -8,11 +8,17 @@
 	<ElasticEaseOut x:Key="ShrinkingEasing"/>
 	<system:Double x:Key="Shrinking">2</system:Double>
 	<BoxShadows x:Key="BoxShadow">0 5 5 0 #60000000</BoxShadows>
+	<BoxShadows x:Key="HeavyBoxShadow">0 5 5 0 #60000000</BoxShadows>
 	<BoxShadows x:Key="HiddenBoxShadow">0 0 0 -1 #60000000</BoxShadows> 
 	<PlacementMode x:Key="ToolTipPlacement">Top</PlacementMode>
 	<Color x:Key="ShadowColor">#60000000</Color>
+	<Color x:Key="HeavyShadowColor">#60000000</Color>
 	<system:Double x:Key="ShadowOffsetY">5</system:Double>
+	<system:Double x:Key="HeavyShadowOffsetY">5</system:Double>
 	<system:Double x:Key="ShadowBlurRadius">5</system:Double>
+	<system:Double x:Key="HeavyShadowBlurRadius">5</system:Double>
 	<Thickness x:Key="ShadowContainerMargin">5 0 5 10</Thickness>
+	<Thickness x:Key="HeavyShadowContainerMargin">5 0 5 10</Thickness>
 	<system:Double x:Key="ToolTipVerticalOffset">10</system:Double>
+	<system:Double x:Key="HeavyToolTipVerticalOffset">10</system:Double>
 </ResourceDictionary>

@@ -13,7 +13,7 @@
 		</Style.Resources>
 		<Setter Property="Background" Value="{StaticResource Background}"/>
 		<Style Selector="^:not(:pointerover)">
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="0 0 0 0 #60000000"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
 		</Style>
 	</Style>
 </Styles>

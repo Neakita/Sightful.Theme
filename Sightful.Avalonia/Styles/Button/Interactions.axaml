@@ -9,6 +9,7 @@
         
 	<Style Selector=":is(Button):pointerover">
 		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HeavyBoxShadow}"/>
 	</Style>
         
 	<Style Selector=":is(Button):pressed">

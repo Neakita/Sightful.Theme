@@ -82,7 +82,7 @@
 		
 		<Style Selector="^:pointerover">
 			<Setter Property="Background" Value="{Binding $self.(assists:TabStripItemAssist.HoveredBackground)}"/>
-			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HeavyBoxShadow}"/>
 		</Style>
 		
 		<Style Selector="^:pressed">
