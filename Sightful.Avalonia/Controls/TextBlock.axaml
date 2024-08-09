@@ -23,8 +23,6 @@
 	</Design.PreviewWith>
 	
 	<ControlTheme x:Key="{x:Type TextBlock}" TargetType="TextBlock">
-		<Setter Property="ToolTip.Placement" Value="{DynamicResource ToolTipPlacement}"/>
-		<Setter Property="ToolTip.VerticalOffset" Value="{DynamicResource ToolTipVerticalOffset}"/>
 		<Style Selector="^.caption">
 			<Setter Property="FontSize" Value="22"/>
 			<Setter Property="FontWeight" Value="Bold"/>

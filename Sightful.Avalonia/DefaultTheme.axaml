@@ -16,4 +16,5 @@
 	<StyleInclude Source="Styles/Padding.axaml"/>
 	<StyleInclude Source="Styles/ListBoxItem.axaml"/>
 	<StyleInclude Source="Styles/StackPanel.axaml"/>
+	<StyleInclude Source="Styles/Control.axaml"/>
 </Styles>
