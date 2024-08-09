@@ -47,8 +47,7 @@
 					                  Content="{TemplateBinding Content}"
 					                  ContentTemplate="{TemplateBinding ContentTemplate}"
 					                  TextWrapping="Wrap"/>
-					<!--Doesn't displaying in Avalonia 11.0.x https://github.com/AvaloniaUI/Avalonia/pull/12651-->
-					<Polygon Fill="{TemplateBinding Background}" Points="0,0 10,0 5,5" Width="10" Height="5"/>
+					<Polygon Fill="{TemplateBinding Background}" Points="0,0 12,0 6,6" Width="10" Height="5"/>
 				</StackPanel>
 			</ControlTemplate>
 		</Setter>
