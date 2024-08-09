@@ -9,8 +9,7 @@ internal sealed class ItemToWidthConverter : IMultiValueConverter
 {
 	public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
 	{
-		var tabStrip = (TabStrip?)values[0];
-		if (tabStrip == null || !tabStrip.IsLoaded)
+		if (values[0] is not TabStrip { IsLoaded: true } tabStrip)
 			return null;
 		var itemIndex = values[1];
 		Guard.IsNotNull(itemIndex);

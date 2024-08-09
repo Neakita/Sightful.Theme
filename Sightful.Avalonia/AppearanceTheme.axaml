@@ -10,4 +10,9 @@
 	<BoxShadows x:Key="BoxShadow">0 5 5 0 #60000000</BoxShadows>
 	<BoxShadows x:Key="HiddenBoxShadow">0 0 0 -1 #60000000</BoxShadows> 
 	<PlacementMode x:Key="ToolTipPlacement">Top</PlacementMode>
+	<Color x:Key="ShadowColor">#60000000</Color>
+	<system:Double x:Key="ShadowOffsetY">5</system:Double>
+	<system:Double x:Key="ShadowBlurRadius">5</system:Double>
+	<Thickness x:Key="ShadowContainerMargin">5 0 5 10</Thickness>
+	<system:Double x:Key="ToolTipVerticalOffset">10</system:Double>
 </ResourceDictionary>
