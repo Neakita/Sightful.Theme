@@ -58,7 +58,8 @@ public sealed class PropertyGridGenerator : IIncrementalGenerator
 	{
 		const string csSource = """
 		                        using Avalonia.Controls;
-
+		                        
+		                        // ReSharper disable once CheckNamespace
 		                        namespace Generated;
 
 		                        public partial class PropertyGrid : UserControl
