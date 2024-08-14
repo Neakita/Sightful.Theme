@@ -24,7 +24,8 @@
 					                        HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
 					                        VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
 					                        Padding="{TemplateBinding Padding}"
-					                        ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
+					                        ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}"
+					                        ClipToBounds="{TemplateBinding ClipToBounds}">
 						<ScrollContentPresenter.GestureRecognizers>
 							<ScrollGestureRecognizer
 								CanHorizontallyScroll="{Binding CanHorizontallyScroll, ElementName=PART_ContentPresenter}"

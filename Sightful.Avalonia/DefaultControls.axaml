@@ -29,6 +29,7 @@
 				<MergeResourceInclude Source="Controls/HeaderedContentControl.axaml"/>
 				<MergeResourceInclude Source="Controls/ToggleSwitch.axaml"/>
 				<MergeResourceInclude Source="Controls/RadioButton.axaml"/>
+				<MergeResourceInclude Source="Controls/RadioButtonsListBox.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>

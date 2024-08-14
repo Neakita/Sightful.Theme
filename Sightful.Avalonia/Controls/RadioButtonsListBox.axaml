@@ -1,0 +1,141 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
+                    xmlns:icon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+	<Design.PreviewWith>
+		<Border Classes="outer wide-padding">
+			<ListBox Theme="{DynamicResource RadioButtonsListBoxTheme}" Classes="horizontal">
+				<ListBoxItem Content="Option 1"/>
+				<ListBoxItem Content="Option 2"/>
+				<ListBoxItem Content="Option 3"/>
+			</ListBox>
+		</Border>
+	</Design.PreviewWith>
+	
+	<ControlTheme x:Key="RadioButtonListBoxItemTheme" TargetType="ListBoxItem">
+		<ControlTheme.Resources>
+			<ResourceDictionary>
+				<SolidColorBrush x:Key="TransparentHighAccentButtonBackground" Color="{DynamicResource HighAccentButtonBackground}" Opacity="0"/>
+			</ResourceDictionary>
+		</ControlTheme.Resources>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Foreground"
+				                 Duration="{DynamicResource BrushTransitionDuration}"/>
+			</Transitions>
+		</Setter>
+		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Height" Value="36"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Padding" Value="18 0"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource TransparentHighAccentButtonBackground}"/>
+
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Border 
+					Background="{TemplateBinding Background}"
+					CornerRadius="{TemplateBinding CornerRadius}"
+					BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+					BorderBrush="{TemplateBinding BorderBrush}"
+					BorderThickness="2"
+					Padding="{TemplateBinding Padding}"
+					Margin="-2">
+					<Border.Transitions>
+						<Transitions>
+							<BrushTransition Property="Background"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BrushTransition Property="BorderBrush"
+							                 Duration="{DynamicResource BrushTransitionDuration}"/>
+							<BoxShadowsTransition Property="BoxShadow"
+							                      Duration="{DynamicResource BrushTransitionDuration}"/>
+						</Transitions>
+					</Border.Transitions>
+					<DockPanel>
+						<icon:MaterialIcon DockPanel.Dock="Left"
+						                    Kind="Check"
+						                    IsVisible="{TemplateBinding IsSelected}"
+						                    Height="9"
+						                    Margin="0 0 12 0"/>
+						<ContentPresenter VerticalAlignment="Center"
+						                  Content="{TemplateBinding Content}"
+						                  ContentTemplate="{TemplateBinding ContentTemplate}"
+						                  RecognizesAccessKey="True"
+						                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+						                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</DockPanel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+		
+		<Style Selector="^:disabled">
+			<Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
+		</Style>
+
+		<Style Selector="^:selected">
+			<Setter Property="BorderBrush" Value="{DynamicResource HighAccentButtonBackground}"/>
+			<Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
+			<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
+			<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
+			<Style Selector="^:pointerover">
+				<Setter Property="BorderBrush" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+			</Style>
+			<Style Selector="^:pressed">
+				<Setter Property="BorderBrush" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+			</Style>
+		</Style>
+		
+		<StyleInclude Source="../Styles/Button/Interactions.axaml"/>
+	</ControlTheme>
+	
+	<ControlTheme x:Key="RadioButtonsListBoxTheme" TargetType="ListBox">
+		<Setter Property="ItemContainerTheme" Value="{DynamicResource RadioButtonListBoxItemTheme}"/>
+		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<ScrollViewer Name="PART_ScrollViewer"
+				              VerticalSnapPointsType="{TemplateBinding (ScrollViewer.VerticalSnapPointsType)}"
+				              HorizontalSnapPointsType="{TemplateBinding (ScrollViewer.HorizontalSnapPointsType)}"
+				              HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+				              VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+				              IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+				              IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+				              IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+				              AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+				              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
+				              CornerRadius="{TemplateBinding CornerRadius}"
+				              Background="{TemplateBinding Background}"
+				              ClipToBounds="False">
+					<ItemsPresenter Name="PART_ItemsPresenter"
+					                ItemsPanel="{TemplateBinding ItemsPanel}"
+					                Margin="{TemplateBinding Padding}"
+					                ClipToBounds="False"/>
+				</ScrollViewer>
+			</ControlTemplate>
+		</Setter>
+
+		<Setter Property="ItemsPanel">
+			<ItemsPanelTemplate>
+				<StackPanel Classes="regular-spacing"/>
+			</ItemsPanelTemplate>
+		</Setter>
+		
+		<Style Selector="^.horizontal">
+			<Setter Property="ItemsPanel">
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal" Classes="regular-spacing"/>
+				</ItemsPanelTemplate>
+			</Setter>
+		</Style>
+		
+	</ControlTheme>
+	
+</ResourceDictionary>
