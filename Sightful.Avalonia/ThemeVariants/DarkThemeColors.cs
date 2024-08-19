@@ -31,6 +31,7 @@ internal sealed class DarkThemeColors : ThemeColors
 	protected override Color ToggleSwitchKnob => Color.FromRgb(0x9F, 0xA4, 0xB3);
 	protected override Color HoveredToggleSwitchKnob => Color.FromRgb(0x87, 0x8B, 0x98);
 	protected override Color PressedToggleSwitchKnob => Color.FromRgb(0x7F, 0x83, 0x8F);
+	protected override Color HoveredComboBoxItemForeground => Color.FromRgb(0x96, 0x9E, 0xA7);
 
 	public DarkThemeColors()
 	{

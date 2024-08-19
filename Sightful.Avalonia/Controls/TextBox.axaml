@@ -79,7 +79,8 @@
 								</Transitions>
 							</ContentPresenter.Transitions>
 						</ContentPresenter>
-						<TextBlock Grid.Column="1" Text="{TemplateBinding Watermark}"
+						<TextBlock Grid.Column="1"
+						           Text="{TemplateBinding Watermark}"
 						           Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
 						           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
 							<TextBlock.Transitions>

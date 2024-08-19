@@ -14,7 +14,7 @@
 			</Transitions>
 		</Setter>
 		<Style Selector="^:pressed">
-			<Setter Property="assists:InternalShrinkingAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
+			<Setter Property="assists:InternalRenderTransformAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
 		</Style>
 	</Style>
 </Styles>

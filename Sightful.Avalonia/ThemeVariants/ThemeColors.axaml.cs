@@ -35,6 +35,7 @@ internal class ThemeColors : ResourceDictionary
 	protected virtual Color ToggleSwitchKnob => Colors.Black;
 	protected virtual Color HoveredToggleSwitchKnob => Colors.Black;
 	protected virtual Color PressedToggleSwitchKnob => Colors.Black;
+	protected virtual Color HoveredComboBoxItemForeground => Colors.Black;
 
 	public ThemeColors()
 	{
@@ -70,6 +71,7 @@ internal class ThemeColors : ResourceDictionary
 		SetColor(ToggleSwitchKnob);
 		SetColor(HoveredToggleSwitchKnob);
 		SetColor(PressedToggleSwitchKnob);
+		SetColor(HoveredComboBoxItemForeground);
 	}
 
 	private void SetColor(Color color, [CallerArgumentExpression(nameof(color))] string key = "")

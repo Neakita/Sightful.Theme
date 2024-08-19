@@ -47,8 +47,7 @@
 					BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
 					BorderBrush="{TemplateBinding BorderBrush}"
 					BorderThickness="2"
-					Padding="{TemplateBinding Padding}"
-					Margin="-2">
+					Padding="{TemplateBinding Padding}">
 					<Border.Transitions>
 						<Transitions>
 							<BrushTransition Property="Background"

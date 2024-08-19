@@ -56,7 +56,7 @@
 					        Height="32"
 					        Background="{TemplateBinding Background}"
 					        CornerRadius="{TemplateBinding CornerRadius}"
-					        assists:InternalShrinkingAssist.Shrinking="{TemplateBinding assists:ToggleSwitchAssist.Shrinking}">
+					        assists:InternalRenderTransformAssist.Shrinking="{TemplateBinding assists:ToggleSwitchAssist.Shrinking}">
 						<Border.Transitions>
 							<Transitions>
 								<BrushTransition Property="Background"
