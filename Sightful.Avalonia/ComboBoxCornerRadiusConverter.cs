@@ -26,16 +26,4 @@ internal sealed class ComboBoxCornerRadiusConverter : IMultiValueConverter
 			_ => cornerRadius
 		};
 	}
-
-	private static IEnumerable<Visual> GetVisualParents(Visual visual)
-	{
-		var parent = visual;
-		while (true)
-		{
-			parent = parent.GetVisualParent();
-			if (parent == null)
-				yield break;
-			yield return parent;
-		}
-	}
 }
