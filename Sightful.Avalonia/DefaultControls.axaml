@@ -33,6 +33,7 @@
 				<MergeResourceInclude Source="Controls/OverlayPopupHost.axaml"/>
 				<MergeResourceInclude Source="Controls/ComboBox.axaml"/>
 				<MergeResourceInclude Source="Controls/ComboBoxItem.axaml"/>
+                <MergeResourceInclude Source="Controls/DataValidationErrors.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
