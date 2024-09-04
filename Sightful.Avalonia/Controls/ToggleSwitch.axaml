@@ -3,10 +3,6 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
-			<Border.Styles>
-				<StyleInclude Source="../Styles/Border.axaml"/>
-				<StyleInclude Source="../Styles/Padding.axaml"/>
-			</Border.Styles>
 			<StackPanel Spacing="12">
 				<ToggleSwitch Content="Custom title bar"/>
 				<ToggleSwitch IsChecked="True"/>
@@ -14,14 +10,6 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
-		<ControlTheme.Resources>
-			<ResourceDictionary>
-				<ResourceDictionary.MergedDictionaries>
-					<ResourceInclude Source="../ThemeVariants/ThemeColors.axaml"/>
-					<ResourceInclude Source="../AppearanceTheme.axaml"/>
-				</ResourceDictionary.MergedDictionaries>
-			</ResourceDictionary>
-		</ControlTheme.Resources>
 		<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource ToggleSwitchKnob}"/>
 		<Setter Property="HorizontalAlignment" Value="Left"/>
 		<Setter Property="VerticalAlignment" Value="Center"/>

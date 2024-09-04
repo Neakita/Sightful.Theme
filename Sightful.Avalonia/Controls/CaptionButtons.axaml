@@ -5,21 +5,10 @@
                     xmlns:theme="clr-namespace:Sightful.Avalonia">
     <Design.PreviewWith>
         <Border Classes="outer wide-padding">
-	        <Border.Styles>
-		        <StyleInclude Source="../Styles/Border.axaml"/>
-		        <StyleInclude Source="../Styles/Padding.axaml"/>
-	        </Border.Styles>
             <CaptionButtons/>
         </Border>
     </Design.PreviewWith>
     <ControlTheme x:Key="{x:Type CaptionButtons}" TargetType="CaptionButtons">
-	    <ControlTheme.Resources>
-		    <ResourceDictionary>
-			    <ResourceDictionary.MergedDictionaries>
-				    <ResourceInclude Source="../ThemeVariants/ThemeColors.axaml"/>
-			    </ResourceDictionary.MergedDictionaries>
-		    </ResourceDictionary>
-	    </ControlTheme.Resources>
 	    <StyleInclude Source="../Styles/Button/TitleBar.axaml"/>
 	    <StyleInclude Source="../Styles/Button/Interactions.axaml"/>
 	    <Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
