@@ -3,7 +3,6 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Data.Converters;
-using Avalonia.VisualTree;
 using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia;
