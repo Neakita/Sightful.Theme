@@ -6,67 +6,67 @@ namespace Sightful.Avalonia.Assists;
 
 internal static class ToggleSwitchAssist
 {
-	public static readonly AttachedProperty<Brush?> KnobFillProperty =
-		AvaloniaProperty.RegisterAttached<ToggleSwitch, Brush?>("KnobFill", typeof(ToggleSwitchAssist));
+	public static readonly AttachedProperty<IBrush?> KnobFillProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("KnobFill", typeof(ToggleSwitchAssist));
 
-	public static Brush? GetKnobFill(ToggleSwitch element)
+	public static IBrush? GetKnobFill(ToggleSwitch element)
 	{
 		return element.GetValue(KnobFillProperty);
 	}
 
-	public static void SetKnobFill(ToggleSwitch element, Brush? brush)
+	public static void SetKnobFill(ToggleSwitch element, IBrush? brush)
 	{
 		element.SetValue(KnobFillProperty, brush);
 	}
 
-	public static readonly AttachedProperty<Brush?> HoveredKnobFillProperty =
-		AvaloniaProperty.RegisterAttached<ToggleSwitch, Brush?>("HoveredKnobFill", typeof(ToggleSwitchAssist));
+	public static readonly AttachedProperty<IBrush?> HoveredKnobFillProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("HoveredKnobFill", typeof(ToggleSwitchAssist));
 
-	public static void SetHoveredKnobFill(ToggleSwitch element, Brush? value)
+	public static void SetHoveredKnobFill(ToggleSwitch element, IBrush? value)
 	{
 		element.SetValue(HoveredKnobFillProperty, value);
 	}
 
-	public static Brush? GetHoveredKnobFill(ToggleSwitch element)
+	public static IBrush? GetHoveredKnobFill(ToggleSwitch element)
 	{
 		return element.GetValue(HoveredKnobFillProperty);
 	}
 
-	public static readonly AttachedProperty<Brush?> HoveredBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<ToggleSwitch, Brush?>("HoveredBackground", typeof(ToggleSwitchAssist));
+	public static readonly AttachedProperty<IBrush?> HoveredBackgroundProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("HoveredBackground", typeof(ToggleSwitchAssist));
 
-	public static void SetHoveredBackground(ToggleSwitch element, Brush? value)
+	public static void SetHoveredBackground(ToggleSwitch element, IBrush? value)
 	{
 		element.SetValue(HoveredBackgroundProperty, value);
 	}
 
-	public static Brush? GetHoveredBackground(ToggleSwitch element)
+	public static IBrush? GetHoveredBackground(ToggleSwitch element)
 	{
 		return element.GetValue(HoveredBackgroundProperty);
 	}
 
-	public static readonly AttachedProperty<Brush?> PressedBackgroundProperty =
-		AvaloniaProperty.RegisterAttached<ToggleSwitch, Brush?>("PressedBackground", typeof(ToggleSwitchAssist));
+	public static readonly AttachedProperty<IBrush?> PressedBackgroundProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("PressedBackground", typeof(ToggleSwitchAssist));
 
-	public static void SetPressedBackground(ToggleSwitch element, Brush? value)
+	public static void SetPressedBackground(ToggleSwitch element, IBrush? value)
 	{
 		element.SetValue(PressedBackgroundProperty, value);
 	}
 
-	public static Brush? GetPressedBackground(ToggleSwitch element)
+	public static IBrush? GetPressedBackground(ToggleSwitch element)
 	{
 		return element.GetValue(PressedBackgroundProperty);
 	}
 
-	public static readonly AttachedProperty<Brush?> PressedKnobFillProperty =
-		AvaloniaProperty.RegisterAttached<ToggleSwitch, Brush?>("PressedKnobFill", typeof(ToggleSwitchAssist));
+	public static readonly AttachedProperty<IBrush?> PressedKnobFillProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("PressedKnobFill", typeof(ToggleSwitchAssist));
 
-	public static void SetPressedKnobFill(ToggleSwitch element, Brush? value)
+	public static void SetPressedKnobFill(ToggleSwitch element, IBrush? value)
 	{
 		element.SetValue(PressedKnobFillProperty, value);
 	}
 
-	public static Brush? GetPressedKnobFill(ToggleSwitch element)
+	public static IBrush? GetPressedKnobFill(ToggleSwitch element)
 	{
 		return element.GetValue(PressedKnobFillProperty);
 	}

@@ -28,5 +28,5 @@
 	<Color x:Key="PressedToggleSwitchKnob">#7F838F</Color>
 	<Color x:Key="HoveredComboBoxItemForeground">#969EA7</Color>
 	<Color x:Key="DisabledButtonForeground">#6C7075</Color>
-    <Color x:Key="ighAccentButtonForeground">Black</Color>
+    <Color x:Key="HighAccentButtonForeground">Black</Color>
 </ResourceDictionary>
