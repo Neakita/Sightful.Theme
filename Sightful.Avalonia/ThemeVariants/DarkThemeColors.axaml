@@ -10,7 +10,7 @@
 	<Color x:Key="ButtonHoverBackground">#393E49</Color>
 	<Color x:Key="DisabledButtonBackground">#2E3136</Color>
 	<Color x:Key="PressedButtonBackground">#363A45</Color>
-	<Color x:Key="ToolTipForeground">#ABB4C0</Color>
+	<Color x:Key="ToolTipForeground">#ABB5C0</Color>
 	<Color x:Key="LowAccentButtonBackground">#23553E</Color>
 	<Color x:Key="LowAccentHoveredButtonBackground">#224D3A</Color>
 	<Color x:Key="LowAccentPressedButtonBackground">#224A39</Color>
