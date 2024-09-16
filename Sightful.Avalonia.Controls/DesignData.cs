@@ -4,5 +4,5 @@ namespace Sightful.Avalonia.Controls;
 
 internal static class DesignData
 {
-	public static readonly ImmutableList<double> ThreeValues = [0.5, 0.25, 0.25];
+	public static readonly ImmutableList<decimal> ThreeValues = [0.5m, 0.25m, 0.25m];
 }

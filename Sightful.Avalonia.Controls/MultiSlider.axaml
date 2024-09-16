@@ -1,8 +1,6 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Sightful.Avalonia.Controls"
-        xmlns:immutable="clr-namespace:System.Collections.Immutable;assembly=System.Collections.Immutable"
-        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+        xmlns:controls="using:Sightful.Avalonia.Controls">
     <Design.PreviewWith>
         <Border Classes="outer regular-padding" Width="200">
             <StackPanel Classes="regular-spacing">

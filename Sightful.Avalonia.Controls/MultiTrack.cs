@@ -14,14 +14,14 @@ namespace Sightful.Avalonia.Controls;
 [PseudoClasses(":vertical", ":horizontal")]
 public sealed class MultiTrack : Control
 {
-	public static readonly StyledProperty<double> RangeProperty =
-		AvaloniaProperty.Register<MultiTrack, double>(nameof(Range), 1, coerce: CoerceRange);
+	public static readonly StyledProperty<decimal> RangeProperty =
+		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(Range), 1, coerce: CoerceRange);
 
-	public static readonly StyledProperty<double> MinimumValueProperty =
-		AvaloniaProperty.Register<MultiTrack, double>(nameof(MinimumValue));
+	public static readonly StyledProperty<decimal> MinimumValueProperty =
+		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(MinimumValue));
 
-	public static readonly StyledProperty<ImmutableList<double>> ValuesProperty =
-		AvaloniaProperty.Register<MultiTrack, ImmutableList<double>>(nameof(Values), [0.5, 0.5], coerce: CoerceValues,
+	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
+		AvaloniaProperty.Register<MultiTrack, ImmutableList<decimal>>(nameof(Values), [0.5m, 0.5m], coerce: CoerceValues,
 			defaultBindingMode: BindingMode.TwoWay);
 
 	public static readonly StyledProperty<ControlTheme?> RangeButtonThemeProperty =
@@ -50,19 +50,19 @@ public sealed class MultiTrack : Control
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 	}
 
-	public double Range
+	public decimal Range
 	{
 		get => GetValue(RangeProperty);
 		set => SetValue(RangeProperty, value);
 	}
 
-	public double MinimumValue
+	public decimal MinimumValue
 	{
 		get => GetValue(MinimumValueProperty);
 		set => SetValue(MinimumValueProperty, value);
 	}
 
-	public ImmutableList<double> Values
+	public ImmutableList<decimal> Values
 	{
 		get => GetValue(ValuesProperty);
 		set => SetValue(ValuesProperty, value);
@@ -119,13 +119,13 @@ public sealed class MultiTrack : Control
 	{
 		var availableLength = Orientation == Orientation.Horizontal ? finalSize.Width : finalSize.Height;
 		var thumbsLength = LogicalChildren.OfType<Thumb>().Select(GetDesiredLength).Sum();
-		_density = availableLength - thumbsLength;
+		_density = (decimal)(availableLength - thumbsLength);
 
 		double passedLength = 0;
 		foreach (var (child, length) in LogicalChildren.Cast<Layoutable>().Zip(GetPiecesLengths()))
 		{
-			child.Arrange(GetArrangeRectangle(finalSize, passedLength, length));
-			passedLength += length;
+			child.Arrange(GetArrangeRectangle(finalSize, passedLength, (double)length));
+			passedLength += (double)length;
 		}
 		return Orientation == Orientation.Horizontal
 			? finalSize.WithWidth(passedLength)
@@ -133,23 +133,16 @@ public sealed class MultiTrack : Control
 	}
 
 	private const int MinimumValuesCount = 2;
-	private double _density;
+	private decimal _density;
 
-	private static double CoerceRange(AvaloniaObject sender, double value)
+	private static decimal CoerceRange(AvaloniaObject sender, decimal value)
 	{
-		return ValidateDouble(value) && value > 0 ? value : sender.GetValue(RangeProperty);
+		return value > 0 ? value : sender.GetValue(RangeProperty);
 	}
 
-	private static ImmutableList<double> CoerceValues(AvaloniaObject sender, ImmutableList<double> values)
+	private static ImmutableList<decimal> CoerceValues(AvaloniaObject sender, ImmutableList<decimal> values)
 	{
 		var minimumValue = sender.GetValue(MinimumValueProperty);
-		for (var i = 0; i < values.Count; i++)
-		{
-			var value = values[i];
-			if (!ValidateDouble(value))
-				values = values.SetItem(i, minimumValue);
-		}
-
 		if (values.Count < MinimumValuesCount)
 		{
 			var missingValuesCount = MinimumValuesCount - values.Count;
@@ -174,8 +167,8 @@ public sealed class MultiTrack : Control
 	{
 		Guard.IsNotNull(args.OldValue);
 		Guard.IsNotNull(args.NewValue);
-		var oldValues = (ImmutableList<double>)args.OldValue;
-		var newValues = (ImmutableList<double>)args.NewValue;
+		var oldValues = (ImmutableList<decimal>)args.OldValue;
+		var newValues = (ImmutableList<decimal>)args.NewValue;
 		if (newValues.Count > oldValues.Count)
 			for (int i = 0; i < newValues.Count - oldValues.Count; i++)
 			{
@@ -231,7 +224,7 @@ public sealed class MultiTrack : Control
 			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
 	}
 
-	private IEnumerable<double> GetPiecesLengths()
+	private IEnumerable<decimal> GetPiecesLengths()
 	{
 		for (var i = 0; i < LogicalChildren.Count; i++)
 		{
@@ -243,7 +236,7 @@ public sealed class MultiTrack : Control
 				var normalizedValue = value / Range;
 				yield return _density * normalizedValue;
 			}
-			else yield return GetDesiredLength((Thumb)child);
+			else yield return (decimal)GetDesiredLength((Thumb)child);
 		}
 	}
 
@@ -277,22 +270,21 @@ public sealed class MultiTrack : Control
 		var thumb = (Thumb)sender;
 		var thumbIndex = LogicalChildren.IndexOf(thumb);
 		var valueIndex = thumbIndex / 2;
-		var valueDelta = Orientation == Orientation.Horizontal ? args.Vector.X : args.Vector.Y;
+		var valueDelta = (decimal)(Orientation == Orientation.Horizontal ? args.Vector.X : args.Vector.Y);
 		valueDelta /= _density;
+		valueDelta = Math.Clamp(valueDelta, -Values[valueIndex], Values[valueIndex + 1]);
 		Values = Shift(Values, valueIndex, valueDelta);
 		foreach (var value in Values)
 			Guard.IsGreaterThanOrEqualTo(value, 0);
 	}
 
-	private ImmutableList<double> Shift(ImmutableList<double> values, int index, double delta)
+	private ImmutableList<decimal> Shift(ImmutableList<decimal> values, int index, decimal delta)
 	{
-		Guard.IsCloseTo(values.Sum(), Range, double.Epsilon);
+		Guard.IsEqualTo(values.Sum(), Range);
 		var builder = values.ToBuilder();
-		var oldValue = builder[index];
-		var newValue = oldValue + delta;
-		builder[index] = newValue;
-		builder[index + 1] = builder[index + 1] - newValue + oldValue;
-		Guard.IsCloseTo(builder.Sum(), Range, double.Epsilon);
+		builder[index] += delta;
+		builder[index + 1] -= delta;
+		Guard.IsEqualTo(builder.Sum(), Range);
 		return builder.ToImmutable();
 	}
 }
