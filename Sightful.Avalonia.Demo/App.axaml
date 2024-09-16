@@ -14,5 +14,6 @@
     <Application.Styles>
 	    <theme:DefaultTheme/>
 	    <treeDataGridTheme:SightfulTreeDataGridTheme/>
+        <StyleInclude Source="avares://Sightful.Avalonia.Controls/MultiSlider.axaml"/>
     </Application.Styles>
 </Application>

@@ -1,0 +1,51 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Sightful.Avalonia.Controls"
+        xmlns:immutable="clr-namespace:System.Collections.Immutable;assembly=System.Collections.Immutable"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <Design.PreviewWith>
+        <Border Classes="outer regular-padding" Width="200">
+            <StackPanel Classes="regular-spacing">
+                <controls:MultiSlider/>
+                <controls:MultiSlider Values="{x:Static controls:DesignData.ThreeValues}"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|MultiSlider">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <controls:MultiTrack
+                    Values="{TemplateBinding Values}">
+                    <controls:MultiTrack.RangeButtonTheme>
+                        <ControlTheme TargetType="Button">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
+                            <Setter Property="Height" Value="4"/>
+                            <Setter Property="CornerRadius" Value="2"/>
+                            <Setter Property="Template">
+                                <ControlTemplate>
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="{TemplateBinding CornerRadius}"/>
+                                </ControlTemplate>
+                            </Setter>
+                        </ControlTheme>
+                    </controls:MultiTrack.RangeButtonTheme>
+                    <controls:MultiTrack.ThumbTheme>
+                        <ControlTheme TargetType="Thumb">
+                            <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+                            <Setter Property="Margin" Value="-6 0"/>
+                            <Setter Property="ZIndex" Value="1"/>
+                            <Setter Property="Template">
+                                <ControlTemplate>
+                                    <Ellipse Width="12"
+                                             Height="12"
+                                             Fill="{TemplateBinding Background}"/>
+                                </ControlTemplate>
+                            </Setter>
+                        </ControlTheme>
+                    </controls:MultiTrack.ThumbTheme>
+                </controls:MultiTrack>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
