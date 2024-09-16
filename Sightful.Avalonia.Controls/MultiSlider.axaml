@@ -1,6 +1,7 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:Sightful.Avalonia.Controls">
+        xmlns:controls="using:Sightful.Avalonia.Controls"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
         <Border Classes="outer regular-padding" Width="200">
             <StackPanel Classes="regular-spacing">
@@ -18,12 +19,20 @@
                     <controls:MultiTrack.RangeButtonTheme>
                         <ControlTheme TargetType="Button">
                             <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
-                            <Setter Property="Height" Value="4"/>
-                            <Setter Property="CornerRadius" Value="2"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="ClipToBounds" Value="False"/>
                             <Setter Property="Template">
-                                <ControlTemplate>
-                                    <Border Background="{TemplateBinding Background}"
-                                            CornerRadius="{TemplateBinding CornerRadius}"/>
+                                <ControlTemplate x:DataType="system:Double">
+                                    <Grid RowDefinitions="20 4 20">
+                                        <Border Grid.Row="1" Background="{TemplateBinding Background}"
+                                                CornerRadius="2"
+                                                Height="4"/>
+                                        <TextBlock Grid.Row="2"
+                                                   Text="{Binding StringFormat=P0}"
+                                                   FontSize="10"
+                                                   Foreground="{DynamicResource ToolTipForeground}"
+                                                   HorizontalAlignment="Center"/>
+                                    </Grid>
                                 </ControlTemplate>
                             </Setter>
                         </ControlTheme>

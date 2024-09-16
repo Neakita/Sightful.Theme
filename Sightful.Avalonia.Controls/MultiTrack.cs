@@ -5,6 +5,7 @@ using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Styling;
 using CommunityToolkit.Diagnostics;
@@ -48,6 +49,9 @@ public sealed class MultiTrack : Control
 			track.ThumbThemeChanged((AvaloniaPropertyChangedEventArgs<ControlTheme?>)args));
 		AffectsMeasure<MultiTrack>(RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
+		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args), RoutingStrategies.Tunnel, true);
+		PointerMovedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerMoved(args), RoutingStrategies.Tunnel, true);
+		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerReleased(args), RoutingStrategies.Tunnel, true);
 	}
 
 	public decimal Range
@@ -106,11 +110,23 @@ public sealed class MultiTrack : Control
 	protected override Size MeasureOverride(Size availableSize)
 	{
 		Size desiredSize = new();
-		foreach (var thumb in LogicalChildren.OfType<Thumb>())
+		foreach (var child in LogicalChildren)
 		{
-			thumb.Measure(availableSize);
-			desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
-			availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
+			if (child is Thumb thumb)
+			{
+				thumb.Measure(availableSize);
+				desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
+				availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
+			}
+			else
+			{
+				var button = (Button)child;
+				button.Measure(availableSize);
+				var buttonDesiredSize = Orientation == Orientation.Horizontal
+					? button.DesiredSize.WithWidth(0)
+					: button.DesiredSize.WithHeight(0);
+				desiredSize = StackSizes(desiredSize, buttonDesiredSize);
+			}
 		}
 		return desiredSize;
 	}
@@ -187,6 +203,9 @@ public sealed class MultiTrack : Control
 		else if (newValues.Count < oldValues.Count)
 			foreach (var thumb in RemoveLastChildren((oldValues.Count - newValues.Count) * 2).OfType<Thumb>())
 				thumb.DragDelta -= OnThumbDrag;
+
+		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
+			button.DataContext = value;
 	}
 
 	private void AddChild(Visual item)
@@ -270,10 +289,14 @@ public sealed class MultiTrack : Control
 		var thumb = (Thumb)sender;
 		var thumbIndex = LogicalChildren.IndexOf(thumb);
 		var valueIndex = thumbIndex / 2;
-		var valueDelta = (decimal)(Orientation == Orientation.Horizontal ? args.Vector.X : args.Vector.Y);
-		valueDelta /= _density;
-		valueDelta = Math.Clamp(valueDelta, -Values[valueIndex], Values[valueIndex + 1]);
-		Values = Shift(Values, valueIndex, valueDelta);
+		Drag(valueIndex, (decimal)(Orientation == Orientation.Horizontal ? args.Vector.X : args.Vector.Y));
+	}
+
+	private void Drag(int index, decimal distance)
+	{
+		var valueDelta = distance / _density;
+		valueDelta = Math.Clamp(valueDelta, -Values[index], Values[index + 1]);
+		Values = Shift(Values, index, valueDelta);
 		foreach (var value in Values)
 			Guard.IsGreaterThanOrEqualTo(value, 0);
 	}
@@ -286,5 +309,53 @@ public sealed class MultiTrack : Control
 		builder[index + 1] -= delta;
 		Guard.IsEqualTo(builder.Sum(), Range);
 		return builder.ToImmutable();
+	}
+
+	private byte? _dragIndex;
+	private Point _previousPosition;
+
+	private void OnTunnelPointerPressed(PointerPressedEventArgs args)
+	{
+		var position = args.GetPosition(this);
+		Point normalizedPosition = new(position.X / Bounds.Width, position.Y / Bounds.Height);
+		var normalizedLength = Orientation == Orientation.Horizontal ? normalizedPosition.X : normalizedPosition.Y;
+		var length = (decimal)normalizedLength * Range;
+		_dragIndex = (byte?)LogicalChildren
+			.OfType<Thumb>()
+			.Select((thumb, index) => (thumb, index))
+			.MinBy(tuple =>
+			{
+				var thumbPosition = args.GetPosition(tuple.thumb);
+				var distance = Orientation == Orientation.Horizontal ? thumbPosition.X : thumbPosition.Y;
+				return Math.Abs(distance);
+			}).index;
+		Guard.IsNotNull(_dragIndex);
+		_previousPosition = position;
+
+		decimal accumulated = 0;
+		for (var i = 0; i < _dragIndex; i++)
+		{
+			var value = Values[i];
+			accumulated += value;
+		}
+
+		var newValue = length - accumulated;
+		Values = Shift(Values, _dragIndex.Value, newValue - Values[_dragIndex.Value]);
+	}
+
+	private void OnTunnelPointerMoved(PointerEventArgs args)
+	{
+		if (_dragIndex == null)
+			return;
+		var position = args.GetPosition(this);
+		var delta = position - _previousPosition;
+		var distance = Orientation == Orientation.Horizontal ? delta.X : delta.Y;
+		Drag(_dragIndex.Value, (decimal)distance);
+		_previousPosition = position;
+	}
+
+	private void OnTunnelPointerReleased(PointerReleasedEventArgs args)
+	{
+		_dragIndex = null;
 	}
 }
