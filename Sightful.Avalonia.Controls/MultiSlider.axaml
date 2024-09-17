@@ -48,19 +48,19 @@
                             </ControlTheme>
                         </primitives:MultiTrack.ThumbTheme>
                     </primitives:MultiTrack>
-                    <primitives:MultiTrackValuesBar
+                    <primitives:MultiSliderValuesBar
                         Grid.Row="1"
                         Values="{TemplateBinding Values}"
                         Range="{TemplateBinding Range}"
                         StringFormat="P0">
-                        <primitives:MultiTrackValuesBar.TextBlockTheme>
+                        <primitives:MultiSliderValuesBar.TextBlockTheme>
                             <ControlTheme TargetType="TextBlock">
                                 <Setter Property="FontSize" Value="10"/>
                                 <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
                                 <Setter Property="TextAlignment" Value="Center"/>
                             </ControlTheme>
-                        </primitives:MultiTrackValuesBar.TextBlockTheme>
-                    </primitives:MultiTrackValuesBar>
+                        </primitives:MultiSliderValuesBar.TextBlockTheme>
+                    </primitives:MultiSliderValuesBar>
                 </Grid>
             </ControlTemplate>
         </Setter>

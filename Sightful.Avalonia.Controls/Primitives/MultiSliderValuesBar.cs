@@ -9,26 +9,26 @@ using Avalonia.Styling;
 namespace Sightful.Avalonia.Controls.Primitives;
 
 [PseudoClasses(":vertical", ":horizontal")]
-public sealed class MultiTrackValuesBar : Control
+public sealed class MultiSliderValuesBar : Control
 {
 	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
-			MultiTrack.ValuesProperty.AddOwner<MultiTrackValuesBar>(new StyledPropertyMetadata<ImmutableList<decimal>>(defaultBindingMode: BindingMode.OneWay));
+			MultiTrack.ValuesProperty.AddOwner<MultiSliderValuesBar>(new StyledPropertyMetadata<ImmutableList<decimal>>(defaultBindingMode: BindingMode.OneWay));
 
 	public static readonly StyledProperty<ControlTheme?> TextBlockThemeProperty =
-		AvaloniaProperty.Register<MultiTrackValuesBar, ControlTheme?>(nameof(TextBlockTheme));
+		AvaloniaProperty.Register<MultiSliderValuesBar, ControlTheme?>(nameof(TextBlockTheme));
 
 	public static readonly StyledProperty<string?> StringFormatProperty =
-		AvaloniaProperty.Register<MultiTrackValuesBar, string?>(nameof(StringFormat));
+		AvaloniaProperty.Register<MultiSliderValuesBar, string?>(nameof(StringFormat));
 
 	public static readonly StyledProperty<Orientation> OrientationProperty =
-		AvaloniaProperty.Register<MultiTrackValuesBar, Orientation>(nameof(Orientation));
+		AvaloniaProperty.Register<MultiSliderValuesBar, Orientation>(nameof(Orientation));
 
 	public static readonly StyledProperty<decimal> RangeProperty =
-		MultiTrack.RangeProperty.AddOwner<MultiTrackValuesBar>();
+		MultiTrack.RangeProperty.AddOwner<MultiSliderValuesBar>();
 
-	static MultiTrackValuesBar()
+	static MultiSliderValuesBar()
 	{
-		AffectsArrange<MultiTrackValuesBar>(ValuesProperty);
+		AffectsArrange<MultiSliderValuesBar>(ValuesProperty);
 	}
 
 	public string? StringFormat
@@ -61,7 +61,7 @@ public sealed class MultiTrackValuesBar : Control
 		set => SetValue(RangeProperty, value);
 	}
 
-	public MultiTrackValuesBar()
+	public MultiSliderValuesBar()
 	{
 		AddTextBlocks((byte)Values.Count);
 	}
