@@ -88,23 +88,11 @@ public sealed class MultiTrack : Control
 	protected override Size MeasureOverride(Size availableSize)
 	{
 		Size desiredSize = new();
-		foreach (var child in LogicalChildren)
+		foreach (var thumb in LogicalChildren.OfType<Thumb>())
 		{
-			if (child is Thumb thumb)
-			{
-				thumb.Measure(availableSize);
-				desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
-				availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
-			}
-			else
-			{
-				var button = (Button)child;
-				button.Measure(availableSize);
-				var buttonDesiredSize = Orientation == Orientation.Horizontal
-					? button.DesiredSize.WithWidth(0)
-					: button.DesiredSize.WithHeight(0);
-				desiredSize = StackSizes(desiredSize, buttonDesiredSize);
-			}
+			thumb.Measure(availableSize);
+			desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
+			availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
 		}
 		return desiredSize;
 	}
