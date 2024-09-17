@@ -108,84 +108,19 @@ public sealed class MultiTrack : Control
 
 	public MultiTrack()
 	{
+		_arranger = new MultiTrackArranger(Values, LogicalChildren, Range);
 		_childrenManager = new MultiTrackChildrenManager(LogicalChildren, VisualChildren);
 	}
 
-	#region Measure & Arrangement
-
 	protected override Size MeasureOverride(Size availableSize)
 	{
-		Size desiredSize = new();
-		foreach (var thumb in LogicalChildren.OfType<Thumb>())
-		{
-			thumb.Measure(availableSize);
-			desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
-			availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
-		}
-
-		return desiredSize;
+		return _arranger.Measure(availableSize);
 	}
 
 	protected override Size ArrangeOverride(Size finalSize)
 	{
-		var availableLength = Orientation == Orientation.Horizontal ? finalSize.Width : finalSize.Height;
-		var thumbsLength = LogicalChildren.OfType<Thumb>().Select(GetDesiredLength).Sum();
-		_density = (decimal)(availableLength - thumbsLength);
-		double passedLength = 0;
-		foreach (var (child, length) in LogicalChildren.Cast<Layoutable>().Zip(GetPiecesLengths()))
-		{
-			child.Arrange(GetArrangeRectangle(finalSize, passedLength, (double)length));
-			passedLength += (double)length;
-		}
-
-		return Orientation == Orientation.Horizontal
-			? finalSize.WithWidth(passedLength)
-			: finalSize.WithHeight(passedLength);
+		return _arranger.Arrange(finalSize);
 	}
-
-	private Size StackSizes(Size first, Size second)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(first.Width + second.Width, Math.Max(first.Height, second.Height))
-			: new Size(Math.Max(first.Width, second.Width), first.Height + second.Height);
-	}
-
-	private Size SubtractStackedSize(Size minuend, Size subtrahend)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(minuend.Width - subtrahend.Width, minuend.Height)
-			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
-	}
-
-	private IEnumerable<decimal> GetPiecesLengths()
-	{
-		for (var i = 0; i < LogicalChildren.Count; i++)
-		{
-			var child = LogicalChildren[i];
-			if (i % 2 == 0)
-			{
-				Guard.IsOfType<Button>(child);
-				var value = Values[i / 2];
-				var normalizedValue = value / Range;
-				yield return _density * normalizedValue;
-			}
-			else yield return (decimal)GetDesiredLength((Thumb)child);
-		}
-	}
-
-	private double GetDesiredLength(Layoutable layoutable)
-	{
-		return Orientation == Orientation.Horizontal ? layoutable.DesiredSize.Width : layoutable.DesiredSize.Height;
-	}
-
-	private Rect GetArrangeRectangle(Size finalSize, double passedLength, double length)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Rect(passedLength, 0, length, finalSize.Height)
-			: new Rect(0, passedLength, finalSize.Width, length);
-	}
-
-	#endregion
 
 	#region Drag
 
@@ -194,7 +129,7 @@ public sealed class MultiTrack : Control
 
 	private void Drag(int index, decimal distance)
 	{
-		var valueDelta = distance / _density;
+		var valueDelta = distance / _arranger.Density;
 		valueDelta = Math.Clamp(valueDelta, -Values[index], Values[index + 1]);
 		Values = Shift(Values, index, valueDelta);
 		foreach (var value in Values)
@@ -253,11 +188,12 @@ public sealed class MultiTrack : Control
 
 	#endregion
 
+	private readonly MultiTrackArranger _arranger;
 	private readonly MultiTrackChildrenManager _childrenManager;
-	private decimal _density;
 
 	private void OnValuesChanged()
 	{
+		_arranger.Values = Values;
 		_childrenManager.ValuesCount = (byte)Values.Count;
 		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
 			button.DataContext = value;
@@ -272,5 +208,9 @@ public sealed class MultiTrack : Control
 			_childrenManager.RangeButtonTheme = RangeButtonTheme;
 		else if (change.Property == ThumbThemeProperty)
 			_childrenManager.ThumbTheme = ThumbTheme;
+		else if (change.Property == RangeProperty)
+			_arranger.Range = Range;
+		else if (change.Property == OrientationProperty)
+			_arranger.Orientation = Orientation;
 	}
 }

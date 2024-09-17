@@ -8,6 +8,7 @@ using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia.Controls.Primitives;
 
+// Nanny?
 internal sealed class MultiTrackChildrenManager
 {
 	public byte ValuesCount
@@ -67,8 +68,8 @@ internal sealed class MultiTrackChildrenManager
 	{
 		for (byte i = 0; i < newValuesCount; i++)
 		{
-			AddChild(CreateRangeButton());
 			AddChild(CreateThumb());
+			AddChild(CreateRangeButton());
 		}
 	}
 
