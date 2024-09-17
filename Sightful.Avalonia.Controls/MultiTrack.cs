@@ -15,11 +15,14 @@ namespace Sightful.Avalonia.Controls;
 [PseudoClasses(":vertical", ":horizontal")]
 public sealed class MultiTrack : Control
 {
+	#region StyledProperties
+
 	public static readonly StyledProperty<decimal> RangeProperty =
 		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(Range), 1, coerce: CoerceRange);
 
 	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
-		AvaloniaProperty.Register<MultiTrack, ImmutableList<decimal>>(nameof(Values), [0.5m, 0.5m], coerce: CoerceValues,
+		AvaloniaProperty.Register<MultiTrack, ImmutableList<decimal>>(nameof(Values), [0.5m, 0.5m],
+			coerce: CoerceValues,
 			defaultBindingMode: BindingMode.TwoWay);
 
 	public static readonly StyledProperty<ControlTheme?> RangeButtonThemeProperty =
@@ -31,6 +34,30 @@ public sealed class MultiTrack : Control
 	public static readonly StyledProperty<Orientation> OrientationProperty =
 		AvaloniaProperty.Register<MultiTrack, Orientation>(nameof(Orientation));
 
+	private static decimal CoerceRange(AvaloniaObject sender, decimal value)
+	{
+		return value > 0 ? value : sender.GetValue(RangeProperty);
+	}
+
+	private static ImmutableList<decimal> CoerceValues(AvaloniaObject sender, ImmutableList<decimal> values)
+	{
+		if (values.Count < MinimumValuesCount)
+		{
+			var missingValuesCount = MinimumValuesCount - values.Count;
+			var newValues = Enumerable.Repeat(0m, missingValuesCount);
+			values = values.AddRange(newValues);
+		}
+
+		var range = sender.GetValue(RangeProperty);
+		var valuesSum = values.Sum();
+		if (valuesSum == 0)
+			return Enumerable.Repeat(range / values.Count, values.Count).ToImmutableList();
+		var correction = range / valuesSum;
+		return values.Select(value => value * correction).ToImmutableList();
+	}
+
+	#endregion
+
 	static MultiTrack()
 	{
 		ValuesProperty.Changed.AddClassHandler<MultiTrack>((track, args) => track.ValuesChanged(args));
@@ -40,10 +67,15 @@ public sealed class MultiTrack : Control
 			track.ThumbThemeChanged((AvaloniaPropertyChangedEventArgs<ControlTheme?>)args));
 		AffectsMeasure<MultiTrack>(RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
-		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args), RoutingStrategies.Tunnel, true);
-		PointerMovedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerMoved(args), RoutingStrategies.Tunnel, true);
-		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, _) => track._dragIndex = null, RoutingStrategies.Tunnel, true);
+		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args),
+			RoutingStrategies.Tunnel, true);
+		PointerMovedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerMoved(args),
+			RoutingStrategies.Tunnel, true);
+		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, _) => track._dragIndex = null,
+			RoutingStrategies.Tunnel, true);
 	}
+
+	#region Properties
 
 	public Orientation Orientation
 	{
@@ -75,6 +107,8 @@ public sealed class MultiTrack : Control
 		set => SetValue(ThumbThemeProperty, value);
 	}
 
+	#endregion
+
 	public MultiTrack()
 	{
 		CreateRangeButton();
@@ -85,6 +119,8 @@ public sealed class MultiTrack : Control
 		}
 	}
 
+	#region Measure & Arrangement
+
 	protected override Size MeasureOverride(Size availableSize)
 	{
 		Size desiredSize = new();
@@ -94,6 +130,7 @@ public sealed class MultiTrack : Control
 			desiredSize = StackSizes(desiredSize, thumb.DesiredSize);
 			availableSize = SubtractStackedSize(availableSize, thumb.DesiredSize);
 		}
+
 		return desiredSize;
 	}
 
@@ -108,66 +145,10 @@ public sealed class MultiTrack : Control
 			child.Arrange(GetArrangeRectangle(finalSize, passedLength, (double)length));
 			passedLength += (double)length;
 		}
+
 		return Orientation == Orientation.Horizontal
 			? finalSize.WithWidth(passedLength)
 			: finalSize.WithHeight(passedLength);
-	}
-
-	private const int MinimumValuesCount = 2;
-	private decimal _density;
-
-	private static decimal CoerceRange(AvaloniaObject sender, decimal value)
-	{
-		return value > 0 ? value : sender.GetValue(RangeProperty);
-	}
-
-	private static ImmutableList<decimal> CoerceValues(AvaloniaObject sender, ImmutableList<decimal> values)
-	{
-		if (values.Count < MinimumValuesCount)
-		{
-			var missingValuesCount = MinimumValuesCount - values.Count;
-			var newValues = Enumerable.Repeat(0m, missingValuesCount);
-			values = values.AddRange(newValues);
-		}
-		var range = sender.GetValue(RangeProperty);
-		var valuesSum = values.Sum();
-		if (valuesSum == 0)
-			return Enumerable.Repeat(range / values.Count, values.Count).ToImmutableList();
-		var correction = range / valuesSum;
-		return values.Select(value => value * correction).ToImmutableList();
-	}
-
-	private void ValuesChanged(AvaloniaPropertyChangedEventArgs args)
-	{
-		Guard.IsNotNull(args.OldValue);
-		Guard.IsNotNull(args.NewValue);
-		var oldValues = (ImmutableList<decimal>)args.OldValue;
-		var newValues = (ImmutableList<decimal>)args.NewValue;
-		if (newValues.Count > oldValues.Count)
-			for (int i = 0; i < newValues.Count - oldValues.Count; i++)
-			{
-				CreateThumb();
-				CreateRangeButton();
-			}
-		else if (newValues.Count < oldValues.Count)
-			RemoveLastChildren((oldValues.Count - newValues.Count) * 2);
-
-		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
-			button.DataContext = value;
-	}
-
-	private void AddChild(Visual item)
-	{
-		LogicalChildren.Add(item);
-		VisualChildren.Add(item);
-	}
-
-	private void RemoveLastChildren(int count)
-	{
-		Guard.IsEqualTo(LogicalChildren.Count, VisualChildren.Count);
-		var index = LogicalChildren.Count - count;
-		LogicalChildren.RemoveRange(index, count);
-		VisualChildren.RemoveRange(index, count);
 	}
 
 	private Size StackSizes(Size first, Size second)
@@ -212,17 +193,12 @@ public sealed class MultiTrack : Control
 			: new Rect(0, passedLength, finalSize.Width, length);
 	}
 
-	private void RangeButtonThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
-	{
-		foreach (var button in LogicalChildren.OfType<Button>())
-			button.Theme = args.NewValue.Value;
-	}
+	#endregion
 
-	private void ThumbThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
-	{
-		foreach (var thumb in LogicalChildren.OfType<Thumb>())
-			thumb.Theme = args.NewValue.Value;
-	}
+	#region Drag
+
+	private byte? _dragIndex;
+	private Point _previousDragPosition;
 
 	private void Drag(int index, decimal distance)
 	{
@@ -243,9 +219,6 @@ public sealed class MultiTrack : Control
 		return builder.ToImmutable();
 	}
 
-	private byte? _dragIndex;
-	private Point _previousPosition;
-
 	private void OnTunnelPointerPressed(PointerPressedEventArgs args)
 	{
 		var position = args.GetPosition(this);
@@ -262,7 +235,7 @@ public sealed class MultiTrack : Control
 				return Math.Abs(distance);
 			}).index;
 		Guard.IsNotNull(_dragIndex);
-		_previousPosition = position;
+		_previousDragPosition = position;
 
 		decimal accumulated = 0;
 		for (var i = 0; i < _dragIndex; i++)
@@ -280,10 +253,34 @@ public sealed class MultiTrack : Control
 		if (_dragIndex == null)
 			return;
 		var position = args.GetPosition(this);
-		var delta = position - _previousPosition;
+		var delta = position - _previousDragPosition;
 		var distance = Orientation == Orientation.Horizontal ? delta.X : delta.Y;
 		Drag(_dragIndex.Value, (decimal)distance);
-		_previousPosition = position;
+		_previousDragPosition = position;
+	}
+
+	#endregion
+
+	#region Children
+
+	private void RemoveLastChildren(int count)
+	{
+		Guard.IsEqualTo(LogicalChildren.Count, VisualChildren.Count);
+		var index = LogicalChildren.Count - count;
+		LogicalChildren.RemoveRange(index, count);
+		VisualChildren.RemoveRange(index, count);
+	}
+
+	private void RangeButtonThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
+	{
+		foreach (var button in LogicalChildren.OfType<Button>())
+			button.Theme = args.NewValue.Value;
+	}
+
+	private void ThumbThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
+	{
+		foreach (var thumb in LogicalChildren.OfType<Thumb>())
+			thumb.Theme = args.NewValue.Value;
 	}
 
 	private void CreateRangeButton()
@@ -298,5 +295,35 @@ public sealed class MultiTrack : Control
 		Thumb thumb = new();
 		thumb.Theme = ThumbTheme;
 		AddChild(thumb);
+	}
+
+	private void AddChild(Visual item)
+	{
+		LogicalChildren.Add(item);
+		VisualChildren.Add(item);
+	}
+
+	#endregion
+
+	private const int MinimumValuesCount = 2;
+	private decimal _density;
+
+	private void ValuesChanged(AvaloniaPropertyChangedEventArgs args)
+	{
+		Guard.IsNotNull(args.OldValue);
+		Guard.IsNotNull(args.NewValue);
+		var oldValues = (ImmutableList<decimal>)args.OldValue;
+		var newValues = (ImmutableList<decimal>)args.NewValue;
+		if (newValues.Count > oldValues.Count)
+			for (int i = 0; i < newValues.Count - oldValues.Count; i++)
+			{
+				CreateThumb();
+				CreateRangeButton();
+			}
+		else if (newValues.Count < oldValues.Count)
+			RemoveLastChildren((oldValues.Count - newValues.Count) * 2);
+
+		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
+			button.DataContext = value;
 	}
 }
