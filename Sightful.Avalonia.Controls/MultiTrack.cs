@@ -42,7 +42,7 @@ public sealed class MultiTrack : Control
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args), RoutingStrategies.Tunnel, true);
 		PointerMovedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerMoved(args), RoutingStrategies.Tunnel, true);
-		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, _) => track.OnTunnelPointerReleased(), RoutingStrategies.Tunnel, true);
+		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, _) => track._dragIndex = null, RoutingStrategies.Tunnel, true);
 	}
 
 	public Orientation Orientation
@@ -102,7 +102,6 @@ public sealed class MultiTrack : Control
 		var availableLength = Orientation == Orientation.Horizontal ? finalSize.Width : finalSize.Height;
 		var thumbsLength = LogicalChildren.OfType<Thumb>().Select(GetDesiredLength).Sum();
 		_density = (decimal)(availableLength - thumbsLength);
-
 		double passedLength = 0;
 		foreach (var (child, length) in LogicalChildren.Cast<Layoutable>().Zip(GetPiecesLengths()))
 		{
@@ -151,8 +150,7 @@ public sealed class MultiTrack : Control
 				CreateRangeButton();
 			}
 		else if (newValues.Count < oldValues.Count)
-			foreach (var thumb in RemoveLastChildren((oldValues.Count - newValues.Count) * 2).OfType<Thumb>())
-				thumb.DragDelta -= OnThumbDrag;
+			RemoveLastChildren((oldValues.Count - newValues.Count) * 2);
 
 		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
 			button.DataContext = value;
@@ -164,17 +162,10 @@ public sealed class MultiTrack : Control
 		VisualChildren.Add(item);
 	}
 
-	private ImmutableArray<Visual> RemoveLastChildren(int count)
+	private void RemoveLastChildren(int count)
 	{
 		Guard.IsEqualTo(LogicalChildren.Count, VisualChildren.Count);
 		var index = LogicalChildren.Count - count;
-		var children = VisualChildren.TakeLast(count).ToImmutableArray();
-		RemoveChildrenRange(index, count);
-		return children;
-	}
-
-	private void RemoveChildrenRange(int index, int count)
-	{
 		LogicalChildren.RemoveRange(index, count);
 		VisualChildren.RemoveRange(index, count);
 	}
@@ -231,15 +222,6 @@ public sealed class MultiTrack : Control
 	{
 		foreach (var thumb in LogicalChildren.OfType<Thumb>())
 			thumb.Theme = args.NewValue.Value;
-	}
-
-	private void OnThumbDrag(object? sender, VectorEventArgs args)
-	{
-		Guard.IsNotNull(sender);
-		var thumb = (Thumb)sender;
-		var thumbIndex = LogicalChildren.IndexOf(thumb);
-		var valueIndex = thumbIndex / 2;
-		Drag(valueIndex, (decimal)(Orientation == Orientation.Horizontal ? args.Vector.X : args.Vector.Y));
 	}
 
 	private void Drag(int index, decimal distance)
@@ -304,11 +286,6 @@ public sealed class MultiTrack : Control
 		_previousPosition = position;
 	}
 
-	private void OnTunnelPointerReleased()
-	{
-		_dragIndex = null;
-	}
-
 	private void CreateRangeButton()
 	{
 		Button button = new();
@@ -318,11 +295,8 @@ public sealed class MultiTrack : Control
 
 	private void CreateThumb()
 	{
-		Thumb thumb = new()
-		{
-			Theme = ThumbTheme
-		};
-		thumb.DragDelta += OnThumbDrag;
+		Thumb thumb = new();
+		thumb.Theme = ThumbTheme;
 		AddChild(thumb);
 	}
 }
