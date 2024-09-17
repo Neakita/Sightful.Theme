@@ -15,6 +15,8 @@ namespace Sightful.Avalonia.Controls.Primitives;
 [PseudoClasses(":vertical", ":horizontal")]
 public sealed class MultiTrack : Control
 {
+	internal const byte MinimumValuesCount = 2;
+
 	#region StyledProperties
 
 	public static readonly StyledProperty<decimal> RangeProperty =
@@ -60,11 +62,6 @@ public sealed class MultiTrack : Control
 
 	static MultiTrack()
 	{
-		ValuesProperty.Changed.AddClassHandler<MultiTrack>((track, args) => track.ValuesChanged(args));
-		RangeButtonThemeProperty.Changed.AddClassHandler<MultiTrack>((track, args) =>
-			track.RangeButtonThemeChanged((AvaloniaPropertyChangedEventArgs<ControlTheme?>)args));
-		ThumbThemeProperty.Changed.AddClassHandler<MultiTrack>((track, args) =>
-			track.ThumbThemeChanged((AvaloniaPropertyChangedEventArgs<ControlTheme?>)args));
 		AffectsMeasure<MultiTrack>(RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args),
@@ -111,12 +108,7 @@ public sealed class MultiTrack : Control
 
 	public MultiTrack()
 	{
-		CreateRangeButton();
-		for (var i = 1; i < Values.Count; i++)
-		{
-			CreateThumb();
-			CreateRangeButton();
-		}
+		_childrenManager = new MultiTrackChildrenManager(LogicalChildren, VisualChildren);
 	}
 
 	#region Measure & Arrangement
@@ -261,69 +253,24 @@ public sealed class MultiTrack : Control
 
 	#endregion
 
-	#region Children
-
-	private void RemoveLastChildren(int count)
-	{
-		Guard.IsEqualTo(LogicalChildren.Count, VisualChildren.Count);
-		var index = LogicalChildren.Count - count;
-		LogicalChildren.RemoveRange(index, count);
-		VisualChildren.RemoveRange(index, count);
-	}
-
-	private void RangeButtonThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
-	{
-		foreach (var button in LogicalChildren.OfType<Button>())
-			button.Theme = args.NewValue.Value;
-	}
-
-	private void ThumbThemeChanged(AvaloniaPropertyChangedEventArgs<ControlTheme?> args)
-	{
-		foreach (var thumb in LogicalChildren.OfType<Thumb>())
-			thumb.Theme = args.NewValue.Value;
-	}
-
-	private void CreateRangeButton()
-	{
-		Button button = new();
-		button.Theme = RangeButtonTheme;
-		AddChild(button);
-	}
-
-	private void CreateThumb()
-	{
-		Thumb thumb = new();
-		thumb.Theme = ThumbTheme;
-		AddChild(thumb);
-	}
-
-	private void AddChild(Visual item)
-	{
-		LogicalChildren.Add(item);
-		VisualChildren.Add(item);
-	}
-
-	#endregion
-
-	private const int MinimumValuesCount = 2;
+	private readonly MultiTrackChildrenManager _childrenManager;
 	private decimal _density;
 
-	private void ValuesChanged(AvaloniaPropertyChangedEventArgs args)
+	private void OnValuesChanged()
 	{
-		Guard.IsNotNull(args.OldValue);
-		Guard.IsNotNull(args.NewValue);
-		var oldValues = (ImmutableList<decimal>)args.OldValue;
-		var newValues = (ImmutableList<decimal>)args.NewValue;
-		if (newValues.Count > oldValues.Count)
-			for (int i = 0; i < newValues.Count - oldValues.Count; i++)
-			{
-				CreateThumb();
-				CreateRangeButton();
-			}
-		else if (newValues.Count < oldValues.Count)
-			RemoveLastChildren((oldValues.Count - newValues.Count) * 2);
-
+		_childrenManager.ValuesCount = (byte)Values.Count;
 		foreach (var (button, value) in LogicalChildren.OfType<Button>().Zip(Values))
 			button.DataContext = value;
+	}
+
+	protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+	{
+		base.OnPropertyChanged(change);
+		if (change.Property == ValuesProperty)
+			OnValuesChanged();
+		else if (change.Property == RangeButtonThemeProperty)
+			_childrenManager.RangeButtonTheme = RangeButtonTheme;
+		else if (change.Property == ThumbThemeProperty)
+			_childrenManager.ThumbTheme = ThumbTheme;
 	}
 }
