@@ -18,9 +18,6 @@ public sealed class MultiTrack : Control
 	public static readonly StyledProperty<decimal> RangeProperty =
 		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(Range), 1, coerce: CoerceRange);
 
-	public static readonly StyledProperty<decimal> MinimumValueProperty =
-		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(MinimumValue));
-
 	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
 		AvaloniaProperty.Register<MultiTrack, ImmutableList<decimal>>(nameof(Values), [0.5m, 0.5m], coerce: CoerceValues,
 			defaultBindingMode: BindingMode.TwoWay);
@@ -58,12 +55,6 @@ public sealed class MultiTrack : Control
 	{
 		get => GetValue(RangeProperty);
 		set => SetValue(RangeProperty, value);
-	}
-
-	public decimal MinimumValue
-	{
-		get => GetValue(MinimumValueProperty);
-		set => SetValue(MinimumValueProperty, value);
 	}
 
 	public ImmutableList<decimal> Values
@@ -158,25 +149,18 @@ public sealed class MultiTrack : Control
 
 	private static ImmutableList<decimal> CoerceValues(AvaloniaObject sender, ImmutableList<decimal> values)
 	{
-		var minimumValue = sender.GetValue(MinimumValueProperty);
 		if (values.Count < MinimumValuesCount)
 		{
 			var missingValuesCount = MinimumValuesCount - values.Count;
-			var newValues = Enumerable.Repeat(minimumValue, missingValuesCount);
+			var newValues = Enumerable.Repeat(0m, missingValuesCount);
 			values = values.AddRange(newValues);
 		}
-
 		var range = sender.GetValue(RangeProperty);
 		var valuesSum = values.Sum();
 		if (valuesSum == 0)
 			return Enumerable.Repeat(range / values.Count, values.Count).ToImmutableList();
 		var correction = range / valuesSum;
 		return values.Select(value => value * correction).ToImmutableList();
-	}
-
-	private static bool ValidateDouble(double value)
-	{
-		return !double.IsInfinity(value) && !double.IsNaN(value);
 	}
 
 	private void ValuesChanged(AvaloniaPropertyChangedEventArgs args)

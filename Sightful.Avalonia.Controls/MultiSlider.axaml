@@ -10,6 +10,12 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <!--<TextBlock Grid.Row="2"
+               Text="{Binding StringFormat=P0}"
+               FontSize="10"
+               Foreground="{DynamicResource ToolTipForeground}"
+               TextAlignment="Center"/>-->
 
     <Style Selector="controls|MultiSlider">
         <Setter Property="Template">
@@ -23,16 +29,9 @@
                             <Setter Property="ClipToBounds" Value="False"/>
                             <Setter Property="Template">
                                 <ControlTemplate x:DataType="system:Double">
-                                    <Grid RowDefinitions="20 4 20">
-                                        <Border Grid.Row="1" Background="{TemplateBinding Background}"
-                                                CornerRadius="2"
-                                                Height="4"/>
-                                        <TextBlock Grid.Row="2"
-                                                   Text="{Binding StringFormat=P0}"
-                                                   FontSize="10"
-                                                   Foreground="{DynamicResource ToolTipForeground}"
-                                                   HorizontalAlignment="Center"/>
-                                    </Grid>
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="2"
+                                            Height="4"/>
                                 </ControlTemplate>
                             </Setter>
                         </ControlTheme>
