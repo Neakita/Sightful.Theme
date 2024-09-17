@@ -1,7 +1,8 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Sightful.Avalonia.Controls"
-        xmlns:system="clr-namespace:System;assembly=System.Runtime">
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
+        xmlns:primitives="clr-namespace:Sightful.Avalonia.Controls.Primitives">
     <Design.PreviewWith>
         <Border Classes="outer regular-padding" Width="200">
             <StackPanel Classes="regular-spacing">
@@ -20,9 +21,9 @@
     <Style Selector="controls|MultiSlider">
         <Setter Property="Template">
             <ControlTemplate>
-                <controls:MultiTrack
+                <primitives:MultiTrack
                     Values="{TemplateBinding Values}">
-                    <controls:MultiTrack.RangeButtonTheme>
+                    <primitives:MultiTrack.RangeButtonTheme>
                         <ControlTheme TargetType="Button">
                             <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -35,8 +36,8 @@
                                 </ControlTemplate>
                             </Setter>
                         </ControlTheme>
-                    </controls:MultiTrack.RangeButtonTheme>
-                    <controls:MultiTrack.ThumbTheme>
+                    </primitives:MultiTrack.RangeButtonTheme>
+                    <primitives:MultiTrack.ThumbTheme>
                         <ControlTheme TargetType="Thumb">
                             <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
                             <Setter Property="Margin" Value="-6 0"/>
@@ -49,8 +50,8 @@
                                 </ControlTemplate>
                             </Setter>
                         </ControlTheme>
-                    </controls:MultiTrack.ThumbTheme>
-                </controls:MultiTrack>
+                    </primitives:MultiTrack.ThumbTheme>
+                </primitives:MultiTrack>
             </ControlTemplate>
         </Setter>
     </Style>

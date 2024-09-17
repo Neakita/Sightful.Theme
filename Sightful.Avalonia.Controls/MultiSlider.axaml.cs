@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Avalonia;
 using Avalonia.Controls.Primitives;
+using Sightful.Avalonia.Controls.Primitives;
 
 namespace Sightful.Avalonia.Controls;
 

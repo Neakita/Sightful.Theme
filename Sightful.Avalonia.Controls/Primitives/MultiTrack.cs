@@ -10,7 +10,7 @@ using Avalonia.Layout;
 using Avalonia.Styling;
 using CommunityToolkit.Diagnostics;
 
-namespace Sightful.Avalonia.Controls;
+namespace Sightful.Avalonia.Controls.Primitives;
 
 [PseudoClasses(":vertical", ":horizontal")]
 public sealed class MultiTrack : Control
