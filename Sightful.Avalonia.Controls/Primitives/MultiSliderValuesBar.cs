@@ -93,12 +93,12 @@ public sealed class MultiSliderValuesBar : Control
 
 	protected override Size ArrangeOverride(Size finalSize)
 	{
-		decimal passedNormalizedLength = 0;
-		foreach (var (textBlock, value) in LogicalChildren.Cast<TextBlock>().Zip(Values))
+		double passedLength = 0;
+		var availableLength = Orientation == Orientation.Horizontal ? finalSize.Width : finalSize.Height;
+		foreach (var (textBlock, length) in LogicalChildren.Cast<TextBlock>().Zip(GetArrangeLengths(availableLength)))
 		{
-			var normalizedValue = value / Range;
-			textBlock.Arrange(GetArrangeRectangle(finalSize, (double)normalizedValue, (double)passedNormalizedLength));
-			passedNormalizedLength += normalizedValue;
+			textBlock.Arrange(GetArrangeRectangle(finalSize, length, passedLength));
+			passedLength += length;
 		}
 		return finalSize;
 	}
@@ -162,10 +162,45 @@ public sealed class MultiSliderValuesBar : Control
 			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
 	}
 
-	private Rect GetArrangeRectangle(Size finalSize, double normalizedValue, double passedValueAccumulation)
+	private IEnumerable<double> GetArrangeLengths(double availableLength)
+	{
+		var minimumLengths = LogicalChildren
+			.Cast<TextBlock>()
+			.Select(textBlock => textBlock.DesiredSize)
+			.Select<Size, double>(Orientation == Orientation.Horizontal ? size => size.Width : size => size.Height)
+			.ToList();
+		var desiredLengths = Values
+			.Select(value => (double)value / (double)Range * availableLength)
+			.ToList();
+
+		if (desiredLengths.Zip(minimumLengths).All(tuple => tuple.First > tuple.Second))
+			return desiredLengths;
+
+		var minimumLengthsSum = minimumLengths.Sum();
+		if (minimumLengthsSum > availableLength)
+			return minimumLengths;
+		var availableExtraLength = availableLength - minimumLengthsSum;
+		var desiredExtraLengths = minimumLengths
+			.Zip(desiredLengths, GetDesiredExtraLength)
+			.ToList();
+		var desiredExtraLengthsSum = desiredExtraLengths.Sum();
+		var desiredExtraLengthsCorrectionFactor = availableExtraLength / desiredExtraLengthsSum;
+		var correctedExtraLengths = desiredExtraLengths
+			.Select(length => length * desiredExtraLengthsCorrectionFactor);
+		return minimumLengths.Zip(correctedExtraLengths, Sum);
+		double GetDesiredExtraLength(double minimum, double desired)
+		{
+			if (minimum >= desired)
+				return 0;
+			return desired - minimum;
+		}
+		double Sum(double x, double y) => x + y;
+	}
+
+	private Rect GetArrangeRectangle(Size finalSize, double length, double passedLength)
 	{
 		return Orientation == Orientation.Horizontal
-			? new Rect(finalSize.Width * passedValueAccumulation, 0, finalSize.Width * normalizedValue, finalSize.Height)
-			: new Rect(0, finalSize.Height * passedValueAccumulation, finalSize.Width, finalSize.Height * normalizedValue);
+			? new Rect(passedLength, 0, length, finalSize.Height)
+			: new Rect(0, passedLength, finalSize.Width, length);
 	}
 }
