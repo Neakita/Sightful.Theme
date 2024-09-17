@@ -31,12 +31,6 @@ public sealed class MultiTrack : Control
 	public static readonly StyledProperty<Orientation> OrientationProperty =
 		AvaloniaProperty.Register<MultiTrack, Orientation>(nameof(Orientation));
 
-	public Orientation Orientation
-	{
-		get => GetValue(OrientationProperty);
-		set => SetValue(OrientationProperty, value);
-	}
-
 	static MultiTrack()
 	{
 		ValuesProperty.Changed.AddClassHandler<MultiTrack>((track, args) => track.ValuesChanged(args));
@@ -48,7 +42,13 @@ public sealed class MultiTrack : Control
 		AffectsArrange<MultiTrack>(ValuesProperty, RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
 		PointerPressedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerPressed(args), RoutingStrategies.Tunnel, true);
 		PointerMovedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerMoved(args), RoutingStrategies.Tunnel, true);
-		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, args) => track.OnTunnelPointerReleased(args), RoutingStrategies.Tunnel, true);
+		PointerReleasedEvent.AddClassHandler<MultiTrack>((track, _) => track.OnTunnelPointerReleased(), RoutingStrategies.Tunnel, true);
+	}
+
+	public Orientation Orientation
+	{
+		get => GetValue(OrientationProperty);
+		set => SetValue(OrientationProperty, value);
 	}
 
 	public decimal Range
@@ -77,24 +77,11 @@ public sealed class MultiTrack : Control
 
 	public MultiTrack()
 	{
-		Button initialButton = new()
-		{
-			Theme = RangeButtonTheme
-		};
-		AddChild(initialButton);
+		CreateRangeButton();
 		for (var i = 1; i < Values.Count; i++)
 		{
-			Thumb thumb = new()
-			{
-				Theme = ThumbTheme
-			};
-			thumb.DragDelta += OnThumbDrag;
-			AddChild(thumb);
-			Button button = new()
-			{
-				Theme = RangeButtonTheme
-			};
-			AddChild(button);
+			CreateThumb();
+			CreateRangeButton();
 		}
 	}
 
@@ -172,17 +159,8 @@ public sealed class MultiTrack : Control
 		if (newValues.Count > oldValues.Count)
 			for (int i = 0; i < newValues.Count - oldValues.Count; i++)
 			{
-				Thumb thumb = new()
-				{
-					Theme = ThumbTheme
-				};
-				thumb.DragDelta += OnThumbDrag;
-				AddChild(thumb);
-				Button button = new()
-				{
-					Theme = RangeButtonTheme
-				};
-				AddChild(button);
+				CreateThumb();
+				CreateRangeButton();
 			}
 		else if (newValues.Count < oldValues.Count)
 			foreach (var thumb in RemoveLastChildren((oldValues.Count - newValues.Count) * 2).OfType<Thumb>())
@@ -198,11 +176,11 @@ public sealed class MultiTrack : Control
 		VisualChildren.Add(item);
 	}
 
-	private IReadOnlyCollection<Visual> RemoveLastChildren(int count)
+	private ImmutableArray<Visual> RemoveLastChildren(int count)
 	{
 		Guard.IsEqualTo(LogicalChildren.Count, VisualChildren.Count);
 		var index = LogicalChildren.Count - count;
-		var children = VisualChildren.TakeLast(count).ToImmutableList();
+		var children = VisualChildren.TakeLast(count).ToImmutableArray();
 		RemoveChildrenRange(index, count);
 		return children;
 	}
@@ -338,8 +316,25 @@ public sealed class MultiTrack : Control
 		_previousPosition = position;
 	}
 
-	private void OnTunnelPointerReleased(PointerReleasedEventArgs args)
+	private void OnTunnelPointerReleased()
 	{
 		_dragIndex = null;
+	}
+
+	private void CreateRangeButton()
+	{
+		Button button = new();
+		button.Theme = RangeButtonTheme;
+		AddChild(button);
+	}
+
+	private void CreateThumb()
+	{
+		Thumb thumb = new()
+		{
+			Theme = ThumbTheme
+		};
+		thumb.DragDelta += OnThumbDrag;
+		AddChild(thumb);
 	}
 }
