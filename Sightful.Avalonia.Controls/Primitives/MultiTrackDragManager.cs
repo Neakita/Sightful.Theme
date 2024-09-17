@@ -1,19 +1,15 @@
 using System.Collections.Immutable;
-using Avalonia;
-using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
-using Avalonia.LogicalTree;
 using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia.Controls.Primitives;
 
 internal sealed class MultiTrackDragManager
 {
-	public MultiTrackDragManager(MultiTrack track, IReadOnlyCollection<ILogical> logicalChildren, MultiTrackArranger arranger)
+	public MultiTrackDragManager(MultiTrack track, MultiTrackArranger arranger)
 	{
 		_track = track;
-		_logicalChildren = logicalChildren;
 		_arranger = arranger;
 	}
 
@@ -22,21 +18,13 @@ internal sealed class MultiTrackDragManager
 		if (_session != null)
 			return;
 		var position = args.GetPosition(_track);
-		Point normalizedPosition = new(position.X / _track.Bounds.Width, position.Y / _track.Bounds.Height);
-		var normalizedLength = _track.Orientation == Orientation.Horizontal ? normalizedPosition.X : normalizedPosition.Y;
+		var normalizedLength = _track.Orientation == Orientation.Horizontal
+			? position.X / _track.Bounds.Width
+			: position.Y / _track.Bounds.Height;
 		var length = (decimal)normalizedLength * _track.Range;
-		var valueIndex = (byte?)_logicalChildren
-			.OfType<Thumb>()
-			.Select((thumb, index) => (thumb, index))
-			.MinBy(tuple =>
-			{
-				var thumbPosition = args.GetPosition(tuple.thumb);
-				var distance = _track.Orientation == Orientation.Horizontal ? thumbPosition.X : thumbPosition.Y;
-				return Math.Abs(distance);
-			}).index;
-		Guard.IsNotNull(valueIndex);
-		
+		var valueIndex = GetDragIndex(length);
 		decimal accumulated = 0;
+
 		for (var i = 0; i < valueIndex; i++)
 		{
 			var value = _track.Values[i];
@@ -44,8 +32,8 @@ internal sealed class MultiTrackDragManager
 		}
 
 		var newValue = length - accumulated;
-		_track.Values = Shift(_track.Values, valueIndex.Value, newValue - _track.Values[valueIndex.Value]);
-		_session = new MultiTrackDragSession(valueIndex.Value, position);
+		_track.Values = Shift(_track.Values, valueIndex, newValue - _track.Values[valueIndex]);
+		_session = new MultiTrackDragSession(valueIndex, position);
 	}
 
 	public void OnPointerMoved(PointerEventArgs args)
@@ -65,7 +53,6 @@ internal sealed class MultiTrackDragManager
 	}
 
 	private readonly MultiTrack _track;
-	private readonly IReadOnlyCollection<ILogical> _logicalChildren;
 	private readonly MultiTrackArranger _arranger;
 	private MultiTrackDragSession? _session;
 
@@ -86,5 +73,30 @@ internal sealed class MultiTrackDragManager
 		foreach (var value in builder)
 			Guard.IsGreaterThanOrEqualTo(value, 0);
 		return builder.ToImmutable();
+	}
+
+	private byte GetDragIndex(decimal length)
+	{
+		var values = _track.Values;
+		List<decimal> thumbPositions = new(values.Count - 1);
+		decimal accumulation = 0;
+		for (var i = 0; i < values.Count - 1; i++)
+		{
+			var value = values[i];
+			accumulation += value;
+			thumbPositions.Add(accumulation);
+		}
+		if (thumbPositions.Count == 1)
+			return 0;
+		for (byte i = 0; i < thumbPositions.Count - 1; i++)
+		{
+			var currentThumbLength = thumbPositions[i];
+			var nextThumbLength = thumbPositions[i + 1];
+			var currentThumbDistance = Math.Abs(currentThumbLength - length);
+			var nextThumbDistance = Math.Abs(nextThumbLength - length);
+			if (currentThumbDistance <= nextThumbDistance)
+				return i;
+		}
+		return (byte)(thumbPositions.Count - 1);
 	}
 }
