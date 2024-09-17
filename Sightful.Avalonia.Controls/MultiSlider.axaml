@@ -11,47 +11,57 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
-    
-    <!--<TextBlock Grid.Row="2"
-               Text="{Binding StringFormat=P0}"
-               FontSize="10"
-               Foreground="{DynamicResource ToolTipForeground}"
-               TextAlignment="Center"/>-->
 
     <Style Selector="controls|MultiSlider">
         <Setter Property="Template">
             <ControlTemplate>
-                <primitives:MultiTrack
-                    Values="{TemplateBinding Values}">
-                    <primitives:MultiTrack.RangeButtonTheme>
-                        <ControlTheme TargetType="Button">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="ClipToBounds" Value="False"/>
-                            <Setter Property="Template">
-                                <ControlTemplate x:DataType="system:Double">
-                                    <Border Background="{TemplateBinding Background}"
-                                            CornerRadius="2"
-                                            Height="4"/>
-                                </ControlTemplate>
-                            </Setter>
-                        </ControlTheme>
-                    </primitives:MultiTrack.RangeButtonTheme>
-                    <primitives:MultiTrack.ThumbTheme>
-                        <ControlTheme TargetType="Thumb">
-                            <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
-                            <Setter Property="Margin" Value="-6 0"/>
-                            <Setter Property="ZIndex" Value="1"/>
-                            <Setter Property="Template">
-                                <ControlTemplate>
-                                    <Ellipse Width="12"
-                                             Height="12"
-                                             Fill="{TemplateBinding Background}"/>
-                                </ControlTemplate>
-                            </Setter>
-                        </ControlTheme>
-                    </primitives:MultiTrack.ThumbTheme>
-                </primitives:MultiTrack>
+                <Grid RowDefinitions="Auto Auto">
+                    <primitives:MultiTrack
+                        Grid.Row="0"
+                        Values="{TemplateBinding Values, Mode=TwoWay}">
+                        <primitives:MultiTrack.RangeButtonTheme>
+                            <ControlTheme TargetType="Button">
+                                <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="ClipToBounds" Value="False"/>
+                                <Setter Property="Template">
+                                    <ControlTemplate x:DataType="system:Double">
+                                        <Border Background="{TemplateBinding Background}"
+                                                CornerRadius="2"
+                                                Height="4"/>
+                                    </ControlTemplate>
+                                </Setter>
+                            </ControlTheme>
+                        </primitives:MultiTrack.RangeButtonTheme>
+                        <primitives:MultiTrack.ThumbTheme>
+                            <ControlTheme TargetType="Thumb">
+                                <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+                                <Setter Property="Margin" Value="-6 0"/>
+                                <Setter Property="ZIndex" Value="1"/>
+                                <Setter Property="Template">
+                                    <ControlTemplate>
+                                        <Ellipse Width="12"
+                                                 Height="12"
+                                                 Fill="{TemplateBinding Background}"/>
+                                    </ControlTemplate>
+                                </Setter>
+                            </ControlTheme>
+                        </primitives:MultiTrack.ThumbTheme>
+                    </primitives:MultiTrack>
+                    <primitives:MultiTrackValuesBar
+                        Grid.Row="1"
+                        Values="{TemplateBinding Values}"
+                        Range="{TemplateBinding Range}"
+                        StringFormat="P0">
+                        <primitives:MultiTrackValuesBar.TextBlockTheme>
+                            <ControlTheme TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="10"/>
+                                <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </ControlTheme>
+                        </primitives:MultiTrackValuesBar.TextBlockTheme>
+                    </primitives:MultiTrackValuesBar>
+                </Grid>
             </ControlTemplate>
         </Setter>
     </Style>

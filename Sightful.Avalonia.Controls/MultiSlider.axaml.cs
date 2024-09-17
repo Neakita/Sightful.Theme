@@ -10,9 +10,18 @@ public sealed class MultiSlider : TemplatedControl
 	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
 		MultiTrack.ValuesProperty.AddOwner<MultiSlider>();
 
+	public static readonly StyledProperty<decimal> RangeProperty =
+		MultiTrack.RangeProperty.AddOwner<MultiSlider>();
+
 	public ImmutableList<decimal> Values
 	{
 		get => GetValue(ValuesProperty);
 		set => SetValue(ValuesProperty, value);
+	}
+
+	public decimal Range
+	{
+		get => GetValue(RangeProperty);
+		set => SetValue(RangeProperty, value);
 	}
 }

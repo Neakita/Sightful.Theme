@@ -135,6 +135,8 @@ public sealed class MultiTrack : Control
 		var valuesSum = values.Sum();
 		if (valuesSum == 0)
 			return Enumerable.Repeat(range / values.Count, values.Count).ToImmutableList();
+		if (valuesSum == range)
+			return values;
 		var correction = range / valuesSum;
 		return values.Select(value => value * correction).ToImmutableList();
 	}
