@@ -19,7 +19,8 @@ internal sealed class MultiTrackDragManager
 
 	public void OnPointerPressed(PointerPressedEventArgs args)
 	{
-		Guard.IsNull(_session);
+		if (_session != null)
+			return;
 		var position = args.GetPosition(_track);
 		Point normalizedPosition = new(position.X / _track.Bounds.Width, position.Y / _track.Bounds.Height);
 		var normalizedLength = _track.Orientation == Orientation.Horizontal ? normalizedPosition.X : normalizedPosition.Y;
@@ -60,7 +61,6 @@ internal sealed class MultiTrackDragManager
 
 	public void OnPointerReleased()
 	{
-		Guard.IsNotNull(_session);
 		_session = null;
 	}
 
@@ -72,19 +72,19 @@ internal sealed class MultiTrackDragManager
 	private void Drag(int index, decimal distance)
 	{
 		var valueDelta = distance / _arranger.Density;
-		valueDelta = Math.Clamp(valueDelta, -_track.Values[index], _track.Values[index + 1]);
 		_track.Values = Shift(_track.Values, index, valueDelta);
-		foreach (var value in _track.Values)
-			Guard.IsGreaterThanOrEqualTo(value, 0);
 	}
 
 	private ImmutableList<decimal> Shift(ImmutableList<decimal> values, int index, decimal delta)
 	{
+		delta = Math.Clamp(delta, -values[index], values[index + 1]);
 		Guard.IsEqualTo(values.Sum(), _track.Range);
 		var builder = values.ToBuilder();
 		builder[index] += delta;
 		builder[index + 1] -= delta;
 		Guard.IsEqualTo(builder.Sum(), _track.Range);
+		foreach (var value in builder)
+			Guard.IsGreaterThanOrEqualTo(value, 0);
 		return builder.ToImmutable();
 	}
 }
