@@ -63,7 +63,7 @@ public sealed class MultiSliderValuesBar : Control
 
 	public MultiSliderValuesBar()
 	{
-		AddTextBlocks((byte)Values.Count);
+		_childrenManager = new MultiSliderValuesBarChildrenManager(LogicalChildren, VisualChildren, Values);
 		_arranger = new MultiSliderValuesBarArranger(LogicalChildren)
 		{
 			Orientation = Orientation,
@@ -76,12 +76,14 @@ public sealed class MultiSliderValuesBar : Control
 	{
 		base.OnPropertyChanged(change);
 		if (change.Property == ValuesProperty)
-			OnValuesChanged(change.GetOldValue<ImmutableList<decimal>>());
+		{
+			_childrenManager.Values = Values;
+			_arranger.Values = Values;
+		}
 		else if (change.Property == StringFormatProperty)
-			UpdateText();
+			_childrenManager.StringFormat = StringFormat;
 		else if (change.Property == TextBlockThemeProperty)
-			foreach (var textBlock in LogicalChildren.Cast<TextBlock>())
-				textBlock.Theme = TextBlockTheme;
+			_childrenManager.TextBlockTheme = TextBlockTheme;
 		else if (change.Property == OrientationProperty)
 			_arranger.Orientation = Orientation;
 		else if (change.Property == RangeProperty)
@@ -98,51 +100,6 @@ public sealed class MultiSliderValuesBar : Control
 		return _arranger.Arrange(finalSize);
 	}
 
+	private readonly MultiSliderValuesBarChildrenManager _childrenManager;
 	private readonly MultiSliderValuesBarArranger _arranger;
-
-	private void OnValuesChanged(ImmutableList<decimal> oldValues)
-	{
-		var countDelta = Values.Count - oldValues.Count;
-		if (countDelta > 0)
-			AddTextBlocks((byte)countDelta);
-		else if (countDelta < 0)
-			RemoveLastChildren((byte)-countDelta);
-		UpdateText();
-		_arranger.Values = Values;
-	}
-
-	private void AddTextBlocks(byte count)
-	{
-		for (byte i = 0; i < count; i++)
-			AddTextBlock();
-	}
-
-	private void AddTextBlock()
-	{
-		AddChild(CreateTextBlock());
-	}
-
-	private TextBlock CreateTextBlock() => new()
-	{
-		Theme = TextBlockTheme
-	};
-
-	private void AddChild(Visual item)
-	{
-		LogicalChildren.Add(item);
-		VisualChildren.Add(item);
-	}
-
-	private void RemoveLastChildren(byte count)
-	{
-		var firstChildIndex = Values.Count - count;
-		LogicalChildren.RemoveRange(firstChildIndex, count);
-		VisualChildren.RemoveRange(firstChildIndex, count);
-	}
-
-	private void UpdateText()
-	{
-		foreach (var (textBlock, value) in LogicalChildren.Cast<TextBlock>().Zip(Values))
-			textBlock.Text = value.ToString(StringFormat);
-	}
 }
