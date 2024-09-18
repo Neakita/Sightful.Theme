@@ -24,7 +24,7 @@ internal sealed class MultiTrackDragManager
 		var valueIndex = GetDragIndex(rangedPointerPosition);
 		var valuePosition = _track.Values.Take(valueIndex).Sum();
 		var newValue = rangedPointerPosition - valuePosition;
-		_track.Values = SetValue(_track.Values, valueIndex, newValue);
+		_track.SetCurrentValue(MultiTrack.ValuesProperty, SetValue(_track.Values, valueIndex, newValue));
 		_session = new MultiTrackDragSession(valueIndex, valuePosition);
 	}
 
@@ -39,7 +39,7 @@ internal sealed class MultiTrackDragManager
 		var rangedPointerPosition = (decimal)normalizedPointerPosition * _track.Range;
 		var valuePosition = _track.Values.Take(_session.ValueIndex).Sum();
 		var newValue = rangedPointerPosition - valuePosition;
-		_track.Values = SetValue(_track.Values, _session.ValueIndex, newValue);
+		_track.SetCurrentValue(MultiTrack.ValuesProperty, SetValue(_track.Values, _session.ValueIndex, newValue));
 	}
 
 	public void OnPointerReleased()
