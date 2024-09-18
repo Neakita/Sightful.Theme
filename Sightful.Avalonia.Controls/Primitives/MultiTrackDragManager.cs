@@ -7,44 +7,39 @@ namespace Sightful.Avalonia.Controls.Primitives;
 
 internal sealed class MultiTrackDragManager
 {
-	public MultiTrackDragManager(MultiTrack track, MultiTrackArranger arranger)
+	public MultiTrackDragManager(MultiTrack track)
 	{
 		_track = track;
-		_arranger = arranger;
 	}
 
 	public void OnPointerPressed(PointerPressedEventArgs args)
 	{
 		if (_session != null)
 			return;
-		var position = args.GetPosition(_track);
-		var normalizedLength = _track.Orientation == Orientation.Horizontal
-			? position.X / _track.Bounds.Width
-			: position.Y / _track.Bounds.Height;
-		var length = (decimal)normalizedLength * _track.Range;
-		var valueIndex = GetDragIndex(length);
-		decimal accumulated = 0;
-
-		for (var i = 0; i < valueIndex; i++)
-		{
-			var value = _track.Values[i];
-			accumulated += value;
-		}
-
-		var newValue = length - accumulated;
-		_track.Values = Shift(_track.Values, valueIndex, newValue - _track.Values[valueIndex]);
-		_session = new MultiTrackDragSession(valueIndex, position);
+		var pointerPosition = args.GetPosition(_track);
+		var normalizedPointerPosition = _track.Orientation == Orientation.Horizontal
+			? pointerPosition.X / _track.Bounds.Width
+			: pointerPosition.Y / _track.Bounds.Height;
+		var rangedPointerPosition = (decimal)normalizedPointerPosition * _track.Range;
+		var valueIndex = GetDragIndex(rangedPointerPosition);
+		var valuePosition = _track.Values.Take(valueIndex).Sum();
+		var newValue = rangedPointerPosition - valuePosition;
+		_track.Values = SetValue(_track.Values, valueIndex, newValue);
+		_session = new MultiTrackDragSession(valueIndex, valuePosition);
 	}
 
 	public void OnPointerMoved(PointerEventArgs args)
 	{
 		if (_session == null)
 			return;
-		var position = args.GetPosition(_track);
-		var delta = position - _session.PreviousPointerPosition;
-		var distance = _track.Orientation == Orientation.Horizontal ? delta.X : delta.Y;
-		Drag(_session.ValueIndex, (decimal)distance);
-		_session.PreviousPointerPosition = position;
+		var pointerPosition = args.GetPosition(_track);
+		var normalizedPointerPosition = _track.Orientation == Orientation.Horizontal
+			? pointerPosition.X / _track.Bounds.Width
+			: pointerPosition.Y / _track.Bounds.Height;
+		var rangedPointerPosition = (decimal)normalizedPointerPosition * _track.Range;
+		var valuePosition = _track.Values.Take(_session.ValueIndex).Sum();
+		var newValue = rangedPointerPosition - valuePosition;
+		_track.Values = SetValue(_track.Values, _session.ValueIndex, newValue);
 	}
 
 	public void OnPointerReleased()
@@ -53,13 +48,13 @@ internal sealed class MultiTrackDragManager
 	}
 
 	private readonly MultiTrack _track;
-	private readonly MultiTrackArranger _arranger;
 	private MultiTrackDragSession? _session;
 
-	private void Drag(int index, decimal distance)
+	private ImmutableList<decimal> SetValue(ImmutableList<decimal> values, int index, decimal newValue)
 	{
-		var valueDelta = distance / _arranger.Density;
-		_track.Values = Shift(_track.Values, index, valueDelta);
+		var oldValue = values[index];
+		var delta = newValue - oldValue;
+		return Shift(values, index, delta);
 	}
 
 	private ImmutableList<decimal> Shift(ImmutableList<decimal> values, int index, decimal delta)
@@ -75,7 +70,7 @@ internal sealed class MultiTrackDragManager
 		return builder.ToImmutable();
 	}
 
-	private byte GetDragIndex(decimal length)
+	private byte GetDragIndex(decimal rangedPosition)
 	{
 		var values = _track.Values;
 		List<decimal> thumbPositions = new(values.Count - 1);
@@ -92,8 +87,8 @@ internal sealed class MultiTrackDragManager
 		{
 			var currentThumbLength = thumbPositions[i];
 			var nextThumbLength = thumbPositions[i + 1];
-			var currentThumbDistance = Math.Abs(currentThumbLength - length);
-			var nextThumbDistance = Math.Abs(nextThumbLength - length);
+			var currentThumbDistance = Math.Abs(currentThumbLength - rangedPosition);
+			var nextThumbDistance = Math.Abs(nextThumbLength - rangedPosition);
 			if (currentThumbDistance <= nextThumbDistance)
 				return i;
 		}

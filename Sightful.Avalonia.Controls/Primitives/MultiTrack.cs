@@ -77,7 +77,7 @@ public sealed class MultiTrack : Control
 	{
 		_arranger = new MultiTrackArranger(Values, LogicalChildren, Range);
 		_childrenManager = new MultiTrackChildrenManager(LogicalChildren, VisualChildren);
-		_dragManager = new MultiTrackDragManager(this, _arranger);
+		_dragManager = new MultiTrackDragManager(this);
 	}
 
 	protected override Size MeasureOverride(Size availableSize)
