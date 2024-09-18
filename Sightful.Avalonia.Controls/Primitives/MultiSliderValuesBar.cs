@@ -28,6 +28,7 @@ public sealed class MultiSliderValuesBar : Control
 
 	static MultiSliderValuesBar()
 	{
+		AffectsMeasure<MultiSliderValuesBar>(ValuesProperty);
 		AffectsArrange<MultiSliderValuesBar>(ValuesProperty);
 	}
 
