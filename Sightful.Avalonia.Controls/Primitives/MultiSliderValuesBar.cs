@@ -179,22 +179,67 @@ public sealed class MultiSliderValuesBar : Control
 		var minimumLengthsSum = minimumLengths.Sum();
 		if (minimumLengthsSum > availableLength)
 			return minimumLengths;
-		var availableExtraLength = availableLength - minimumLengthsSum;
-		var desiredExtraLengths = minimumLengths
-			.Zip(desiredLengths, GetDesiredExtraLength)
-			.ToList();
-		var desiredExtraLengthsSum = desiredExtraLengths.Sum();
-		var desiredExtraLengthsCorrectionFactor = availableExtraLength / desiredExtraLengthsSum;
-		var correctedExtraLengths = desiredExtraLengths
-			.Select(length => length * desiredExtraLengthsCorrectionFactor);
-		return minimumLengths.Zip(correctedExtraLengths, Sum);
-		double GetDesiredExtraLength(double minimum, double desired)
+
+		var result = desiredLengths.ToList();
+		for (var i = 0; i < result.Count; i++)
 		{
-			if (minimum >= desired)
-				return 0;
-			return desired - minimum;
+			var minimumLength = minimumLengths[i];
+			var desiredLength = result[i];
+			if (desiredLength >= minimumLength)
+				continue;
+			var requiredExtension = minimumLength - desiredLength;
+
+			var previousShrinkage = ShrinkNeighbors(i, requiredExtension / 2, false);
+			var nextShrinkage = ShrinkNeighbors(i, requiredExtension - previousShrinkage, true);
+
+			var totalExtension = previousShrinkage + nextShrinkage;
+
+			if (totalExtension < requiredExtension)
+			{
+				var additionalPreviousShrinkage = ShrinkNeighbors(i, requiredExtension - totalExtension, false);
+				previousShrinkage += additionalPreviousShrinkage;
+				totalExtension = previousShrinkage + nextShrinkage;
+			}
+
+			result[i] += totalExtension;
 		}
-		double Sum(double x, double y) => x + y;
+
+		return result;
+
+		double ShrinkNeighbors(int index, double desiredShrinkage, bool forward)
+		{
+			double actualShrinkage = 0;
+			if (forward)
+				for (var i = index + 1; i < result.Count; i++)
+				{
+					var remainingShrinkage = desiredShrinkage - actualShrinkage;
+					actualShrinkage += ShrinkAt(i, remainingShrinkage);
+				}
+			else
+				for (var i = index - 1; i >= 0; i--)
+				{
+					var remainingShrinkage = desiredShrinkage - actualShrinkage;
+					actualShrinkage += ShrinkAt(i, remainingShrinkage);
+				}
+			return actualShrinkage;
+		}
+
+		double ShrinkAt(int index, double desiredShrinkage)
+		{
+			var extraLength = GetExtraLength(index);
+			if (extraLength == 0)
+				return 0;
+			var shrinkage = Math.Min(extraLength, desiredShrinkage);
+			result[index] -= shrinkage;
+			return shrinkage;
+		}
+
+		double GetExtraLength(int index)
+		{
+			if (index < 0 || index >= result.Count)
+				return 0;
+			return Math.Max(0, result[index] - minimumLengths[index]);
+		}
 	}
 
 	private Rect GetArrangeRectangle(Size finalSize, double length, double passedLength)

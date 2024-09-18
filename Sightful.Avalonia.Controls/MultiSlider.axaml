@@ -58,6 +58,7 @@
                                 <Setter Property="FontSize" Value="10"/>
                                 <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
                                 <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="Margin" Value="2 0"/>
                             </ControlTheme>
                         </primitives:MultiSliderValuesBar.TextBlockTheme>
                     </primitives:MultiSliderValuesBar>
