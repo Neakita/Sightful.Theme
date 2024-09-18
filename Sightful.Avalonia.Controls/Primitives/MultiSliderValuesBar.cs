@@ -64,6 +64,12 @@ public sealed class MultiSliderValuesBar : Control
 	public MultiSliderValuesBar()
 	{
 		AddTextBlocks((byte)Values.Count);
+		_arranger = new MultiSliderValuesBarArranger(LogicalChildren)
+		{
+			Orientation = Orientation,
+			Values = Values,
+			Range = Range
+		};
 	}
 
 	protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
@@ -76,32 +82,23 @@ public sealed class MultiSliderValuesBar : Control
 		else if (change.Property == TextBlockThemeProperty)
 			foreach (var textBlock in LogicalChildren.Cast<TextBlock>())
 				textBlock.Theme = TextBlockTheme;
+		else if (change.Property == OrientationProperty)
+			_arranger.Orientation = Orientation;
+		else if (change.Property == RangeProperty)
+			_arranger.Range = Range;
 	}
 
 	protected override Size MeasureOverride(Size availableSize)
 	{
-		Size desiredSize = new();
-		foreach (var textBlock in LogicalChildren.Cast<TextBlock>())
-		{
-			textBlock.Measure(availableSize);
-			var textBlockDesiredSize = textBlock.DesiredSize;
-			desiredSize = StackSizes(desiredSize, textBlockDesiredSize);
-			availableSize = SubtractStackedSize(availableSize, textBlockDesiredSize);
-		}
-		return desiredSize;
+		return _arranger.Measure(availableSize);
 	}
 
 	protected override Size ArrangeOverride(Size finalSize)
 	{
-		double passedLength = 0;
-		var availableLength = Orientation == Orientation.Horizontal ? finalSize.Width : finalSize.Height;
-		foreach (var (textBlock, length) in LogicalChildren.Cast<TextBlock>().Zip(GetArrangeLengths(availableLength)))
-		{
-			textBlock.Arrange(GetArrangeRectangle(finalSize, length, passedLength));
-			passedLength += length;
-		}
-		return finalSize;
+		return _arranger.Arrange(finalSize);
 	}
+
+	private readonly MultiSliderValuesBarArranger _arranger;
 
 	private void OnValuesChanged(ImmutableList<decimal> oldValues)
 	{
@@ -111,6 +108,7 @@ public sealed class MultiSliderValuesBar : Control
 		else if (countDelta < 0)
 			RemoveLastChildren((byte)-countDelta);
 		UpdateText();
+		_arranger.Values = Values;
 	}
 
 	private void AddTextBlocks(byte count)
@@ -146,106 +144,5 @@ public sealed class MultiSliderValuesBar : Control
 	{
 		foreach (var (textBlock, value) in LogicalChildren.Cast<TextBlock>().Zip(Values))
 			textBlock.Text = value.ToString(StringFormat);
-	}
-
-	private Size StackSizes(Size first, Size second)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(first.Width + second.Width, Math.Max(first.Height, second.Height))
-			: new Size(Math.Max(first.Width, second.Width), first.Height + second.Height);
-	}
-
-	private Size SubtractStackedSize(Size minuend, Size subtrahend)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(minuend.Width - subtrahend.Width, minuend.Height)
-			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
-	}
-
-	private IEnumerable<double> GetArrangeLengths(double availableLength)
-	{
-		var minimumLengths = LogicalChildren
-			.Cast<TextBlock>()
-			.Select(textBlock => textBlock.DesiredSize)
-			.Select<Size, double>(Orientation == Orientation.Horizontal ? size => size.Width : size => size.Height)
-			.ToList();
-		var desiredLengths = Values
-			.Select(value => (double)value / (double)Range * availableLength)
-			.ToList();
-
-		if (desiredLengths.Zip(minimumLengths).All(tuple => tuple.First > tuple.Second))
-			return desiredLengths;
-
-		var minimumLengthsSum = minimumLengths.Sum();
-		if (minimumLengthsSum > availableLength)
-			return minimumLengths;
-
-		var result = desiredLengths.ToList();
-		for (var i = 0; i < result.Count; i++)
-		{
-			var minimumLength = minimumLengths[i];
-			var desiredLength = result[i];
-			if (desiredLength >= minimumLength)
-				continue;
-			var requiredExtension = minimumLength - desiredLength;
-
-			var previousShrinkage = ShrinkNeighbors(i, requiredExtension / 2, false);
-			var nextShrinkage = ShrinkNeighbors(i, requiredExtension - previousShrinkage, true);
-
-			var totalExtension = previousShrinkage + nextShrinkage;
-
-			if (totalExtension < requiredExtension)
-			{
-				var additionalPreviousShrinkage = ShrinkNeighbors(i, requiredExtension - totalExtension, false);
-				previousShrinkage += additionalPreviousShrinkage;
-				totalExtension = previousShrinkage + nextShrinkage;
-			}
-
-			result[i] += totalExtension;
-		}
-
-		return result;
-
-		double ShrinkNeighbors(int index, double desiredShrinkage, bool forward)
-		{
-			double actualShrinkage = 0;
-			if (forward)
-				for (var i = index + 1; i < result.Count; i++)
-				{
-					var remainingShrinkage = desiredShrinkage - actualShrinkage;
-					actualShrinkage += ShrinkAt(i, remainingShrinkage);
-				}
-			else
-				for (var i = index - 1; i >= 0; i--)
-				{
-					var remainingShrinkage = desiredShrinkage - actualShrinkage;
-					actualShrinkage += ShrinkAt(i, remainingShrinkage);
-				}
-			return actualShrinkage;
-		}
-
-		double ShrinkAt(int index, double desiredShrinkage)
-		{
-			var extraLength = GetExtraLength(index);
-			if (extraLength == 0)
-				return 0;
-			var shrinkage = Math.Min(extraLength, desiredShrinkage);
-			result[index] -= shrinkage;
-			return shrinkage;
-		}
-
-		double GetExtraLength(int index)
-		{
-			if (index < 0 || index >= result.Count)
-				return 0;
-			return Math.Max(0, result[index] - minimumLengths[index]);
-		}
-	}
-
-	private Rect GetArrangeRectangle(Size finalSize, double length, double passedLength)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Rect(passedLength, 0, length, finalSize.Height)
-			: new Rect(0, passedLength, finalSize.Width, length);
 	}
 }
