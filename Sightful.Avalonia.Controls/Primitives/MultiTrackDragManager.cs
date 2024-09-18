@@ -60,7 +60,7 @@ internal sealed class MultiTrackDragManager
 
 	private ImmutableList<decimal> Shift(ImmutableList<decimal> values, int index, decimal delta)
 	{
-		delta = Math.Clamp(delta, -values[index], values[index + 1]);
+		delta = Math.Clamp(delta, -values[index] + _track.MinimumValue, values[index + 1] - _track.MinimumValue);
 		Guard.IsEqualTo(values.Sum(), _track.Range);
 		var builder = values.ToBuilder();
 		builder[index] += delta;

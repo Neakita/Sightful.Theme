@@ -7,7 +7,10 @@
         <Border Classes="outer regular-padding" Width="200">
             <StackPanel Classes="regular-spacing">
                 <controls:MultiSlider/>
-                <controls:MultiSlider Values="{x:Static controls:DesignData.ThreeValues}" Increment="0.05"/>
+                <controls:MultiSlider
+                    Values="{x:Static controls:DesignData.ThreeValues}"
+                    Increment="0.05"
+                    MinimumValue="0.05"/>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -19,7 +22,8 @@
                     <primitives:MultiTrack
                         Grid.Row="0"
                         Values="{TemplateBinding Values, Mode=TwoWay}"
-                        Increment="{TemplateBinding Increment}">
+                        Increment="{TemplateBinding Increment}"
+                        MinimumValue="{TemplateBinding MinimumValue}">
                         <primitives:MultiTrack.RangeButtonTheme>
                             <ControlTheme TargetType="Button">
                                 <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>

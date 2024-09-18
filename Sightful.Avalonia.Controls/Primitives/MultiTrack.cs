@@ -34,6 +34,9 @@ public sealed class MultiTrack : Control
 	public static readonly StyledProperty<decimal> IncrementProperty =
 		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(Increment));
 
+	public static readonly StyledProperty<decimal> MinimumValueProperty =
+		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(MinimumValue));
+
 	static MultiTrack()
 	{
 		AffectsMeasure<MultiTrack>(RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
@@ -80,6 +83,12 @@ public sealed class MultiTrack : Control
 	{
 		get => GetValue(IncrementProperty);
 		set => SetValue(IncrementProperty, value);
+	}
+
+	public decimal MinimumValue
+	{
+		get => GetValue(MinimumValueProperty);
+		set => SetValue(MinimumValueProperty, value);
 	}
 
 	public MultiTrack()

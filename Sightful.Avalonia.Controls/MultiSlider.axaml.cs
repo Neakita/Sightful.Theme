@@ -16,6 +16,15 @@ public sealed class MultiSlider : TemplatedControl
 	public static readonly StyledProperty<decimal> IncrementProperty =
 		MultiTrack.IncrementProperty.AddOwner<MultiSlider>();
 
+	public static readonly StyledProperty<decimal> MinimumValueProperty =
+		MultiTrack.MinimumValueProperty.AddOwner<MultiSlider>();
+
+	public decimal MinimumValue
+	{
+		get => GetValue(MinimumValueProperty);
+		set => SetValue(MinimumValueProperty, value);
+	}
+
 	public ImmutableList<decimal> Values
 	{
 		get => GetValue(ValuesProperty);
