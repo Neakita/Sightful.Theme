@@ -6,6 +6,7 @@ using Avalonia.Data;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Styling;
+using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia.Controls.Primitives;
 
@@ -155,7 +156,26 @@ public sealed class MultiTrack : Control
 			return Enumerable.Repeat(range / values.Count, values.Count).ToImmutableList();
 		if (valuesSum == range)
 			return values;
-		var correction = range / valuesSum;
-		return values.Select(value => value * correction).ToImmutableList();
+		var correctionFactor = range / valuesSum;
+		values = values.Select(value => value * correctionFactor).ToImmutableList();
+		valuesSum = values.Sum();
+		var correction = range - valuesSum;
+		if (correction != 0)
+		{
+			for (var i = values.Count - 1; i >= 0; i--)
+			{
+				if (correction == 0)
+					break;
+				var value = values[i];
+				var appliedCorrection = Math.Min(value, correction);
+				value += appliedCorrection;
+				values = values.SetItem(i, value);
+				correction -= appliedCorrection;
+			}
+			valuesSum = values.Sum();
+		}
+		Guard.IsEqualTo(correction, 0);
+		Guard.IsEqualTo(valuesSum, range);
+		return values;
 	}
 }
