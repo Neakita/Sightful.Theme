@@ -31,6 +31,9 @@ public sealed class MultiTrack : Control
 	public static readonly StyledProperty<Orientation> OrientationProperty =
 		AvaloniaProperty.Register<MultiTrack, Orientation>(nameof(Orientation));
 
+	public static readonly StyledProperty<decimal> IncrementProperty =
+		AvaloniaProperty.Register<MultiTrack, decimal>(nameof(Increment));
+
 	static MultiTrack()
 	{
 		AffectsMeasure<MultiTrack>(RangeButtonThemeProperty, ThumbThemeProperty, OrientationProperty);
@@ -71,6 +74,12 @@ public sealed class MultiTrack : Control
 	{
 		get => GetValue(ThumbThemeProperty);
 		set => SetValue(ThumbThemeProperty, value);
+	}
+
+	public decimal Increment
+	{
+		get => GetValue(IncrementProperty);
+		set => SetValue(IncrementProperty, value);
 	}
 
 	public MultiTrack()

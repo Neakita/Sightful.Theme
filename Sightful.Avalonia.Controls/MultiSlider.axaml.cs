@@ -13,6 +13,9 @@ public sealed class MultiSlider : TemplatedControl
 	public static readonly StyledProperty<decimal> RangeProperty =
 		MultiTrack.RangeProperty.AddOwner<MultiSlider>();
 
+	public static readonly StyledProperty<decimal> IncrementProperty =
+		MultiTrack.IncrementProperty.AddOwner<MultiSlider>();
+
 	public ImmutableList<decimal> Values
 	{
 		get => GetValue(ValuesProperty);
@@ -23,5 +26,11 @@ public sealed class MultiSlider : TemplatedControl
 	{
 		get => GetValue(RangeProperty);
 		set => SetValue(RangeProperty, value);
+	}
+
+	public decimal Increment
+	{
+		get => GetValue(IncrementProperty);
+		set => SetValue(IncrementProperty, value);
 	}
 }

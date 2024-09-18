@@ -52,6 +52,7 @@ internal sealed class MultiTrackDragManager
 
 	private ImmutableList<decimal> SetValue(ImmutableList<decimal> values, int index, decimal newValue)
 	{
+		newValue = SnapValue(newValue);
 		var oldValue = values[index];
 		var delta = newValue - oldValue;
 		return Shift(values, index, delta);
@@ -93,5 +94,16 @@ internal sealed class MultiTrackDragManager
 				return i;
 		}
 		return (byte)(thumbPositions.Count - 1);
+	}
+
+	private decimal SnapValue(decimal value)
+	{
+		if (_track.Increment <= 0)
+			return value;
+		var previous = Math.Round(value / _track.Increment) * _track.Increment;
+		var next = Math.Min(_track.Range, previous + _track.Increment);
+		var previousDistance = value - previous;
+		var nextDistance = next - value;
+		return nextDistance > previousDistance ? previous : next;
 	}
 }
