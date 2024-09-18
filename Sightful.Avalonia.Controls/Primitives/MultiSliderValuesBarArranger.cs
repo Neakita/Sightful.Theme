@@ -6,9 +6,8 @@ using Avalonia.LogicalTree;
 
 namespace Sightful.Avalonia.Controls.Primitives;
 
-internal sealed class MultiSliderValuesBarArranger
+internal sealed class MultiSliderValuesBarArranger : StackArranger
 {
-	public Orientation Orientation { get; set; }
 	public IReadOnlyCollection<decimal> Values { get; set; } = ImmutableList<decimal>.Empty;
 	public decimal Range { get; set; }
 
@@ -43,20 +42,6 @@ internal sealed class MultiSliderValuesBarArranger
 	}
 
 	private readonly IReadOnlyCollection<ILogical> _logicalChildren;
-
-	private Size StackSizes(Size first, Size second)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(first.Width + second.Width, Math.Max(first.Height, second.Height))
-			: new Size(Math.Max(first.Width, second.Width), first.Height + second.Height);
-	}
-
-	private Size SubtractStackedSize(Size minuend, Size subtrahend)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(minuend.Width - subtrahend.Width, minuend.Height)
-			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
-	}
 
 	private IEnumerable<double> GetArrangeLengths(double availableLength)
 	{

@@ -8,9 +8,8 @@ using CommunityToolkit.Diagnostics;
 
 namespace Sightful.Avalonia.Controls.Primitives;
 
-internal sealed class MultiTrackArranger
+internal sealed class MultiTrackArranger : StackArranger
 {
-	public Orientation Orientation { get; set; }
 	public ImmutableList<decimal> Values { get; set; }
 	public decimal Range { get; set; }
 	public decimal Density { get; private set; }
@@ -53,20 +52,6 @@ internal sealed class MultiTrackArranger
 	}
 
 	private readonly IReadOnlyList<ILogical> _logicalChildren;
-
-	private Size StackSizes(Size first, Size second)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(first.Width + second.Width, Math.Max(first.Height, second.Height))
-			: new Size(Math.Max(first.Width, second.Width), first.Height + second.Height);
-	}
-
-	private Size SubtractStackedSize(Size minuend, Size subtrahend)
-	{
-		return Orientation == Orientation.Horizontal
-			? new Size(minuend.Width - subtrahend.Width, minuend.Height)
-			: new Size(minuend.Width, minuend.Height - subtrahend.Height);
-	}
 
 	private double GetDesiredLength(Layoutable layoutable)
 	{
