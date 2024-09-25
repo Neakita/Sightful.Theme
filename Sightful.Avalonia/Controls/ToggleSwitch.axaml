@@ -1,95 +1,111 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
-	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<StackPanel Spacing="12">
-				<ToggleSwitch Content="Custom title bar"/>
-				<ToggleSwitch IsChecked="True"/>
-			</StackPanel>
-		</Border>
-	</Design.PreviewWith>
-	<ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
-		<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource ToggleSwitchKnob}"/>
-		<Setter Property="HorizontalAlignment" Value="Left"/>
-		<Setter Property="VerticalAlignment" Value="Center"/>
-		<Setter Property="HorizontalContentAlignment" Value="Left"/>
-		<Setter Property="VerticalContentAlignment" Value="Center"/>
-		<Setter Property="KnobTransitions">
-			<Transitions>
-				<DoubleTransition Easing="QuinticEaseInOut"
-				                  Property="Canvas.Left"
-				                  Duration="0:0:0.3"/>
-			</Transitions>
-		</Setter>
-		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
-		<Setter Property="CornerRadius" Value="16"/>
-		<Setter Property="Cursor" Value="Hand"/>
-		<Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill" Value="{DynamicResource HoveredToggleSwitchKnob}"/>
-		<Setter Property="assists:ToggleSwitchAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
-		<Setter Property="assists:ToggleSwitchAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
-		<Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource PressedToggleSwitchKnob}"/>
-		<Setter Property="Template">
-			<ControlTemplate>
-				<Grid ColumnDefinitions="* Auto"
-				      HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-				      VerticalAlignment="{TemplateBinding VerticalAlignment}">
-					<ContentPresenter Grid.Column="0"
-					                  Content="{TemplateBinding Content}"
-					                  Margin="0 0 8 0"
-					                  IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
-					                  Background="Transparent"/>
-					<Border Grid.Column="1"
-					        Width="52"
-					        Height="32"
-					        Background="{TemplateBinding Background}"
-					        CornerRadius="{TemplateBinding CornerRadius}"
-					        assists:InternalRenderTransformAssist.Shrinking="{TemplateBinding assists:ToggleSwitchAssist.Shrinking}">
-						<Border.Transitions>
-							<Transitions>
-								<BrushTransition Property="Background"
-								                 Easing="QuinticEaseInOut"
-								                 Duration="0:0:0.3"/>
-							</Transitions>
-						</Border.Transitions>
-						<Canvas x:Name="PART_SwitchKnob"
-						        Margin="7 7 25 7">
-							<Panel x:Name="PART_MovingKnobs"
-							       VerticalAlignment="Center">
-								<Ellipse Fill="{TemplateBinding assists:ToggleSwitchAssist.KnobFill}"
-								         Width="18"
-								         Height="18">
-									<Ellipse.Transitions>
-										<Transitions>
-											<BrushTransition Property="Fill"
-											                 Easing="QuinticEaseInOut"
-											                 Duration="0:0:0.3"/>
-										</Transitions>
-									</Ellipse.Transitions>
-								</Ellipse>
-							</Panel>
-						</Canvas>
-					</Border>
-				</Grid>
-			</ControlTemplate>
-		</Setter>
-		<Style Selector="^:checked">
-			<Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
-			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
-			<Setter Property="assists:ToggleSwitchAssist.HoveredBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
-			<Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
-			<Setter Property="assists:ToggleSwitchAssist.PressedBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
-			<Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
-			
-		</Style>
-		<Style Selector="^:pointerover">
-			<Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredBackground)}"/>
-			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredKnobFill)}"/>
-		</Style>
-		<Style Selector="^:pressed">
-			<Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.PressedBackground)}"/>
-			<Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{Binding $self.(assists:ToggleSwitchAssist.PressedKnobFill)}"/>
-			<Setter Property="assists:ToggleSwitchAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
-		</Style>
-	</ControlTheme>
+    <Design.PreviewWith>
+        <Border Classes="outer wide-padding">
+            <StackPanel Spacing="12">
+                <ToggleSwitch Content="Custom title bar"/>
+                <ToggleSwitch IsChecked="True"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type ToggleSwitch}" TargetType="ToggleSwitch">
+        <Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource ToggleSwitchKnob}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <DoubleTransition Easing="QuinticEaseInOut"
+                                  Property="Canvas.Left"
+                                  Duration="0:0:0.3"/>
+            </Transitions>
+        </Setter>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="CornerRadius" Value="16"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill" Value="{DynamicResource HoveredToggleSwitchKnob}"/>
+        <Setter Property="assists:ToggleSwitchAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+        <Setter Property="assists:ToggleSwitchAssist.PressedBackground"
+                Value="{DynamicResource PressedButtonBackground}"/>
+        <Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource PressedToggleSwitchKnob}"/>
+        <Setter Property="assists:ToggleSwitchAssist.DisabledKnobFill" Value="{DynamicResource DisabledToggleSwitchKnobFill}"/>
+        <Setter Property="assists:ToggleSwitchAssist.DisabledBackground" Value="{DynamicResource DisabledToggleSwitchBackground}"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="* Auto"
+                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                      VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                    <ContentPresenter Grid.Column="0"
+                                      Content="{TemplateBinding Content}"
+                                      Margin="0 0 8 0"
+                                      IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                      Background="Transparent"/>
+                    <Border Grid.Column="1"
+                            Width="52"
+                            Height="32"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            assists:InternalRenderTransformAssist.Shrinking="{TemplateBinding assists:ToggleSwitchAssist.Shrinking}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background"
+                                                 Easing="QuinticEaseInOut"
+                                                 Duration="0:0:0.3"/>
+                            </Transitions>
+                        </Border.Transitions>
+                        <Canvas x:Name="PART_SwitchKnob"
+                                Margin="7 7 25 7">
+                            <Panel x:Name="PART_MovingKnobs"
+                                   VerticalAlignment="Center">
+                                <Ellipse Fill="{TemplateBinding assists:ToggleSwitchAssist.KnobFill}"
+                                         Width="18"
+                                         Height="18">
+                                    <Ellipse.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Fill"
+                                                             Easing="QuinticEaseInOut"
+                                                             Duration="0:0:0.3"/>
+                                        </Transitions>
+                                    </Ellipse.Transitions>
+                                </Ellipse>
+                            </Panel>
+                        </Canvas>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+            <Setter Property="assists:ToggleSwitchAssist.KnobFill" Value="{DynamicResource HighAccentButtonForeground}"/>
+            <Setter Property="assists:ToggleSwitchAssist.HoveredBackground"
+                    Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+            <Setter Property="assists:ToggleSwitchAssist.HoveredKnobFill"
+                    Value="{DynamicResource HighAccentButtonForeground}"/>
+            <Setter Property="assists:ToggleSwitchAssist.PressedBackground"
+                    Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+            <Setter Property="assists:ToggleSwitchAssist.PressedKnobFill"
+                    Value="{DynamicResource HighAccentButtonForeground}"/>
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredBackground)}"/>
+            <Setter Property="assists:ToggleSwitchAssist.KnobFill"
+                    Value="{Binding $self.(assists:ToggleSwitchAssist.HoveredKnobFill)}"/>
+        </Style>
+
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.PressedBackground)}"/>
+            <Setter Property="assists:ToggleSwitchAssist.KnobFill"
+                    Value="{Binding $self.(assists:ToggleSwitchAssist.PressedKnobFill)}"/>
+            <Setter Property="assists:ToggleSwitchAssist.Shrinking" Value="{DynamicResource Shrinking}"/>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{Binding $self.(assists:ToggleSwitchAssist.DisabledBackground)}"/>
+            <Setter Property="assists:ToggleSwitchAssist.KnobFill"
+                    Value="{Binding $self.(assists:ToggleSwitchAssist.DisabledKnobFill)}"/>
+        </Style>
+    </ControlTheme>
 </ResourceDictionary>

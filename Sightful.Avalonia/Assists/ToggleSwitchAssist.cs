@@ -83,4 +83,16 @@ internal static class ToggleSwitchAssist
 	{
 		return element.GetValue(ShrinkingProperty);
 	}
+
+	public static readonly AttachedProperty<IBrush?> DisabledKnobFillProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("DisabledKnobFill", typeof(ToggleSwitchAssist));
+
+	public static void SetDisabledKnobFill(ToggleSwitch element, IBrush? value) => element.SetValue(DisabledKnobFillProperty, value);
+	public static IBrush? GetDisabledKnobFill(ToggleSwitch element) => element.GetValue(DisabledKnobFillProperty);
+
+	public static readonly AttachedProperty<IBrush?> DisabledBackgroundProperty =
+		AvaloniaProperty.RegisterAttached<ToggleSwitch, IBrush?>("DisabledBackground", typeof(ToggleSwitchAssist));
+
+	public static void SetDisabledBackground(ToggleSwitch element, IBrush? value) => element.SetValue(DisabledBackgroundProperty, value);
+	public static IBrush? GetDisabledBackground(ToggleSwitch element) => element.GetValue(DisabledBackgroundProperty);
 }
