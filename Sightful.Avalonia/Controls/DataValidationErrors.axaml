@@ -27,6 +27,13 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DockPanel>
+                    <ContentControl x:Name="InlineDataValidationContentControl"
+                                    Margin="0,4,0,0"
+                                    Content="{Binding (DataValidationErrors.Errors)}"
+                                    ContentTemplate="{TemplateBinding ErrorTemplate}"
+                                    DataContext="{TemplateBinding Owner}"
+                                    DockPanel.Dock="Bottom"
+                                    IsVisible="{Binding (DataValidationErrors.HasErrors)}"/>
                     <ContentPresenter Name="PART_ContentPresenter"
                                       Padding="{TemplateBinding Padding}"
                                       Background="{TemplateBinding Background}"
@@ -35,13 +42,6 @@
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       CornerRadius="{TemplateBinding CornerRadius}"
                                       DockPanel.Dock="Top"/>
-                    <ContentControl x:Name="InlineDataValidationContentControl"
-                                    Margin="0,4,0,0"
-                                    Content="{Binding (DataValidationErrors.Errors)}"
-                                    ContentTemplate="{TemplateBinding ErrorTemplate}"
-                                    DataContext="{TemplateBinding Owner}"
-                                    DockPanel.Dock="Bottom"
-                                    IsVisible="{Binding (DataValidationErrors.HasErrors)}"/>
                 </DockPanel>
             </ControlTemplate>
         </Setter>
