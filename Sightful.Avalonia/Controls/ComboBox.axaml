@@ -19,7 +19,7 @@
 				<root:ComboBoxCornerRadiusConverter x:Key="CornerRadiusConverter"/>
 			</ResourceDictionary>
 		</ControlTheme.Resources>
-		<Setter Property="Padding" Value="16 12"/>
+		<Setter Property="Padding" Value="16 0"/>
 		<Setter Property="MinHeight" Value="40"/>
 		<Setter Property="FocusAdorner" Value="{x:Null}"/>
 		<Setter Property="MaxDropDownHeight" Value="300"/>
