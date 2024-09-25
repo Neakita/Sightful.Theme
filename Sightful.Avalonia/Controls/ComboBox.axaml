@@ -69,7 +69,8 @@
                             <TextBlock Grid.Column="0"
                                        Text="{TemplateBinding PlaceholderText}"
                                        Foreground="{TemplateBinding PlaceholderForeground}"
-                                       IsVisible="{TemplateBinding SelectedItem, Converter={x:Static ObjectConverters.IsNull}}">
+                                       IsVisible="{TemplateBinding SelectedItem, Converter={x:Static ObjectConverters.IsNull}}"
+                                       VerticalAlignment="Center">
                                 <TextBlock.Transitions>
                                     <Transitions>
                                         <BrushTransition Property="Foreground"
