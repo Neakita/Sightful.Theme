@@ -18,13 +18,11 @@
 				           TextWrapping="Wrap">
 					<Run Text="{TemplateBinding PropertyName}"
 					     Foreground="{DynamicResource PrimaryForeground}"
-					     FontSize="21"
-					     FontWeight="700"/>
+					     Classes="h2"/>
 					<LineBreak/>
 					<Run Text="{TemplateBinding PropertyDescription}"
 					     Foreground="{DynamicResource SecondaryForeground}"
-					     FontSize="17"
-					     FontWeight="400"/>
+					     Classes="p2"/>
 				</TextBlock>
 			</ControlTemplate>
 		</Setter>
