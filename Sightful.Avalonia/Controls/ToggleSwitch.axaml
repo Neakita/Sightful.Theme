@@ -32,6 +32,8 @@
         <Setter Property="assists:ToggleSwitchAssist.PressedKnobFill" Value="{DynamicResource PressedToggleSwitchKnob}"/>
         <Setter Property="assists:ToggleSwitchAssist.DisabledKnobFill" Value="{DynamicResource DisabledToggleSwitchKnobFill}"/>
         <Setter Property="assists:ToggleSwitchAssist.DisabledBackground" Value="{DynamicResource DisabledToggleSwitchBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+        <Setter Property="FontSize" Value="17"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid ColumnDefinitions="* Auto"
@@ -41,7 +43,8 @@
                                       Content="{TemplateBinding Content}"
                                       Margin="0 0 8 0"
                                       IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                      Background="Transparent"/>
+                                      Background="Transparent"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     <Border Grid.Column="1"
                             Width="52"
                             Height="32"
