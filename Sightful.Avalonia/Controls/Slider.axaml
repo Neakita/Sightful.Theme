@@ -50,12 +50,10 @@
         <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
         <Setter Property="FontSize" Value="10"/>
 
-        <!--Thumb is clipping badly at edge values when it is enabled-->
-        <Setter Property="ClipToBounds" Value="False"/>
-
         <!--Visual glitches appear when dragging thumb when it is enabled-->
         <!--Especially noticeable when ClipToBounds is disabled-->
         <Setter Property="UseLayoutRounding" Value="False"/>
+
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
@@ -74,16 +72,17 @@
                                 <RepeatButton Name="PART_DecreaseButton"
                                               Focusable="False"
                                               Theme="{StaticResource TrackButtonTheme}"
-                                              Background="{DynamicResource HighAccentButtonBackground}"/>
+                                              Background="{DynamicResource HighAccentButtonBackground}"
+                                              Margin="0 0 -6 0"/>
                             </Track.DecreaseButton>
                             <Track.IncreaseButton>
                                 <RepeatButton Name="PART_IncreaseButton"
                                               Focusable="False"
-                                              Theme="{StaticResource TrackButtonTheme}"/>
+                                              Theme="{StaticResource TrackButtonTheme}"
+                                              Margin="-6 0 0 0"/>
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
-                                   Background="{DynamicResource HighAccentButtonBackground}"
-                                   Margin="-6 0">
+                                   Background="{DynamicResource HighAccentButtonBackground}">
                                 <Thumb.Template>
                                     <ControlTemplate>
                                         <Ellipse Width="12"
