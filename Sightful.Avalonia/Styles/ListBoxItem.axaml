@@ -3,4 +3,7 @@
 	<Style Selector="ListBox.compact ListBoxItem">
 		<Setter Property="Padding" Value="16 8"/>
 	</Style>
+    <Style Selector="ListBox.square-items ListBoxItem">
+        <Setter Property="Height" Value="{Binding $self.Bounds.Width}"/>
+    </Style> 
 </Styles>
