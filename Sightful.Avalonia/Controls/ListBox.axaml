@@ -25,7 +25,7 @@
 		<Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True"/>
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
-				<StackPanel Spacing="12"/>
+				<VirtualizingStackPanel/>
 			</ItemsPanelTemplate>
 		</Setter>
 		<Setter Property="FontWeight" Value="500"/>
@@ -49,9 +49,12 @@
 					              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
 					              CornerRadius="{TemplateBinding CornerRadius}"
 					              Background="{TemplateBinding Background}">
-						<ItemsPresenter Name="PART_ItemsPresenter"
-						                ItemsPanel="{TemplateBinding ItemsPanel}"
-						                Margin="{TemplateBinding Padding}"/>
+                        <!--Compensation of ListBoxItem internal margin used to simulate StackPanel.Spacing even if VirtualizingStackPanel is used-->
+                        <Decorator Margin="0 -6">
+                            <ItemsPresenter Name="PART_ItemsPresenter"
+                                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                                            Margin="{TemplateBinding Padding}"/>
+                        </Decorator>
 					</ScrollViewer>
 				</Border>
 			</ControlTemplate>

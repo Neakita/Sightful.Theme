@@ -37,6 +37,8 @@
 		<Setter Property="Padding" Value="16"/>
 		<Setter Property="CornerRadius" Value="12"/>
 		<Setter Property="Cursor" Value="Hand"/>
+        <!--Could StackPanel.Spacing be used unless VirtualizingStackPanel is required which doesn't have Spacing property-->
+        <Setter Property="Margin" Value="0 6"/>
 		<StyleInclude Source="../Styles/Shrinking.axaml"/>
 	</ControlTheme>
 	<ControlTheme x:Key="FadeListBoxItem" TargetType="ListBoxItem" BasedOn="{StaticResource BaseListBoxItem}">
