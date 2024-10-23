@@ -36,13 +36,14 @@
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
         <ControlTheme.Resources>
             <ControlTheme x:Key="TrackButtonTheme" TargetType="RepeatButton">
-                <Setter Property="Background" Value="{DynamicResource SecondaryForeground}"/>
-                <Setter Property="Height" Value="4"/>
-                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="Focusable" Value="False"/>
                 <Setter Property="Template">
                     <ControlTemplate>
-                        <Border Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding CornerRadius}"/>
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Background="{TemplateBinding Background}"/>
                     </ControlTemplate>
                 </Setter>
             </ControlTheme>
@@ -72,14 +73,20 @@
                                 <RepeatButton Name="PART_DecreaseButton"
                                               Focusable="False"
                                               Theme="{StaticResource TrackButtonTheme}"
-                                              Background="{DynamicResource HighAccentButtonBackground}"
-                                              Margin="0 0 -6 0"/>
+                                              Margin="0 0 -6 0">
+                                    <Border Background="{DynamicResource HighAccentButtonBackground}"
+                                            Height="4"
+                                            CornerRadius="2"/>
+                                </RepeatButton>
                             </Track.DecreaseButton>
                             <Track.IncreaseButton>
                                 <RepeatButton Name="PART_IncreaseButton"
-                                              Focusable="False"
                                               Theme="{StaticResource TrackButtonTheme}"
-                                              Margin="-6 0 0 0"/>
+                                              Margin="-6 0 0 0">
+                                    <Border Background="{DynamicResource SecondaryForeground}"
+                                            Height="4"
+                                            CornerRadius="2"/>
+                                </RepeatButton>
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
                                    Background="{DynamicResource HighAccentButtonBackground}">
