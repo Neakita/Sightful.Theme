@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.2.0" />
+      <PackageReference Include="Avalonia" Version="11.2.1" />
       <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.0.10" />
       <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.3.2" />
       <PackageReference Include="Material.Icons.Avalonia" Version="2.1.10" />
