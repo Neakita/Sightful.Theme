@@ -3,12 +3,16 @@
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Padding="20">
-			<Button>
-				<StackPanel Orientation="Horizontal">
-					<icons:MaterialIcon Kind="ExitToApp"/>
-					<TextBlock Name="TextBlock" Text="Sign out"/>
-				</StackPanel>
-			</Button>
+            <StackPanel Classes="regular-spacing">
+                <Button>
+                    <StackPanel Orientation="Horizontal">
+                        <icons:MaterialIcon Kind="ExitToApp"/>
+                        <TextBlock Name="TextBlock" Text="Sign out"/>
+                    </StackPanel>
+                </Button>
+                <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
+                <Button Classes="square" Content="{icons:MaterialIconExt Minus}"/>
+            </StackPanel>
 		</Border>
 	</Design.PreviewWith>
 
@@ -16,7 +20,8 @@
 		<Setter Property="Spacing" Value="10"/>
 	</Style>
 	
-	<Style Selector="Button icons|MaterialIcon">
-		<Setter Property="Margin" Value="0 4"/>
+	<Style Selector=":is(Button) icons|MaterialIcon">
+        <Setter Property="MaxWidth" Value="16"/>
+        <Setter Property="MaxHeight" Value="16"/>
 	</Style>
 </Styles>
