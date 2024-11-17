@@ -4,11 +4,7 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
     <Design.PreviewWith>
         <Border Classes="outer wide-padding">
-            <Border.Styles>
-                <StyleInclude Source="../Styles/Border.axaml"/>
-                <StyleInclude Source="../Styles/Padding.axaml"/>
-            </Border.Styles>
-            <StackPanel>
+            <StackPanel Classes="regular-spacing">
                 <TextBox Watermark="Enter variables"/>
                 <TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
                          Watermark="Email"/>
@@ -18,6 +14,7 @@
                          InnerRightContent="{icons:MaterialIconExt Square}"
                          Text="|Squares|"/>
                 <TextBox Text="Overflow" Width="80"/>
+                <TextBox Text="{Binding $self.Bounds.Height}" InnerRightContent="px"/>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -28,9 +25,8 @@
                 <SolidColorBrush x:Key="TransparentAccent" Color="{DynamicResource Accent}" Opacity="0"/>
             </ResourceDictionary>
         </ControlTheme.Resources>
-        <Setter Property="Padding" Value="6"/>
-        <Setter Property="BorderThickness" Value="4"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="Padding" Value="8"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
@@ -39,7 +35,6 @@
         <Setter Property="assists:TextBoxAssist.RightInnerContentMargin" Value="4 0 0 0"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-        <Setter Property="Margin" Value="{DynamicResource ControlsMargin}"/>
         <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Cursor" Value="Ibeam"/>
@@ -84,8 +79,7 @@
                             <ContentPresenter Grid.Column="0"
                                               Content="{TemplateBinding InnerLeftContent}"
                                               Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
-                                              IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                              MaxHeight="{TemplateBinding FontSize}">
+                                              IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}">
                                 <ContentPresenter.Transitions>
                                     <Transitions>
                                         <BrushTransition Property="Foreground"
@@ -133,8 +127,7 @@
                             <ContentPresenter Grid.Column="2"
                                               Content="{TemplateBinding InnerRightContent}"
                                               Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
-                                              IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                              MaxHeight="{TemplateBinding FontSize}">
+                                              IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}">
                                 <ContentPresenter.Transitions>
                                     <Transitions>
                                         <BrushTransition Property="Foreground"
@@ -154,6 +147,9 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{DynamicResource DisabledTextBoxBackground}"/>
+        </Style>
+        <Style Selector="^.compact">
+            <Setter Property="Padding" Value="6"/>
         </Style>
     </ControlTheme>
 

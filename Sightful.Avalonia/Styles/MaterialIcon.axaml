@@ -1,0 +1,7 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Style Selector="TextBox icons|MaterialIcon">
+        <Setter Property="Height" Value="{Binding $parent[TextBox].FontSize}"/>
+    </Style>
+</Styles>
