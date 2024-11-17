@@ -25,7 +25,7 @@
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
         <ControlTheme.Resources>
             <ResourceDictionary>
-                <SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
+                <SolidColorBrush x:Key="TransparentAccent" Color="{DynamicResource Accent}" Opacity="0"/>
             </ResourceDictionary>
         </ControlTheme.Resources>
         <Setter Property="Padding" Value="6"/>
@@ -52,6 +52,23 @@
         <Setter Property="FocusAdorner" Value="{x:Null}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True"/>
+        <Setter Property="AdornerLayer.Adorner">
+            <Template>
+                <Border BorderBrush="{Binding $parent[TextBox].(assists:TextBoxAssist.AdornerBorderBrush)}"
+                        CornerRadius="{Binding $parent[TextBox].CornerRadius}"
+                        BorderThickness="4"
+                        Margin="-4"
+                        AdornerLayer.IsClipEnabled="False">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="BorderBrush"
+                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                        </Transitions>
+                    </Border.Transitions>
+                </Border>
+            </Template>
+        </Setter>
+        <Setter Property="assists:TextBoxAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
@@ -63,12 +80,6 @@
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalAlignment}"
                             BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
-                        <Border.Transitions>
-                            <Transitions>
-                                <BrushTransition Property="BorderBrush"
-                                                 Duration="{DynamicResource BrushTransitionDuration}"/>
-                            </Transitions>
-                        </Border.Transitions>
                         <Grid ColumnDefinitions="Auto * Auto">
                             <ContentPresenter Grid.Column="0"
                                               Content="{TemplateBinding InnerLeftContent}"
@@ -137,7 +148,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:focus">
-            <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
+            <Setter Property="assists:TextBoxAssist.AdornerBorderBrush" Value="{DynamicResource Accent}"/>
             <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
             <Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimary}"/>
         </Style>
