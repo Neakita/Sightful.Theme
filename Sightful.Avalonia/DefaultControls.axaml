@@ -35,6 +35,8 @@
 				<MergeResourceInclude Source="Controls/ComboBoxItem.axaml"/>
                 <MergeResourceInclude Source="Controls/DataValidationErrors.axaml"/>
                 <MergeResourceInclude Source="Controls/Slider.axaml"/>
+                <MergeResourceInclude Source="Controls/ButtonSpinner.axaml"/>
+                <MergeResourceInclude Source="Controls/NumericUpDown.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>

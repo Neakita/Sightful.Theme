@@ -1,0 +1,68 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <Design.PreviewWith>
+        <Border Classes="wide-padding outer">
+            <StackPanel Spacing="20">
+                <NumericUpDown Minimum="0"
+                               Maximum="10"
+                               Increment="0.5"
+                               Watermark="Enter text"/>
+                <NumericUpDown Minimum="0"
+                               Maximum="10"
+                               Increment="0.5"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               ButtonSpinnerLocation="Left"
+                               Watermark="Enter text"/>
+                <NumericUpDown>
+                    <DataValidationErrors.Error>
+                        <system:Exception>
+                            <x:Arguments>
+                                <x:String>Error</x:String>
+                            </x:Arguments>
+                        </system:Exception>
+                    </DataValidationErrors.Error>
+                </NumericUpDown>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type NumericUpDown}" TargetType="NumericUpDown">
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors>
+                    <ButtonSpinner Name="PART_Spinner"
+                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                   BorderBrush="{TemplateBinding BorderBrush}"
+                                   CornerRadius="{TemplateBinding CornerRadius}"
+                                   IsTabStop="False"
+                                   AllowSpin="{TemplateBinding AllowSpin}"
+                                   ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}"
+                                   ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
+                        <TextBox Name="PART_TextBox"
+                                 Watermark="{TemplateBinding Watermark}"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"
+                                 Text="{TemplateBinding Text}"
+                                 TextAlignment="{TemplateBinding TextAlignment}"
+                                 AcceptsReturn="False"
+                                 TextWrapping="NoWrap"
+                                 InnerLeftContent="{TemplateBinding InnerLeftContent}"
+                                 InnerRightContent="{TemplateBinding InnerRightContent}"/>
+                    </ButtonSpinner>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[ButtonSpinnerLocation=Left] /template/ TextBox#PART_TextBox">
+            <Setter Property="CornerRadius" Value="0 12 12 0"/>
+        </Style>
+
+        <Style Selector="^[ButtonSpinnerLocation=Right] /template/ TextBox#PART_TextBox">
+            <Setter Property="CornerRadius" Value="12 0 0 12"/>
+        </Style>
+        
+    </ControlTheme>
+
+</ResourceDictionary>
