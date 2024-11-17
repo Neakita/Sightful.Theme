@@ -6,6 +6,7 @@
         </HeaderedContentControl>
     </Design.PreviewWith>
     <ControlTheme x:Key="{x:Type HeaderedContentControl}" TargetType="HeaderedContentControl">
+        <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Border BorderBrush="{TemplateBinding BorderBrush}"
@@ -13,7 +14,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}"
                         Background="{TemplateBinding Background}"
                         Padding="{TemplateBinding Padding}">
-                    <Grid RowDefinitions="auto *">
+                    <Grid RowDefinitions="auto 8 *">
                         <ContentPresenter Name="PART_HeaderPresenter"
                                           Content="{TemplateBinding Header}"
                                           RecognizesAccessKey="True"
@@ -27,7 +28,7 @@
                                           RecognizesAccessKey="True"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Grid.Row="1"/>
+                                          Grid.Row="2"/>
                     </Grid>
                 </Border>
             </ControlTemplate>
