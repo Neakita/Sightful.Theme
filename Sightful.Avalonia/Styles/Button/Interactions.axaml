@@ -1,19 +1,20 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
-	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Button Content="Click Me!"/>
-		</Border>
-	</Design.PreviewWith>
-        
-	<Style Selector=":is(TemplatedControl):pointerover">
-		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
-		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HeavyBoxShadow}"/>
-	</Style>
-        
-	<Style Selector=":is(TemplatedControl):pressed">
-		<Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
-	</Style>
-	<StyleInclude Source="../Shrinking.axaml"/>
+    <Design.PreviewWith>
+        <Border Padding="40" Background="{DynamicResource OuterBackground}">
+            <Button Content="Click Me!"/>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector=":is(TemplatedControl):pointerover">
+        <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.HoveredBackground)}"/>
+        <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HeavyBoxShadow}"/>
+        <Setter Property="Foreground" Value="#949da6"/>
+    </Style>
+
+    <Style Selector=":is(TemplatedControl):pressed">
+        <Setter Property="Background" Value="{Binding $self.(assists:ButtonAssist.PressedBackground)}"/>
+    </Style>
+    <StyleInclude Source="../Shrinking.axaml"/>
 </Styles>
