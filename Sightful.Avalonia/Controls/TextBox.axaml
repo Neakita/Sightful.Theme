@@ -39,6 +39,7 @@
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Cursor" Value="Ibeam"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextSelection}"/>
+        <Setter Property="assists:TextBoxAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
@@ -47,95 +48,89 @@
         <Setter Property="FocusAdorner" Value="{x:Null}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True"/>
-        <Setter Property="AdornerLayer.Adorner">
-            <Template>
-                <Border BorderBrush="{Binding $parent[TextBox].(assists:TextBoxAssist.AdornerBorderBrush)}"
-                        CornerRadius="{Binding $parent[TextBox].CornerRadius}"
-                        BorderThickness="4"
-                        Margin="-4"
-                        AdornerLayer.IsClipEnabled="False">
-                    <Border.Transitions>
-                        <Transitions>
-                            <BrushTransition Property="BorderBrush"
-                                             Duration="{DynamicResource BrushTransitionDuration}"/>
-                        </Transitions>
-                    </Border.Transitions>
-                </Border>
-            </Template>
-        </Setter>
-        <Setter Property="assists:TextBoxAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
-                    <Border BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            Padding="{TemplateBinding Padding}"
-                            Background="{TemplateBinding Background}"
-                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                            BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
-                        <Grid ColumnDefinitions="Auto * Auto">
-                            <ContentPresenter Grid.Column="0"
-                                              Content="{TemplateBinding InnerLeftContent}"
-                                              Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
-                                              IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}">
-                                <ContentPresenter.Transitions>
-                                    <Transitions>
-                                        <BrushTransition Property="Foreground"
-                                                         Duration="{DynamicResource BrushTransitionDuration}"/>
-                                    </Transitions>
-                                </ContentPresenter.Transitions>
-                            </ContentPresenter>
-                            <TextBlock Grid.Column="1"
-                                       Text="{TemplateBinding Watermark}"
-                                       Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
-                                       IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
-                                <TextBlock.Transitions>
-                                    <Transitions>
-                                        <BrushTransition Property="Foreground"
-                                                         Duration="{DynamicResource BrushTransitionDuration}"/>
-                                    </Transitions>
-                                </TextBlock.Transitions>
-                            </TextBlock>
-                            <ScrollViewer Grid.Column="1"
-                                          Name="PART_ScrollViewer"
-                                          HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
-                                          VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
-                                          IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
-                                          AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
-                                          BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
-                                <TextPresenter Name="PART_TextPresenter"
-                                               Text="{TemplateBinding Text, Mode=TwoWay}"
-                                               CaretIndex="{TemplateBinding CaretIndex}"
-                                               SelectionStart="{TemplateBinding SelectionStart}"
-                                               SelectionEnd="{TemplateBinding SelectionEnd}"
-                                               TextAlignment="{TemplateBinding TextAlignment}"
-                                               TextWrapping="{TemplateBinding TextWrapping}"
-                                               LineHeight="{TemplateBinding LineHeight}"
-                                               LetterSpacing="{TemplateBinding LetterSpacing}"
-                                               PasswordChar="{TemplateBinding PasswordChar}"
-                                               RevealPassword="{TemplateBinding RevealPassword}"
-                                               SelectionBrush="{TemplateBinding SelectionBrush}"
-                                               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
-                                               CaretBrush="{TemplateBinding CaretBrush}"
-                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                               ClipToBounds="True"
-                                               Background="Transparent"/>
-                            </ScrollViewer>
-                            <ContentPresenter Grid.Column="2"
-                                              Content="{TemplateBinding InnerRightContent}"
-                                              Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
-                                              IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}">
-                                <ContentPresenter.Transitions>
-                                    <Transitions>
-                                        <BrushTransition Property="Foreground"
-                                                         Duration="{DynamicResource BrushTransitionDuration}"/>
-                                    </Transitions>
-                                </ContentPresenter.Transitions>
-                            </ContentPresenter>
-                        </Grid>
+                    <Border BorderBrush="{TemplateBinding assists:TextBoxAssist.AdornerBorderBrush}"
+                            BorderThickness="4"
+                            Margin="-4"
+                            CornerRadius="14">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="BorderBrush"
+                                                 Duration="{DynamicResource BrushTransitionDuration}"/>
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Padding="{TemplateBinding Padding}"
+                                Background="{TemplateBinding Background}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
+                            <Grid ColumnDefinitions="Auto * Auto">
+                                <ContentPresenter Grid.Column="0"
+                                                  Content="{TemplateBinding InnerLeftContent}"
+                                                  Margin="{TemplateBinding assists:TextBoxAssist.LeftInnerContentMargin}"
+                                                  IsVisible="{TemplateBinding InnerLeftContent, Converter={x:Static ObjectConverters.IsNotNull}}">
+                                    <ContentPresenter.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Foreground"
+                                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                                        </Transitions>
+                                    </ContentPresenter.Transitions>
+                                </ContentPresenter>
+                                <TextBlock Grid.Column="1"
+                                           Text="{TemplateBinding Watermark}"
+                                           Foreground="{TemplateBinding assists:TextBoxAssist.WatermarkBrush}"
+                                           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
+                                    <TextBlock.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Foreground"
+                                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                                        </Transitions>
+                                    </TextBlock.Transitions>
+                                </TextBlock>
+                                <ScrollViewer Grid.Column="1"
+                                              Name="PART_ScrollViewer"
+                                              HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                              VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                                              IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                                              AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                                              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+                                    <TextPresenter Name="PART_TextPresenter"
+                                                   Text="{TemplateBinding Text, Mode=TwoWay}"
+                                                   CaretIndex="{TemplateBinding CaretIndex}"
+                                                   SelectionStart="{TemplateBinding SelectionStart}"
+                                                   SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                   TextAlignment="{TemplateBinding TextAlignment}"
+                                                   TextWrapping="{TemplateBinding TextWrapping}"
+                                                   LineHeight="{TemplateBinding LineHeight}"
+                                                   LetterSpacing="{TemplateBinding LetterSpacing}"
+                                                   PasswordChar="{TemplateBinding PasswordChar}"
+                                                   RevealPassword="{TemplateBinding RevealPassword}"
+                                                   SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                   SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                   CaretBrush="{TemplateBinding CaretBrush}"
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   ClipToBounds="True"
+                                                   Background="Transparent"/>
+                                </ScrollViewer>
+                                <ContentPresenter Grid.Column="2"
+                                                  Content="{TemplateBinding InnerRightContent}"
+                                                  Margin="{TemplateBinding assists:TextBoxAssist.RightInnerContentMargin}"
+                                                  IsVisible="{TemplateBinding InnerRightContent, Converter={x:Static ObjectConverters.IsNotNull}}">
+                                    <ContentPresenter.Transitions>
+                                        <Transitions>
+                                            <BrushTransition Property="Foreground"
+                                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                                        </Transitions>
+                                    </ContentPresenter.Transitions>
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
                     </Border>
                 </DataValidationErrors>
             </ControlTemplate>
