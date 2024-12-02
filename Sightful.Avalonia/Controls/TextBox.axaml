@@ -3,8 +3,10 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
             <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
                 <TextBox Watermark="Enter variables"/>
                 <TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
                          Watermark="Email"/>

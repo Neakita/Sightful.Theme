@@ -3,6 +3,7 @@
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Padding="20">
+            <!-- ReSharper disable once Xaml.StyleClassNotFound -->
             <StackPanel Classes="regular-spacing">
                 <Button>
                     <StackPanel Orientation="Horizontal">
@@ -10,8 +11,10 @@
                         <TextBlock Name="TextBlock" Text="Sign out"/>
                     </StackPanel>
                 </Button>
+                <!-- ReSharper disable Xaml.StyleClassNotFound -->
                 <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
                 <Button Classes="square" Content="{icons:MaterialIconExt Minus}"/>
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
             </StackPanel>
 		</Border>
 	</Design.PreviewWith>

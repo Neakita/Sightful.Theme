@@ -5,6 +5,7 @@
                     xmlns:root="clr-namespace:Sightful.Avalonia"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
+        <!-- ReSharper disable once Xaml.StyleClassNotFound -->
         <Border Classes="outer" Padding="0 50 0 200">
             <ComboBox PlaceholderText="Select an item">
                 <ComboBoxItem>Item 1</ComboBoxItem>

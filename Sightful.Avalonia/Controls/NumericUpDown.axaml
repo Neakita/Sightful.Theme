@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="wide-padding outer">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
             <StackPanel Spacing="20">
                 <NumericUpDown Minimum="0"
                                Maximum="10"

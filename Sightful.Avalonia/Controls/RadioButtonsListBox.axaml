@@ -3,8 +3,10 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
                     xmlns:icon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<ListBox Theme="{DynamicResource RadioButtonsListBoxTheme}" Classes="horizontal">
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <ListBox Theme="{DynamicResource RadioButtonsListBoxTheme}" Classes="horizontal">
 				<ListBoxItem Content="Option 1"/>
 				<ListBoxItem Content="Option 2"/>
 				<ListBoxItem Content="Option 3"/>
@@ -123,14 +125,16 @@
 
 		<Setter Property="ItemsPanel">
 			<ItemsPanelTemplate>
-				<StackPanel Classes="regular-spacing"/>
+                <!-- ReSharper disable once Xaml.StyleClassNotFound -->
+                <StackPanel Classes="regular-spacing"/>
 			</ItemsPanelTemplate>
 		</Setter>
 		
 		<Style Selector="^.horizontal">
 			<Setter Property="ItemsPanel">
 				<ItemsPanelTemplate>
-					<StackPanel Orientation="Horizontal" Classes="regular-spacing"/>
+                    <!-- ReSharper disable once Xaml.StyleClassNotFound -->
+                    <StackPanel Orientation="Horizontal" Classes="regular-spacing"/>
 				</ItemsPanelTemplate>
 			</Setter>
 		</Style>

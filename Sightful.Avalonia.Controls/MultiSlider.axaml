@@ -4,8 +4,10 @@
         xmlns:system="clr-namespace:System;assembly=System.Runtime"
         xmlns:primitives="clr-namespace:Sightful.Avalonia.Controls.Primitives">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer regular-padding" Width="200">
             <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
                 <controls:MultiSlider/>
                 <controls:MultiSlider
                     Values="{x:Static controls:DesignData.ThreeValues}"

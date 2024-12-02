@@ -3,8 +3,10 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<StackPanel Spacing="12">
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <StackPanel Spacing="12">
 				<Button Content="Click Me!"/>
                 <Button Content="Disabled" IsEnabled="False"/>
                 <Button>

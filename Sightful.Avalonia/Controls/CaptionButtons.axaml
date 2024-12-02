@@ -4,7 +4,9 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
                     xmlns:theme="clr-namespace:Sightful.Avalonia">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
             <CaptionButtons/>
         </Border>
     </Design.PreviewWith>

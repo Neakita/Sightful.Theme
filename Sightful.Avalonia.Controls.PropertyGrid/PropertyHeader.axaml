@@ -2,8 +2,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Sightful.Avalonia.Controls.PropertyGrid">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<StackPanel>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <StackPanel>
 				<controls:PropertyHeader PropertyName="Custom decorations"/>
 				<controls:PropertyHeader PropertyName="Custom decorations"
 				                         PropertyDescription="Some boring description"/>
@@ -16,13 +18,15 @@
 			<ControlTemplate>
 				<TextBlock LineSpacing="4" MaxLines="{TemplateBinding PropertyDescription, Converter={x:Static controls:Converters.RestrictMaxLinesToSingleIfEmptyString}}"
 				           TextWrapping="Wrap">
-					<Run Text="{TemplateBinding PropertyName}"
-					     Foreground="{DynamicResource PrimaryForeground}"
-					     Classes="h2"/>
-					<LineBreak/>
+                    <!-- ReSharper disable Xaml.StyleClassNotFound -->
+                    <Run Text="{TemplateBinding PropertyName}"
+                         Foreground="{DynamicResource PrimaryForeground}"
+                         Classes="h2"/>
+                    <LineBreak/>
 					<Run Text="{TemplateBinding PropertyDescription}"
 					     Foreground="{DynamicResource SecondaryForeground}"
 					     Classes="p2"/>
+                    <!-- ReSharper restore Xaml.StyleClassNotFound -->
 				</TextBlock>
 			</ControlTemplate>
 		</Setter>

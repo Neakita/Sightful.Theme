@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
             <StackPanel Spacing="12">
                 <ToggleSwitch Content="Custom title bar"/>
                 <ToggleSwitch IsChecked="True"/>

@@ -3,8 +3,10 @@
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<StackPanel Spacing="20">
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <StackPanel Spacing="20">
 				<CheckBox>Unchecked</CheckBox>
 				<CheckBox IsChecked="True">Checked</CheckBox>
 				<CheckBox IsThreeState="True" IsChecked="{x:Null}">Indeterminate</CheckBox>

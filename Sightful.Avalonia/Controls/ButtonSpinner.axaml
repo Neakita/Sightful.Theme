@@ -3,7 +3,9 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
     <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="wide-padding outer">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
             <StackPanel Spacing="20">
                 <ButtonSpinner Content="Right spinner"/>
                 <ButtonSpinner ButtonSpinnerLocation="Left"
@@ -40,12 +42,14 @@
                                     DockPanel.Dock="Right"
                                     Orientation="Horizontal"
                                     IsVisible="{TemplateBinding ShowButtonSpinner}">
+                            <!-- ReSharper disable once Xaml.StyleClassNotFound -->
                             <RepeatButton Name="PART_DecreaseButton"
                                           IsTabStop="{TemplateBinding IsTabStop}"
                                           Classes="square"
                                           CornerRadius="0">
                                 <icons:MaterialIcon Kind="Minus"/>
                             </RepeatButton>
+                            <!-- ReSharper disable once Xaml.StyleClassNotFound -->
                             <RepeatButton Name="PART_IncreaseButton"
                                           IsTabStop="{TemplateBinding IsTabStop}"
                                           Classes="square"
