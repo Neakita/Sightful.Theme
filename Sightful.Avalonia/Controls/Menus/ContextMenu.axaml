@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Design.PreviewWith>
+        <Border Background="{DynamicResource OuterBackground}"
+                Margin="16"
+                Padding="48"
+                Width="400"
+                Height="200">
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Play" Icon="{icons:MaterialIconExt PlayOutline}" Classes="green-accent"/>
+                    <MenuItem Header="View"/>
+                    <Separator/>
+                    <MenuItem Header="Delete" Icon="{icons:MaterialIconExt TrashCanOutline}" Classes="red-accent"/>
+                </ContextMenu>
+            </Border.ContextMenu>
+            <TextBlock Text="Defined in XAML"/>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}"
+                                    KeyboardNavigation.TabNavigation="Continue"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

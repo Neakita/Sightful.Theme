@@ -5,9 +5,9 @@ using Avalonia.Reactive;
 
 namespace Sightful.Avalonia.Assists;
 
-internal static class InternalRenderTransformAssist
+public static class RenderTransformAssist
 {
-	static InternalRenderTransformAssist()
+	static RenderTransformAssist()
 	{
 		ShrinkingProperty.Changed.Subscribe(new AnonymousObserver<AvaloniaPropertyChangedEventArgs<double>>(OnShrinkingPropertyChanged));
 		RotationProperty.Changed.Subscribe(new AnonymousObserver<AvaloniaPropertyChangedEventArgs<double>>(OnRotationPropertyChanged));
@@ -16,7 +16,7 @@ internal static class InternalRenderTransformAssist
 	#region Shrinking
 
 	public static readonly AvaloniaProperty<double> ShrinkingProperty =
-		AvaloniaProperty.RegisterAttached<Layoutable, double>("Shrinking", typeof(InternalRenderTransformAssist));
+		AvaloniaProperty.RegisterAttached<Layoutable, double>("Shrinking", typeof(RenderTransformAssist));
 
 	public static double GetShrinking(Layoutable element)
 	{
@@ -45,7 +45,7 @@ internal static class InternalRenderTransformAssist
 	#region Rotation
 
 	public static readonly AttachedProperty<double> RotationProperty =
-		AvaloniaProperty.RegisterAttached<Visual, double>("Rotation", typeof(InternalRenderTransformAssist));
+		AvaloniaProperty.RegisterAttached<Visual, double>("Rotation", typeof(RenderTransformAssist));
 
 	public static double GetRotation(Visual element)
 	{

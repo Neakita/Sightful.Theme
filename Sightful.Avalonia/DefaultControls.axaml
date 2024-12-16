@@ -37,6 +37,10 @@
                 <MergeResourceInclude Source="Controls/Slider.axaml"/>
                 <MergeResourceInclude Source="Controls/ButtonSpinner.axaml"/>
                 <MergeResourceInclude Source="Controls/NumericUpDown.axaml"/>
+                <MergeResourceInclude Source="Controls/Buttons/Button.axaml"/>
+                <MergeResourceInclude Source="Controls/Menus/ContextMenu.axaml"/>
+                <MergeResourceInclude Source="Controls/Menus/MenuItem.axaml"/>
+                <MergeResourceInclude Source="Controls/Menus/Separator.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>

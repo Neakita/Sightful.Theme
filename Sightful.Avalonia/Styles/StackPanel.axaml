@@ -9,4 +9,7 @@
     <Style Selector="StackPanel.regular-spacing">
         <Setter Property="Spacing" Value="12"/>
     </Style>
+    <Style Selector="StackPanel.medium-spacing">
+        <Setter Property="Spacing" Value="16"/>
+    </Style>
 </Styles>

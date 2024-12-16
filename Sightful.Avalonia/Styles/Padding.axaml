@@ -1,6 +1,23 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Style Selector="Border.regular-padding">
+    
+    <Style Selector="Border.small-padding">
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+
+    <Style Selector="ContentPresenter.small-padding">
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+
+    <Style Selector=":is(TemplatedControl).small-padding">
+        <Setter Property="Padding" Value="12"/>
+    </Style>
+
+    <Style Selector=":is(Layoutable).small-margin">
+        <Setter Property="Margin" Value="12"/>
+    </Style>
+    
+    <Style Selector="Border.regular-padding">
 		<Setter Property="Padding" Value="16"/>
 	</Style>
 

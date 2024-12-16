@@ -21,7 +21,8 @@
 	<Color x:Key="HighAccentDisabledButtonBackground">#44755C</Color>
 	<Color x:Key="CloseWindowHoveredButtonBackground">#D93E5D</Color>
 	<Color x:Key="CloseWindowPressedButtonBackground">#CC3A58</Color>
-	<Color x:Key="TextSelection">#0D43AF</Color>
+    <Color x:Key="RedAccent">#FF496E</Color>
+    <Color x:Key="TextSelection">#0D43AF</Color>
 	<Color x:Key="DisabledTextBoxBackground">#373C47</Color>
 	<Color x:Key="ToggleSwitchKnob">#9FA4B3</Color>
 	<Color x:Key="HoveredToggleSwitchKnob">#878B98</Color>

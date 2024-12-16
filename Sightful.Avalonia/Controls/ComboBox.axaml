@@ -141,7 +141,7 @@
         </Setter>
 
         <Style Selector="^:dropdownopen /template/ icons|MaterialIcon#Icon">
-            <Setter Property="assists:InternalRenderTransformAssist.Rotation" Value="180"/>
+            <Setter Property="assists:RenderTransformAssist.Rotation" Value="180"/>
         </Style>
 
     </ControlTheme>

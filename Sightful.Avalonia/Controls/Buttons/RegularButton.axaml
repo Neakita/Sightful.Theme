@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+	<ControlTheme x:Key="{x:Type Button}" TargetType="Button" BasedOn="{StaticResource ButtonTheme}">
+		<Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Height" Value="{DynamicResource ControlsHeight}"/>
+		<Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
+		<Setter Property="Cursor" Value="Hand"/>
+		<Setter Property="ClipToBounds" Value="False"/>
+		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
+	</ControlTheme>
+</ResourceDictionary>

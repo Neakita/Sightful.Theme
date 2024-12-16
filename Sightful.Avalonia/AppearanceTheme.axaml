@@ -3,11 +3,11 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime"
                     x:Class="Sightful.Avalonia.AppearanceTheme">
 	<CornerRadius x:Key="ControlCornerRadius">12</CornerRadius>
-	<system:TimeSpan x:Key="ShrinkingDuration">0:0:0.5</system:TimeSpan>
+	<system:TimeSpan x:Key="ShrinkingDuration">0:0:0.1</system:TimeSpan>
 	<system:TimeSpan x:Key="BrushTransitionDuration">0:0:0.1</system:TimeSpan>
 	<ElasticEaseOut x:Key="ShrinkingEasing"/>
 	<system:Double x:Key="Shrinking">2</system:Double>
-	<BoxShadows x:Key="BoxShadow">0 5 5 0 #60000000</BoxShadows>
+	<BoxShadows x:Key="BoxShadow">0 5 5 0 #20000000</BoxShadows>
 	<BoxShadows x:Key="HeavyBoxShadow">0 5 5 0 #60000000</BoxShadows>
 	<BoxShadows x:Key="HiddenBoxShadow">0 0 0 -1 #60000000</BoxShadows> 
 	<PlacementMode x:Key="ToolTipPlacement">Top</PlacementMode>

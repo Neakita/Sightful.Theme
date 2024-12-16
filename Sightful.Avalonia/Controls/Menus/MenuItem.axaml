@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Design.PreviewWith>
+        <Border Classes="outer regular-padding">
+            <StackPanel>
+                <MenuItem Header="Play" Icon="{icons:MaterialIconExt PlayOutline}" Classes="green-accent"/>
+                <MenuItem Header="View"/>
+                <MenuItem Header="Delete" Icon="{icons:MaterialIconExt TrashCanOutline}" Classes="red-accent"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="8 0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid ColumnDefinitions="Auto *">
+                        <ContentPresenter Grid.Column="0"
+                                          Content="{TemplateBinding Icon}"
+                                          Margin="0 0 8 0"
+                                          IsVisible="{TemplateBinding Icon, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                          Width="14"
+                                          Height="14"/>
+                        <ContentPresenter Grid.Column="1"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          RecognizesAccessKey="True"
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+            <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        </Style>
+        <Style Selector="^.green-accent">
+            <Style Selector="^:pointerover">
+                <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+                <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </Style>
+        <Style Selector="^.red-accent">
+            <Style Selector="^:pointerover">
+                <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+                <Setter Property="Background" Value="{DynamicResource RedAccent}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
