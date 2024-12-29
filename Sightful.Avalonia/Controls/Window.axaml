@@ -14,8 +14,6 @@
 		<Setter Property="TransparencyBackgroundFallback" Value="{DynamicResource OuterBackground}"/>
 		<Setter Property="TopLevel.SystemBarColor" Value="{StaticResource SystemBarBrush}"/>
 		<Setter Property="FontSize" Value="{DynamicResource FontSize}"/>
-		<Setter Property="ExtendClientAreaTitleBarHeightHint"
-		        Value="{Binding $self.(assists:InternalWindowAssist.TitleBarHeight), Mode=OneWay}"/>
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
@@ -35,9 +33,7 @@
 								                  IsVisible="{TemplateBinding assists:WindowAssist.LeftContent, Converter={x:Static ObjectConverters.IsNotNull}}"
 								                  Bounds="{Binding (assists:WindowAssist.LeftContentWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.WidthRectConverter}, Mode=OneWayToSource}"/>
 								<ContentPresenter DockPanel.Dock="Top"
-								                  Content="{TemplateBinding assists:WindowAssist.TopContent}"
-								                  Bounds="{Binding (assists:InternalWindowAssist.TitleBarHeight), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.HeightRectConverter}, Mode=OneWayToSource}"
-								                  Margin="{Binding (assists:InternalWindowAssist.CaptionButtonsWidth), RelativeSource={RelativeSource AncestorType=Window}, Converter={x:Static theme:Converters.DoubleToRightMarginConverter}}"/>
+								                  Content="{TemplateBinding assists:WindowAssist.TopContent}"/>
 								<ContentPresenter Name="PART_ContentPresenter"
 								                  ContentTemplate="{TemplateBinding ContentTemplate}"
 								                  Content="{TemplateBinding Content}"

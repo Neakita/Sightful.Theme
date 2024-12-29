@@ -24,8 +24,6 @@
 				<MergeResourceInclude Source="Controls/Carousel.axaml"/>
 				<MergeResourceInclude Source="Controls/ListBox.axaml"/>
 				<MergeResourceInclude Source="Controls/ListBoxItem.axaml"/>
-				<MergeResourceInclude Source="Controls/CaptionButtons.axaml"/>
-				<MergeResourceInclude Source="Controls/TitleBar.axaml"/>
 				<MergeResourceInclude Source="Controls/HeaderedContentControl.axaml"/>
 				<MergeResourceInclude Source="Controls/ToggleSwitch.axaml"/>
 				<MergeResourceInclude Source="Controls/RadioButton.axaml"/>

@@ -74,7 +74,6 @@
 
 		<StyleInclude Source="../Styles/Button/Flat.axaml"/>
 		<StyleInclude Source="../Styles/Button/Square.axaml"/>
-		<StyleInclude Source="../Styles/Button/TitleBar.axaml"/>
 		<StyleInclude Source="../Styles/Button/Wide.axaml"/>
 		<StyleInclude Source="../Styles/Button/LowAccent.axaml"/>
 		<StyleInclude Source="../Styles/Button/HighAccent.axaml"/>
