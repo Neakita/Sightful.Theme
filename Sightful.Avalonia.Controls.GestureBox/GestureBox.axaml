@@ -2,7 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="using:Sightful.Avalonia.Controls.GestureBox"
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-        xmlns:converters="clr-namespace:Sightful.Avalonia.Controls.GestureBox.Converters">
+        xmlns:converters="clr-namespace:Sightful.Avalonia.Controls.GestureBox.Converters"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Assists;assembly=Sightful.Avalonia">
     <Design.PreviewWith>
         <Border Classes="outer wide-padding">
             <controls:GestureBox>
@@ -14,33 +15,66 @@
     </Design.PreviewWith>
 
     <Style Selector="controls|GestureBox">
+        <Style.Resources>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="TransparentAccent" Color="{DynamicResource Accent}" Opacity="0"/>
+            </ResourceDictionary>
+        </Style.Resources>
         <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="ToolTip.Tip" Value="Right click to clear"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Template">
             <ControlTemplate>
-                <Border CornerRadius="{TemplateBinding CornerRadius}"
-                        Background="{TemplateBinding Background}"
-                        Padding="{TemplateBinding Padding}">
-                    <StackPanel Orientation="Horizontal" Spacing="8">
-                        <icons:MaterialIcon Kind="Keyboard"
-                                            MaxWidth="20"
-                                            MaxHeight="20"
-                                            VerticalAlignment="Center"
-                                            IsVisible="{TemplateBinding Gesture, Converter={x:Static converters:IsKeyGestureConverter.Instance}}"/>
-                        <icons:MaterialIcon Kind="Mouse"
-                                            MaxWidth="20"
-                                            MaxHeight="20"
-                                            VerticalAlignment="Center"
-                                            IsVisible="{TemplateBinding Gesture, Converter={x:Static converters:IsMouseButtonGestureConverter.Instance}}"/>
-                        <TextBlock Name="TextBlock" Text="{TemplateBinding Gesture}"/>
-                    </StackPanel>
+                <Border BorderBrush="{TemplateBinding assists:AdornerAssist.AdornerBorderBrush}"
+                        BorderThickness="4"
+                        Margin="-4"
+                        CornerRadius="14">
+                    <Border.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="BorderBrush"
+                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                        </Transitions>
+                    </Border.Transitions>
+                    <Border CornerRadius="{TemplateBinding CornerRadius}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <icons:MaterialIcon Kind="Keyboard"
+                                                MaxWidth="20"
+                                                MaxHeight="20"
+                                                VerticalAlignment="Center"
+                                                IsVisible="{TemplateBinding Gesture, Converter={x:Static converters:IsKeyGestureConverter.Instance}}"/>
+                            <icons:MaterialIcon Kind="Mouse"
+                                                MaxWidth="20"
+                                                MaxHeight="20"
+                                                VerticalAlignment="Center"
+                                                IsVisible="{TemplateBinding Gesture, Converter={x:Static converters:IsMouseButtonGestureConverter.Instance}}"/>
+                            <TextBlock Name="TextBlock" Text="{TemplateBinding Gesture}">
+                                <TextBlock.Transitions>
+                                    <Transitions>
+                                        <BrushTransition Property="Foreground"
+                                                         Duration="{DynamicResource BrushTransitionDuration}"/>
+                                    </Transitions>
+                                </TextBlock.Transitions>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
                 </Border>
             </ControlTemplate>
         </Setter>
         <Style Selector="^:editing TextBlock#TextBlock">
             <Setter Property="Text" Value="Waiting"/>
+        </Style>
+        <Style Selector="^:editing">
+            <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{DynamicResource Accent}"/>
+        </Style>
+        <Style Selector="^:empty TextBlock#TextBlock">
+            <Setter Property="Text" Value="None"/>
+            <Setter Property="Foreground" Value="{DynamicResource WatermarkPrimary}"></Setter>
         </Style>
     </Style>
 </Styles>

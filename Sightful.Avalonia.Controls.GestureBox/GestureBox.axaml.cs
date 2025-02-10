@@ -8,7 +8,7 @@ using Avalonia.Interactivity;
 
 namespace Sightful.Avalonia.Controls.GestureBox;
 
-[PseudoClasses(EditingPseudoClass)]
+[PseudoClasses(EmptyPseudoClass, EditingPseudoClass)]
 public sealed class GestureBox : TemplatedControl
 {
 	public static readonly StyledProperty<object?> GestureProperty =
@@ -19,7 +19,20 @@ public sealed class GestureBox : TemplatedControl
 		FocusableProperty.OverrideDefaultValue<GestureBox>(true);
 	}
 
+	private const string EmptyPseudoClass = ":empty";
 	private const string EditingPseudoClass = ":editing";
+
+	private static readonly FrozenDictionary<Key, KeyModifiers> KeyModifiersMap =
+		FrozenDictionary.ToFrozenDictionary<Key, KeyModifiers>([
+			new(Key.LeftAlt, KeyModifiers.Alt),
+			new(Key.RightAlt, KeyModifiers.Alt),
+			new(Key.LeftCtrl, KeyModifiers.Control),
+			new(Key.RightCtrl, KeyModifiers.Control),
+			new(Key.LeftShift, KeyModifiers.Shift),
+			new(Key.RightShift, KeyModifiers.Shift),
+			new(Key.LWin, KeyModifiers.Meta),
+			new(Key.RWin, KeyModifiers.Meta)
+		]);
 
 	public object? Gesture
 	{
@@ -36,6 +49,18 @@ public sealed class GestureBox : TemplatedControl
 	{
 		if (IsEditing)
 			StopEditing();
+	}
+
+	private bool IsEmpty
+	{
+		get;
+		set
+		{
+			if (value == field)
+				return;
+			field = value;
+			PseudoClasses.Set(EmptyPseudoClass, value);
+		}
 	}
 
 	private bool IsEditing
@@ -69,7 +94,7 @@ public sealed class GestureBox : TemplatedControl
 	{
 		var button = args.InitialPressMouseButton;
 		MouseButtonGesture gesture = new(button, args.KeyModifiers);
-		SetCurrentValue(GestureProperty, gesture);
+		SetGesture(gesture);
 		StopEditing();
 	}
 
@@ -80,7 +105,7 @@ public sealed class GestureBox : TemplatedControl
 		// for some reason when any modifier key (for example shift) is pressed and released args contains both Key.LShift and KeyModifiers.Shift
 		modifiers = RemoveMatchingModifier(key, modifiers);
 		KeyGesture gesture = new(key, modifiers);
-		SetCurrentValue(GestureProperty, gesture);
+		SetGesture(gesture);
 		StopEditing();
 	}
 
@@ -91,9 +116,16 @@ public sealed class GestureBox : TemplatedControl
 		return modifiers;
 	}
 
+	private void SetGesture(object gesture)
+	{
+		SetCurrentValue(GestureProperty, gesture);
+		IsEmpty = false;
+	}
+
 	private void ClearGesture()
 	{
 		SetCurrentValue(GestureProperty, null);
+		IsEmpty = true;
 	}
 
 	private void StopEditing()
@@ -103,16 +135,4 @@ public sealed class GestureBox : TemplatedControl
 		PointerReleased -= OnPointerClickWhileEditing;
 		KeyUp -= OnKeyClickWhileEditing;
 	}
-
-	private static readonly FrozenDictionary<Key, KeyModifiers> KeyModifiersMap =
-		FrozenDictionary.ToFrozenDictionary<Key, KeyModifiers>([
-			new(Key.LeftAlt, KeyModifiers.Alt),
-			new(Key.RightAlt, KeyModifiers.Alt),
-			new(Key.LeftCtrl, KeyModifiers.Control),
-			new(Key.RightCtrl, KeyModifiers.Control),
-			new(Key.LeftShift, KeyModifiers.Shift),
-			new(Key.RightShift, KeyModifiers.Shift),
-			new(Key.LWin, KeyModifiers.Meta),
-			new(Key.RWin, KeyModifiers.Meta)
-		]);
 }
