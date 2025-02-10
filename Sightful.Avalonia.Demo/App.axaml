@@ -15,5 +15,6 @@
 	    <theme:DefaultTheme/>
 	    <treeDataGridTheme:SightfulTreeDataGridTheme/>
         <StyleInclude Source="avares://Sightful.Avalonia.Controls/MultiSlider.axaml"/>
+        <StyleInclude Source="avares://Sightful.Avalonia.Controls.GestureBox/GestureBox.axaml"/>
     </Application.Styles>
 </Application>

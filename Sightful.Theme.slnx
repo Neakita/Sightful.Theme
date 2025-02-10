@@ -1,4 +1,5 @@
 ﻿<Solution>
+  <Project Path="Sightful.Avalonia.Controls.GestureBox\Sightful.Avalonia.Controls.GestureBox.csproj" Type="Classic C#" />
   <Project Path="Sightful.Avalonia.Controls.PropertyGrid\Sightful.Avalonia.Controls.PropertyGrid.csproj" Type="Classic C#" />
   <Project Path="Sightful.Avalonia.Controls\Sightful.Avalonia.Controls.csproj" Type="Classic C#" />
   <Project Path="Sightful.Avalonia.Demo\Sightful.Avalonia.Demo.csproj" Type="Classic C#" />

@@ -3,6 +3,7 @@
         xmlns:vm="using:Sightful.Avalonia.Demo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hotKeyBox="clr-namespace:Sightful.Avalonia.Controls.GestureBox;assembly=Sightful.Avalonia.Controls.GestureBox"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Sightful.Avalonia.Demo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -15,5 +16,8 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Button Content="Test"/>
+   <StackPanel>
+       <hotKeyBox:GestureBox/>
+       <Button/>
+   </StackPanel>
 </Window>
