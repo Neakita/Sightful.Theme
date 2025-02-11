@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
-                    x:Class="Sightful.Avalonia.AppearanceTheme">
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 	<CornerRadius x:Key="ControlCornerRadius">12</CornerRadius>
 	<system:TimeSpan x:Key="ShrinkingDuration">0:0:0.1</system:TimeSpan>
 	<system:TimeSpan x:Key="BrushTransitionDuration">0:0:0.1</system:TimeSpan>

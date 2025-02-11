@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
-                    x:Class="Sightful.Avalonia.SpatialTheme">
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
 	<system:Double x:Key="ControlsHeight">40</system:Double>
 	<system:Double x:Key="WideControlsHeight">48</system:Double>
 	<Thickness x:Key="ButtonPadding">16, 8</Thickness>

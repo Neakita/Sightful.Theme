@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Sightful.Avalonia.Demo.App"
              xmlns:local="using:Sightful.Avalonia.Demo"
-             xmlns:theme="clr-namespace:Sightful.Avalonia;assembly=Sightful.Avalonia"
              xmlns:treeDataGridTheme="clr-namespace:Sightful.Avalonia.TreeDataGrid;assembly=Sightful.Avalonia.TreeDataGrid"
              RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
@@ -12,7 +11,7 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-	    <theme:DefaultTheme/>
+	    <StyleInclude Source="avares://Sightful.Avalonia/DefaultTheme.axaml"/>
 	    <treeDataGridTheme:SightfulTreeDataGridTheme/>
         <StyleInclude Source="avares://Sightful.Avalonia.Controls/MultiSlider.axaml"/>
         <StyleInclude Source="avares://Sightful.Avalonia.Controls.GestureBox/GestureBox.axaml"/>
