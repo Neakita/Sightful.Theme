@@ -6,7 +6,7 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
         <!-- ReSharper disable once Xaml.StyleClassNotFound -->
-        <Border Classes="outer" Padding="0 50 0 200">
+        <Border Classes="outer" Padding="0 200 0 200">
             <ComboBox PlaceholderText="Select an item">
                 <ComboBoxItem>Item 1</ComboBoxItem>
                 <ComboBoxItem>Item 2</ComboBoxItem>
@@ -109,7 +109,6 @@
                                    VerticalOffset="-1"
                                    MinHeight="20">
                                 <Border x:Name="PopupBorder"
-                                        Background="{TemplateBinding Background}"
                                         HorizontalAlignment="Stretch">
                                     <Border.CornerRadius>
                                         <MultiBinding Converter="{StaticResource CornerRadiusConverter}">

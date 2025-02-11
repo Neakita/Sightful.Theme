@@ -1,63 +1,80 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Design.PreviewWith>
-		<Border Background="{DynamicResource ControlBackground}">
-			<StackPanel HorizontalAlignment="Stretch">
-				<ComboBoxItem>Item 1</ComboBoxItem>
-				<ComboBoxItem>Item 2 long</ComboBoxItem>
-				<ComboBoxItem IsSelected="True">Item 3</ComboBoxItem>
-				<ComboBoxItem IsEnabled="False">Item 4</ComboBoxItem>
-				<ComboBoxItem IsSelected="True" IsEnabled="False">Item 5</ComboBoxItem>
-			</StackPanel>
-		</Border>
-	</Design.PreviewWith>
-	
-	<ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
-		<ControlTheme.Resources>
-			<ResourceDictionary>
-				<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
-			</ResourceDictionary>
-		</ControlTheme.Resources>
-		<Setter Property="Padding" Value="12"/>
-		<Setter Property="Background" Value="{StaticResource Background}"/>
-		<Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
-		<Setter Property="Cursor" Value="Hand"/>
-		<Setter Property="Transitions">
-			<Transitions>
-				<BrushTransition Property="Background" Duration="0:0:0.1"/>
-				<BrushTransition Property="Foreground" Duration="0:0:0.1"/>
-			</Transitions>
-		</Setter>
-		<Setter Property="Template">
-			<ControlTemplate>
-				<ContentPresenter Name="PART_ContentPresenter"
-				                  Foreground="{TemplateBinding Foreground}"
-				                  Background="{TemplateBinding Background}"
-				                  BorderBrush="{TemplateBinding BorderBrush}"
-				                  BorderThickness="{TemplateBinding BorderThickness}"
-				                  CornerRadius="{TemplateBinding CornerRadius}"
-				                  ContentTemplate="{TemplateBinding ContentTemplate}"
-				                  Content="{TemplateBinding Content}"
-				                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-				                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-				                  Padding="{TemplateBinding Padding}"/>
-			</ControlTemplate>
-		</Setter>
-		
-		<Style Selector="^:pointerover">
-			<Setter Property="Foreground" Value="{DynamicResource HoveredComboBoxItemForeground}"/>
-			<Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
-		</Style>
-		
-		<Style Selector="^:selected">
-			<Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
-			<Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
-			<Setter Property="FontWeight" Value="Medium"/>
-			<Style Selector="^:pointerover">
-				<Setter Property="Background" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
-			</Style>
-		</Style>
-		
-	</ControlTheme>
-	
+    <Design.PreviewWith>
+        <Border>
+            <StackPanel HorizontalAlignment="Stretch">
+                <ComboBoxItem>Item 1</ComboBoxItem>
+                <ComboBoxItem>Item 2 long</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Item 3</ComboBoxItem>
+                <ComboBoxItem IsEnabled="False">Item 4</ComboBoxItem>
+                <ComboBoxItem IsSelected="True" IsEnabled="False">Item 5</ComboBoxItem>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.1"/>
+                <BrushTransition Property="Foreground" Duration="0:0:0.1"/>
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Foreground="{TemplateBinding Foreground}"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  Content="{TemplateBinding Content}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Padding="{TemplateBinding Padding}"/>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource HoveredComboBoxItemForeground}"/>
+            <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+        </Style>
+        
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
+        </Style>
+
+        <Style Selector="^:selected">
+            <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+            <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Style Selector="^:pointerover">
+                <Setter Property="Background" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="Background" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+            </Style>
+            <Style Selector="^:disabled">
+                <Setter Property="Background" Value="{DynamicResource HighAccentDisabledButtonBackground}"/>
+            </Style>
+        </Style>
+
+        <Style Selector="^:nth-child(1)">
+            <Setter Property="CornerRadius" Value="12 12 0 0"/>
+        </Style>
+        
+        <Style Selector="^:not(:disabled)">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </ControlTheme>
+
 </ResourceDictionary>
