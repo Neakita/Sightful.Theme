@@ -1,6 +1,5 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
@@ -15,20 +14,16 @@
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
-		<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
-		        Value="{DynamicResource ControlBackground}"/>
-		<Setter Property="assists:InternalCheckBoxAssist.GlyphForeground"
-		        Value="{DynamicResource HighAccentButtonForeground}"/>
 		<Setter Property="Template">
 			<ControlTemplate>
 				<Grid ColumnDefinitions="Auto *">
-					<ContentPresenter Grid.Column="0"
+					<ContentPresenter Name="GlyphPresenter"
+                                      Grid.Column="0"
 					                  Width="16"
 					                  Height="16"
-					                  Content="{TemplateBinding assists:InternalCheckBoxAssist.Glyph}"
-					                  Background="{TemplateBinding assists:InternalCheckBoxAssist.GlyphBackground}"
+					                  Background="{DynamicResource ControlBackground}"
 					                  CornerRadius="4"
-					                  Foreground="{TemplateBinding assists:InternalCheckBoxAssist.GlyphForeground}"
+					                  Foreground="{DynamicResource HighAccentButtonForeground}"
 					                  Padding="2">
 						<ContentPresenter.Transitions>
 							<Transitions>
@@ -49,34 +44,36 @@
 				</Grid>
 			</ControlTemplate>
 		</Setter>
-		<Style Selector="^:pointerover">
-			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource ButtonHoverBackground}"/>
+		<Style Selector="^:pointerover /template/ ContentPresenter#GlyphPresenter">
+			<Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
 		</Style>
-		<Style Selector="^:pressed">
-			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource PressedButtonBackground}"/>
+		<Style Selector="^:pressed /template/ ContentPresenter#GlyphPresenter">
+			<Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
 		</Style>
-		<Style Selector="^:checked">
-			<Setter Property="assists:InternalCheckBoxAssist.Glyph">
+		<Style Selector="^:checked /template/ ContentPresenter#GlyphPresenter">
+			<Setter Property="Content">
 				<Template>
 					<icons:MaterialIcon Kind="Check"/>
 				</Template>
 			</Setter>
 		</Style>
-        <Style Selector="^:indeterminate">
-            <Setter Property="assists:InternalCheckBoxAssist.Glyph">
+        <Style Selector="^:indeterminate /template/ ContentPresenter#GlyphPresenter">
+            <Setter Property="Content">
                 <Template>
                     <icons:MaterialIcon Kind="Minus"/>
                 </Template>
             </Setter>
         </Style>
         <Style Selector="^:not(:unchecked)">
-            <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
-                    Value="{DynamicResource HighAccentButtonBackground}"/>
-            <Style Selector="^:pointerover">
-                <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+            <Style Selector="^ /template/ ContentPresenter#GlyphPresenter">
+                <Setter Property="Background"
+                        Value="{DynamicResource HighAccentButtonBackground}"/>
             </Style>
-            <Style Selector="^:pressed">
-                <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+            <Style Selector="^:pointerover /template/ ContentPresenter#GlyphPresenter">
+                <Setter Property="Background" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+            </Style>
+            <Style Selector="^:pressed /template/ ContentPresenter#GlyphPresenter">
+                <Setter Property="Background" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
             </Style>
         </Style>
 	</ControlTheme>
