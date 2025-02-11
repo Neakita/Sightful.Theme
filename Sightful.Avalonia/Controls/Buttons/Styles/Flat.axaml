@@ -2,9 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Button Content="Flat" Classes="flat"/>
-		</Border>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <Button Content="Click Me!" Classes="flat"/>
+                <Button Content="Disabled" IsEnabled="False" Classes="flat"/>
+            </StackPanel>
+        </Border>
 	</Design.PreviewWith>
 
 	<Style Selector=":is(Button).flat">

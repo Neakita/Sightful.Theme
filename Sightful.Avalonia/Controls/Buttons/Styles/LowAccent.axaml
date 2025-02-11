@@ -1,14 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
-            <Button Content="{icons:MaterialIconExt CogOutline}"
-                    Classes="wide square low-accent"
-                    HorizontalAlignment="Left"/>
-            <!-- ReSharper restore Xaml.StyleClassNotFound -->
-		</Border>
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <Button Content="Click Me!" Classes="low-accent"/>
+                <Button Content="Disabled" IsEnabled="False" Classes="low-accent"/>
+            </StackPanel>
+        </Border>
 	</Design.PreviewWith>
 
 	<Style Selector=":is(Button).low-accent">
@@ -18,6 +18,9 @@
         </Style>
         <Style Selector="^:pressed">
             <Setter Property="Background" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource LowAccentDisabledButtonBackground}"/>
         </Style>
 	</Style>
 </Styles>

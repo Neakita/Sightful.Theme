@@ -1,15 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Button Classes="high-accent">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Sign in"/>
-					<icons:MaterialIcon Kind="ArrowRight"/>
-				</StackPanel>
-			</Button>
-		</Border>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <Button Content="Click Me!" Classes="high-accent"/>
+                <Button Content="Disabled" IsEnabled="False" Classes="high-accent"/>
+            </StackPanel>
+        </Border>
 	</Design.PreviewWith>
 	    
 	<Style Selector=":is(Button).high-accent">

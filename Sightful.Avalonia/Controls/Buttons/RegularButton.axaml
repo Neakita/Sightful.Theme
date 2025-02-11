@@ -6,11 +6,6 @@
         <Border Classes="outer wide-padding">
             <StackPanel Classes="regular-spacing">
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
-                <StackPanel.Styles>
-                    <Style Selector="Button">
-                        <Setter Property="Theme" Value="{DynamicResource RegularButtonTheme}"/>
-                    </Style>
-                </StackPanel.Styles>
                 <Button Content="Click Me!"/>
                 <Button Content="Disabled" IsEnabled="False"/>
             </StackPanel>
@@ -50,11 +45,11 @@
             <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
         </Style>
 
-        <StyleInclude Source="../../Styles/Button/Flat.axaml"/>
-        <StyleInclude Source="../../Styles/Button/Square.axaml"/>
-        <StyleInclude Source="../../Styles/Button/Wide.axaml"/>
-        <StyleInclude Source="../../Styles/Button/LowAccent.axaml"/>
-        <StyleInclude Source="../../Styles/Button/HighAccent.axaml"/>
+        <StyleInclude Source="Styles/Flat.axaml"/>
+        <StyleInclude Source="Styles/Square.axaml"/>
+        <StyleInclude Source="Styles/Wide.axaml"/>
+        <StyleInclude Source="Styles/LowAccent.axaml"/>
+        <StyleInclude Source="Styles/HighAccent.axaml"/>
 
 	</ControlTheme>
     
