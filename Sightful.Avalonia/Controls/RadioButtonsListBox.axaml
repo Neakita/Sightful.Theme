@@ -94,7 +94,7 @@
 			</Style>
 		</Style>
 		
-		<StyleInclude Source="../Styles/Button/Interactions.axaml"/>
+		<!--<StyleInclude Source="../Styles/Button/Interactions.axaml"/>-->
 	</ControlTheme>
 	
 	<ControlTheme x:Key="RadioButtonsListBoxTheme" TargetType="ListBox">
