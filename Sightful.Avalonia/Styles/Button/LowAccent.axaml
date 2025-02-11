@@ -1,21 +1,23 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
-			<Border.Styles>
-				<StyleInclude Source="/Controls/Button.axaml"/>
-			</Border.Styles>
-			<Button Content="{icons:MaterialIconExt CogOutline}"
-			        Classes="wide square low-accent"
-			        HorizontalAlignment="Left"/>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <Button Content="{icons:MaterialIconExt CogOutline}"
+                    Classes="wide square low-accent"
+                    HorizontalAlignment="Left"/>
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
 		</Border>
 	</Design.PreviewWith>
 
 	<Style Selector=":is(Button).low-accent">
 		<Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
-		<Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
-		<Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
+        </Style>
 	</Style>
 </Styles>

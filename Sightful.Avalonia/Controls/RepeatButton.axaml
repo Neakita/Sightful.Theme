@@ -13,11 +13,11 @@
 			<RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
 		</Border>
 	</Design.PreviewWith>
-	<ControlTheme x:Key="{x:Type RepeatButton}" TargetType="RepeatButton" BasedOn="{StaticResource {x:Type Button}}">
+	<ControlTheme x:Key="{x:Type RepeatButton}" TargetType="RepeatButton" BasedOn="{StaticResource RegularButtonTheme}">
 		<ControlTheme.Resources>
 			<ResourceDictionary>
 				<ResourceDictionary.MergedDictionaries>
-					<ResourceInclude Source="Button.axaml"/>
+					<ResourceInclude Source="Buttons/RegularButton.axaml"/>
 				</ResourceDictionary.MergedDictionaries>
 			</ResourceDictionary>
 		</ControlTheme.Resources>

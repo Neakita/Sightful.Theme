@@ -1,0 +1,63 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+    <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <StackPanel.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="Theme" Value="{DynamicResource BaseButtonTheme}"/>
+                    </Style>
+                </StackPanel.Styles>
+                <Button Content="Click Me!"/>
+                <Button Content="Disabled" IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="BaseButtonTheme" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <!--Duration should probably be DynamicResource, but it doesn't work here for some reason-->
+                <TransformOperationsTransition Property="RenderTransform"
+                                               Duration="0:0:0.1"
+                                               Easing="CircularEaseOut"/>
+            </Transitions>
+        </Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter
+                    Foreground="{TemplateBinding Foreground}"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    RecognizesAccessKey="True"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="{TemplateBinding Padding}">
+                    <ContentPresenter.Transitions>
+                        <Transitions>
+                            <BrushTransition Property="Background"
+                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                            <BrushTransition Property="Foreground"
+                                             Duration="{DynamicResource BrushTransitionDuration}"/>
+                            <BoxShadowsTransition Property="BoxShadow"
+                                                  Duration="{DynamicResource BrushTransitionDuration}"/>
+                        </Transitions>
+                    </ContentPresenter.Transitions>
+                </ContentPresenter>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.95)"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

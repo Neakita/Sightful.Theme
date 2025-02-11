@@ -2,13 +2,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Padding="40" Background="{DynamicResource OuterBackground}">
+		<Border Classes="outer wide-padding">
 			<Button Content="{icons:MaterialIconExt Play}" Classes="square" ToolTip.Tip="I'm square!"/>
 		</Border>
 	</Design.PreviewWith>
         
 	<Style Selector=":is(Button).square">
-		<Setter Property="Width" Value="{Binding $self.Bounds.Height}"/>
-		<Setter Property="Padding" Value="{DynamicResource SquareButtonPadding}"/>
+		<Setter Property="Width" Value="{Binding $self.Height}"/>
+		<Setter Property="Padding" Value="0"/>
 	</Style>
 </Styles>

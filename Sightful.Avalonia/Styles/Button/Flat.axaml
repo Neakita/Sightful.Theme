@@ -6,14 +6,19 @@
 			<Button Content="Flat" Classes="flat"/>
 		</Border>
 	</Design.PreviewWith>
-        
+
 	<Style Selector=":is(Button).flat">
-		<Style.Resources>
-			<SolidColorBrush x:Key="Background" Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
-		</Style.Resources>
-		<Setter Property="Background" Value="{StaticResource Background}"/>
-		<Style Selector="^:not(:pointerover)">
+		<Setter Property="Background">
+            <SolidColorBrush Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
+        </Setter>
+        <Style Selector="^:not(:pointerover)">
 			<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HiddenBoxShadow}"/>
 		</Style>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
+        </Style>
 	</Style>
 </Styles>

@@ -9,7 +9,7 @@ internal static class InternalListBoxItemAssist
 	#region Fade
 
 	public static readonly AvaloniaProperty<IBrush?> FadeProperty =
-		AvaloniaProperty.RegisterAttached<Button, IBrush?>("Fade", typeof(ButtonAssist));
+		AvaloniaProperty.RegisterAttached<Button, IBrush?>("Fade", typeof(InternalListBoxItemAssist));
 
 	public static IBrush? GetFade(AvaloniaObject element)
 	{

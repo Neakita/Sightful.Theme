@@ -14,6 +14,9 @@
                 <!-- ReSharper disable Xaml.StyleClassNotFound -->
                 <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
                 <Button Classes="square" Content="{icons:MaterialIconExt Minus}"/>
+                <Button Content="{icons:MaterialIconExt CogOutline}"
+                        Classes="wide square low-accent"
+                        HorizontalAlignment="Left"/>
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
             </StackPanel>
 		</Border>
@@ -27,4 +30,9 @@
         <Setter Property="MaxWidth" Value="16"/>
         <Setter Property="MaxHeight" Value="16"/>
 	</Style>
+	
+    <Style Selector=":is(Button):not(.no-icon-constraint).wide icons|MaterialIcon">
+        <Setter Property="MaxWidth" Value="24"/>
+        <Setter Property="MaxHeight" Value="24"/>
+    </Style>
 </Styles>
