@@ -39,11 +39,13 @@
 					<ContentPresenter Grid.Column="1"
 					                  Content="{TemplateBinding Content}"
 					                  ContentTemplate="{TemplateBinding Template}"
-					                  Margin="{TemplateBinding Padding}"
+					                  Padding="{TemplateBinding Padding}"
 					                  RecognizesAccessKey="True"
 					                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
 					                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-					                  TextWrapping="Wrap"/>
+					                  TextWrapping="Wrap"
+                                      Margin="8 0 0 0"
+                                      IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"/>
 				</Grid>
 			</ControlTemplate>
 		</Setter>
