@@ -59,14 +59,23 @@
 					<icons:MaterialIcon Kind="Check"/>
 				</Template>
 			</Setter>
-			<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
-			        Value="{DynamicResource HighAccentButtonBackground}"/>
-			<Style Selector="^:pointerover">
-				<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
-			</Style>
-			<Style Selector="^:pressed">
-				<Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
-			</Style>
 		</Style>
+        <Style Selector="^:indeterminate">
+            <Setter Property="assists:InternalCheckBoxAssist.Glyph">
+                <Template>
+                    <icons:MaterialIcon Kind="Minus"/>
+                </Template>
+            </Setter>
+        </Style>
+        <Style Selector="^:not(:unchecked)">
+            <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground"
+                    Value="{DynamicResource HighAccentButtonBackground}"/>
+            <Style Selector="^:pointerover">
+                <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
+            </Style>
+            <Style Selector="^:pressed">
+                <Setter Property="assists:InternalCheckBoxAssist.GlyphBackground" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
+            </Style>
+        </Style>
 	</ControlTheme>
 </ResourceDictionary>
