@@ -11,7 +11,7 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-	    <StyleInclude Source="avares://Sightful.Avalonia/DefaultTheme.axaml"/>
+	    <StyleInclude Source="avares://Sightful.Avalonia/SightfulTheme.axaml"/>
 	    <treeDataGridTheme:SightfulTreeDataGridTheme/>
         <StyleInclude Source="avares://Sightful.Avalonia.Controls/MultiSlider.axaml"/>
         <StyleInclude Source="avares://Sightful.Avalonia.Controls.GestureBox/GestureBox.axaml"/>
