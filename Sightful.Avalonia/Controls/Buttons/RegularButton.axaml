@@ -33,7 +33,7 @@
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
             <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource HeavyBoxShadow}"/>
-            <Setter Property="Foreground" Value="#949da6"/>
+            <Setter Property="Foreground" Value="{DynamicResource HoveredComboBoxItemForeground}"/>
         </Style>
 
         <Style Selector="^:pressed">
