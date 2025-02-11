@@ -3,9 +3,7 @@
 	<Styles.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-                <MergeResourceInclude Source="Controls/Buttons/BaseButton.axaml"/>
-                <MergeResourceInclude Source="Controls/Buttons/RegularButton.axaml"/>
-                <MergeResourceInclude Source="Controls/Buttons/Button.axaml"/>
+                <MergeResourceInclude Source="Controls/Buttons/Buttons.axaml"/>
 				<MergeResourceInclude Source="Controls/MaterialIcon.axaml"/>
 				<MergeResourceInclude Source="Controls/TextBlock.axaml"/>
 				<MergeResourceInclude Source="Controls/TextBox.axaml"/>
