@@ -16,8 +16,7 @@
 
 	<ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
 		<ControlTheme.Resources>
-			<ControlTheme x:Key="ScrollBarThumb" TargetType="Thumb">
-				<Setter Property="Background" Value="{DynamicResource ScrollBarPanningThumbBackground}"/>
+			<ControlTheme x:Key="ScrollBarThumbTheme" TargetType="Thumb">
 				<Setter Property="Template">
 					<ControlTemplate>
 						<Border Background="{TemplateBinding Background}"
@@ -82,7 +81,7 @@
 							</Track.IncreaseButton>
 							<Thumb Width="12"
 							       MinHeight="18"
-							       Theme="{StaticResource ScrollBarThumb}"
+							       Theme="{StaticResource ScrollBarThumbTheme}"
 							       Background="{DynamicResource ControlBackground}"
 							       CornerRadius="6"
 							       Cursor="Hand"/>
@@ -134,7 +133,7 @@
 								</Track.IncreaseButton>
 								<Thumb Height="12"
 								       MinWidth="18"
-								       Theme="{StaticResource ScrollBarThumb}"
+								       Theme="{StaticResource ScrollBarThumbTheme}"
 								       Background="{DynamicResource ControlBackground}"
 								       CornerRadius="6"/>
 							</Track>
