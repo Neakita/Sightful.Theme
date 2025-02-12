@@ -6,7 +6,6 @@
         <Border Classes="outer wide-padding">
             <StackPanel Classes="regular-spacing">
                 <StackPanel Classes="regular-spacing" Orientation="Horizontal">
-                    <!-- ReSharper restore Xaml.StyleClassNotFound -->
                     <RadioButton Content="Option 1" IsChecked="True"/>
                     <RadioButton Content="Option 2"/>
                 </StackPanel>
@@ -16,6 +15,7 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+        <!-- ReSharper restore Xaml.StyleClassNotFound -->
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type RadioButton}" TargetType="RadioButton">
@@ -29,7 +29,7 @@
             </Transitions>
         </Setter>
         <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="Height" Value="36"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
@@ -88,11 +88,13 @@
         </Style>
 
         <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
             <Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
         </Style>
 
         <Style Selector="^[IsChecked=True]">
             <Setter Property="BorderBrush" Value="{DynamicResource HighAccentButtonBackground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
             <Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
             
             <Style Selector="^:pointerover">
@@ -107,6 +109,7 @@
             
             <Style Selector="^:disabled">
                 <Setter Property="BorderBrush" Value="{DynamicResource HighAccentDisabledButtonBackground}"/>
+                <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
                 <Setter Property="Background" Value="{DynamicResource LowAccentDisabledButtonBackground}"/>
             </Style>
         </Style>
