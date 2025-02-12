@@ -22,7 +22,11 @@
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground"
-                                 Duration="{DynamicResource BrushTransitionDuration}"/>
+                                 Duration="0:0:0.1"/>
+                <BrushTransition Property="Background"
+                                 Duration="0:0:0.1"/>
+                <BrushTransition Property="BorderBrush"
+                                 Duration="0:0:0.1"/>
                 <TransformOperationsTransition Property="RenderTransform"
                                                Duration="0:0:0.1"
                                                Easing="CircularEaseOut"/>
@@ -49,14 +53,6 @@
                         BorderThickness="2"
                         Padding="{TemplateBinding Padding}"
                         Margin="-2">
-                    <Border.Transitions>
-                        <Transitions>
-                            <BrushTransition Property="Background"
-                                             Duration="{DynamicResource BrushTransitionDuration}"/>
-                            <BrushTransition Property="BorderBrush"
-                                             Duration="{DynamicResource BrushTransitionDuration}"/>
-                        </Transitions>
-                    </Border.Transitions>
                     <DockPanel>
                         <icons:MaterialIcon DockPanel.Dock="Left"
                                             Kind="Check"
