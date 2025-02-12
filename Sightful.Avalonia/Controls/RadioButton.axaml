@@ -4,11 +4,16 @@
     <Design.PreviewWith>
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
-            <StackPanel Classes="regular-spacing" Orientation="Horizontal">
-                <!-- ReSharper restore Xaml.StyleClassNotFound -->
-                <RadioButton Content="Option 1" IsChecked="True"/>
-                <RadioButton Content="Option 2"/>
-                <RadioButton Content="Disabled" IsEnabled="False"/>
+            <StackPanel Classes="regular-spacing">
+                <StackPanel Classes="regular-spacing" Orientation="Horizontal">
+                    <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                    <RadioButton Content="Option 1" IsChecked="True"/>
+                    <RadioButton Content="Option 2"/>
+                </StackPanel>
+                <StackPanel Classes="regular-spacing" Orientation="Horizontal">
+                    <RadioButton Content="Disabled" IsEnabled="False" IsChecked="True"/>
+                    <RadioButton Content="Disabled" IsEnabled="False"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -89,15 +94,21 @@
         <Style Selector="^[IsChecked=True]">
             <Setter Property="BorderBrush" Value="{DynamicResource HighAccentButtonBackground}"/>
             <Setter Property="Background" Value="{DynamicResource LowAccentButtonBackground}"/>
+            
             <Style Selector="^:pointerover">
                 <Setter Property="BorderBrush" Value="{DynamicResource HighAccentHoveredButtonBackground}"/>
                 <Setter Property="Background" Value="{DynamicResource LowAccentHoveredButtonBackground}"/>
             </Style>
+            
             <Style Selector="^:pressed">
                 <Setter Property="BorderBrush" Value="{DynamicResource HighAccentPressedButtonBackground}"/>
                 <Setter Property="Background" Value="{DynamicResource LowAccentPressedButtonBackground}"/>
             </Style>
+            
+            <Style Selector="^:disabled">
+                <Setter Property="BorderBrush" Value="{DynamicResource HighAccentDisabledButtonBackground}"/>
+                <Setter Property="Background" Value="{DynamicResource LowAccentDisabledButtonBackground}"/>
+            </Style>
         </Style>
-
     </ControlTheme>
 </ResourceDictionary>
