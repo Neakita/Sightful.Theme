@@ -1,7 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Design.PreviewWith>
-        <StackPanel>
+    <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <StackPanel Classes="regular-spacing">
             <Border Width="300" Classes="outer">
                 <ScrollViewer Height="100">
                     <StackPanel Spacing="20">
@@ -21,6 +22,7 @@
                 </ScrollViewer>
             </Border>
         </StackPanel>
+        <!-- ReSharper restore Xaml.StyleClassNotFound -->
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type ScrollViewer}" TargetType="ScrollViewer">
