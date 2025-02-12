@@ -1,8 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
-                    xmlns:root="clr-namespace:Sightful.Avalonia">
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
     <Design.PreviewWith>
         <!-- ReSharper disable once Xaml.StyleClassNotFound -->
         <Border Classes="outer" Padding="0 200 0 200">
@@ -14,20 +13,12 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type ComboBox}" TargetType="ComboBox">
-        <ControlTheme.Resources>
-            <ResourceDictionary>
-                <SolidColorBrush x:Key="TextBoxTransparentBackgroundBrush" Color="{DynamicResource Accent}" Opacity="0"/>
-                <root:ComboBoxCornerRadiusConverter x:Key="CornerRadiusConverter"/>
-            </ResourceDictionary>
-        </ControlTheme.Resources>
         <Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
         <Setter Property="MinHeight" Value="40"/>
         <Setter Property="FocusAdorner" Value="{x:Null}"/>
         <Setter Property="MaxDropDownHeight" Value="300"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TextBoxTransparentBackgroundBrush}"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource ComboBoxBorderThemeThickness}"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -108,7 +99,6 @@
                     </Border>
                 </DataValidationErrors>
             </ControlTemplate>
-
         </Setter>
         
         <Style Selector="^:dropdownopen">
