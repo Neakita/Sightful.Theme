@@ -30,24 +30,20 @@
         <Setter Property="Padding" Value="18 0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="ClipToBounds" Value="False"/>
-        <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
         <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
         <Setter Property="BorderBrush">
             <SolidColorBrush Color="{DynamicResource HighAccentButtonBackground}" Opacity="0"/>
         </Setter>
-
         <Setter Property="Template">
             <ControlTemplate>
-                <Border
-                    Background="{TemplateBinding Background}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="2"
-                    Padding="{TemplateBinding Padding}"
-                    Margin="-2">
+                <Border Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="2"
+                        Padding="{TemplateBinding Padding}"
+                        Margin="-2">
                     <Border.Transitions>
                         <Transitions>
                             <BrushTransition Property="Background"
@@ -74,6 +70,10 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        
+        <Style Selector="^ /template/ Border">
+            <Setter Property="BoxShadow" Value="{DynamicResource BoxShadow}"/>
+        </Style>
 
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{DynamicResource DisabledButtonBackground}"/>
