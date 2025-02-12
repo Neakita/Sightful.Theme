@@ -25,7 +25,6 @@
 				<MergeResourceInclude Source="Controls/ListBoxItem.axaml"/>
 				<MergeResourceInclude Source="Controls/HeaderedContentControl.axaml"/>
 				<MergeResourceInclude Source="Controls/ToggleSwitch.axaml"/>
-				<MergeResourceInclude Source="Controls/RadioButton.axaml"/>
 				<MergeResourceInclude Source="Controls/RadioButtonsListBox.axaml"/>
 				<MergeResourceInclude Source="Controls/OverlayPopupHost.axaml"/>
 				<MergeResourceInclude Source="Controls/ComboBox.axaml"/>
