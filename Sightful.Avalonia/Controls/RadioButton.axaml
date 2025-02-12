@@ -15,12 +15,6 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type RadioButton}" TargetType="RadioButton">
-        <ControlTheme.Resources>
-            <ResourceDictionary>
-                <SolidColorBrush x:Key="TransparentHighAccentButtonBackground"
-                                 Color="{DynamicResource HighAccentButtonBackground}" Opacity="0"/>
-            </ResourceDictionary>
-        </ControlTheme.Resources>
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground"
@@ -40,7 +34,9 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="assists:ButtonAssist.HoveredBackground" Value="{DynamicResource ButtonHoverBackground}"/>
         <Setter Property="assists:ButtonAssist.PressedBackground" Value="{DynamicResource PressedButtonBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TransparentHighAccentButtonBackground}"/>
+        <Setter Property="BorderBrush">
+            <SolidColorBrush Color="{DynamicResource HighAccentButtonBackground}" Opacity="0"/>
+        </Setter>
 
         <Setter Property="Template">
             <ControlTemplate>
