@@ -22,11 +22,6 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-        <ControlTheme.Resources>
-            <ResourceDictionary>
-                <SolidColorBrush x:Key="TransparentAccent" Color="{DynamicResource Accent}" Opacity="0"/>
-            </ResourceDictionary>
-        </ControlTheme.Resources>
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
@@ -41,7 +36,6 @@
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Cursor" Value="Ibeam"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextSelection}"/>
-        <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground" Duration="{DynamicResource BrushTransitionDuration}"/>
@@ -53,7 +47,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
-                    <Border BorderBrush="{TemplateBinding assists:AdornerAssist.AdornerBorderBrush}"
+                    <Border Name="Outer"
                             BorderThickness="4"
                             Margin="-4"
                             CornerRadius="14">
@@ -129,8 +123,15 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^ /template/ Border#Outer">
+            <Setter Property="BorderBrush">
+                <SolidColorBrush Color="{DynamicResource Accent}" Opacity="0"/>
+            </Setter>
+        </Style>
         <Style Selector="^:focus">
-            <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{DynamicResource Accent}"/>
+            <Style Selector="^ /template/ Border#Outer">
+                <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
+            </Style>
             <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
             <Setter Property="assists:TextBoxAssist.WatermarkBrush" Value="{DynamicResource WatermarkPrimary}"/>
         </Style>
