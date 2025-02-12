@@ -9,7 +9,8 @@
                 <NumericUpDown Minimum="0"
                                Maximum="10"
                                Increment="0.5"
-                               Watermark="Enter text"/>
+                               Watermark="Thickness"
+                               InnerRightContent="px"/>
                 <NumericUpDown Minimum="0"
                                Maximum="10"
                                Increment="0.5"
@@ -31,6 +32,24 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type NumericUpDown}" TargetType="NumericUpDown">
+        <ControlTheme.Resources>
+            <ControlTheme x:Key="LeftTextBoxTheme" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="CornerRadius" Value="12 0 0 12"/>
+                <Style Selector="^ /template/ Border#Outer">
+                    <Setter Property="BorderThickness" Value="4 4 0 4"/>
+                    <Setter Property="Margin" Value="-4 -4 0 -4"/>
+                    <Setter Property="CornerRadius" Value="14 0 0 14"/>
+                </Style>
+            </ControlTheme>
+            <ControlTheme x:Key="RightTextBoxTheme" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="CornerRadius" Value="0 12 12 0"/>
+                <Style Selector="^ /template/ Border#Outer">
+                    <Setter Property="BorderThickness" Value="0 4 4 4"/>
+                    <Setter Property="Margin" Value="0 -4 -4 -4"/>
+                    <Setter Property="CornerRadius" Value="0 14 14 0"/>
+                </Style>
+            </ControlTheme>
+        </ControlTheme.Resources>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Template">
             <ControlTemplate>
@@ -44,6 +63,7 @@
                                    ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}"
                                    ButtonSpinnerLocation="{TemplateBinding ButtonSpinnerLocation}">
                         <TextBox Name="PART_TextBox"
+                                 Theme="{StaticResource LeftTextBoxTheme}"
                                  Watermark="{TemplateBinding Watermark}"
                                  IsReadOnly="{TemplateBinding IsReadOnly}"
                                  Text="{TemplateBinding Text}"
@@ -58,11 +78,7 @@
         </Setter>
 
         <Style Selector="^[ButtonSpinnerLocation=Left] /template/ TextBox#PART_TextBox">
-            <Setter Property="CornerRadius" Value="0 12 12 0"/>
-        </Style>
-
-        <Style Selector="^[ButtonSpinnerLocation=Right] /template/ TextBox#PART_TextBox">
-            <Setter Property="CornerRadius" Value="12 0 0 12"/>
+            <Setter Property="Theme" Value="{StaticResource RightTextBoxTheme}"/>
         </Style>
         
     </ControlTheme>

@@ -46,10 +46,7 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
-                    <Border Name="Outer"
-                            BorderThickness="4"
-                            Margin="-4"
-                            CornerRadius="14">
+                    <Border Name="Outer">
                         <Border.Transitions>
                             <Transitions>
                                 <BrushTransition Property="BorderBrush"
@@ -123,6 +120,11 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^ /template/ Border#Outer">
+            <Setter Property="BorderThickness" Value="4"/>
+            <!--Compensate border thickness so the border is fully outside-->
+            <Setter Property="Margin" Value="-4"/>
+            <!--Assume inner border corner radius is 16 and outer border thickness is 4, so I believe math is 16 - (4 / 2) = 14-->
+            <Setter Property="CornerRadius" Value="14"/>
             <Setter Property="BorderBrush">
                 <SolidColorBrush Color="{DynamicResource Accent}" Opacity="0"/>
             </Setter>
