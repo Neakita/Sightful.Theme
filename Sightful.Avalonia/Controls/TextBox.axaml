@@ -32,7 +32,6 @@
         <Setter Property="assists:TextBoxAssist.RightInnerContentMargin" Value="4 0 0 0"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-        <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Cursor" Value="Ibeam"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextSelection}"/>
@@ -57,14 +56,14 @@
                                                  Duration="{DynamicResource BrushTransitionDuration}"/>
                             </Transitions>
                         </Border.Transitions>
-                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                        <Border Name="Inner"
+                                BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
                                 HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}">
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}">
                             <Grid ColumnDefinitions="Auto * Auto">
                                 <ContentPresenter Grid.Column="0"
                                                   Content="{TemplateBinding InnerLeftContent}"
@@ -127,6 +126,9 @@
             <Setter Property="BorderBrush">
                 <SolidColorBrush Color="{DynamicResource Accent}" Opacity="0"/>
             </Setter>
+        </Style>
+        <Style Selector="^ /template/ Border#Inner">
+            <Setter Property="BoxShadow" Value="{DynamicResource BoxShadow}"/>
         </Style>
         <Style Selector="^:focus">
             <Style Selector="^ /template/ Border#Outer">
