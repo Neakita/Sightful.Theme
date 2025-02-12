@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
     <Design.PreviewWith>
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="inner wide-padding">
@@ -9,115 +8,83 @@
             <Grid RowDefinitions="* Auto" ColumnDefinitions="* Auto">
                 <ScrollBar Grid.Row="0" Grid.Column="1" Height="300"/>
                 <ScrollBar Grid.Row="1" Grid.Column="0" Width="300"
-                           Orientation="Horizontal" VerticalAlignment="Bottom"/>
+                           Orientation="Horizontal"/>
             </Grid>
         </Border>
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
         <ControlTheme.Resources>
-            <ControlTheme x:Key="ScrollBarThumbTheme" TargetType="Thumb">
+            <ControlTheme x:Key="ThumbTheme" TargetType="Thumb">
+                <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+                <Setter Property="CornerRadius" Value="6"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <BrushTransition Property="Background"
+                                         Duration="0:0:0.1"/>
+                    </Transitions>
+                </Setter>
                 <Setter Property="Template">
                     <ControlTemplate>
                         <Border Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"/>
                     </ControlTemplate>
                 </Setter>
+                <Style Selector="^:pointerover">
+                    <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+                </Style>
+                <Style Selector="^:pressed">
+                    <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
+                </Style>
+            </ControlTheme>
+            <ControlTheme x:Key="LineButton" TargetType="RepeatButton">
+                <Setter Property="Foreground" Value="{DynamicResource ControlBackground}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Transitions">
+                    <Transitions>
+                        <BrushTransition Property="Foreground"
+                                         Duration="0:0:0.1"/>
+                    </Transitions>
+                </Setter>
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <ContentPresenter Background="{TemplateBinding Background}"
+                                          Content="{TemplateBinding Content}"
+                                          Padding="{TemplateBinding Padding}">
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter>
+                <Style Selector="^:pointerover">
+                    <Setter Property="Foreground" Value="{DynamicResource ButtonHoverBackground}"/>
+                </Style>
+                <Style Selector="^:pressed">
+                    <Setter Property="Foreground" Value="{DynamicResource PressedButtonBackground}"/>
+                </Style>
             </ControlTheme>
             <ControlTheme x:Key="PageButton" TargetType="RepeatButton">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Template">
                     <ControlTemplate>
-                        <ContentPresenter Background="{TemplateBinding Background}"
-                                          RecognizesAccessKey="True">
-                        </ContentPresenter>
+                        <Border Background="{TemplateBinding Background}"/>
                     </ControlTemplate>
                 </Setter>
             </ControlTheme>
         </ControlTheme.Resources>
-        <Style Selector="^:vertical">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <DockPanel HorizontalAlignment="Center">
-                        <DockPanel.Styles>
-                            <Style Selector="RepeatButton">
-                                <Setter Property="Margin" Value="0"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="assists:ShadowAssist.BoxShadow" Value="none"/>
-                                <Setter Property="assists:ButtonAssist.HoveredBackground" Value="Transparent"/>
-                                <Setter Property="assists:ButtonAssist.PressedBackground" Value="Transparent"/>
-                                <Setter Property="Width" Value="12"/>
-                                <Setter Property="Padding" Value="0"/>
-                                <Setter Property="Focusable" Value="False"/>
-                                <Setter Property="Height" Value="NaN"/>
-                                <Setter Property="CornerRadius" Value="0"/>
-                            </Style>
-                        </DockPanel.Styles>
+        <Setter Property="Template">
+            <ControlTemplate>
+                    <DockPanel>
                         <RepeatButton Name="PART_LineUpButton"
                                       DockPanel.Dock="Top"
                                       Content="{icons:MaterialIconExt MenuUp}"
-                                      Foreground="{DynamicResource ControlBackground}"
-                                      Padding="0 6"/>
+                                      Padding="0 6"
+                                      Theme="{StaticResource LineButton}"/>
                         <RepeatButton Name="PART_LineDownButton"
                                       DockPanel.Dock="Bottom"
                                       Content="{icons:MaterialIconExt MenuDown}"
-                                      Foreground="{DynamicResource ControlBackground}"
-                                      Padding="0 6"/>
-
-                        <Track Minimum="{TemplateBinding Minimum}"
-                               Maximum="{TemplateBinding Maximum}"
-                               Value="{TemplateBinding Value, Mode=TwoWay}"
-                               DeferThumbDrag="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                               ViewportSize="{TemplateBinding ViewportSize}"
-                               Orientation="{TemplateBinding Orientation}"
-                               IsDirectionReversed="True">
-                            <Track.DecreaseButton>
-                                <RepeatButton Name="PART_PageUpButton"
-                                              Theme="{StaticResource PageButton}"/>
-                            </Track.DecreaseButton>
-                            <Track.IncreaseButton>
-                                <RepeatButton Name="PART_PageDownButton"
-                                              Theme="{StaticResource PageButton}"/>
-                            </Track.IncreaseButton>
-                            <Thumb Width="12"
-                                   MinHeight="18"
-                                   Theme="{StaticResource ScrollBarThumbTheme}"
-                                   Background="{DynamicResource ControlBackground}"
-                                   CornerRadius="6"
-                                   Cursor="Hand"/>
-                        </Track>
-                    </DockPanel>
-                </ControlTemplate>
-            </Setter>
-        </Style>
-        <Style Selector="^:horizontal">
-            <Setter Property="Template">
-                <ControlTemplate>
-                    <DockPanel VerticalAlignment="Center">
-                        <DockPanel.Styles>
-                            <Style Selector="RepeatButton">
-                                <Setter Property="Margin" Value="0"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="assists:ShadowAssist.BoxShadow" Value="none"/>
-                                <Setter Property="assists:ButtonAssist.HoveredBackground" Value="Transparent"/>
-                                <Setter Property="assists:ButtonAssist.PressedBackground" Value="Transparent"/>
-                                <Setter Property="Height" Value="12"/>
-                                <Setter Property="Padding" Value="0"/>
-                                <Setter Property="Focusable" Value="False"/>
-                                <Setter Property="CornerRadius" Value="0"/>
-                            </Style>
-                        </DockPanel.Styles>
-                        <RepeatButton Name="PART_LineUpButton"
-                                      DockPanel.Dock="Left"
-                                      Content="{icons:MaterialIconExt MenuLeft}"
-                                      Foreground="{DynamicResource ControlBackground}"
-                                      Padding="6 0"/>
-                        <RepeatButton Name="PART_LineDownButton"
-                                      DockPanel.Dock="Right"
-                                      Content="{icons:MaterialIconExt MenuRight}"
-                                      Foreground="{DynamicResource ControlBackground}"
-                                      Padding="6 0"/>
-
+                                      Padding="0 6"
+                                      Theme="{StaticResource LineButton}"/>
                         <Track Minimum="{TemplateBinding Minimum}"
                                Maximum="{TemplateBinding Maximum}"
                                Value="{TemplateBinding Value, Mode=TwoWay}"
@@ -126,21 +93,49 @@
                                Orientation="{TemplateBinding Orientation}">
                             <Track.DecreaseButton>
                                 <RepeatButton Name="PART_PageUpButton"
-                                              HorizontalAlignment="Stretch"/>
+                                              Theme="{StaticResource PageButton}"/>
                             </Track.DecreaseButton>
                             <Track.IncreaseButton>
                                 <RepeatButton Name="PART_PageDownButton"
-                                              HorizontalAlignment="Stretch"/>
+                                              Theme="{StaticResource PageButton}"/>
                             </Track.IncreaseButton>
-                            <Thumb Height="12"
-                                   MinWidth="18"
-                                   Theme="{StaticResource ScrollBarThumbTheme}"
-                                   Background="{DynamicResource ControlBackground}"
-                                   CornerRadius="6"/>
+                            <Thumb Theme="{StaticResource ThumbTheme}"/>
                         </Track>
                     </DockPanel>
-                </ControlTemplate>
-            </Setter>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:vertical">
+            <Setter Property="Width" Value="12"/>
+            <Style Selector="^ /template/ Track">
+                <Setter Property="IsDirectionReversed" Value="True"/>
+            </Style>
+            <Style Selector="^ /template/ Thumb">
+                <Setter Property="MinHeight" Value="18"/>
+            </Style>
+        </Style>
+        <Style Selector="^:horizontal">
+            <Setter Property="Height" Value="12"/>
+            <Style Selector="^ /template/ RepeatButton#PART_LineUpButton">
+                <Setter Property="Padding" Value="6 0"/>
+                <Setter Property="DockPanel.Dock" Value="Left"/>
+                <Setter Property="Content">
+                    <Template>
+                        <icons:MaterialIcon Kind="MenuLeft"/>
+                    </Template>
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ RepeatButton#PART_LineDownButton">
+                <Setter Property="Padding" Value="6 0"/>
+                <Setter Property="DockPanel.Dock" Value="Right"/>
+                <Setter Property="Content">
+                    <Template>
+                        <icons:MaterialIcon Kind="MenuRight"/>
+                    </Template>
+                </Setter>
+            </Style>
+            <Style Selector="^ /template/ Thumb">
+                <Setter Property="MinWidth" Value="18"/>
+            </Style>
         </Style>
     </ControlTheme>
 </ResourceDictionary>
