@@ -38,13 +38,13 @@
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="PlaceholderForeground" Value="{DynamicResource WatermarkSecondary}"/>
         <Setter Property="MinWidth" Value="150"/>
-        <Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors ClipToBounds="{TemplateBinding ClipToBounds}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Name="Border"
+                            Background="{TemplateBinding Background}"
                             Padding="{TemplateBinding Padding}"
                             BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
                             ClipToBounds="{TemplateBinding ClipToBounds}">
@@ -139,6 +139,10 @@
             </ControlTemplate>
 
         </Setter>
+        
+        <Style Selector="^ /template/ Border#Border">
+            <Setter Property="BoxShadow" Value="{DynamicResource BoxShadow}"/>
+        </Style>
 
         <Style Selector="^:dropdownopen /template/ icons|MaterialIcon#Icon">
             <Setter Property="assists:RenderTransformAssist.Rotation" Value="180"/>
