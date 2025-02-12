@@ -78,12 +78,12 @@
                         <RepeatButton Name="PART_LineUpButton"
                                       DockPanel.Dock="Top"
                                       Content="{icons:MaterialIconExt MenuUp}"
-                                      Padding="0 6"
+                                      Padding="0 2"
                                       Theme="{StaticResource LineButton}"/>
                         <RepeatButton Name="PART_LineDownButton"
                                       DockPanel.Dock="Bottom"
                                       Content="{icons:MaterialIconExt MenuDown}"
-                                      Padding="0 6"
+                                      Padding="0 2"
                                       Theme="{StaticResource LineButton}"/>
                         <Track Minimum="{TemplateBinding Minimum}"
                                Maximum="{TemplateBinding Maximum}"
@@ -116,7 +116,7 @@
         <Style Selector="^:horizontal">
             <Setter Property="Height" Value="12"/>
             <Style Selector="^ /template/ RepeatButton#PART_LineUpButton">
-                <Setter Property="Padding" Value="6 0"/>
+                <Setter Property="Padding" Value="2 0"/>
                 <Setter Property="DockPanel.Dock" Value="Left"/>
                 <Setter Property="Content">
                     <Template>
@@ -125,7 +125,7 @@
                 </Setter>
             </Style>
             <Style Selector="^ /template/ RepeatButton#PART_LineDownButton">
-                <Setter Property="Padding" Value="6 0"/>
+                <Setter Property="Padding" Value="2 0"/>
                 <Setter Property="DockPanel.Dock" Value="Right"/>
                 <Setter Property="Content">
                     <Template>
