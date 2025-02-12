@@ -9,7 +9,7 @@
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
 				<RadioButton Content="Option 1" IsChecked="True"/>
 				<RadioButton Content="Option 2"/>
-				<RadioButton Content="Option 3"/>
+                <RadioButton Content="Disabled" IsEnabled="False"/>
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
