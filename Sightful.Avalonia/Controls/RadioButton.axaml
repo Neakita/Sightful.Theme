@@ -7,11 +7,6 @@
         <Border Classes="outer wide-padding">
             <StackPanel Classes="regular-spacing" Orientation="Horizontal">
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
-				<StackPanel.Styles>
-					<Style Selector="RadioButton">
-						<Setter Property="GroupName" Value="Group1"/>
-					</Style>
-				</StackPanel.Styles>
 				<RadioButton Content="Option 1" IsChecked="True"/>
 				<RadioButton Content="Option 2"/>
 				<RadioButton Content="Option 3"/>
