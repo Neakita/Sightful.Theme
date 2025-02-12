@@ -114,43 +114,56 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
+
         <Style Selector="^ /template/ Border#Outer">
             <Setter Property="BorderThickness" Value="4"/>
+
             <!--Compensate border thickness so the border is fully outside-->
             <Setter Property="Margin" Value="-4"/>
+
             <!--Assume inner border corner radius is 16 and outer border thickness is 4, so I believe math is 16 - (4 / 2) = 14-->
             <Setter Property="CornerRadius" Value="14"/>
+
             <Setter Property="BorderBrush">
                 <SolidColorBrush Color="{DynamicResource Accent}" Opacity="0"/>
             </Setter>
         </Style>
+
         <Style Selector="^ /template/ Border#Inner">
             <Setter Property="BoxShadow" Value="{DynamicResource BoxShadow}"/>
         </Style>
+
         <Style Selector="^ /template/ TextBlock#Watermark">
             <Setter Property="Foreground" Value="{DynamicResource WatermarkSecondary}"/>
         </Style>
+
         <Style Selector="^ /template/ ContentPresenter#LeftContentPresenter">
             <Setter Property="Margin" Value="0 0 4 0"/>
         </Style>
+
         <Style Selector="^ /template/ ContentPresenter#RightContentPresenter">
             <Setter Property="Margin" Value="4 0 0 0"/>
         </Style>
+
         <Style Selector="^:focus">
             <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"/>
+
             <Style Selector="^ /template/ Border#Outer">
                 <Setter Property="BorderBrush" Value="{DynamicResource Accent}"/>
             </Style>
+
             <Style Selector="^ /template/ TextBlock#Watermark">
                 <Setter Property="Foreground" Value="{DynamicResource WatermarkPrimary}"/>
             </Style>
         </Style>
+
         <Style Selector="^:disabled">
             <Setter Property="Background" Value="{DynamicResource DisabledTextBoxBackground}"/>
         </Style>
+
         <Style Selector="^.compact">
             <Setter Property="Padding" Value="6"/>
         </Style>
-    </ControlTheme>
 
+    </ControlTheme>
 </ResourceDictionary>
