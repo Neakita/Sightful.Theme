@@ -3,18 +3,17 @@
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
                     xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
 	<Design.PreviewWith>
-		<Border Classes="inner wide-padding">
-			<Border.Styles>
-				<StyleInclude Source="../Styles/Border.axaml"/>
-				<StyleInclude Source="../Styles/Padding.axaml"/>
-			</Border.Styles>
-			<Grid RowDefinitions="* Auto" ColumnDefinitions="* Auto">
-				<ScrollBar Grid.Row="0" Grid.Column="1" Height="300" DockPanel.Dock="Right"/>
-				<ScrollBar Grid.Row="1" Grid.Column="0" Width="300" DockPanel.Dock="Bottom"
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="inner wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <Grid RowDefinitions="* Auto" ColumnDefinitions="* Auto">
+				<ScrollBar Grid.Row="0" Grid.Column="1" Height="300"/>
+				<ScrollBar Grid.Row="1" Grid.Column="0" Width="300"
 				           Orientation="Horizontal" VerticalAlignment="Bottom"/>
 			</Grid>
 		</Border>
 	</Design.PreviewWith>
+
 	<ControlTheme x:Key="{x:Type ScrollBar}" TargetType="ScrollBar">
 		<ControlTheme.Resources>
 			<ControlTheme x:Key="ScrollBarThumb" TargetType="Thumb">
