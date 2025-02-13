@@ -113,26 +113,11 @@
             </ControlTemplate>
         </Setter>
 
-        <Setter Property="ItemContainerTheme">
-            <ControlTheme TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
-                <Style Selector="^:nth-child(1)">
-                    <Setter Property="CornerRadius" Value="12 12 0 0"/>
-                </Style>
-            </ControlTheme>
-        </Setter>
-
         <Style Selector="^:dropdownopen">
             <Setter Property="CornerRadius" Value="0 0 12 12"/>
         </Style>
 
         <Style Selector="^.popup-placement-bottom">
-            <Setter Property="ItemContainerTheme">
-                <ControlTheme TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
-                    <Style Selector="^:nth-last-child(1)">
-                        <Setter Property="CornerRadius" Value="0 0 12 12"/>
-                    </Style>
-                </ControlTheme>
-            </Setter>
             <Style Selector="^ /template/ Popup">
                 <Setter Property="Placement" Value="Bottom"/>
                 <Setter Property="VerticalOffset" Value="1"/>
