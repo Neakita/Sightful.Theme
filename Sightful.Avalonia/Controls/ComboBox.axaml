@@ -115,6 +115,18 @@
 
         <Style Selector="^:dropdownopen">
             <Setter Property="CornerRadius" Value="0 0 12 12"/>
+            <Style Selector="^:not(.popup-placement-bottom) /template/ Border#PopupBorder">
+                <Style.Animations>
+                    <Animation Duration="0:0:0.1" FillMode="Forward">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="CornerRadius" Value="12 12 12 12"/>
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="CornerRadius" Value="12 12 0 0"/>
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
         </Style>
 
         <Style Selector="^.popup-placement-bottom">
@@ -124,6 +136,18 @@
             </Style>
             <Style Selector="^:dropdownopen">
                 <Setter Property="CornerRadius" Value="12 12 0 0"/>
+                <Style Selector="^ /template/ Border#PopupBorder">
+                    <Style.Animations>
+                        <Animation Duration="0:0:0.1" FillMode="Forward">
+                            <KeyFrame Cue="0%">
+                                <Setter Property="CornerRadius" Value="12 12 12 12"/>
+                            </KeyFrame>
+                            <KeyFrame Cue="100%">
+                                <Setter Property="CornerRadius" Value="0 0 12 12"/>
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
             </Style>
         </Style>
 
