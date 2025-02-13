@@ -23,7 +23,9 @@
 					        BorderBrush="{TemplateBinding BorderBrush}"
 					        BorderThickness="{TemplateBinding BorderThickness}"
 					        Padding="{TemplateBinding Padding}"
-					        CornerRadius="{TemplateBinding CornerRadius}">
+					        CornerRadius="{TemplateBinding CornerRadius}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}">
 						<Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
 						      Fill="{TemplateBinding Foreground}"
 						      Stretch="Uniform"/>
