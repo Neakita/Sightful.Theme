@@ -11,7 +11,10 @@
                 <TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
                          Watermark="Email"/>
                 <TextBox InnerLeftContent="{icons:MaterialIconExt Password}"
-                         Watermark="Password"/>
+                         Watermark="Password"
+                         Classes="reveal-password-button"
+                         Text="qwerty123"
+                         PasswordChar="*"/>
                 <TextBox InnerLeftContent="{icons:MaterialIconExt Square}"
                          InnerRightContent="{icons:MaterialIconExt Square}"
                          Text="|Squares|"/>
@@ -165,7 +168,7 @@
         <Style Selector="^.compact">
             <Setter Property="Padding" Value="6"/>
         </Style>
-        
+
         <Style Selector="^.clear-button">
             <Setter Property="InnerRightContent">
                 <Template>
@@ -178,6 +181,28 @@
                                 TextBox="{Binding $parent[TextBox]}"/>
                         </Button.Command>
                     </Button>
+                </Template>
+            </Setter>
+        </Style>
+
+        <Style Selector="^.reveal-password-button">
+            <Setter Property="InnerRightContent">
+                <Template>
+                    <ToggleButton Theme="{DynamicResource EmbeddedButtonTheme}"
+                                  Content="{icons:MaterialIconExt EyeOff}"
+                                  IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=OneWayToSource}"
+                                  ToolTip.Tip="Reveal password">
+                        <ToggleButton.Styles>
+                            <Style Selector="ToggleButton:checked">
+                                <Setter Property="ToolTip.Tip" Value="Hide password"></Setter>
+                                <Setter Property="Content">
+                                    <Template>
+                                        <icons:MaterialIcon Kind="Eye"/>
+                                    </Template>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Styles>
+                    </ToggleButton>
                 </Template>
             </Setter>
         </Style>
