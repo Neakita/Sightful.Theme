@@ -10,9 +10,12 @@
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
                 </ComboBox>
-                <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom">
+                <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom"
+                          MaxDropDownHeight="100">
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
+                    <ComboBoxItem>Item 3</ComboBoxItem>
+                    <ComboBoxItem>Item 4</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
         </Border>
@@ -89,15 +92,20 @@
                                    PlacementConstraintAdjustment="None"
                                    VerticalOffset="-1"
                                    MinHeight="20">
-                                <ScrollViewer
-                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
-                                    Padding="0">
-                                    <ItemsPresenter Name="PART_ItemsPresenter"
-                                                    Margin="{DynamicResource ComboBoxDropdownContentMargin}"
-                                                    ItemsPanel="{TemplateBinding ItemsPanel}"/>
-                                </ScrollViewer>
+                                <Border Name="PopupBorder"
+                                        CornerRadius="12 12 0 0"
+                                        ClipToBounds="True"
+                                        Background="{DynamicResource InnerBackground}">
+                                    <ScrollViewer
+                                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                        VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                                        Padding="0">
+                                        <ItemsPresenter Name="PART_ItemsPresenter"
+                                                        Margin="{DynamicResource ComboBoxDropdownContentMargin}"
+                                                        ItemsPanel="{TemplateBinding ItemsPanel}"/>
+                                    </ScrollViewer>
+                                </Border>
                             </Popup>
                         </DockPanel>
                     </Border>
