@@ -1,0 +1,64 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <TextBox InnerLeftContent="{icons:MaterialIconExt Password}"
+                         Text="qwerty123"
+                         PasswordChar="*"
+                         MinWidth="150">
+                    <TextBox.InnerRightContent>
+                        <Button Theme="{DynamicResource EmbeddedButtonTheme}"
+                                Content="{icons:MaterialIconExt Eye}"/>
+                    </TextBox.InnerRightContent>
+                </TextBox>
+                <TextBox Text="qwerty123"
+                         MinWidth="150">
+                    <TextBox.InnerRightContent>
+                        <Button Theme="{DynamicResource EmbeddedButtonTheme}"
+                                Content="{icons:MaterialIconExt Close}"
+                                Padding="6"/>
+                    </TextBox.InnerRightContent>
+                </TextBox>
+                <TextBox Watermark="empty"
+                         MinWidth="150">
+                    <TextBox.InnerRightContent>
+                        <Button Theme="{DynamicResource EmbeddedButtonTheme}"
+                                Content="{icons:MaterialIconExt Close}"
+                                Padding="6"
+                                IsEnabled="False"/>
+                    </TextBox.InnerRightContent>
+                </TextBox>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme x:Key="EmbeddedButtonTheme" TargetType="Button" BasedOn="{StaticResource BaseButtonTheme}">
+        <ControlTheme.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceInclude Source="BaseButton.axaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </ControlTheme.Resources>
+        <Setter Property="Width" Value="24"/>
+        <Setter Property="Height" Value="24"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="Background">
+            <SolidColorBrush Color="{DynamicResource ButtonHoverBackground}" Opacity="0"/>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource PressedButtonBackground}"/>
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

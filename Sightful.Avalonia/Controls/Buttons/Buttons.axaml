@@ -6,5 +6,6 @@
         <MergeResourceInclude Source="DefaultButton.axaml"/>
         <MergeResourceInclude Source="CheckBox.axaml"/>
         <MergeResourceInclude Source="RadioButton.axaml"/>
+        <MergeResourceInclude Source="EmbeddedButton.axaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
