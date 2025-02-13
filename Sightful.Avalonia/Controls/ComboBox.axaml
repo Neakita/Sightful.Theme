@@ -49,9 +49,8 @@
                                 <CornerRadiusTransition Property="CornerRadius" Duration="0:0:0.1"/>
                             </Transitions>
                         </Border.Transitions>
-                        <Grid ColumnDefinitions="* Auto">
-                            <TextBlock Grid.Column="0"
-                                       Text="{TemplateBinding PlaceholderText}"
+                        <DockPanel>
+                            <TextBlock Text="{TemplateBinding PlaceholderText}"
                                        Foreground="{TemplateBinding PlaceholderForeground}"
                                        IsVisible="{TemplateBinding SelectedItem, Converter={x:Static ObjectConverters.IsNull}}"
                                        VerticalAlignment="Center">
@@ -62,13 +61,12 @@
                                     </Transitions>
                                 </TextBlock.Transitions>
                             </TextBlock>
-                            <ContentPresenter Grid.Column="0"
-                                              Content="{TemplateBinding SelectionBoxItem}"
+                            <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             <icons:MaterialIcon Name="Icon"
-                                                Grid.Column="1"
+                                                DockPanel.Dock="Right"
                                                 Kind="MenuDown"
                                                 Height="5"
                                                 Margin="8 0 0 0">
@@ -79,8 +77,7 @@
                                     </Transitions>
                                 </icons:MaterialIcon.Transitions>
                             </icons:MaterialIcon>
-                            <Popup Grid.Column="0"
-                                   Name="PART_Popup"
+                            <Popup Name="PART_Popup"
                                    WindowManagerAddShadowHint="False"
                                    IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
                                    Width="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
@@ -102,7 +99,7 @@
                                                     ItemsPanel="{TemplateBinding ItemsPanel}"/>
                                 </ScrollViewer>
                             </Popup>
-                        </Grid>
+                        </DockPanel>
                     </Border>
                 </DataValidationErrors>
             </ControlTemplate>
