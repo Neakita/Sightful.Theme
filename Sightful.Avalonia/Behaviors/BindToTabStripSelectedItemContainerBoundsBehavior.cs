@@ -33,7 +33,9 @@ internal sealed class BindToTabStripSelectedItemContainerBoundsBehavior : Behavi
 		var boundsObservable = TabStrip
 			.GetObservable(SelectingItemsControl.SelectedIndexProperty)
 			.Select(BoundsFromIndex)
-			.Switch();
+			.Switch()
+			.Publish()
+			.RefCount();
 		AssociatedObject.Bind(Layoutable.WidthProperty,
 			boundsObservable.Select(bounds => bounds.Width));
 		AssociatedObject.Bind(Canvas.LeftProperty,
