@@ -2,15 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding">
-			<Border.Styles>
-				<StyleInclude Source="../Styles/Border.axaml"/>
-				<StyleInclude Source="../Styles/Padding.axaml"/>
-			</Border.Styles>
-			<Border.Styles>
-				<StyleInclude Source="../Styles/Button/Square.axaml"/>
-			</Border.Styles>
-			<RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <!-- ReSharper restore Xaml.StyleClassNotFound -->
+            <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type RepeatButton}" TargetType="RepeatButton" BasedOn="{StaticResource RegularButtonTheme}">
