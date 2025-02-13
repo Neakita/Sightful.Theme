@@ -16,8 +16,8 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-   <StackPanel>
-       <hotKeyBox:GestureBox/>
-       <Button/>
-   </StackPanel>
+    <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom">
+        <ComboBoxItem>Item 1</ComboBoxItem>
+        <ComboBoxItem>Item 2</ComboBoxItem>
+    </ComboBox>
 </Window>

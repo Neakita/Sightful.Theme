@@ -5,10 +5,16 @@
     <Design.PreviewWith>
         <!-- ReSharper disable once Xaml.StyleClassNotFound -->
         <Border Classes="outer" Padding="0 200 0 200">
-            <ComboBox PlaceholderText="Select an item">
-                <ComboBoxItem>Item 1</ComboBoxItem>
-                <ComboBoxItem>Item 2</ComboBoxItem>
-            </ComboBox>
+            <StackPanel>
+                <ComboBox PlaceholderText="Select an item">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                </ComboBox>
+                <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom">
+                    <ComboBoxItem>Item 1</ComboBoxItem>
+                    <ComboBoxItem>Item 2</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
@@ -86,10 +92,11 @@
                                    PlacementConstraintAdjustment="None"
                                    VerticalOffset="-1"
                                    MinHeight="20">
-                                <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                              IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
-                                              Padding="0">
+                                <ScrollViewer
+                                    HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                    VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                    IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                                    Padding="0">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
                                                     Margin="{DynamicResource ComboBoxDropdownContentMargin}"
                                                     ItemsPanel="{TemplateBinding ItemsPanel}"/>
@@ -100,11 +107,36 @@
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
-        
+
+        <Setter Property="ItemContainerTheme">
+            <ControlTheme TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+                <Style Selector="^:nth-child(1)">
+                    <Setter Property="CornerRadius" Value="12 12 0 0"/>
+                </Style>
+            </ControlTheme>
+        </Setter>
+
         <Style Selector="^:dropdownopen">
             <Setter Property="CornerRadius" Value="0 0 12 12"/>
         </Style>
-        
+
+        <Style Selector="^.popup-placement-bottom">
+            <Setter Property="ItemContainerTheme">
+                <ControlTheme TargetType="ComboBoxItem" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+                    <Style Selector="^:nth-last-child(1)">
+                        <Setter Property="CornerRadius" Value="0 0 12 12"/>
+                    </Style>
+                </ControlTheme>
+            </Setter>
+            <Style Selector="^ /template/ Popup">
+                <Setter Property="Placement" Value="Bottom"/>
+                <Setter Property="VerticalOffset" Value="1"/>
+            </Style>
+            <Style Selector="^:dropdownopen">
+                <Setter Property="CornerRadius" Value="12 12 0 0"/>
+            </Style>
+        </Style>
+
         <Style Selector="^ /template/ Border#Border">
             <Setter Property="BoxShadow" Value="{DynamicResource BoxShadow}"/>
         </Style>

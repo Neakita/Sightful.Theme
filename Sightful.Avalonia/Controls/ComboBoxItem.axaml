@@ -66,15 +66,9 @@
                 <Setter Property="Background" Value="{DynamicResource HighAccentDisabledButtonBackground}"/>
             </Style>
         </Style>
-
-        <Style Selector="^:nth-child(1)">
-            <Setter Property="CornerRadius" Value="12 12 0 0"/>
-        </Style>
         
         <Style Selector="^:not(:disabled)">
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
-
     </ControlTheme>
-
 </ResourceDictionary>
