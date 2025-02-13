@@ -1,8 +1,8 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-                    xmlns:converters="clr-namespace:Sightful.Avalonia"
-                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+                    xmlns:assists="clr-namespace:Sightful.Avalonia.Assists"
+                    xmlns:behaviors="clr-namespace:Sightful.Avalonia.Behaviors">
 	<Design.PreviewWith>
 		<StackPanel Spacing="20">
 			<StackPanel.Styles>
@@ -78,21 +78,10 @@
 						<Border Background="{DynamicResource HighAccentButtonBackground}"
 						        Height="4"
 						        CornerRadius="2">
-							<Rectangle.Width>
-								<MultiBinding Converter="{x:Static converters:Converters.ItemToWidthConverter}">
-									<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=TabStrip}"/>
-									<TemplateBinding Property="SelectedIndex"/>
-									<TemplateBinding Property="assists:ControlAssists.IsLoaded"/>
-								</MultiBinding>
-							</Rectangle.Width>
-							<Canvas.Left>
-								<MultiBinding Converter="{x:Static converters:Converters.ItemToPositionConverter}">
-									<Binding RelativeSource="{RelativeSource FindAncestor, AncestorType=TabStrip}"/>
-									<TemplateBinding Property="SelectedIndex"/>
-									<TemplateBinding Property="assists:ControlAssists.IsLoaded"/>
-								</MultiBinding>
-							</Canvas.Left>
-							<Border.Transitions>
+                            <Interaction.Behaviors>
+                                <behaviors:BindToTabStripSelectedItemContainerBoundsBehavior TabStrip="{Binding $parent[TabStrip]}"/>
+                            </Interaction.Behaviors>
+                            <Border.Transitions>
 								<Transitions>
 									<DoubleTransition Property="Width" Duration="0:0:0.2">
 										<DoubleTransition.Easing>
