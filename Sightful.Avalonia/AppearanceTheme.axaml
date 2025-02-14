@@ -10,7 +10,7 @@
 	<BoxShadows x:Key="HeavyBoxShadow">0 5 5 0 #60000000</BoxShadows>
 	<BoxShadows x:Key="HiddenBoxShadow">0 0 0 -1 #60000000</BoxShadows> 
 	<PlacementMode x:Key="ToolTipPlacement">Top</PlacementMode>
-	<Color x:Key="ShadowColor">#60000000</Color>
+	<Color x:Key="ShadowColor">#20000000</Color>
 	<Color x:Key="HeavyShadowColor">#60000000</Color>
 	<system:Double x:Key="ShadowOffsetY">5</system:Double>
 	<system:Double x:Key="HeavyShadowOffsetY">5</system:Double>
