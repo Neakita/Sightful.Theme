@@ -96,16 +96,27 @@
                                    Theme="{StaticResource ThumbTheme}"
                                    Margin="-6 0"/>
                         </Track>
-                        <TextBlock Grid.Row="1"
+                        <TextBlock Name="MinimumTextBlock"
+                                   Grid.Row="1"
                                    Grid.Column="0"
                                    Text="{TemplateBinding Minimum}"/>
-                        <TextBlock Grid.Row="1"
+                        <TextBlock Name="MaximumTextBlock"
+                                   Grid.Row="1"
                                    Grid.Column="2"
                                    Text="{TemplateBinding Maximum}"/>
                     </Grid>
                 </DataValidationErrors>
             </ControlTemplate>
         </Setter>
+
+        <Style Selector="^[IsDirectionReversed=True]">
+            <Style Selector="^ /template/ TextBlock#MinimumTextBlock">
+                <Setter Property="Grid.Column" Value="2"/>
+            </Style>
+            <Style Selector="^ /template/ TextBlock#MaximumTextBlock">
+                <Setter Property="Grid.Column" Value="0"/>
+            </Style>
+        </Style>
     </ControlTheme>
 
 </ResourceDictionary>
