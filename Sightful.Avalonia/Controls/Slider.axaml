@@ -48,7 +48,7 @@
         <!--Visual glitches appear when dragging thumb when it is enabled-->
         <!--Especially noticeable when ClipToBounds is disabled-->
         <Setter Property="UseLayoutRounding" Value="False"/>
-
+        <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
@@ -66,8 +66,7 @@
                             <Track.DecreaseButton>
                                 <RepeatButton Name="PART_DecreaseButton"
                                               Focusable="False"
-                                              Theme="{StaticResource TrackButtonTheme}"
-                                              Margin="0 0 -6 0">
+                                              Theme="{StaticResource TrackButtonTheme}">
                                     <Border Background="{DynamicResource HighAccentButtonBackground}"
                                             Height="4"
                                             CornerRadius="2"/>
@@ -75,15 +74,15 @@
                             </Track.DecreaseButton>
                             <Track.IncreaseButton>
                                 <RepeatButton Name="PART_IncreaseButton"
-                                              Theme="{StaticResource TrackButtonTheme}"
-                                              Margin="-6 0 0 0">
+                                              Theme="{StaticResource TrackButtonTheme}">
                                     <Border Background="{DynamicResource SecondaryForeground}"
                                             Height="4"
                                             CornerRadius="2"/>
                                 </RepeatButton>
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
-                                   Background="{DynamicResource HighAccentButtonBackground}">
+                                   Background="{DynamicResource HighAccentButtonBackground}"
+                                   Margin="-6 0">
                                 <Thumb.Template>
                                     <ControlTemplate>
                                         <Ellipse Width="12"
