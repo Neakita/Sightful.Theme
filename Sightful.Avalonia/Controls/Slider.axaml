@@ -94,7 +94,7 @@
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
                                    Theme="{StaticResource ThumbTheme}"
-                                   Margin="-6 0"/>
+                                   Margin="-3 0"/>
                         </Track>
                         <TextBlock Name="MinimumTextBlock"
                                    Grid.Row="1"
