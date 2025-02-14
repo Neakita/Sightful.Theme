@@ -41,6 +41,18 @@
                     </ControlTemplate>
                 </Setter>
             </ControlTheme>
+            <ControlTheme x:Key="ThumbTheme" TargetType="Thumb">
+                <Setter Property="Background" Value="{DynamicResource HighAccentButtonBackground}"/>
+                <Setter Property="Width" Value="12"/>
+                <Setter Property="Height" Value="12"/>
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <Ellipse Width="{TemplateBinding Width}"
+                                 Height="{TemplateBinding Height}"
+                                 Fill="{TemplateBinding Background}"/>
+                    </ControlTemplate>
+                </Setter>
+            </ControlTheme>
         </ControlTheme.Resources>
         <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
         <Setter Property="FontSize" Value="10"/>
@@ -81,18 +93,8 @@
                                 </RepeatButton>
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
-                                   Background="{DynamicResource HighAccentButtonBackground}"
-                                   Margin="-6 0"
-                                   Width="12"
-                                   Height="12">
-                                <Thumb.Template>
-                                    <ControlTemplate>
-                                        <Ellipse Width="{TemplateBinding Width}"
-                                                 Height="{TemplateBinding Height}"
-                                                 Fill="{TemplateBinding Background}"/>
-                                    </ControlTemplate>
-                                </Thumb.Template>
-                            </Thumb>
+                                   Theme="{StaticResource ThumbTheme}"
+                                   Margin="-6 0"/>
                         </Track>
                         <TextBlock Grid.Row="1"
                                    Grid.Column="0"
