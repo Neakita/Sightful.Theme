@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
     <Design.PreviewWith>
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
-        <Border Classes="outer regular-padding" Width="400" Height="600">
+        <Border Classes="outer regular-padding" Width="200">
             <!-- ReSharper restore Xaml.StyleClassNotFound -->
             <DockPanel LastChildFill="True">
                 <StackPanel Spacing="10" DockPanel.Dock="Top">
