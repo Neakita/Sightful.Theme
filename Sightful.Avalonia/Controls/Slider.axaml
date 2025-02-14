@@ -82,11 +82,13 @@
                             </Track.IncreaseButton>
                             <Thumb DataContext="{TemplateBinding Value}"
                                    Background="{DynamicResource HighAccentButtonBackground}"
-                                   Margin="-6 0">
+                                   Margin="-6 0"
+                                   Width="12"
+                                   Height="12">
                                 <Thumb.Template>
                                     <ControlTemplate>
-                                        <Ellipse Width="12"
-                                                 Height="12"
+                                        <Ellipse Width="{TemplateBinding Width}"
+                                                 Height="{TemplateBinding Height}"
                                                  Fill="{TemplateBinding Background}"/>
                                     </ControlTemplate>
                                 </Thumb.Template>
