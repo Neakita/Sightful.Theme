@@ -23,14 +23,6 @@
                         </DataValidationErrors.Error>
                     </Slider>
                 </StackPanel>
-                <StackPanel Spacing="10" Orientation="Horizontal">
-                    <Slider Value="50" Orientation="Vertical"/>
-                    <Slider IsDirectionReversed="True" Value="50" Orientation="Vertical"/>
-                    <Slider IsEnabled="False" Orientation="Vertical" Value="50"/>
-                    <Slider Value="50" TickPlacement="TopLeft" TickFrequency="10" Orientation="Vertical"/>
-                    <Slider Value="50" TickPlacement="BottomRight" TickFrequency="10" Orientation="Vertical"/>
-                    <Slider Value="50" TickPlacement="Outside" TickFrequency="10" Orientation="Vertical"/>
-                </StackPanel>
             </DockPanel>
         </Border>
     </Design.PreviewWith>
