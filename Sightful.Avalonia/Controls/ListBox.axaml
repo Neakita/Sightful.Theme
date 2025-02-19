@@ -50,7 +50,8 @@
 					              AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
 					              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
 					              CornerRadius="{TemplateBinding CornerRadius}"
-					              Background="{TemplateBinding Background}">
+					              Background="{TemplateBinding Background}"
+                                  Padding="0 0 6 0">
                         <!--Compensation of ListBoxItem internal margin used to simulate StackPanel.Spacing even if VirtualizingStackPanel is used-->
                         <Decorator Margin="0 -6">
                             <ItemsPresenter Name="PART_ItemsPresenter"
