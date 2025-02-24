@@ -45,7 +45,6 @@
 							</ScrollViewer>
 						</Grid>
 					</Border>
-					
 				</Border>
 			</ControlTemplate>
 		</Setter>

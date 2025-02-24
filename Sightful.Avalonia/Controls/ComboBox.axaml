@@ -99,8 +99,7 @@
                                     <ScrollViewer
                                         HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                         VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
-                                        Padding="0">
+                                        IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                                         <ItemsPresenter Name="PART_ItemsPresenter"
                                                         Margin="{DynamicResource ComboBoxDropdownContentMargin}"
                                                         ItemsPanel="{TemplateBinding ItemsPanel}"/>

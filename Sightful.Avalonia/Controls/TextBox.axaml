@@ -90,8 +90,7 @@
                                               VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
                                               IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
                                               AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
-                                              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}"
-                                              Padding="0">
+                                              BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
                                     <TextPresenter Name="PART_TextPresenter"
                                                    Text="{TemplateBinding Text, Mode=TwoWay}"
                                                    CaretIndex="{TemplateBinding CaretIndex}"
@@ -203,7 +202,7 @@
                                   ToolTip.Tip="Reveal password">
                         <ToggleButton.Styles>
                             <Style Selector="ToggleButton:checked">
-                                <Setter Property="ToolTip.Tip" Value="Hide password"></Setter>
+                                <Setter Property="ToolTip.Tip" Value="Hide password"/>
                                 <Setter Property="Content">
                                     <Template>
                                         <icons:MaterialIcon Kind="Eye"/>
