@@ -16,8 +16,4 @@
 	<system:Double x:Key="HeavyShadowOffsetY">5</system:Double>
 	<system:Double x:Key="ShadowBlurRadius">5</system:Double>
 	<system:Double x:Key="HeavyShadowBlurRadius">5</system:Double>
-	<Thickness x:Key="ShadowContainerMargin">5 0 5 10</Thickness>
-	<Thickness x:Key="HeavyShadowContainerMargin">5 0 5 10</Thickness>
-	<system:Double x:Key="ToolTipVerticalOffset">10</system:Double>
-	<system:Double x:Key="HeavyToolTipVerticalOffset">10</system:Double>
 </ResourceDictionary>

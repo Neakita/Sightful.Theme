@@ -29,12 +29,7 @@
 		<Setter Property="MaxWidth" Value="320"/>
 		<Setter Property="Template">
 			<ControlTemplate>
-				<StackPanel Margin="{DynamicResource ShadowContainerMargin}">
-					<StackPanel.Effect>
-						<DropShadowEffect OffsetY="{DynamicResource ShadowOffsetY}"
-						                  BlurRadius="{DynamicResource ShadowBlurRadius}"
-						                  Color="{DynamicResource ShadowColor}"/>
-					</StackPanel.Effect>
+				<StackPanel>
 					<ContentPresenter BorderThickness="{TemplateBinding BorderThickness}"
 					                  Foreground="{TemplateBinding Foreground}"
 					                  FontWeight="{TemplateBinding FontWeight}"
