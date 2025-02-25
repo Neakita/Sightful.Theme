@@ -1,0 +1,23 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Sightful.Avalonia.Controls"
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Design.PreviewWith>
+        <controls:MaterialIconText Height="20" Kind="Abacus" Text="This is abacus!"/>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|MaterialIconText">
+        <Setter Property="Spacing" Value="10"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="{TemplateBinding Spacing}">
+                    <icons:MaterialIcon Kind="{TemplateBinding Kind}"
+                                        VerticalAlignment="Center"/>
+                    <TextBlock Text="{TemplateBinding Text}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
