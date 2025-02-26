@@ -17,6 +17,7 @@
 	<StyleInclude Source="Styles/UserControl.axaml"/>
 	<StyleInclude Source="Styles/Border.axaml"/>
 	<StyleInclude Source="Controls/Buttons/Styles/RegularButtonContent.axaml"/>
+    <StyleInclude Source="Controls/Buttons/Styles/CardButtonContent.axaml"/>
 	<StyleInclude Source="Styles/Padding.axaml"/>
 	<StyleInclude Source="Styles/ListBoxItem.axaml"/>
 	<StyleInclude Source="Styles/StackPanel.axaml"/>

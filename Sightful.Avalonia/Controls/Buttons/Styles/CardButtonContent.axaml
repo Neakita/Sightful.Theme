@@ -1,0 +1,7 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:assists="clr-namespace:Sightful.Avalonia.Assists">
+    <Style Selector=":is(Button)[(assists|ButtonAssist.ThemeId)=Card] > StackPanel">
+        <Setter Property="Spacing" Value="10"/>
+    </Style>
+</Styles>
