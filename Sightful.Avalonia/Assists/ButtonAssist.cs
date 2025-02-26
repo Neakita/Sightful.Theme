@@ -39,4 +39,10 @@ public static class ButtonAssist
 	}
 
 	#endregion
+
+	public static readonly AttachedProperty<string> ThemeIdProperty =
+		AvaloniaProperty.RegisterAttached<Button, string>("ThemeId", typeof(ButtonAssist));
+
+	public static void SetThemeId(Button element, string value) => element.SetValue(ThemeIdProperty, value);
+	public static string GetThemeId(Button element) => element.GetValue(ThemeIdProperty);
 }

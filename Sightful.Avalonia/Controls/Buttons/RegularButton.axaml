@@ -29,6 +29,7 @@
 		<Setter Property="Padding" Value="{DynamicResource ButtonPadding}"/>
 		<Setter Property="ClipToBounds" Value="False"/>
 		<Setter Property="assists:ShadowAssist.BoxShadow" Value="{DynamicResource BoxShadow}"/>
+        <Setter Property="assists:ButtonAssist.ThemeId" Value="Regular"/>
 
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
@@ -50,7 +51,5 @@
         <StyleInclude Source="Styles/Wide.axaml"/>
         <StyleInclude Source="Styles/LowAccent.axaml"/>
         <StyleInclude Source="Styles/HighAccent.axaml"/>
-
 	</ControlTheme>
-    
 </ResourceDictionary>
