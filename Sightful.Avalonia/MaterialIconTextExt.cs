@@ -1,6 +1,6 @@
 using Material.Icons;
 
-namespace Sightful.Avalonia.Controls;
+namespace Sightful.Avalonia;
 
 public sealed class MaterialIconTextExt
 {

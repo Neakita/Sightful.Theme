@@ -4,7 +4,7 @@ using Avalonia.Controls.Primitives;
 using Material.Icons;
 using Material.Icons.Avalonia;
 
-namespace Sightful.Avalonia.Controls;
+namespace Sightful.Avalonia;
 
 public sealed class MaterialIconText : TemplatedControl
 {
@@ -16,6 +16,9 @@ public sealed class MaterialIconText : TemplatedControl
 
 	public static readonly StyledProperty<double> SpacingProperty =
 		StackPanel.SpacingProperty.AddOwner<MaterialIconText>();
+
+	public static readonly StyledProperty<double> IconSizeProperty =
+		AvaloniaProperty.Register<MaterialIconText, double>(nameof(IconSize), defaultValue: double.NaN);
 
 	public MaterialIconKind Kind
 	{
@@ -33,5 +36,11 @@ public sealed class MaterialIconText : TemplatedControl
 	{
 		get => GetValue(SpacingProperty);
 		set => SetValue(SpacingProperty, value);
+	}
+
+	public double IconSize
+	{
+		get => GetValue(IconSizeProperty);
+		set => SetValue(IconSizeProperty, value);
 	}
 }
