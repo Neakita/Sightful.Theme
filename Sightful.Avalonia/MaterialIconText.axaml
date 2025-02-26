@@ -13,7 +13,9 @@
                 <StackPanel Orientation="Horizontal"
                             Spacing="{TemplateBinding Spacing}">
                     <icons:MaterialIcon Kind="{TemplateBinding Kind}"
-                                        VerticalAlignment="Center"/>
+                                        VerticalAlignment="Center"
+                                        Width="{TemplateBinding IconSize}"
+                                        Height="{TemplateBinding IconSize}"/>
                     <TextBlock Text="{TemplateBinding Text}"
                                VerticalAlignment="Center"/>
                 </StackPanel>
