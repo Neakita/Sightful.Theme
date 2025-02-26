@@ -8,7 +8,6 @@
                         <MergeResourceInclude Source="ThemeVariants/DarkThemeColors.axaml"/>
                         <MergeResourceInclude Source="SpatialTheme.axaml"/>
                         <MergeResourceInclude Source="AppearanceTheme.axaml"/>
-                        <MergeResourceInclude Source="MaterialIconText.axaml"/>
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
@@ -23,4 +22,5 @@
 	<StyleInclude Source="Styles/StackPanel.axaml"/>
 	<StyleInclude Source="Styles/Control.axaml"/>
     <StyleInclude Source="Styles/MaterialIcon.axaml"/>
+    <StyleInclude Source="MaterialIconText.axaml"/>
 </Styles>

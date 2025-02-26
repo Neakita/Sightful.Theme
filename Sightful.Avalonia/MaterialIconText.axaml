@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
+<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         xmlns:local="clr-namespace:Sightful.Avalonia">
@@ -6,7 +6,7 @@
         <local:MaterialIconText Height="20" Kind="Abacus" Text="This is abacus!"/>
     </Design.PreviewWith>
 
-    <ControlTheme x:Key="{x:Type local:MaterialIconText}" TargetType="local:MaterialIconText">
+    <Style Selector="local|MaterialIconText">
         <Setter Property="Spacing" Value="10"/>
         <Setter Property="Template">
             <ControlTemplate>
@@ -21,5 +21,5 @@
                 </StackPanel>
             </ControlTemplate>
         </Setter>
-    </ControlTheme>
-</ResourceDictionary>
+    </Style>
+</Styles>
