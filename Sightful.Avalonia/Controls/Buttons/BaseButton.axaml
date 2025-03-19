@@ -28,6 +28,7 @@
             </Transitions>
         </Setter>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <ContentPresenter
