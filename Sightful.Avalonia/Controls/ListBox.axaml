@@ -20,6 +20,27 @@
 			</StackPanel>
 		</Border>
 	</Design.PreviewWith>
+    <ControlTheme x:Key="VerticalButtonsListBoxTheme" TargetType="ListBox">
+        <Setter Property="ItemContainerTheme" Value="{StaticResource ButtonListBoxItemTheme}"/>
+        <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" Spacing="8"/>
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
 	<ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
 		<Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
 		<Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
