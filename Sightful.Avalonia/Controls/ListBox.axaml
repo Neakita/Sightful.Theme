@@ -82,13 +82,6 @@
 				</Border>
 			</ControlTemplate>
 		</Setter>
-		<Style Selector="^.compact">
-			<Setter Property="ItemsPanel">
-				<ItemsPanelTemplate>
-					<StackPanel Spacing="4"/>
-				</ItemsPanelTemplate>
-			</Setter>
-		</Style>
 		<Style Selector="^.fade">
 			<Setter Property="ItemContainerTheme" Value="{DynamicResource FadeListBoxItem}"/>
 		</Style>
