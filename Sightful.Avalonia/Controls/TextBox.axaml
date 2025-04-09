@@ -20,6 +20,7 @@
                          Text="|Squares|"/>
                 <TextBox Text="Overflow" Width="80"/>
                 <TextBox Text="{Binding $self.Bounds.Height}" InnerRightContent="px"/>
+                <TextBox Watermark="Compact" Classes="compact"/>
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -212,5 +213,10 @@
                 </Template>
             </Setter>
         </Style>
+
+        <Style Selector="^.compact">
+            <Setter Property="Padding" Value="8 4"/>
+        </Style>
+
     </ControlTheme>
 </ResourceDictionary>
