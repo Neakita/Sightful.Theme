@@ -58,9 +58,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 Padding="{TemplateBinding Padding}"
-                                Background="{TemplateBinding Background}"
-                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                                Background="{TemplateBinding Background}">
                             <Grid ColumnDefinitions="Auto * Auto">
                                 <ContentPresenter Name="LeftContentPresenter"
                                                   Grid.Column="0"
