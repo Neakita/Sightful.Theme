@@ -75,7 +75,8 @@
                                 <TextBlock Name="Watermark"
                                            Grid.Column="1"
                                            Text="{TemplateBinding Watermark}"
-                                           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}">
+                                           IsVisible="{TemplateBinding Text, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                           TextWrapping="Wrap">
                                     <TextBlock.Transitions>
                                         <Transitions>
                                             <BrushTransition Property="Foreground"
