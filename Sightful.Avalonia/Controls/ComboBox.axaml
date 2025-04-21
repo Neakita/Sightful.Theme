@@ -91,7 +91,7 @@
                                    InheritsTransform="True"
                                    Placement="Bottom"
                                    PlacementConstraintAdjustment="None"
-                                   VerticalOffset="-1"
+                                   VerticalOffset="1"
                                    MinHeight="20">
                                 <Border Name="PopupBorder"
                                         CornerRadius="0 0 12 12"
@@ -132,7 +132,7 @@
         <Style Selector="^.popup-placement-top">
             <Style Selector="^ /template/ Popup">
                 <Setter Property="Placement" Value="Top"/>
-                <Setter Property="VerticalOffset" Value="1"/>
+                <Setter Property="VerticalOffset" Value="-1"/>
             </Style>
             <Style Selector="^:dropdownopen">
                 <Setter Property="CornerRadius" Value="0 0 12 12"/>
