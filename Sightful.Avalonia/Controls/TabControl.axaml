@@ -1,27 +1,22 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:behaviors="clr-namespace:Sightful.Avalonia.Behaviors">
 	<Design.PreviewWith>
-		<Border Classes="outer wide-padding" Width="400">
-			<Border.Styles>
-				<StyleInclude Source="../Styles/Border.axaml"/>
-				<StyleInclude Source="../Styles/Padding.axaml"/>
-			</Border.Styles>
-			<TabControl>
-				<TabItem Header="Arch">
-					<Border Height="100">
-						<TextBlock Text="Some content"/>
-					</Border>
-				</TabItem>
-				<TabItem Header="Leaf">
-					<Border Background="Green" Height="100"/>
-				</TabItem>
-			</TabControl>
-		</Border>
+        <TabControl>
+            <TabItem Header="Arch">
+                <Border Height="100">
+                    <TextBlock Text="Some content"/>
+                </Border>
+            </TabItem>
+            <TabItem Header="Leaf">
+                <Border Background="Green" Height="100"/>
+            </TabItem>
+        </TabControl>
 	</Design.PreviewWith>
 
 	<Thickness x:Key="TabControlTopPlacementItemMargin">0 0 0 2</Thickness>
 
-	<ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
+	<ControlTheme x:Key="ButtonsTabControlTheme" TargetType="TabControl">
 		<Setter Property="Margin" Value="0"/>
 		<Setter Property="Padding" Value="{DynamicResource TabItemMargin}"/>
 		<Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
@@ -65,4 +60,61 @@
 			<Setter Property="Margin" Value="{DynamicResource TabControlTopPlacementItemMargin}"/>
 		</Style>
 	</ControlTheme>
+
+	<ControlTheme x:Key="TabControlTheme" TargetType="TabControl">
+        <Setter Property="Background" Value="{DynamicResource OuterBackground}"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+        <Setter Property="ItemsPanel">
+			<ItemsPanelTemplate>
+				<StackPanel Orientation="Horizontal" Spacing="16"/>
+			</ItemsPanelTemplate>
+		</Setter>
+		<Setter Property="Template">
+			<ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <Grid RowDefinitions="Auto Auto Auto">
+                        <ItemsPresenter Grid.Row="0" Name="PART_ItemsPresenter"
+                                        ItemsPanel="{TemplateBinding ItemsPanel}"/>
+                        <Canvas Grid.Row="1"
+                                Height="4">
+                            <Border Background="{DynamicResource HighAccentButtonBackground}"
+                                    Height="4"
+                                    CornerRadius="2">
+                                <Interaction.Behaviors>
+                                    <behaviors:BindToItemsControlSelectedItemContainerBoundsBehavior ItemsControl="{Binding $parent[TabControl]}"/>
+                                </Interaction.Behaviors>
+                                <Border.Transitions>
+                                    <Transitions>
+                                        <DoubleTransition Property="Width" Duration="0:0:0.2">
+                                            <DoubleTransition.Easing>
+                                                <CircularEaseInOut/>
+                                            </DoubleTransition.Easing>
+                                        </DoubleTransition>
+                                        <DoubleTransition Property="Canvas.Left" Duration="0:0:0.2">
+                                            <DoubleTransition.Easing>
+                                                <CircularEaseInOut/>
+                                            </DoubleTransition.Easing>
+                                        </DoubleTransition>
+                                    </Transitions>
+                                </Border.Transitions>
+                            </Border>
+                        </Canvas>
+                        <ContentPresenter Grid.Row="2"
+                                          Name="PART_SelectedContentHost"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}"/>
+                    </Grid>
+                </Border>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+    
+    <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl" BasedOn="{StaticResource TabControlTheme}"/>
 </ResourceDictionary>
