@@ -77,7 +77,7 @@
 						        Height="4"
 						        CornerRadius="2">
                             <Interaction.Behaviors>
-                                <behaviors:BindToTabStripSelectedItemContainerBoundsBehavior TabStrip="{Binding $parent[TabStrip]}"/>
+                                <behaviors:BindToItemsControlSelectedItemContainerBoundsBehavior ItemsControl="{Binding $parent[TabStrip]}"/>
                             </Interaction.Behaviors>
                             <Border.Transitions>
 								<Transitions>
@@ -96,7 +96,6 @@
 						</Border>
 					</Canvas>
 				</DockPanel>
-				
 			</ControlTemplate>
 		</Setter>
 	</ControlTheme>
