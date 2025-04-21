@@ -6,11 +6,12 @@
         <!-- ReSharper disable once Xaml.StyleClassNotFound -->
         <Border Classes="outer" Padding="0 200 0 200">
             <StackPanel>
-                <ComboBox PlaceholderText="Select an item">
+                <ComboBox PlaceholderText="Select an item"
+                          Classes="popup-placement-top">
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
                 </ComboBox>
-                <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom"
+                <ComboBox PlaceholderText="Select an item"
                           MaxDropDownHeight="100">
                     <ComboBoxItem>Item 1</ComboBoxItem>
                     <ComboBoxItem>Item 2</ComboBoxItem>
@@ -88,12 +89,12 @@
                                    PlacementTarget="{TemplateBinding}"
                                    IsLightDismissEnabled="True"
                                    InheritsTransform="True"
-                                   Placement="Top"
+                                   Placement="Bottom"
                                    PlacementConstraintAdjustment="None"
                                    VerticalOffset="-1"
                                    MinHeight="20">
                                 <Border Name="PopupBorder"
-                                        CornerRadius="12 12 0 0"
+                                        CornerRadius="0 0 12 12"
                                         ClipToBounds="True"
                                         Background="{DynamicResource InnerBackground}">
                                     <ScrollViewer
@@ -113,28 +114,28 @@
         </Setter>
 
         <Style Selector="^:dropdownopen">
-            <Setter Property="CornerRadius" Value="0 0 12 12"/>
-            <Style Selector="^:not(.popup-placement-bottom) /template/ Border#PopupBorder">
+            <Setter Property="CornerRadius" Value="12 12 0 0"/>
+            <Style Selector="^:not(.popup-placement-top) /template/ Border#PopupBorder">
                 <Style.Animations>
                     <Animation Duration="0:0:0.1" FillMode="Forward">
                         <KeyFrame Cue="0%">
                             <Setter Property="CornerRadius" Value="12 12 12 12"/>
                         </KeyFrame>
                         <KeyFrame Cue="100%">
-                            <Setter Property="CornerRadius" Value="12 12 0 0"/>
+                            <Setter Property="CornerRadius" Value="0 0 12 12"/>
                         </KeyFrame>
                     </Animation>
                 </Style.Animations>
             </Style>
         </Style>
 
-        <Style Selector="^.popup-placement-bottom">
+        <Style Selector="^.popup-placement-top">
             <Style Selector="^ /template/ Popup">
-                <Setter Property="Placement" Value="Bottom"/>
+                <Setter Property="Placement" Value="Top"/>
                 <Setter Property="VerticalOffset" Value="1"/>
             </Style>
             <Style Selector="^:dropdownopen">
-                <Setter Property="CornerRadius" Value="12 12 0 0"/>
+                <Setter Property="CornerRadius" Value="0 0 12 12"/>
                 <Style Selector="^ /template/ Border#PopupBorder">
                     <Style.Animations>
                         <Animation Duration="0:0:0.1" FillMode="Forward">
@@ -142,7 +143,7 @@
                                 <Setter Property="CornerRadius" Value="12 12 12 12"/>
                             </KeyFrame>
                             <KeyFrame Cue="100%">
-                                <Setter Property="CornerRadius" Value="0 0 12 12"/>
+                                <Setter Property="CornerRadius" Value="12 12 0 0"/>
                             </KeyFrame>
                         </Animation>
                     </Style.Animations>
