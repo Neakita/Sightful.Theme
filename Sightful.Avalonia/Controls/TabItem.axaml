@@ -20,6 +20,7 @@
 					<TabItem Header="Home"/>
 					<TabItem Header="Search" IsSelected="True"/>
 					<TabItem Header="Library"/>
+                    <TabItem Header="Disabled" IsEnabled="False"/>
 				</StackPanel>
 			</Border>
 		</StackPanel>
@@ -103,6 +104,9 @@
 			</ControlTemplate>
 		</Setter>
 		<StyleInclude Source="../../Styles/Shrinking.axaml"/>
+        <Style Selector="^:disabled">
+            <Setter Property="Foreground" Value="{DynamicResource DisabledButtonForeground}"/>
+        </Style>
 	</ControlTheme>
 	
 	<ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem" BasedOn="{StaticResource TabItemTheme}"/>
