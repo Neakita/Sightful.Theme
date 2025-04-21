@@ -22,6 +22,7 @@
                             </system:Exception>
                         </DataValidationErrors.Error>
                     </Slider>
+                    <Slider Classes="percentage"/>
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -117,6 +118,16 @@
             </Style>
             <Style Selector="^ /template/ TextBlock#MaximumTextBlock">
                 <Setter Property="Grid.Column" Value="0"/>
+            </Style>
+        </Style>
+        
+        <Style Selector="^.percentage">
+            <Setter Property="Maximum" Value="1"/>
+            <Style Selector="^ /template/ TextBlock#MinimumTextBlock">
+                <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Minimum, StringFormat=P0}"/>
+            </Style>
+            <Style Selector="^ /template/ TextBlock#MaximumTextBlock">
+                <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Maximum, StringFormat=P0}"/>
             </Style>
         </Style>
     </ControlTheme>
