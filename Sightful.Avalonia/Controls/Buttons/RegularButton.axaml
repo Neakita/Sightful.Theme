@@ -51,5 +51,6 @@
         <StyleInclude Source="Styles/Wide.axaml"/>
         <StyleInclude Source="Styles/LowAccent.axaml"/>
         <StyleInclude Source="Styles/HighAccent.axaml"/>
+        <StyleInclude Source="Styles/RedAccent.axaml"/>
 	</ControlTheme>
 </ResourceDictionary>

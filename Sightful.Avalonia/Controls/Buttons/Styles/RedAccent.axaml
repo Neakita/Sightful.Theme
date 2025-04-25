@@ -1,0 +1,27 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <!-- ReSharper disable Xaml.StyleClassNotFound -->
+        <Border Classes="outer wide-padding">
+            <StackPanel Classes="regular-spacing">
+                <!-- ReSharper restore Xaml.StyleClassNotFound -->
+                <Button Content="Click Me!" Classes="red-accent"/>
+                <Button Content="Disabled" IsEnabled="False" Classes="red-accent"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+	    
+    <Style Selector=":is(Button).red-accent">
+        <Setter Property="Background" Value="{DynamicResource RedAccent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource HighAccentButtonForeground}"/>
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource CloseWindowHoveredButtonBackground}"/>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource CloseWindowPressedButtonBackground}"/>
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Background" Value="{DynamicResource RedAccentDisabledButtonBackground}"/>
+        </Style>
+    </Style>
+</Styles>
