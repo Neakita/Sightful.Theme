@@ -36,5 +36,65 @@
         <Setter Property="CornerRadius" Value="16"/>
         <Setter Property="Padding" Value="12"/>
         <Setter Property="assists:ButtonAssist.ThemeId" Value="Card"/>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <ContentPresenter
+                        Foreground="{TemplateBinding Foreground}"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        RecognizesAccessKey="True"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                        BoxShadow="{TemplateBinding assists:ShadowAssist.BoxShadow}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Padding="{TemplateBinding Padding}">
+                        <ContentPresenter.Transitions>
+                            <Transitions>
+                                <BrushTransition Property="Background"
+                                                 Duration="{DynamicResource BrushTransitionDuration}"/>
+                                <BrushTransition Property="Foreground"
+                                                 Duration="{DynamicResource BrushTransitionDuration}"/>
+                                <BoxShadowsTransition Property="BoxShadow"
+                                                      Duration="{DynamicResource BrushTransitionDuration}"/>
+                            </Transitions>
+                        </ContentPresenter.Transitions>
+                    </ContentPresenter>
+                    <Border Name="OverlayBorder"
+                            Background="#50000000"
+                            Opacity="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            IsVisible="{TemplateBinding assists:CardButtonAssist.OverlayContent, Converter={x:Static ObjectConverters.IsNotNull}}">
+                        <Border.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+                            </Transitions>
+                        </Border.Transitions>
+                        <TransitioningContentControl Name="OverlayContentControl"
+                                                     Padding="12">
+                            <TransitioningContentControl.PageTransition>
+                                <PageSlide Orientation="Vertical" Duration="0:0:0.3">
+                                    <PageSlide.SlideInEasing>
+                                        <CircularEaseOut/>
+                                    </PageSlide.SlideInEasing>
+                                    <PageSlide.SlideOutEasing>
+                                        <CircularEaseIn/>
+                                    </PageSlide.SlideOutEasing>
+                                </PageSlide>
+                            </TransitioningContentControl.PageTransition>
+                        </TransitioningContentControl>
+                    </Border>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#OverlayBorder">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+        <Style Selector="^:pointerover /template/ TransitioningContentControl#OverlayContentControl">
+            <Setter Property="Content" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(assists:CardButtonAssist.OverlayContent)}"/>
+        </Style>
     </ControlTheme>
 </ResourceDictionary>
