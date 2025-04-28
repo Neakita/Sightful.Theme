@@ -11,7 +11,7 @@ public sealed class ZoomViewer : ContentControl
 		AvaloniaProperty.Register<ZoomViewer, double>(nameof(Zoom), 1, defaultBindingMode: BindingMode.TwoWay, coerce: CoerceZoom);
 
 	public static readonly StyledProperty<Vector> OffsetProperty =
-		AvaloniaProperty.Register<ZoomViewer, Vector>(nameof(Offset));
+		AvaloniaProperty.Register<ZoomViewer, Vector>(nameof(Offset), defaultBindingMode: BindingMode.TwoWay);
 
 	private static double CoerceZoom(AvaloniaObject element, double zoom)
 	{
