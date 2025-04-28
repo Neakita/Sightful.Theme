@@ -6,6 +6,7 @@
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <LangVersion>preview</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,18 +15,20 @@
 
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.2.3" />
+        <PackageReference Include="Avalonia" Version="11.2.8" />
         <PackageReference Include="Avalonia.Desktop" Version="11.2.3" />
         <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.3" />
         <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.3" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.3" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.3" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     </ItemGroup>
 
 
     <ItemGroup>
       <ProjectReference Include="..\Sightful.Avalonia.Controls.GestureBox\Sightful.Avalonia.Controls.GestureBox.csproj" />
+      <ProjectReference Include="..\Sightful.Avalonia.Controls.ZoomViewer\Sightful.Avalonia.Controls.ZoomViewer.csproj" />
       <ProjectReference Include="..\Sightful.Avalonia.Controls\Sightful.Avalonia.Controls.csproj" />
       <ProjectReference Include="..\Sightful.Avalonia\Sightful.Avalonia.csproj" />
       <ProjectReference Include="..\Sightful.Avalonia.TreeDataGrid\Sightful.Avalonia.TreeDataGrid.csproj" />

@@ -3,7 +3,7 @@
         xmlns:vm="using:Sightful.Avalonia.Demo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:hotKeyBox="clr-namespace:Sightful.Avalonia.Controls.GestureBox;assembly=Sightful.Avalonia.Controls.GestureBox"
+        xmlns:zoomViewer="clr-namespace:Sightful.Avalonia.Controls.ZoomViewer;assembly=Sightful.Avalonia.Controls.ZoomViewer"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Sightful.Avalonia.Demo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -15,9 +15,19 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    
+    <Grid RowDefinitions="* Auto">
+        <zoomViewer:ZoomViewer Grid.Row="0"
+                               Zoom="{Binding Zoom}"
+                               Offset="{Binding Offset}">
+            <Image Source="avares://Sightful.Avalonia.Demo/Assets/20e09723c51f41b5bebe1fbda21472c9.jpg"
+                   Stretch="None"/>
+        </zoomViewer:ZoomViewer>
+        <StackPanel Grid.Row="1">
+            <Slider Minimum="1" Maximum="10" Value="{Binding Zoom}"/>
+            <Slider Minimum="-1000" Maximum="1000" Value="{Binding OffsetX}"/>
+            <Slider Minimum="-1000" Maximum="1000" Value="{Binding OffsetY}"/>
+        </StackPanel>
+    </Grid>
 
-    <ComboBox PlaceholderText="Select an item" Classes="popup-placement-bottom">
-        <ComboBoxItem>Item 1</ComboBoxItem>
-        <ComboBoxItem>Item 2</ComboBoxItem>
-    </ComboBox>
 </Window>

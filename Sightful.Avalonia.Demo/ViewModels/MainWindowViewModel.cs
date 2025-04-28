@@ -1,8 +1,12 @@
-﻿namespace Sightful.Avalonia.Demo.ViewModels;
+﻿using Avalonia;
+using CommunityToolkit.Mvvm.ComponentModel;
 
-public class MainWindowViewModel : ViewModelBase
+namespace Sightful.Avalonia.Demo.ViewModels;
+
+public sealed partial class MainWindowViewModel : ViewModel
 {
-#pragma warning disable CA1822 // Mark members as static
-	public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+	[ObservableProperty] public partial double Zoom { get; set; } = 1;
+	[ObservableProperty, NotifyPropertyChangedFor(nameof(Offset))] public partial double OffsetX { get; set; }
+	[ObservableProperty, NotifyPropertyChangedFor(nameof(Offset))] public partial double OffsetY { get; set; }
+	public Vector Offset => new(OffsetX, OffsetY);
 }

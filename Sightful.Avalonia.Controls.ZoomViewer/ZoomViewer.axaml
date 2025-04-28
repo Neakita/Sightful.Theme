@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:Sightful.Avalonia.Controls.ZoomViewer">
+    <Design.PreviewWith>
+        <controls:ZoomViewer/>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|ZoomViewer">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <controls:ZoomContentPresenter
+                    Content="{TemplateBinding Content}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    Zoom="{TemplateBinding Zoom}"
+                    Offset="{TemplateBinding Offset}">
+                    <controls:ZoomContentPresenter.Transitions>
+                        <Transitions>
+                            <DoubleTransition Property="Zoom" Duration="0:0:0.1"/>
+                        </Transitions>
+                    </controls:ZoomContentPresenter.Transitions>
+                </controls:ZoomContentPresenter>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
