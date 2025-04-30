@@ -44,8 +44,8 @@ internal sealed class ForegroundContentPresenter : ContentPresenter
 		var center = new Point(finalSize.Width / 2, finalSize.Height / 2);
 		var scaledSize = ContentSize * Scale;
 		var topLeft = new Point(
-			center.X - scaledSize.Width / 2 + Offset.X * Scale,
-			center.Y - scaledSize.Height / 2 + Offset.Y * Scale);
+			center.X - scaledSize.Width / 2 - Offset.X * Scale,
+			center.Y - scaledSize.Height / 2 - Offset.Y * Scale);
 		var bounds = new Rect(topLeft, scaledSize);
 		Child.Arrange(bounds);
 		return finalSize;
