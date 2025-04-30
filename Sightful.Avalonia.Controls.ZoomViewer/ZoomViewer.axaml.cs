@@ -117,6 +117,7 @@ public sealed class ZoomViewer : ContentControl
 				Math.Max(0, excess.Height));
 			MaxOffset = new Vector(excess.Width / 2 / Zoom, excess.Height / 2 / Zoom);
 			MinOffset = -MaxOffset;
+			SetCurrentValue(OffsetProperty, CoerceOffset(this, Offset));
 		}
 	}
 
