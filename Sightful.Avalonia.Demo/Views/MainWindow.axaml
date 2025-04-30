@@ -18,6 +18,7 @@
     
     <Grid RowDefinitions="* Auto">
         <zoomViewer:ZoomViewer Grid.Row="0"
+                               Name="ZoomViewer"
                                Zoom="{Binding Zoom}"
                                Offset="{Binding Offset}"
                                ForegroundContent="Test">
@@ -26,8 +27,8 @@
         </zoomViewer:ZoomViewer>
         <StackPanel Grid.Row="1">
             <Slider Minimum="1" Maximum="10" Value="{Binding Zoom}"/>
-            <Slider Minimum="-1000" Maximum="1000" Value="{Binding OffsetX}"/>
-            <Slider Minimum="-1000" Maximum="1000" Value="{Binding OffsetY}"/>
+            <Slider Minimum="{Binding #ZoomViewer.MinOffset.X}" Maximum="{Binding #ZoomViewer.MaxOffset.X}" Value="{Binding OffsetX}"/>
+            <Slider Minimum="{Binding #ZoomViewer.MinOffset.Y}" Maximum="{Binding #ZoomViewer.MaxOffset.Y}" Value="{Binding OffsetY}"/>
         </StackPanel>
     </Grid>
 
