@@ -38,7 +38,7 @@ public sealed class ZoomContentPresenter : ContentPresenter
 			return;
 		var builder = TransformOperations.CreateBuilder(2);
 		builder.AppendScale(Zoom, Zoom);
-		builder.AppendTranslate(Offset.X, Offset.Y);
+		builder.AppendTranslate(Offset.X * Zoom, Offset.Y * Zoom);
 		var transform = builder.Build();
 		Child.RenderTransform = transform;
 	}

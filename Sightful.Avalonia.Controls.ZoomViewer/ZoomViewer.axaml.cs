@@ -47,7 +47,7 @@ public sealed class ZoomViewer : ContentControl
 	private void OnPointerMoved(object? sender, PointerEventArgs e)
 	{
 		var panPosition = e.GetPosition(this);
-		var panDelta = (Vector)(panPosition - _lastPanPosition);
+		var panDelta = (Vector)(panPosition - _lastPanPosition) / Zoom;
 		_lastPanPosition = panPosition;
 		SetCurrentValue(OffsetProperty, Offset + panDelta);
 	}
