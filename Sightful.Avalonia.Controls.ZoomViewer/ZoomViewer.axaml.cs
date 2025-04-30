@@ -122,7 +122,7 @@ public sealed class ZoomViewer : ContentControl
 
 	protected override void OnPointerWheelChanged(PointerWheelEventArgs e)
 	{
-		SetCurrentValue(ZoomProperty, Zoom += e.Delta.Y);
+		SetCurrentValue(ZoomProperty, Zoom + e.Delta.Y);
 	}
 
 	protected override void OnPointerPressed(PointerPressedEventArgs e)
