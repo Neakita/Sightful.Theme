@@ -16,7 +16,7 @@ internal sealed class ForegroundContentPresenter : ContentPresenter
 
 	static ForegroundContentPresenter()
 	{
-		AffectsArrange<ForegroundContentPresenter>(ScaleProperty, OffsetProperty);
+		AffectsArrange<ForegroundContentPresenter>(ContentSizeProperty, ScaleProperty, OffsetProperty);
 	}
 
 	public Size ContentSize
