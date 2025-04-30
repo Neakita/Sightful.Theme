@@ -8,17 +8,33 @@
     <Style Selector="controls|ZoomViewer">
         <Setter Property="Template">
             <ControlTemplate>
-                <controls:ZoomContentPresenter
-                    Content="{TemplateBinding Content}"
-                    ContentTemplate="{TemplateBinding ContentTemplate}"
-                    Zoom="{TemplateBinding Zoom}"
-                    Offset="{TemplateBinding Offset}">
-                    <controls:ZoomContentPresenter.Transitions>
-                        <Transitions>
-                            <DoubleTransition Property="Zoom" Duration="0:0:0.1"/>
-                        </Transitions>
-                    </controls:ZoomContentPresenter.Transitions>
-                </controls:ZoomContentPresenter>
+                <Panel>
+                    <controls:ZoomContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        Zoom="{TemplateBinding Zoom}"
+                        Offset="{TemplateBinding Offset}">
+                        <controls:ZoomContentPresenter.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Zoom" Duration="0:0:0.1"/>
+                            </Transitions>
+                        </controls:ZoomContentPresenter.Transitions>
+                    </controls:ZoomContentPresenter>
+                    <controls:ForegroundContentPresenter
+                        Name="PART_ForegroundContentPresenter"
+                        Content="{TemplateBinding ForegroundContent}"
+                        ContentTemplate="{TemplateBinding ForegroundContentTemplate}"
+                        ContentSize="{Binding ElementName=ZoomContentPresenter}"
+                        Offset="{TemplateBinding Offset}"
+                        Scale="{TemplateBinding Zoom}">
+                        <controls:ForegroundContentPresenter.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Scale" Duration="0:0:0.1"/>
+                            </Transitions>
+                        </controls:ForegroundContentPresenter.Transitions>
+                    </controls:ForegroundContentPresenter>
+                </Panel>
             </ControlTemplate>
         </Setter>
     </Style>

@@ -19,7 +19,8 @@
     <Grid RowDefinitions="* Auto">
         <zoomViewer:ZoomViewer Grid.Row="0"
                                Zoom="{Binding Zoom}"
-                               Offset="{Binding Offset}">
+                               Offset="{Binding Offset}"
+                               ForegroundContent="Test">
             <Image Source="avares://Sightful.Avalonia.Demo/Assets/20e09723c51f41b5bebe1fbda21472c9.jpg"
                    Stretch="None"/>
         </zoomViewer:ZoomViewer>
