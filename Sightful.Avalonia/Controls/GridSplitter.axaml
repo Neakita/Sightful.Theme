@@ -1,0 +1,42 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Classes="inner-background">
+            <Grid ColumnDefinitions="2* 10 *" Width="200" Height="200">
+                <Rectangle Grid.Column="0" Fill="IndianRed" Opacity="0.1"/>
+                <GridSplitter Grid.Column="1"/>
+                <Rectangle Grid.Column="2" Fill="SeaGreen" Opacity="0.1"/>
+            </Grid>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type GridSplitter}" TargetType="GridSplitter">
+        <Setter Property="Opacity" Value="0.1"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <DoubleTransition Property="Opacity" Duration="0:0:0.05"/>
+            </Transitions>
+        </Setter>
+        <Setter Property="PreviewContent">
+            <Template>
+                <Rectangle Fill="{DynamicResource ControlBackground}"/>
+            </Template>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Background="{TemplateBinding Background}"/>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="0.5"/>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>

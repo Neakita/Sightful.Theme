@@ -36,6 +36,7 @@
                 <MergeResourceInclude Source="Controls/Menus/ContextMenu.axaml"/>
                 <MergeResourceInclude Source="Controls/Menus/MenuItem.axaml"/>
                 <MergeResourceInclude Source="Controls/Menus/Separator.axaml"/>
+                <MergeResourceInclude Source="Controls/GridSplitter.axaml"/>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Styles.Resources>
