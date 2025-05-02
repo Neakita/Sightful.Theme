@@ -73,7 +73,7 @@
 					              CornerRadius="{TemplateBinding CornerRadius}"
 					              Background="{TemplateBinding Background}">
                         <!--Compensation of ListBoxItem internal margin used to simulate StackPanel.Spacing even if VirtualizingStackPanel is used-->
-                        <Decorator Margin="0 -6">
+                                   Margin="-6">
                             <ItemsPresenter Name="PART_ItemsPresenter"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
                                             Margin="{TemplateBinding Padding}"/>
