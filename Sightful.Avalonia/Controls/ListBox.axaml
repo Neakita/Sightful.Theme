@@ -73,6 +73,7 @@
 					              CornerRadius="{TemplateBinding CornerRadius}"
 					              Background="{TemplateBinding Background}">
                         <!--Compensation of ListBoxItem internal margin used to simulate StackPanel.Spacing even if VirtualizingStackPanel is used-->
+                        <Decorator Name="CompensationMarginDecorator"
                                    Margin="-6">
                             <ItemsPresenter Name="PART_ItemsPresenter"
                                             ItemsPanel="{TemplateBinding ItemsPanel}"
@@ -85,5 +86,8 @@
 		<Style Selector="^.fade">
 			<Setter Property="ItemContainerTheme" Value="{DynamicResource FadeListBoxItem}"/>
 		</Style>
+        <Style Selector="^.compact /template/ Decorator#CompensationMarginDecorator">
+            <Setter Property="Margin" Value="-2"/>
+        </Style>
 	</ControlTheme>
 </ResourceDictionary>
