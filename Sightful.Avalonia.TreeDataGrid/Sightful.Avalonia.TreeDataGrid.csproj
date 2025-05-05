@@ -12,7 +12,7 @@
       <PackageReference Include="Avalonia" Version="11.1.0" />
       <PackageReference Include="Avalonia.Controls.TreeDataGrid" Version="11.1.0" />
       <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
-      <PackageReference Include="Material.Icons.Avalonia" Version="2.2.0" />
+      <PackageReference Include="Material.Icons.Avalonia" Version="2.3.1" />
     </ItemGroup>
 
     <ItemGroup>
