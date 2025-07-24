@@ -14,9 +14,10 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.0" />
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.1.0" />
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
         <PackageReference Include="Material.Icons.Avalonia" Version="2.3.1" />
+        <PackageReference Include="System.Reactive" Version="6.0.1" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.0.12" />
     </ItemGroup>
 
 </Project>
