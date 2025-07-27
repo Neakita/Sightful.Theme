@@ -3,7 +3,7 @@
         xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
 	<Design.PreviewWith>
 		<Border Classes="outer wide-padding">
-			<Button Content="{icons:MaterialIconExt Play}" Classes="square" ToolTip.Tip="I'm square!"/>
+			<Button Content="{icons:MaterialIconExt Kind=Play}" Classes="square" ToolTip.Tip="I'm square!"/>
 		</Border>
 	</Design.PreviewWith>
         

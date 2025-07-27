@@ -9,9 +9,9 @@
             <StackPanel Classes="regular-spacing">
                 <Button Content="{root:MaterialIconTextExt ExitToApp, Sign out}"/>
                 <!-- ReSharper disable Xaml.StyleClassNotFound -->
-                <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
-                <Button Classes="square" Content="{icons:MaterialIconExt Minus}"/>
-                <Button Content="{icons:MaterialIconExt CogOutline}"
+                <RepeatButton Classes="square" Content="{icons:MaterialIconExt Kind=Plus}"/>
+                <Button Classes="square" Content="{icons:MaterialIconExt Kind=Minus}"/>
+                <Button Content="{icons:MaterialIconExt Kind=CogOutline}"
                         Classes="wide square low-accent"
                         HorizontalAlignment="Left"/>
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->

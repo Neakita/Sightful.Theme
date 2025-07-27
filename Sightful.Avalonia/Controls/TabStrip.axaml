@@ -10,9 +10,9 @@
 			</StackPanel.Styles>
 			<Border Classes="outer wide-padding">
 				<TabStrip Theme="{DynamicResource VerticalButtonsTabStripTheme}">
-					<TabStripItem Content="{icons:MaterialIconExt Puzzle}"/>
-					<TabStripItem Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
-					<TabStripItem Content="{icons:MaterialIconExt Cog}"/>
+					<TabStripItem Content="{icons:MaterialIconExt Kind=Puzzle}"/>
+					<TabStripItem Content="{icons:MaterialIconExt Kind=Home}" IsSelected="True"/>
+					<TabStripItem Content="{icons:MaterialIconExt Kind=Cog}"/>
 				</TabStrip>
 			</Border>
 			<Border Classes="outer wide-padding">

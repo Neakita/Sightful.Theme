@@ -9,10 +9,10 @@
                 Height="200">
             <Border.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Play" Icon="{icons:MaterialIconExt PlayOutline}" Classes="green-accent"/>
+                    <MenuItem Header="Play" Icon="{icons:MaterialIconExt Kind=PlayOutline}" Classes="green-accent"/>
                     <MenuItem Header="View"/>
                     <Separator/>
-                    <MenuItem Header="Delete" Icon="{icons:MaterialIconExt TrashCanOutline}" Classes="red-accent"/>
+                    <MenuItem Header="Delete" Icon="{icons:MaterialIconExt Kind=TrashCanOutline}" Classes="red-accent"/>
                 </ContextMenu>
             </Border.ContextMenu>
             <TextBlock Text="Defined in XAML"/>

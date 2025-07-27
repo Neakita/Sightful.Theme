@@ -8,15 +8,15 @@
             <StackPanel Classes="regular-spacing">
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
                 <TextBox Watermark="Enter variables" Classes="clear-button" Text="123"/>
-                <TextBox InnerLeftContent="{icons:MaterialIconExt Email}"
+                <TextBox InnerLeftContent="{icons:MaterialIconExt Kind=Email}"
                          Watermark="Email"/>
-                <TextBox InnerLeftContent="{icons:MaterialIconExt Password}"
+                <TextBox InnerLeftContent="{icons:MaterialIconExt Kind=Password}"
                          Watermark="Password"
                          Classes="reveal-password-button"
                          Text="qwerty123"
                          PasswordChar="*"/>
-                <TextBox InnerLeftContent="{icons:MaterialIconExt Square}"
-                         InnerRightContent="{icons:MaterialIconExt Square}"
+                <TextBox InnerLeftContent="{icons:MaterialIconExt Kind=Square}"
+                         InnerRightContent="{icons:MaterialIconExt Kind=Square}"
                          Text="|Squares|"/>
                 <TextBox Text="Overflow" Width="80"/>
                 <TextBox Text="{Binding $self.Bounds.Height}" InnerRightContent="px"/>
@@ -181,7 +181,7 @@
             <Setter Property="InnerRightContent">
                 <Template>
                     <Button Theme="{DynamicResource EmbeddedButtonTheme}"
-                            Content="{icons:MaterialIconExt Close}"
+                            Content="{icons:MaterialIconExt Kind=Close}"
                             Padding="6">
                         <Button.Command>
                             <commands:ClearTextCommand
@@ -197,7 +197,7 @@
             <Setter Property="InnerRightContent">
                 <Template>
                     <ToggleButton Theme="{DynamicResource EmbeddedButtonTheme}"
-                                  Content="{icons:MaterialIconExt EyeOff}"
+                                  Content="{icons:MaterialIconExt Kind=EyeOff}"
                                   IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=OneWayToSource}"
                                   ToolTip.Tip="Reveal password">
                         <ToggleButton.Styles>

@@ -6,12 +6,12 @@
 		<StackPanel Spacing="20">
 			<Border Classes="outer wide-padding">
 				<StackPanel Spacing="8">
-					<TabItem Header="{icons:MaterialIconExt HomeOutline}"
+					<TabItem Header="{icons:MaterialIconExt Kind=HomeOutline}"
                              Theme="{DynamicResource ButtonTabItemTheme}"/>
-					<TabItem Header="{icons:MaterialIconExt Search}"
+					<TabItem Header="{icons:MaterialIconExt Kind=Search}"
                              IsSelected="True"
                              Theme="{DynamicResource ButtonTabItemTheme}"/>
-					<TabItem Header="{icons:MaterialIconExt Bookshelf}"
+					<TabItem Header="{icons:MaterialIconExt Kind=Bookshelf}"
                              Theme="{DynamicResource ButtonTabItemTheme}"/>
 				</StackPanel>
 			</Border>

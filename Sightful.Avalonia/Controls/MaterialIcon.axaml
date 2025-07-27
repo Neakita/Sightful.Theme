@@ -7,7 +7,7 @@
 				<StyleInclude Source="../Styles/Border.axaml"/>
 				<StyleInclude Source="../Styles/Padding.axaml"/>
 			</Border.Styles>
-			<TextBox InnerLeftContent="{icons:MaterialIconExt Circle}"
+			<TextBox InnerLeftContent="{icons:MaterialIconExt Kind=Circle}"
 			         Watermark="Circle"/>
 		</Border>
 	</Design.PreviewWith>

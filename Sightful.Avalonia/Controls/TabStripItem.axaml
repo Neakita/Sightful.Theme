@@ -10,9 +10,9 @@
 			</StackPanel.Styles>
 			<Border Classes="outer wide-padding">
 				<StackPanel Spacing="8">
-					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Puzzle}"/>
-					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Home}" IsSelected="True"/>
-					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Cog}"/>
+					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Kind=Puzzle}"/>
+					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Kind=Home}" IsSelected="True"/>
+					<TabStripItem Theme="{DynamicResource ButtonTabStripItemTheme}" Content="{icons:MaterialIconExt Kind=Cog}"/>
 				</StackPanel>
 			</Border>
 			<Border Classes="outer wide-padding">

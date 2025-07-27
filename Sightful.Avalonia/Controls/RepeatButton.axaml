@@ -5,7 +5,7 @@
         <!-- ReSharper disable Xaml.StyleClassNotFound -->
         <Border Classes="outer wide-padding">
             <!-- ReSharper restore Xaml.StyleClassNotFound -->
-            <RepeatButton Classes="square" Content="{icons:MaterialIconExt Plus}"/>
+            <RepeatButton Classes="square" Content="{icons:MaterialIconExt Kind=Plus}"/>
 		</Border>
 	</Design.PreviewWith>
 	<ControlTheme x:Key="{x:Type RepeatButton}" TargetType="RepeatButton" BasedOn="{StaticResource RegularButtonTheme}">

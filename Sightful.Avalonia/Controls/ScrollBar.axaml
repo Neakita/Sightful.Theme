@@ -52,8 +52,7 @@
                     <ControlTemplate>
                         <ContentPresenter Background="{TemplateBinding Background}"
                                           Content="{TemplateBinding Content}"
-                                          Padding="{TemplateBinding Padding}">
-                        </ContentPresenter>
+                                          Padding="{TemplateBinding Padding}"/>
                     </ControlTemplate>
                 </Setter>
                 <Style Selector="^:pointerover">
@@ -77,12 +76,12 @@
                     <DockPanel>
                         <RepeatButton Name="PART_LineUpButton"
                                       DockPanel.Dock="Top"
-                                      Content="{icons:MaterialIconExt MenuUp}"
+                                      Content="{icons:MaterialIconExt Kind=MenuUp}"
                                       Padding="0 2"
                                       Theme="{StaticResource LineButton}"/>
                         <RepeatButton Name="PART_LineDownButton"
                                       DockPanel.Dock="Bottom"
-                                      Content="{icons:MaterialIconExt MenuDown}"
+                                      Content="{icons:MaterialIconExt Kind=MenuDown}"
                                       Padding="0 2"
                                       Theme="{StaticResource LineButton}"/>
                         <Track Minimum="{TemplateBinding Minimum}"

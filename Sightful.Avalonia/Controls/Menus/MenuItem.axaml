@@ -4,9 +4,9 @@
     <Design.PreviewWith>
         <Border Classes="outer regular-padding">
             <StackPanel>
-                <MenuItem Header="Play" Icon="{icons:MaterialIconExt PlayOutline}" Classes="green-accent"/>
+                <MenuItem Header="Play" Icon="{icons:MaterialIconExt Kind=PlayOutline}" Classes="green-accent"/>
                 <MenuItem Header="View"/>
-                <MenuItem Header="Delete" Icon="{icons:MaterialIconExt TrashCanOutline}" Classes="red-accent"/>
+                <MenuItem Header="Delete" Icon="{icons:MaterialIconExt Kind=TrashCanOutline}" Classes="red-accent"/>
             </StackPanel>
         </Border>
     </Design.PreviewWith>

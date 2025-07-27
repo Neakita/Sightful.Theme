@@ -6,20 +6,20 @@
         <Border Classes="outer wide-padding">
             <StackPanel Classes="regular-spacing">
                 <!-- ReSharper restore Xaml.StyleClassNotFound -->
-                <TextBox InnerLeftContent="{icons:MaterialIconExt Password}"
+                <TextBox InnerLeftContent="{icons:MaterialIconExt Kind=Password}"
                          Text="qwerty123"
                          PasswordChar="*"
                          MinWidth="150">
                     <TextBox.InnerRightContent>
                         <Button Theme="{DynamicResource EmbeddedButtonTheme}"
-                                Content="{icons:MaterialIconExt Eye}"/>
+                                Content="{icons:MaterialIconExt Kind=Eye}"/>
                     </TextBox.InnerRightContent>
                 </TextBox>
                 <TextBox Text="qwerty123"
                          MinWidth="150">
                     <TextBox.InnerRightContent>
                         <Button Theme="{DynamicResource EmbeddedButtonTheme}"
-                                Content="{icons:MaterialIconExt Close}"
+                                Content="{icons:MaterialIconExt Kind=Close}"
                                 Padding="6"/>
                     </TextBox.InnerRightContent>
                 </TextBox>
@@ -27,7 +27,7 @@
                          MinWidth="150">
                     <TextBox.InnerRightContent>
                         <Button Theme="{DynamicResource EmbeddedButtonTheme}"
-                                Content="{icons:MaterialIconExt Close}"
+                                Content="{icons:MaterialIconExt Kind=Close}"
                                 Padding="6"
                                 IsEnabled="False"/>
                     </TextBox.InnerRightContent>
