@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -10,11 +9,11 @@ namespace Sightful.Avalonia.Controls.Primitives;
 
 internal sealed class MultiTrackArranger : StackArranger
 {
-	public ImmutableList<decimal> Values { get; set; }
+	public IReadOnlyList<decimal> Values { get; set; }
 	public decimal Range { get; set; }
 	public decimal Density { get; private set; }
 
-	public MultiTrackArranger(ImmutableList<decimal> values, IReadOnlyList<ILogical> logicalChildren, decimal range)
+	public MultiTrackArranger(IReadOnlyList<decimal> values, IReadOnlyList<ILogical> logicalChildren, decimal range)
 	{
 		Values = values;
 		_logicalChildren = logicalChildren;

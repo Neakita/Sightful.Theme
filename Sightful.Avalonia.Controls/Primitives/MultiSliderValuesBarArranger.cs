@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
@@ -8,7 +8,7 @@ namespace Sightful.Avalonia.Controls.Primitives;
 
 internal sealed class MultiSliderValuesBarArranger : StackArranger
 {
-	public IReadOnlyCollection<decimal> Values { get; set; } = ImmutableList<decimal>.Empty;
+	public IReadOnlyCollection<decimal> SizeFractions { get; set; } = ReadOnlyCollection<decimal>.Empty;
 	public decimal Range { get; set; }
 
 	public MultiSliderValuesBarArranger(IReadOnlyCollection<ILogical> logicalChildren)
@@ -50,7 +50,7 @@ internal sealed class MultiSliderValuesBarArranger : StackArranger
 			.Select(textBlock => textBlock.DesiredSize)
 			.Select<Size, double>(Orientation == Orientation.Horizontal ? size => size.Width : size => size.Height)
 			.ToList();
-		var desiredLengths = Values
+		var desiredLengths = SizeFractions
 			.Select(value => (double)value / (double)Range * availableLength)
 			.ToList();
 

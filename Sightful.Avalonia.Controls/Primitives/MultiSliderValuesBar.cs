@@ -1,8 +1,7 @@
-using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
-using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Styling;
 
@@ -11,9 +10,6 @@ namespace Sightful.Avalonia.Controls.Primitives;
 [PseudoClasses(":vertical", ":horizontal")]
 public sealed class MultiSliderValuesBar : Control
 {
-	public static readonly StyledProperty<ImmutableList<decimal>> ValuesProperty =
-			MultiTrack.ValuesProperty.AddOwner<MultiSliderValuesBar>(new StyledPropertyMetadata<ImmutableList<decimal>>(defaultBindingMode: BindingMode.OneWay));
-
 	public static readonly StyledProperty<ControlTheme?> TextBlockThemeProperty =
 		AvaloniaProperty.Register<MultiSliderValuesBar, ControlTheme?>(nameof(TextBlockTheme));
 
@@ -26,22 +22,24 @@ public sealed class MultiSliderValuesBar : Control
 	public static readonly StyledProperty<decimal> RangeProperty =
 		MultiTrack.RangeProperty.AddOwner<MultiSliderValuesBar>();
 
+	public static readonly StyledProperty<IReadOnlyCollection<decimal>> SizeFractionsProperty =
+		AvaloniaProperty.Register<MultiSliderValuesBar, IReadOnlyCollection<decimal>>(nameof(SizeFractions));
+
+	public static readonly StyledProperty<IReadOnlyCollection<object?>> ValuesProperty =
+		AvaloniaProperty.Register<MultiSliderValuesBar, IReadOnlyCollection<object?>>(nameof(Values), defaultValue: ReadOnlyCollection<object?>.Empty);
+
 	static MultiSliderValuesBar()
 	{
 		AffectsMeasure<MultiSliderValuesBar>(ValuesProperty);
 		AffectsArrange<MultiSliderValuesBar>(ValuesProperty);
+		AffectsMeasure<MultiSliderValuesBar>(SizeFractionsProperty);
+		AffectsArrange<MultiSliderValuesBar>(SizeFractionsProperty);
 	}
 
 	public string? StringFormat
 	{
 		get => GetValue(StringFormatProperty);
 		set => SetValue(StringFormatProperty, value);
-	}
-
-	public ImmutableList<decimal> Values
-	{
-		get => GetValue(ValuesProperty);
-		set => SetValue(ValuesProperty, value);
 	}
 
 	public ControlTheme? TextBlockTheme
@@ -62,13 +60,25 @@ public sealed class MultiSliderValuesBar : Control
 		set => SetValue(RangeProperty, value);
 	}
 
+	public IReadOnlyCollection<decimal> SizeFractions
+	{
+		get => GetValue(SizeFractionsProperty);
+		set => SetValue(SizeFractionsProperty, value);
+	}
+
+	public IReadOnlyCollection<object?> Values
+	{
+		get => GetValue(ValuesProperty);
+		set => SetValue(ValuesProperty, value);
+	}
+
 	public MultiSliderValuesBar()
 	{
 		_childrenManager = new MultiSliderValuesBarChildrenManager(LogicalChildren, VisualChildren, Values);
 		_arranger = new MultiSliderValuesBarArranger(LogicalChildren)
 		{
 			Orientation = Orientation,
-			Values = Values,
+			SizeFractions = SizeFractions,
 			Range = Range
 		};
 	}
@@ -77,10 +87,9 @@ public sealed class MultiSliderValuesBar : Control
 	{
 		base.OnPropertyChanged(change);
 		if (change.Property == ValuesProperty)
-		{
 			_childrenManager.Values = Values;
-			_arranger.Values = Values;
-		}
+		else if (change.Property == SizeFractionsProperty)
+			_arranger.SizeFractions = SizeFractions;
 		else if (change.Property == StringFormatProperty)
 			_childrenManager.StringFormat = StringFormat;
 		else if (change.Property == TextBlockThemeProperty)

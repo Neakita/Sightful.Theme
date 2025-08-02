@@ -19,6 +19,9 @@ public sealed class MultiSlider : TemplatedControl
 	public static readonly StyledProperty<decimal> MinimumValueProperty =
 		MultiTrack.MinimumValueProperty.AddOwner<MultiSlider>();
 
+	public static readonly StyledProperty<IReadOnlyCollection<string>> HeadersProperty =
+		AvaloniaProperty.Register<MultiSlider, IReadOnlyCollection<string>>(nameof(Headers));
+
 	public decimal MinimumValue
 	{
 		get => GetValue(MinimumValueProperty);
@@ -41,5 +44,11 @@ public sealed class MultiSlider : TemplatedControl
 	{
 		get => GetValue(IncrementProperty);
 		set => SetValue(IncrementProperty, value);
+	}
+
+	public IReadOnlyCollection<string> Headers
+	{
+		get => GetValue(HeadersProperty);
+		set => SetValue(HeadersProperty, value);
 	}
 }

@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
@@ -9,7 +9,7 @@ namespace Sightful.Avalonia.Controls.Primitives;
 
 internal sealed class MultiSliderValuesBarChildrenManager
 {
-	public IReadOnlyCollection<decimal> Values
+	public IReadOnlyCollection<object?> Values
 	{
 		get => _values;
 		set
@@ -48,7 +48,7 @@ internal sealed class MultiSliderValuesBarChildrenManager
 	public MultiSliderValuesBarChildrenManager(
 		IAvaloniaList<ILogical> logicalChildren,
 		IAvaloniaList<Visual> visualChildren,
-		IReadOnlyCollection<decimal> values)
+		IReadOnlyCollection<object?> values)
 	{
 		_logicalChildren = logicalChildren;
 		_visualChildren = visualChildren;
@@ -57,7 +57,7 @@ internal sealed class MultiSliderValuesBarChildrenManager
 
 	private readonly IAvaloniaList<ILogical> _logicalChildren;
 	private readonly IAvaloniaList<Visual> _visualChildren;
-	private IReadOnlyCollection<decimal> _values = ImmutableList<decimal>.Empty;
+	private IReadOnlyCollection<object?> _values = ReadOnlyCollection<object?>.Empty;
 	private ControlTheme? _textBlockTheme;
 	private string? _stringFormat;
 
@@ -93,6 +93,11 @@ internal sealed class MultiSliderValuesBarChildrenManager
 	private void UpdateText()
 	{
 		foreach (var (textBlock, value) in _logicalChildren.Cast<TextBlock>().Zip(Values))
-			textBlock.Text = value.ToString(StringFormat);
+		{
+			if (value is IFormattable formattable)
+				textBlock.Text = formattable.ToString(StringFormat, null);
+			else
+				textBlock.Text = value?.ToString();
+		}
 	}
 }

@@ -20,9 +20,24 @@
     <Style Selector="controls|MultiSlider">
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid RowDefinitions="Auto Auto">
-                    <primitives:MultiTrack
+                <Grid RowDefinitions="Auto Auto Auto">
+                    <primitives:MultiSliderValuesBar
                         Grid.Row="0"
+                        Values="{TemplateBinding Headers}"
+                        SizeFractions="{TemplateBinding Values}"
+                        Range="{TemplateBinding Range}"
+                        StringFormat="P0">
+                        <primitives:MultiSliderValuesBar.TextBlockTheme>
+                            <ControlTheme TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="10"/>
+                                <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="Margin" Value="2 0"/>
+                            </ControlTheme>
+                        </primitives:MultiSliderValuesBar.TextBlockTheme>
+                    </primitives:MultiSliderValuesBar>
+                    <primitives:MultiTrack
+                        Grid.Row="1"
                         Values="{TemplateBinding Values, Mode=TwoWay}"
                         Increment="{TemplateBinding Increment}"
                         MinimumValue="{TemplateBinding MinimumValue}">
@@ -56,8 +71,9 @@
                         </primitives:MultiTrack.ThumbTheme>
                     </primitives:MultiTrack>
                     <primitives:MultiSliderValuesBar
-                        Grid.Row="1"
-                        Values="{TemplateBinding Values}"
+                        Grid.Row="2"
+                        Values="{TemplateBinding Values, Converter={x:Static controls:MultiSliderValuesToObjectsCollectionConverter.Instance}}"
+                        SizeFractions="{TemplateBinding Values}"
                         Range="{TemplateBinding Range}"
                         StringFormat="P0">
                         <primitives:MultiSliderValuesBar.TextBlockTheme>
