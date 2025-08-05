@@ -1,4 +1,5 @@
-using System.Collections.Frozen;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
@@ -14,6 +15,9 @@ public sealed class GestureBox : TemplatedControl
 	public static readonly StyledProperty<object?> GestureProperty =
 		AvaloniaProperty.Register<GestureBox, object?>(nameof(Gesture));
 
+	public static readonly StyledProperty<IObservable<object?>> GestureObservableProperty =
+		AvaloniaProperty.Register<GestureBox, IObservable<object?>>(nameof(GestureObservable));
+
 	static GestureBox()
 	{
 		FocusableProperty.OverrideDefaultValue<GestureBox>(true);
@@ -22,26 +26,21 @@ public sealed class GestureBox : TemplatedControl
 	private const string EmptyPseudoClass = ":empty";
 	private const string EditingPseudoClass = ":editing";
 
-	private static readonly FrozenDictionary<Key, KeyModifiers> KeyModifiersMap =
-		FrozenDictionary.ToFrozenDictionary<Key, KeyModifiers>([
-			new(Key.LeftAlt, KeyModifiers.Alt),
-			new(Key.RightAlt, KeyModifiers.Alt),
-			new(Key.LeftCtrl, KeyModifiers.Control),
-			new(Key.RightCtrl, KeyModifiers.Control),
-			new(Key.LeftShift, KeyModifiers.Shift),
-			new(Key.RightShift, KeyModifiers.Shift),
-			new(Key.LWin, KeyModifiers.Meta),
-			new(Key.RWin, KeyModifiers.Meta)
-		]);
-
 	public object? Gesture
 	{
 		get => GetValue(GestureProperty);
 		set => SetValue(GestureProperty, value);
 	}
 
+	public IObservable<object?> GestureObservable
+	{
+		get => GetValue(GestureObservableProperty);
+		set => SetValue(GestureObservableProperty, value);
+	}
+
 	public GestureBox()
 	{
+		GestureObservable = new InputElementGestureObservable(this);
 		PointerReleased += OnPointerClick;
 	}
 
@@ -53,7 +52,6 @@ public sealed class GestureBox : TemplatedControl
 
 	private bool IsEmpty
 	{
-		get;
 		set
 		{
 			if (value == field)
@@ -73,6 +71,8 @@ public sealed class GestureBox : TemplatedControl
 		}
 	}
 
+	private IDisposable _editingDisposable = Disposable.Empty;
+
 	private void OnPointerClick(object? sender, PointerReleasedEventArgs args)
 	{
 		if (args.InitialPressMouseButton == MouseButton.Left)
@@ -86,40 +86,14 @@ public sealed class GestureBox : TemplatedControl
 		IsEditing = true;
 		Focus();
 		PointerReleased -= OnPointerClick;
-		PointerReleased += OnPointerClickWhileEditing;
-		KeyUp += OnKeyClickWhileEditing;
+		_editingDisposable = GestureObservable.ObserveOn(SynchronizationContext.Current).Subscribe(SetGesture);
 	}
 
-	private void OnPointerClickWhileEditing(object? sender, PointerReleasedEventArgs args)
-	{
-		var button = args.InitialPressMouseButton;
-		MouseButtonGesture gesture = new(button, args.KeyModifiers);
-		SetGesture(gesture);
-		StopEditing();
-	}
-
-	private void OnKeyClickWhileEditing(object? sender, KeyEventArgs args)
-	{
-		var key = args.Key;
-		var modifiers = args.KeyModifiers;
-		// for some reason when any modifier key (for example shift) is pressed and released args contains both Key.LShift and KeyModifiers.Shift
-		modifiers = RemoveMatchingModifier(key, modifiers);
-		KeyGesture gesture = new(key, modifiers);
-		SetGesture(gesture);
-		StopEditing();
-	}
-
-	private static KeyModifiers RemoveMatchingModifier(Key key, KeyModifiers modifiers)
-	{
-		if (KeyModifiersMap.TryGetValue(key, out var modifierToRemove))
-			modifiers &= ~modifierToRemove;
-		return modifiers;
-	}
-
-	private void SetGesture(object gesture)
+	private void SetGesture(object? gesture)
 	{
 		SetCurrentValue(GestureProperty, gesture);
-		IsEmpty = false;
+		IsEmpty = gesture == null;
+		StopEditing();
 	}
 
 	private void ClearGesture()
@@ -132,7 +106,6 @@ public sealed class GestureBox : TemplatedControl
 	{
 		IsEditing = false;
 		PointerReleased += OnPointerClick;
-		PointerReleased -= OnPointerClickWhileEditing;
-		KeyUp -= OnKeyClickWhileEditing;
+		_editingDisposable.Dispose();
 	}
 }
