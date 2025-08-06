@@ -4,6 +4,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Primitives;
+using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 
@@ -13,7 +14,7 @@ namespace Sightful.Avalonia.Controls.GestureBox;
 public sealed class GestureBox : TemplatedControl
 {
 	public static readonly StyledProperty<object?> GestureProperty =
-		AvaloniaProperty.Register<GestureBox, object?>(nameof(Gesture));
+		AvaloniaProperty.Register<GestureBox, object?>(nameof(Gesture), defaultBindingMode: BindingMode.TwoWay);
 
 	public static readonly StyledProperty<IObservable<GestureEdit>> GestureEditsObservableProperty =
 		AvaloniaProperty.Register<GestureBox, IObservable<GestureEdit>>(nameof(GestureEditsObservable));
