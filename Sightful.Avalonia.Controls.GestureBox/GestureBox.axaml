@@ -23,11 +23,12 @@
         <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
-        <Setter Property="ToolTip.Tip" Value="Right click to clear"/>
+        <Setter Property="ToolTip.Tip" Value="Left click to edit, right click to clear"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
         <Setter Property="Watermark" Value="Unset"/>
+        <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Border BorderBrush="{TemplateBinding assists:AdornerAssist.AdornerBorderBrush}"
