@@ -15,8 +15,11 @@ public sealed class GestureBox : TemplatedControl
 	public static readonly StyledProperty<object?> GestureProperty =
 		AvaloniaProperty.Register<GestureBox, object?>(nameof(Gesture));
 
-	public static readonly StyledProperty<IObservable<object?>> GestureObservableProperty =
-		AvaloniaProperty.Register<GestureBox, IObservable<object?>>(nameof(GestureObservable));
+	public static readonly StyledProperty<IObservable<GestureEdit>> GestureEditsObservableProperty =
+		AvaloniaProperty.Register<GestureBox, IObservable<GestureEdit>>(nameof(GestureEditsObservable));
+
+	public static readonly StyledProperty<string?> WatermarkProperty =
+		AvaloniaProperty.Register<GestureBox, string?>(nameof(Watermark));
 
 	static GestureBox()
 	{
@@ -32,15 +35,21 @@ public sealed class GestureBox : TemplatedControl
 		set => SetValue(GestureProperty, value);
 	}
 
-	public IObservable<object?> GestureObservable
+	public IObservable<GestureEdit> GestureEditsObservable
 	{
-		get => GetValue(GestureObservableProperty);
-		set => SetValue(GestureObservableProperty, value);
+		get => GetValue(GestureEditsObservableProperty);
+		set => SetValue(GestureEditsObservableProperty, value);
+	}
+
+	public string? Watermark
+	{
+		get => GetValue(WatermarkProperty);
+		set => SetValue(WatermarkProperty, value);
 	}
 
 	public GestureBox()
 	{
-		GestureObservable = new InputElementGestureObservable(this);
+		GestureEditsObservable = new InputElementGestureObservable(this);
 		PointerReleased += OnPointerClick;
 	}
 
@@ -83,17 +92,19 @@ public sealed class GestureBox : TemplatedControl
 
 	private void StartEditing()
 	{
+		ClearGesture();
 		IsEditing = true;
 		Focus();
 		PointerReleased -= OnPointerClick;
-		_editingDisposable = GestureObservable.ObserveOn(SynchronizationContext.Current).Subscribe(SetGesture);
+		_editingDisposable = GestureEditsObservable.ObserveOn(SynchronizationContext.Current).Subscribe(SetGesture);
 	}
 
-	private void SetGesture(object? gesture)
+	private void SetGesture(GestureEdit edit)
 	{
-		SetCurrentValue(GestureProperty, gesture);
-		IsEmpty = gesture == null;
-		StopEditing();
+		SetCurrentValue(GestureProperty, edit.Gesture);
+		IsEmpty = edit.Gesture == null;
+		if (edit.ShouldStopEditing)
+			StopEditing();
 	}
 
 	private void ClearGesture()

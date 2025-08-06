@@ -4,14 +4,14 @@ using Avalonia.Input;
 
 namespace Sightful.Avalonia.Controls.GestureBox;
 
-internal sealed class InputElementGestureObservable : IObservable<object?>
+internal sealed class InputElementGestureObservable : IObservable<GestureEdit>
 {
 	public InputElementGestureObservable(InputElement inputElement)
 	{
 		_inputElement = inputElement;
 	}
 
-	public IDisposable Subscribe(IObserver<object?> observer)
+	public IDisposable Subscribe(IObserver<GestureEdit> observer)
 	{
 		_observers.Add(observer);
 		if (_observers.Count == 1)
@@ -33,15 +33,15 @@ internal sealed class InputElementGestureObservable : IObservable<object?>
 		]);
 
 	private readonly InputElement _inputElement;
-	private readonly List<IObserver<object?>> _observers = new();
+	private readonly List<IObserver<GestureEdit>> _observers = new();
 
 	private void SubscribeToEvents()
 	{
-		_inputElement.PointerReleased += OnPointerClickWhileEditing;
-		_inputElement.KeyUp += OnKeyClickWhileEditing;
+		_inputElement.PointerReleased += OnPointerReleased;
+		_inputElement.KeyUp += OnKeyUp;
 	}
 
-	private void Unsubscribe(IObserver<object?> observer)
+	private void Unsubscribe(IObserver<GestureEdit> observer)
 	{
 		_observers.Remove(observer);
 		if (_observers.Count <= 0)
@@ -50,26 +50,28 @@ internal sealed class InputElementGestureObservable : IObservable<object?>
 
 	private void UnsubscribeFromEvents()
 	{
-		_inputElement.PointerReleased -= OnPointerClickWhileEditing;
-		_inputElement.KeyUp -= OnKeyClickWhileEditing;
+		_inputElement.PointerReleased -= OnPointerReleased;
+		_inputElement.KeyUp -= OnKeyUp;
 	}
 
-	private void OnPointerClickWhileEditing(object? sender, PointerReleasedEventArgs e)
+	private void OnPointerReleased(object? sender, PointerReleasedEventArgs e)
 	{
 		var gesture = new MouseButtonGesture(e.InitialPressMouseButton, e.KeyModifiers);
+		var edit = new GestureEdit(gesture, true);
 		foreach (var observer in _observers)
-			observer.OnNext(gesture);
+			observer.OnNext(edit);
 	}
 
-	private void OnKeyClickWhileEditing(object? sender, KeyEventArgs e)
+	private void OnKeyUp(object? sender, KeyEventArgs e)
 	{
 		var key = e.Key;
 		var modifiers = e.KeyModifiers;
 		// for some reason when any modifier key (for example shift) is pressed and released args contains both Key.LShift and KeyModifiers.Shift
 		modifiers = RemoveMatchingModifier(key, modifiers);
-		KeyGesture gesture = new(key, modifiers);
+		var gesture = new KeyGesture(key, modifiers);
+		var edit = new GestureEdit(gesture, true);
 		foreach (var observer in _observers)
-			observer.OnNext(gesture);
+			observer.OnNext(edit);
 	}
 
 	private static KeyModifiers RemoveMatchingModifier(Key key, KeyModifiers modifiers)

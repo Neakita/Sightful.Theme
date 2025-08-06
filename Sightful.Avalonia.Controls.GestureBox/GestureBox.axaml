@@ -27,6 +27,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="ClipToBounds" Value="False"/>
         <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{StaticResource TransparentAccent}"/>
+        <Setter Property="Watermark" Value="Unset"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <Border BorderBrush="{TemplateBinding assists:AdornerAssist.AdornerBorderBrush}"
@@ -61,20 +62,26 @@
                                     </Transitions>
                                 </TextBlock.Transitions>
                             </TextBlock>
+                            <TextBlock Name="Watermark"
+                                       IsVisible="{TemplateBinding Gesture, Converter={x:Static ObjectConverters.IsNull}}"
+                                       Text="{TemplateBinding Watermark}"/>
                         </StackPanel>
                     </Border>
                 </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:editing TextBlock#TextBlock">
-            <Setter Property="Text" Value="Waiting"/>
+        <Style Selector="^:editing">
+            <Setter Property="Watermark" Value="Waiting for input..."/>
         </Style>
         <Style Selector="^:editing">
             <Setter Property="assists:AdornerAssist.AdornerBorderBrush" Value="{DynamicResource Accent}"/>
         </Style>
-        <Style Selector="^:empty TextBlock#TextBlock">
+        <!--<Style Selector="^:empty TextBlock#TextBlock">
             <Setter Property="Text" Value="None"/>
             <Setter Property="Foreground" Value="{DynamicResource WatermarkPrimary}"></Setter>
+        </Style>-->
+        <Style Selector="^ /template/ TextBlock#Watermark">
+            <Setter Property="Foreground" Value="{DynamicResource WatermarkSecondary}"/>
         </Style>
     </Style>
 </Styles>
