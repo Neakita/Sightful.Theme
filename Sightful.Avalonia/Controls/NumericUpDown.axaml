@@ -51,6 +51,7 @@
             </ControlTheme>
         </ControlTheme.Resources>
         <Setter Property="ClipToBounds" Value="False"/>
+        <Setter Property="ToolTip.VerticalOffset" Value="0"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DataValidationErrors>
