@@ -26,7 +26,7 @@
     </Design.PreviewWith>
 
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
-        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
         <Setter Property="FontWeight" Value="Medium"/>
