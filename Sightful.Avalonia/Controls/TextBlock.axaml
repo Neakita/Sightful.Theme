@@ -40,8 +40,18 @@
 			<Setter Property="FontSize" Value="17"/>
 			<Setter Property="FontWeight" Value="700"/>
 		</Style>
+        <Style Selector="^.p3">
+            <Setter Property="FontSize" Value="21"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+        </Style>
         <Style Selector="^.p2">
             <Setter Property="FontSize" Value="17"/>
+            <Setter Property="FontWeight" Value="400"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
+        </Style>
+        <Style Selector="^.p1">
+            <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="400"/>
             <Setter Property="Foreground" Value="{DynamicResource SecondaryForeground}"/>
         </Style>
